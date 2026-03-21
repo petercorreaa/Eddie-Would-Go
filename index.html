@@ -123,12 +123,6 @@
     .hero-meta {
       text-align: right;
     }
-    .hero-date {
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gray-200);
-    }
     .hero-tagline {
       font-family: 'Playfair Display', serif;
       font-style: italic;
@@ -142,9 +136,9 @@
     /* ─── TICKER ─── */
     .ticker-wrap {
       overflow: hidden;
-      border-bottom: 1px solid var(--black);
-      background: var(--black);
-      color: var(--blue);
+      border-bottom: 1px solid var(--blue);
+      background: var(--blue);
+      color: var(--white);
       padding: 10px 0;
       white-space: nowrap;
     }
@@ -156,13 +150,14 @@
       font-size: 0.72rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
+      color: var(--white);
       padding: 0 24px;
     }
     .ticker-inner span::before {
       content: '◆';
       margin-right: 24px;
-      opacity: 0.6;
-      color: var(--blue);
+      opacity: 0.8;
+      color: var(--white);
     }
     @keyframes ticker {
       from { transform: translateX(0); }
@@ -193,9 +188,9 @@
       font-size: 0.62rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--blue);
       padding-bottom: 16px;
-      border-bottom: 1px solid var(--gray-200);
+      border-bottom: 2px solid var(--blue);
       margin-bottom: 24px;
     }
 
@@ -272,7 +267,7 @@
       margin-bottom: 10px;
       transition: opacity var(--transition);
     }
-    .article-card:hover .article-title { opacity: 0.6; }
+    .article-card:hover .article-title { opacity: 0.6; color: var(--blue); }
     .article-byline {
       font-size: 0.65rem;
       letter-spacing: 0.12em;
@@ -395,11 +390,11 @@
       text-transform: uppercase;
       color: var(--black);
       text-decoration: none;
-      border-bottom: 1px solid var(--black);
+      border-bottom: 2px solid var(--blue);
       padding-bottom: 2px;
-      transition: opacity var(--transition);
+      transition: opacity var(--transition), color var(--transition);
     }
-    .featured-read-more:hover { opacity: 0.4; }
+    .featured-read-more:hover { opacity: 0.7; color: var(--blue); }
 
     /* ─── DIVIDER STRIP ─── */
     /* ─── FOOTER ─── */
@@ -479,7 +474,7 @@
     .follow-section {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      border-top: 1px solid var(--black);
+      border-top: 3px solid var(--blue);
     }
 
     /* ── Instagram half — white bg ── */
@@ -506,7 +501,7 @@
       font-size: 0.6rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--blue);
     }
     .follow-platform-tag svg { width: 13px; height: 13px; flex-shrink: 0; }
 
@@ -618,8 +613,8 @@
       transition: background var(--transition);
     }
     .follow-spotify:hover { background: #111; }
-    .follow-spotify .follow-platform-tag { color: #555; }
-    .follow-spotify .follow-platform-tag svg { fill: #555; }
+    .follow-spotify .follow-platform-tag { color: var(--blue); }
+    .follow-spotify .follow-platform-tag svg { fill: var(--blue); }
     .follow-spotify .follow-cta {
       border-bottom-color: #555;
       color: #999;
@@ -850,7 +845,6 @@
   <header class="hero-banner reveal">
     <div class="hero-title">Eddie Would Go</div>
     <div class="hero-meta">
-      <div class="hero-date">Viernes, 20 de marzo de 2026</div>
       <p class="hero-tagline">Periodismo independiente. Sin agenda, solo la verdad.</p>
     </div>
   </header>
@@ -882,7 +876,7 @@
         <div class="sidebar-label">Reciente</div>
 
         <a href="/articles/iran-en-la-encrucijada.html" class="article-card">
-          <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1561625116-5f8675632053?w=800&auto=format&fit=crop" alt="Irán en la encrucijada" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1tE8p_1791g?w=800&auto=format&fit=crop" alt="Irán en la encrucijada" style="width:100%;height:100%;object-fit:cover;display:block"></div>
           <div class="article-category">Política</div>
           <h3 class="article-title">Irán en la encrucijada</h3>
           <div class="article-byline"><strong>Eddie M.</strong> — 03.19.26</div>
@@ -896,7 +890,7 @@
         </a>
 
         <a href="/articles/el-realismo-incompleto.html" class="article-card">
-          <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop" alt="El Realismo Incompleto" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-q7MfE1VApVE?w=800&auto=format&fit=crop" alt="El Realismo Incompleto" style="width:100%;height:100%;object-fit:cover;display:block"></div>
           <div class="article-category">Ensayo</div>
           <h3 class="article-title">El Realismo Incompleto</h3>
           <div class="article-byline"><strong>Eddie M.</strong> — 03.15.26</div>
@@ -914,7 +908,7 @@
       <section class="featured-col">
         <a href="/articles/iran-en-la-encrucijada.html" class="featured-article reveal" style="transition-delay: 0.15s; text-decoration: none; color: inherit; display: block; cursor: pointer;">
           <div class="featured-label">Artículo Destacado — Hoy</div>
-          <div class="featured-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1561625116-5f8675632053?w=800&auto=format&fit=crop" alt="Irán en la encrucijada" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div class="featured-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1tE8p_1791g?w=800&auto=format&fit=crop" alt="Irán en la encrucijada" style="width:100%;height:100%;object-fit:cover;display:block"></div>
           <h2 class="featured-title">Irán en la encrucijada</h2>
           <p class="featured-excerpt">
             Teherán navega entre la presión internacional y sus propias contradicciones internas. Con negociaciones nucleares estancadas y una economía al límite, el régimen enfrenta una encrucijada histórica. Estuve allí. Esto es lo que realmente está pasando.
@@ -1030,16 +1024,6 @@
           <li><a href="#">Investigaciones</a></li>
           <li><a href="#">Archivo</a></li>
           <li><a href="#">Sobre Eddie</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Participar</div>
-        <ul class="footer-links">
-          <li><a href="#">Suscribirse al Boletín</a></li>
-          <li><a href="#">Apoyar el Periodismo Independiente</a></li>
-          <li><a href="#">Línea de Denuncias</a></li>
-          <li><a href="#">Contacto</a></li>
-          <li><a href="#">Prensa y Medios</a></li>
         </ul>
       </div>
     </div>
