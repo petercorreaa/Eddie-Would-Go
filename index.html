@@ -18,6 +18,7 @@
       --gray-100: #f5f5f5;
       --gray-200: #e0e0e0;
       --gray-400: #999;
+      --blue: #4A7FA5;
       --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
@@ -143,7 +144,7 @@
       overflow: hidden;
       border-bottom: 1px solid var(--black);
       background: var(--black);
-      color: var(--white);
+      color: var(--blue);
       padding: 10px 0;
       white-space: nowrap;
     }
@@ -155,12 +156,13 @@
       font-size: 0.72rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      padding: 0 48px;
+      padding: 0 24px;
     }
     .ticker-inner span::before {
       content: '◆';
-      margin-right: 48px;
-      opacity: 0.5;
+      margin-right: 24px;
+      opacity: 0.6;
+      color: var(--blue);
     }
     @keyframes ticker {
       from { transform: translateX(0); }
@@ -276,7 +278,7 @@
       font-size: 0.65rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--blue);
     }
     .article-byline strong {
       color: var(--black);
@@ -383,7 +385,7 @@
       font-size: 0.65rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--blue);
     }
     .featured-reads {
       display: flex;
@@ -883,28 +885,28 @@
         <div class="sidebar-label">Reciente</div>
 
         <a href="/articles/iran-en-la-encrucijada.html" class="article-card">
-          <div class="article-img"><div class="img-pattern"></div></div>
+          <div class="article-img"><img src="https://source.unsplash.com/featured/?iran,tehran,protest" alt="Irán en la encrucijada" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(100%)"></div>
           <div class="article-category">Política</div>
           <h3 class="article-title">Irán en la encrucijada</h3>
           <div class="article-byline"><strong>Eddie M.</strong> — 03.19.26</div>
         </a>
 
         <a href="/articles/acuerdo-ue-mercosur.html" class="article-card">
-          <div class="article-img"><div class="img-pattern"></div></div>
+          <div class="article-img"><img src="https://source.unsplash.com/featured/?europe,trade,summit" alt="UE-Mercosur" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(100%)"></div>
           <div class="article-category">Política</div>
           <h3 class="article-title">El Gran Pacto Transatlántico: Desentrañando el Acuerdo UE-Mercosur</h3>
           <div class="article-byline"><strong>Eddie M.</strong> — 03.18.26</div>
         </a>
 
         <a href="/articles/el-realismo-incompleto.html" class="article-card">
-          <div class="article-img"><div class="img-pattern"></div></div>
+          <div class="article-img"><img src="https://source.unsplash.com/featured/?venezuela,politics,caracas" alt="El Realismo Incompleto" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(100%)"></div>
           <div class="article-category">Ensayo</div>
           <h3 class="article-title">El Realismo Incompleto</h3>
           <div class="article-byline"><strong>Eddie M.</strong> — 03.15.26</div>
         </a>
 
         <a href="/articles/viejas-obsesiones-nuevas-razones.html" class="article-card">
-          <div class="article-img"><div class="img-pattern"></div></div>
+          <div class="article-img"><img src="https://source.unsplash.com/featured/?greenland,arctic,landscape" alt="Viejas obsesiones" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(100%)"></div>
           <div class="article-category">Opinión</div>
           <h3 class="article-title">Viejas obsesiones con nuevas razones</h3>
           <div class="article-byline"><strong>Eddie M.</strong> — 03.12.26</div>
@@ -915,7 +917,7 @@
       <section class="featured-col">
         <a href="/articles/iran-en-la-encrucijada.html" class="featured-article reveal" style="transition-delay: 0.15s; text-decoration: none; color: inherit; display: block; cursor: pointer;">
           <div class="featured-label">Artículo Destacado — Hoy</div>
-          <div class="featured-img"><div class="featured-img-pattern"></div></div>
+          <div class="featured-img"><img src="https://source.unsplash.com/featured/?iran,tehran,protest" alt="Irán en la encrucijada" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(100%)"></div>
           <h2 class="featured-title">Irán en la encrucijada</h2>
           <p class="featured-excerpt">
             Teherán navega entre la presión internacional y sus propias contradicciones internas. Con negociaciones nucleares estancadas y una economía al límite, el régimen enfrenta una encrucijada histórica. Estuve allí. Esto es lo que realmente está pasando.
@@ -937,28 +939,28 @@
         <div class="sidebar-label">También Leyendo</div>
 
         <a href="/articles/apuesta-estrategica-takaichi.html" class="article-card">
-          <div class="article-img"><div class="img-pattern"></div></div>
+          <div class="article-img"><img src="https://source.unsplash.com/featured/?japan,tokyo,election" alt="Takaichi Japón" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(100%)"></div>
           <div class="article-category">Política</div>
           <h3 class="article-title">La Apuesta Estratégica de Takaichi: El pleno en la Ruleta de la Política Japonesa</h3>
           <div class="article-byline"><strong>Eddie M.</strong> — 03.17.26</div>
         </a>
 
         <a href="/articles/cuba-al-borde.html" class="article-card">
-          <div class="article-img"><div class="img-pattern"></div></div>
+          <div class="article-img"><img src="https://source.unsplash.com/featured/?cuba,havana,street" alt="Cuba al borde" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(100%)"></div>
           <div class="article-category">Política</div>
           <h3 class="article-title">Cuba al borde: ¿Se acerca el desenlace del régimen?</h3>
           <div class="article-byline"><strong>Eddie M.</strong> — 03.14.26</div>
         </a>
 
         <a href="/articles/la-decapitacion.html" class="article-card">
-          <div class="article-img"><div class="img-pattern"></div></div>
+          <div class="article-img"><img src="https://source.unsplash.com/featured/?china,military,beijing" alt="La Decapitación" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(100%)"></div>
           <div class="article-category">Cultura</div>
           <h3 class="article-title">La Decapitación</h3>
           <div class="article-byline"><strong>Eddie M.</strong> — 03.10.26</div>
         </a>
 
         <a href="/articles/la-paradoja-centroamericana.html" class="article-card">
-          <div class="article-img"><div class="img-pattern"></div></div>
+          <div class="article-img"><img src="https://source.unsplash.com/featured/?costa,rica,jungle" alt="La Paradoja Centroamericana" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(100%)"></div>
           <div class="article-category">Política</div>
           <h3 class="article-title">La Paradoja Centroamericana</h3>
           <div class="article-byline"><strong>Eddie M.</strong> — 03.07.26</div>
