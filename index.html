@@ -741,6 +741,107 @@
     }
     .nav-menu:hover span:nth-child(1) { transform: translateY(3px); }
     .nav-menu:hover span:nth-child(3) { transform: translateY(-3px); }
+
+    /* ─── MOBILE RESPONSIVE ─── */
+    @media (max-width: 768px) {
+
+      /* Navbar */
+      nav {
+        padding: 0 16px;
+      }
+      .nav-links {
+        display: none;
+      }
+
+      /* Hero */
+      .hero-banner {
+        padding: 32px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .hero-title {
+        font-size: clamp(2.8rem, 12vw, 5rem);
+        white-space: normal;
+      }
+      .hero-meta {
+        text-align: left;
+      }
+      .hero-tagline {
+        max-width: 100%;
+      }
+
+      /* Article grid — stack columns */
+      .page-grid {
+        display: flex;
+        flex-direction: column;
+      }
+      .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--black);
+        padding: 24px 16px;
+      }
+      .sidebar-right {
+        border-left: none;
+        border-top: 1px solid var(--black);
+        padding: 24px 16px;
+      }
+      .featured-col {
+        padding: 24px 16px;
+        border-bottom: 1px solid var(--black);
+      }
+
+      /* Article cards */
+      .article-card {
+        padding: 16px 0;
+      }
+      .article-img {
+        width: 100%;
+        margin-bottom: 12px;
+      }
+
+      /* Featured article */
+      .featured-img {
+        margin-bottom: 20px;
+      }
+      .featured-title {
+        font-size: clamp(2rem, 8vw, 3rem);
+      }
+
+      /* Follow / Instagram + Spotify section */
+      .follow-section {
+        grid-template-columns: 1fr;
+      }
+      .follow-instagram {
+        border-right: none;
+        border-bottom: 1px solid var(--black);
+        padding: 40px 16px;
+        gap: 28px;
+      }
+      .insta-reels-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+      .follow-spotify {
+        padding: 40px 16px;
+        gap: 28px;
+      }
+
+      /* Footer */
+      .footer-top {
+        flex-direction: column;
+        gap: 32px;
+        padding: 40px 16px;
+      }
+
+      /* General overflow guard */
+      body {
+        overflow-x: hidden;
+      }
+      img {
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
 <body>

@@ -261,6 +261,54 @@
       text-decoration: none;
     }
     .footer-social a:hover { color: var(--black); }
+
+
+    /* ─── MOBILE RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 0 16px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .article-header {
+        padding: 32px 16px 0;
+      }
+      .article-page-title {
+        font-size: clamp(2rem, 9vw, 3.5rem);
+        margin-bottom: 32px;
+      }
+      .article-hero {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 0 16px 32px;
+      }
+      .article-cover {
+        width: 100%;
+      }
+      .article-sidebar {
+        padding: 0;
+      }
+      .article-body {
+        padding: 48px 16px 64px;
+      }
+      .article-blockquote {
+        padding: 12px 0 12px 20px;
+        margin: 0 0 1.5em 0;
+      }
+      .article-blockquote p {
+        font-size: 1.05rem;
+      }
+      .back-link {
+        padding: 32px 16px 0;
+      }
+      body {
+        overflow-x: hidden;
+      }
+      img {
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
