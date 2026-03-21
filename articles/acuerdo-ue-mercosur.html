@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>El Gran Pacto Transatlántico: Desentrañando el Acuerdo UE-Mercosur — Eddie Would Go</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e0e0e0;
+      --gray-400: #999;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: var(--white);
+      border-bottom: 1px solid var(--black);
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-menu span {
+      display: block;
+      width: 22px; height: 1px;
+      background: var(--black);
+      transition: transform var(--transition);
+    }
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--black);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ─── ARTICLE PAGE ─── */
+    .article-page {
+      margin-top: 64px;
+    }
+
+    .article-header {
+      padding: 64px 48px 0;
+    }
+
+    .article-category-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 16px;
+    }
+
+    .article-page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    .article-hero {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      padding: 0 48px 48px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .article-cover {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--gray-200);
+      overflow: hidden;
+    }
+    .article-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .article-cover-placeholder {
+      width: 100%;
+      height: 100%;
+      background: var(--gray-200);
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent, transparent 6px,
+        rgba(0,0,0,0.03) 6px, rgba(0,0,0,0.03) 7px
+      );
+    }
+
+    .article-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 24px;
+      padding-bottom: 8px;
+    }
+
+    .article-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: var(--black);
+    }
+
+    .article-author-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .article-meta-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-top: 4px;
+    }
+
+    /* ─── ARTICLE BODY ─── */
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 32px 96px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #1a1a1a;
+    }
+    .article-body p {
+      margin-bottom: 1.6em;
+    }
+    .article-blockquote {
+      border-left: 3px solid var(--black);
+      margin: 0 0 2em 0;
+      padding: 16px 0 16px 32px;
+    }
+    .article-blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      margin-bottom: 0.75em;
+      color: #1a1a1a;
+    }
+    .article-blockquote cite {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      font-style: normal;
+    }
+    .article-section-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1.2rem;
+      letter-spacing: 0.01em;
+      margin: 2.5em 0 0.8em;
+      color: var(--black);
+    }
+    .article-phase-list {
+      margin: 0 0 1.6em 0;
+      padding-left: 24px;
+      border-left: 2px solid var(--gray-200);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .article-phase p {
+      margin-bottom: 0;
+    }
+    .phase-label {
+      display: block;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 6px;
+    }
+
+    /* ─── BACK LINK ─── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding: 48px 48px 0;
+      margin-top: 64px;
+      display: block;
+      transition: opacity var(--transition);
+    }
+    .back-link:hover { opacity: 0.5; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--black);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0;
+    }
+    .footer-copy {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+    }
+    .footer-social {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-social a {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      text-decoration: none;
+    }
+    .footer-social a:hover { color: var(--black); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <div class="nav-menu" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+      <a href="/" class="nav-logo">
+        <img src="/EWG_Logo.jpg" alt="EWG Logo">
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Política</a></li>
+      <li><a href="/">Cultura</a></li>
+      <li><a href="/">Sobre Nosotros</a></li>
+    </ul>
+    <div style="width:80px"></div>
+  </nav>
+
+  <div class="article-page">
+
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <div class="article-header">
+      <div class="article-category-tag">Política · 15 min de lectura</div>
+      <h1 class="article-page-title">El Gran Pacto Transatlántico: Desentrañando el Acuerdo UE-Mercosur</h1>
+    </div>
+
+    <div class="article-hero">
+      <div class="article-cover">
+        <div class="article-cover-placeholder"></div>
+      </div>
+      <div class="article-sidebar">
+        <p class="article-subtitle">Un análisis profundo del acuerdo comercial más ambicioso entre Europa y América del Sur, sus implicaciones geopolíticas y las tensiones que lo rodean.</p>
+        <div>
+          <div class="article-author-name">Eddie M.</div>
+          <div class="article-meta-line">18 de marzo de 2026 · Política</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <blockquote class="article-blockquote">
+        <p>«El comercio es el gran agente civilizador»</p>
+        <cite>— Juan Bautista Alberdi. Bases y puntos de partida para la organización política de la República Argentina (1852).</cite>
+      </blockquote>
+
+      <p>El 6 de diciembre de 2024, tras veinte años de negociaciones intermitentes, la Unión Europea y el Mercosur firmaron lo que Bruselas proclama como "la zona de libre comercio más grande jamás creada por la UE". Aprobado formalmente por el Consejo Europeo en enero de 2026, el Acuerdo de Asociación UE-Mercosur (EMPA) promete unir a 720 millones de consumidores y desbloquear un comercio bilateral de €111 mil millones anuales.</p>
+
+      <p>El acuerdo aún debe ser ratificado en el Parlamento europeo. Pero detrás de las grandes cifras y los anuncios triunfalistas se esconde una compleja matriz de concesiones calculadas, protecciones encubiertas y compromisos que revelan tanto las aspiraciones como los temores profundos de ambos bloques. Este no es un simple acuerdo de libre comercio; es un reflejo de las realidades geopolíticas del siglo XXI: la tensión entre apertura comercial y soberanía económica, entre ambiciones climáticas y competitividad industrial, entre el soft power regulatorio europeo y las ventajas comparativas sudamericanas.</p>
+
+      <p>Pero lo más interesante es que, si abandonamos la mirada reducida de la parte comercial y ponemos el foco en el impacto histórico de los acuerdos comerciales de la UE con otros países, el volumen y número de la inversión extranjera directa en la zona o países firmantes, que vieron un incremento significativo.</p>
+
+      <h2 class="article-section-heading">El Dilema Agrícola</h2>
+
+      <p>La principal causa del prolongado estancamiento de las negociaciones siempre ha sido el sector agroalimentario. Los productores europeos, en particular en Francia, Irlanda y Polonia, temían una avalancha de carne barata sudamericana. Los gobiernos del Mercosur soñaban con un acceso significativo al lucrativo mercado europeo. La realidad plasmada en el acuerdo es más matizada: acceso administrado, no liberalización plena.</p>
+
+      <p>El compromiso alcanzado es un ejercicio de precisión quirúrgica. La UE concede una nueva cuota de 99.000 toneladas de carne bovina con un arancel preferencial del 7,5%, muy por debajo del arancel MFN de 60-74%. Sumado a las cuotas existentes modificadas, el acceso total preferencial llega a 162.000 toneladas.</p>
+
+      <p>Sin embargo, el análisis contextual revela la cautela europea: este volumen representa solo el 1.5% de la producción total de la UE. Bruselas está dispuesta a ofrecer un canal ordenado y regulado, pero no una competencia abierta que amenace a sus ganaderos.</p>
+
+      <p>Más importante que las cuotas puede ser una regulación preexistente: el Reglamento de Deforestación de la UE (EUDR), en vigor desde diciembre de 2024. Este requisito exige una trazabilidad completa y la certificación de que los productos como la carne bovina, la soja y el café no provienen de tierras deforestadas a partir de 2020.</p>
+
+      <p>Este mecanismo no arancelario actúa como un poderoso filtro. Clasifica a países como Brasil y Paraguay como de "alto riesgo", sujetos a inspecciones intensivas. Uruguay, con su sistema de trazabilidad ganadera operativo desde 2006, sale beneficiado como proveedor de "bajo riesgo". Así, la UE utiliza su poder normativo para externalizar sus estándares ambientales, convirtiendo una barrera comercial potencial en una condición de acceso al mercado. Hace años que la agenda verde se ha convertido en una herramienta pararancelaria muy utilizada por la Unión Europea.</p>
+
+      <p>El sector vitivinícola es uno de los ganadores más claros en términos de posicionamiento de marca y de acceso a mercados. Con el acuerdo, la UE eliminará los aranceles sobre los vinos del Mercosur (actualmente situados entre €13 y €32 por hectolitro) de forma inmediata para los productos fraccionados de alta gama, mientras que los vinos a granel tendrán una desgravación gradual de hasta 8 años.</p>
+
+      <p>La miel del Mercosur accede a una cuota de 45.000 toneladas con arancel del 0%, lo que fortalecerá a las cooperativas apícolas frente a la competencia de mieles de otros mercados. En el sector pesquero, la eliminación de aranceles (que llegan al 25% para filetes de merluza o langostinos) dinamizará los puertos del Atlántico Sur, aunque el acuerdo impone reglas de origen estrictas.</p>
+
+      <p>El sector del etanol, en particular el brasileño, presenta grandes beneficios. Se conceden dos cuotas que suman 650.000 toneladas (unos 823 millones de litros). La ventaja brasileña es doble: su etanol de caña de azúcar tiene una huella de carbono un 70% menor que el etanol de maíz estadounidense o de remolacha europea, alineándose perfectamente con el Pacto Verde Europeo.</p>
+
+      <h2 class="article-section-heading">La protección industrial del Mercosur</h2>
+
+      <p>Si Europa protegió su agricultura, el Mercosur hizo lo propio con su base industrial, especialmente con la automotriz, un sector emblemático para Brasil y Argentina.</p>
+
+      <p>El acuerdo no elimina de la noche a la mañana el arancel que hoy es del 35%. Establece un período de transición de 15 años para vehículos de combustión, con una estructura no lineal diseñada para un aterrizaje suave:</p>
+
+      <div class="article-phase-list">
+        <div class="article-phase">
+          <span class="phase-label">Años 1–7 (Fase de Gracia)</span>
+          <p>Solo 50.000 unidades anuales acceden con un arancel reducido a la mitad (17,5%). El resto paga el 35% completo.</p>
+        </div>
+        <div class="article-phase">
+          <span class="phase-label">Años 8–15 (Desgravación Acelerada)</span>
+          <p>El arancel comienza a caer de forma más pronunciada hasta alcanzar el 0% en 2041.</p>
+        </div>
+      </div>
+
+      <p>Para los vehículos híbridos (PHEV), la protección es aún más prolongada: 30 años (hasta 2056) y en caso eléctrico a 18 años.</p>
+
+      <p>El Mercosur negoció un mecanismo de salvaguardia sectorial específico (Anexo 9-A) con umbrales de activación más bajos. Mientras la salvaguardia general requiere un "daño grave", la automotriz solo exige demostrar "daño". Un aumento del desempleo sectorial superior al 8% (frente al 10% general) podría justificar la reintroducción temporal de aranceles de hasta el 25%.</p>
+
+      <h2 class="article-section-heading">Solución de controversias y retenciones</h2>
+
+      <p>El acuerdo Mercosur-UE ha logrado imponer su modelo de Sistema de Tribunal de Inversiones (ICS). El mecanismo de Solución de Controversias entre Inversores y Estados (ISDS) opera mediante una corte permanente con jueces designados de antemano por ambas partes, con objetivos de transparencia y un sistema de apelación, pero protegiendo mediante salvaguardas el "derecho a regular" de los estados en áreas de salud pública, medio ambiente y seguridad, entre otras.</p>
+
+      <p>El tema de las retenciones es otro aspecto interesante. El Acuerdo UE-Mercosur establece una regla clara: los países del Mercosur no pueden crear nuevos derechos de exportación ni aumentar los existentes sobre productos que vendan a la UE. Esto significa que Argentina, que hoy cobra retenciones del 33% a la soja, del 15% a la carne vacuna y del 12% al trigo, queda con esas tasas como techo máximo — puede mantenerlas o bajarlas, pero no subirlas.</p>
+
+      <p>La lógica detrás de esta cláusula es simple: la UE no quiere eliminar sus aranceles solo para que Argentina aumente sus retenciones y capte ese beneficio vía impuestos internos. En otras palabras, el acuerdo busca garantizar que las preferencias arancelarias lleguen efectivamente a los productores y hagan más competitivos los productos del Mercosur en Europa, no que el Estado se apropie de ellas mediante retenciones.</p>
+
+      <h2 class="article-section-heading">El Impacto de los Tratados de Inversión con la UE: Lecciones desde México, Chile y Corea del Sur</h2>
+
+      <p>Mientras el Mercosur se prepara para implementar su histórico acuerdo con la Unión Europea, los precedentes de países que ya han recorrido este camino ofrecen lecciones valiosas y, en algunos casos, advertencias claras. Las experiencias de México (con el TLCUEM), Chile (Acuerdo de Asociación) y Corea del Sur (TLC UE-Corea) demuestran cómo los acuerdos de inversión con Bruselas pueden transformar economías, pero también generar tensiones y desafíos imprevistos.</p>
+
+      <p>Cuando México firmó el Tratado de Libre Comercio con la Unión Europea (TLCUEM) en 2000, la IED de la UE en México se multiplicó por 5 entre 2000 y 2022, pasando de aproximadamente €10 mil millones a más de €50 mil millones. Los sectores automotriz y aeroespacial fueron los grandes beneficiarios.</p>
+
+      <p>El Acuerdo de Asociación UE-Chile (2003) llevó a que la IED de la UE en Chile se duplicara en la década posterior al acuerdo, concentrándose en energías renovables, minería sustentable y servicios financieros. Sin embargo, la IED se concentró en explotar ventajas comparativas estáticas (cobre, litio, frutas), con menos del 15% destinado a manufactura de alto valor agregado.</p>
+
+      <p>Por último, el TLC UE-Corea (2011) llevó a que la IED europea en Corea del Sur se triplicara en 5 años, principalmente a través de fusiones y adquisiciones estratégicas e inversión en I+D, con centros conjuntos en áreas como 5G y baterías.</p>
+
+      <h2 class="article-section-heading">Conclusión: Un Acuerdo de su Tiempo, con Ojos en el Futuro</h2>
+
+      <p>El Acuerdo UE-Mercosur es un documento profundamente realista. No es el triunfo del libre comercio ortodoxo, sino la cristalización de un comercio gestionado y de una oportunidad de inversión. Para la UE, el acuerdo asegura materias primas agrícolas y energéticas (etanol, aceites vegetales) para su transición verde, abre mercados protegidos para sus industrias de alto valor (maquinaria, farmacéuticos, vinos), exporta su modelo regulatorio y crea un marco seguro y moderno para que su capital financie inversiones en el Mercosur.</p>
+
+      <p>Para el Mercosur, el acuerdo garantiza un acceso predecible, aunque limitado, a un mercado de alto poder adquisitivo, atrae inversiones y tecnología europea bajo reglas más equilibradas —aprendiendo de los errores de acuerdos pasados—, otorga tiempo para que sus industrias se adapten y, críticamente, obtiene una plataforma de inserción internacional que va más allá de la venta de commodities, apostando a convertirse en un proveedor de soluciones verdes (biocombustibles, energía renovable) para Europa.</p>
+
+      <p>Pero también ayuda a convertir uno de los problemas más grandes que ha tenido el Mercosur desde su fundación: pasar de ser un acuerdo comercial ombligista, que mira hacia el mercado interno, a la oportunidad de aprovechar el éxito de este acuerdo para avanzar con otros, como el de Canadá o Corea del Sur.</p>
+
+      <p>En última instancia, el acuerdo es menos una revolución comercial y más un pacto de estabilidad y de reorientación geoeconómica. En un mundo fragmentado por las tensiones entre Estados Unidos y China, Europa y Sudamérica han optado por anclar sus relaciones en un marco de reglas compartidas. El acuerdo UE-Mercosur llega en un momento de reconfiguración de las cadenas globales de valor. La experiencia de México, Chile y Corea del Sur indica que el resultado final no dependerá solo del texto del tratado, sino también de la capacidad de los gobiernos y del sector privado del Mercosur para usar este marco como una palanca estratégica de desarrollo, no como un simple imán para capitales.</p>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">© 2026 Eddie Would Go. Todos los derechos reservados.</span>
+    <div class="footer-social">
+      <a href="#">Twitter</a>
+      <a href="#">Substack</a>
+      <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank">Instagram</a>
+      <a href="#">RSS</a>
+    </div>
+  </footer>
+
+</body>
+</html>

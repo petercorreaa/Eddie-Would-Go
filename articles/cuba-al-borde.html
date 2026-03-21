@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cuba al borde: ¿Se acerca el desenlace del régimen? — Eddie Would Go</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e0e0e0;
+      --gray-400: #999;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: var(--white);
+      border-bottom: 1px solid var(--black);
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-menu span {
+      display: block;
+      width: 22px; height: 1px;
+      background: var(--black);
+      transition: transform var(--transition);
+    }
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--black);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ─── ARTICLE PAGE ─── */
+    .article-page {
+      margin-top: 64px;
+    }
+
+    .article-header {
+      padding: 64px 48px 0;
+    }
+
+    .article-category-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 16px;
+    }
+
+    .article-page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    .article-hero {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      padding: 0 48px 48px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .article-cover {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--gray-200);
+      overflow: hidden;
+    }
+    .article-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .article-cover-placeholder {
+      width: 100%;
+      height: 100%;
+      background: var(--gray-200);
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent, transparent 6px,
+        rgba(0,0,0,0.03) 6px, rgba(0,0,0,0.03) 7px
+      );
+    }
+
+    .article-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 24px;
+      padding-bottom: 8px;
+    }
+
+    .article-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: var(--black);
+    }
+
+    .article-author-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .article-meta-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-top: 4px;
+    }
+
+    /* ─── ARTICLE BODY ─── */
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 32px 96px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #1a1a1a;
+    }
+    .article-body p {
+      margin-bottom: 1.6em;
+    }
+    .article-blockquote {
+      border-left: 3px solid var(--black);
+      margin: 0 0 2em 0;
+      padding: 16px 0 16px 32px;
+    }
+    .article-blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      margin-bottom: 0.75em;
+      color: #1a1a1a;
+    }
+    .article-blockquote cite {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      font-style: normal;
+    }
+    .article-section-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1.2rem;
+      letter-spacing: 0.01em;
+      margin: 2.5em 0 0.8em;
+      color: var(--black);
+    }
+    .family-member-label {
+      font-weight: 600;
+    }
+
+    /* ─── BACK LINK ─── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding: 48px 48px 0;
+      margin-top: 64px;
+      display: block;
+      transition: opacity var(--transition);
+    }
+    .back-link:hover { opacity: 0.5; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--black);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0;
+    }
+    .footer-copy {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+    }
+    .footer-social {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-social a {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      text-decoration: none;
+    }
+    .footer-social a:hover { color: var(--black); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <div class="nav-menu" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+      <a href="/" class="nav-logo">
+        <img src="/EWG_Logo.jpg" alt="EWG Logo">
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Política</a></li>
+      <li><a href="/">Cultura</a></li>
+      <li><a href="/">Sobre Nosotros</a></li>
+    </ul>
+    <div style="width:80px"></div>
+  </nav>
+
+  <div class="article-page">
+
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <div class="article-header">
+      <div class="article-category-tag">Política · 11 min de lectura</div>
+      <h1 class="article-page-title">Cuba al borde: ¿Se acerca el desenlace del régimen?</h1>
+    </div>
+
+    <div class="article-hero">
+      <div class="article-cover">
+        <div class="article-cover-placeholder"></div>
+      </div>
+      <div class="article-sidebar">
+        <p class="article-subtitle">La crisis económica, los apagones y el éxodo masivo plantean la pregunta que nadie en La Habana quiere responder.</p>
+        <div>
+          <div class="article-author-name">Eddie M.</div>
+          <div class="article-meta-line">14 de marzo de 2026 · Política</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <blockquote class="article-blockquote">
+        <p>«En Cuba no solo se perseguían las ideas: se perseguía la alegría, el deseo, la diferencia, la vida misma.»</p>
+        <cite>— Reinaldo Arenas, Antes que anochezca</cite>
+      </blockquote>
+
+      <p>Un reciente informe del Wall Street Journal sugirió que la administración Trump ha identificado a Cuba como su próximo objetivo para un "cambio de régimen". A esto le siguieron las declaraciones del propio presidente Trump, quien declaró al régimen castrista "en sus últimas piernas", e incluso especuló que el senador Marco Rubio — hijo de exiliados cubanos — podría algún día presidir la isla. El secretario de Estado hizo eco de estos sentimientos, insinuando que el fin del régimen cubano está cerca. Pero, ¿qué tan plausible es una transformación genuina en Cuba?</p>
+
+      <p>Para comprender el presente, primero debe reconocerse la importancia que Cuba juega en la política interna de Estados Unidos. El sueño de una Cuba postcomunista es el mito fundacional de la influyente diáspora cubano americana, concentrada en Florida. Su aspiración — la caída de la dinastía Castro y el retorno de la isla a la democracia — los ha convertido en un bloque electoral vital y confiablemente republicano. Su apoyo fue instrumental en entregar los votos electorales de Florida a Trump en sus dos campañas. Para cualquier administración republicana, la retórica dura sobre Cuba es una política doméstica por antonomasia.</p>
+
+      <p>Sin embargo, la importancia de Cuba se extiende mucho más allá del Estrecho de la Florida. Durante décadas, La Habana ha servido como el eje ideológico y operativo para la consolidación autoritaria en América Latina. Los regímenes en Venezuela y Nicaragua no son meramente aliados; son protégés. Sus estrategias represivas, las operaciones de inteligencia y la emigración gestionada para desactivar la presión interna son copias al carbón del manual escrito por los hermanos Castro después de 1959. El apoyo cubano ha sido el eslabón crucial para la supervivencia del proyecto bolivariano en Caracas y de la dinastía Ortega-Murillo en Managua.</p>
+
+      <p>Además, Cuba se sitúa en un peligroso nexo geopolítico. Mantiene relaciones cercanas en seguridad y economía con Rusia, China e Irán — una troika de adversarios estadounidenses — facilitando el intercambio de inteligencia, inversión y crédito a solo 90 millas de la costa americana. Esto transforma a Cuba de una molestia regional en una potencial base para potencias hostiles, un hecho que no pasa desapercibido para el establishment de seguridad de Washington.</p>
+
+      <h2 class="article-section-heading">Un Ciclo Trágico de Intervención y Reacción</h2>
+
+      <p>La relación histórica entre Estados Unidos y Cuba es un ciclo trágico de intervención y reacción. La guerra de América con España comenzó por eventos en Cuba y no concluyó con una independencia soberana, sino con décadas de tutela cuasi colonial, que culminó en la brutal y corrupta dictadura de Fulgencio Batista. Su derrocamiento por Fidel Castro en 1959 fue, en parte, una revuelta nacionalista contra esta historia. La catastrófica invasión de Bahía de Cochinos en 1961 cortó los lazos restantes y empujó a La Habana firmemente a los brazos de Moscú, preparando el escenario para la crisis de los misiles.</p>
+
+      <p>La supervivencia de Cuba desde entonces ha sido una historia de patrocinio externo. Los subsidios soviéticos terminaron con la Guerra Fría, sumiendo a la isla en el "Período Especial" de los años 90 — una contracción económica tan severa que redujo el PIB en un tercio, según datos del Banco Mundial y estudios del Centro de Estudios de la Economía Cubana. El descontento social, como las protestas del "Maleconazo" de 1994, fue enfrentado con una estrategia dual de represión y una válvula de escape: el éxodo de 30.000 balseros hacia Florida, un evento documentado por el U.S. Coast Guard y el Instituto de Estudios Cubanos de la Universidad de Miami. Este movimiento pragmático, aunque cínico, alivió la presión y creó una crisis política para el presidente Bill Clinton.</p>
+
+      <p>La salvación del régimen llegó con el ascenso de Hugo Chávez en Venezuela y la aparición del petróleo venezolano barato a cambio de médicos cubanos y, como se reveló después, personal de inteligencia y seguridad, un intercambio detallado en informes del Centro de Estudios Estratégicos e Internacionales (CSIS). Este salvavidas, continuado bajo Nicolás Maduro, permitió al estado cubano cojear incluso mientras su propia economía se atrofiaba.</p>
+
+      <p>Con el bloqueo americano a Venezuela y la desaparición de Maduro, la crisis económica que ya venía experimentando La Habana solo puede empeorar.</p>
+
+      <h2 class="article-section-heading">El Colapso: Proporciones Históricas</h2>
+
+      <p>Hoy Cuba está experimentando un colapso de proporciones históricas. Los apagones rotativos duran hasta 20 horas al día, paralizando el suministro de agua, según reportes de monitoreo de la Oficina Nacional de Estadísticas e Información de Cuba (ONEI). La industria azucarera, que en 1989 producía ocho millones de toneladas anuales, es un remanente esquelético con una zafra de apenas 160.000 toneladas en 2023 (un 2,7% de su capacidad histórica), como reporta la ONEI y la Asociación de Técnicos Azucareros de Cuba. La producción de cemento cayó un 50% solo entre 2022 y 2023, según la misma fuente. El turismo, una fuente crítica de divisas, está un 72% por debajo de los niveles de 2019, de acuerdo con cifras del Ministerio de Turismo (MINTUR).</p>
+
+      <p>Esta espiral de muerte económica ha detonado una catástrofe demográfica que redefine el capital humano de la isla. La población "efectiva" se ha contraído de 11,3 millones a 9,9 millones de habitantes entre 2019 y 2024 — una pérdida del 10% impulsada por una migración masiva de ciudadanos en edad laboral, según proyecciones y análisis del Centro de Estudios de Población y Desarrollo (CEPDE).</p>
+
+      <p>En este contexto de decadencia económica, el verdadero motor del estado se localiza en las Fuerzas Armadas Revolucionarias (FAR), que controlan no solo las armas y el aparato represivo, sino también los principales sectores económicos del país. A través de su vasto conglomerado empresarial, GAESA (Grupo de Administración Empresarial S.A.), los militares dominan el turismo, la logística, la importación-exportación y el comercio minorista.</p>
+
+      <p>Un estudio de 2024 del Instituto de Estudios Latinoamericanos de la Universidad de Columbia concluyó que GAESA controla o es socio mayoritario en negocios que generan aproximadamente el 50% de todas las ventas, emplean al 31% de la mano de obra formal y aportan el 23% de los ingresos fiscales de la isla. Para los generales, perder el poder político significaría perder este vasto imperio económico — una perspectiva impensable.</p>
+
+      <p>El poder real se ha consolidado en una "juntocracia" militar liderada por el conglomerado GAESA, que controla los flujos de dólares y las áreas estratégicas.</p>
+
+      <h2 class="article-section-heading">El núcleo familiar: la sombra de los Castro en 2025</h2>
+
+      <p>Mientras la presidencia de Miguel Díaz-Canel actúa como una fachada de renovación, el poder real sigue orbitando alrededor de la familia Castro en una configuración que mezcla linaje, seguridad y negocios.</p>
+
+      <p><span class="family-member-label">Raúl Castro:</span> A sus 92 años, permanece como el patriarca y "espíritu de la revolución". Aunque cedió la presidencia del Partido Comunista en 2021, sigue presidiendo el Consejo de Defensa Nacional, el órgano supremo en materia de seguridad y orden interior, según el artículo 109 de la Constitución cubana. Esta posición le otorga veto sobre todas las decisiones estratégicas, especialmente las relativas a las FAR y al aparato de seguridad.</p>
+
+      <p><span class="family-member-label">Alejandro Castro Espín:</span> Es la pieza clave en la sombra. Ingeniero y ex oficial de la inteligencia militar, fue el arquitecto de las negociaciones secretas con la administración Obama que condujeron al deshielo de 2014-2016, un rol confirmado por diplomáticos estadounidenses citados en "Back Channel to Cuba" de William M. LeoGrande y Peter Kornbluh. Tras un breve descenso de perfil durante el "síndrome de La Habana", ha reemergido como asesor de seguridad de su padre y enlace con aliados extranjeros como Rusia, según análisis de inteligencia reseñados por el Instituto Internacional de Estudios Estratégicos (IISS). Controla redes de influencia dentro del Ministerio del Interior (MININT) y los servicios de inteligencia.</p>
+
+      <p><span class="family-member-label">Raúl Guillermo Rodríguez Castro ("El Cangrejo"):</span> Es el custodio físico y simbólico del patriarca. Como jefe de su escolta personal y presencia constante en actos oficiales — incluyendo la recepción de los cuerpos de militares caídos en Venezuela —, su rol va más allá de la seguridad: es el heraldo de la continuidad dinástica y un canal de comunicación privilegiado dentro del aparato de seguridad, como documentan reportes de la agencia de noticias española EFE y del diario "El País".</p>
+
+      <p><span class="family-member-label">Mariela Castro:</span> Hija de Raúl, maneja el Centro Nacional de Educación Sexual (CENESEX). Su rol es fundamentalmente de relaciones públicas: proporciona al régimen una cara "progresista" y de derechos humanos para el consumo internacional, desviando la atención de la represión política, una estrategia analizada por organizaciones como Human Rights Watch.</p>
+
+      <p>La familia extendida, a través de antiguos cuñados como Luis Alberto Rodríguez López-Calleja (fallecido en 2022), quien dirigió GAESA durante décadas, aseguró que el corazón económico del régimen también estuviera en manos de confianza. Su legado consolida el control castrista sobre la economía.</p>
+
+      <p>Por lo tanto, la perspectiva de un colapso repentino y voluntario es escasa. Los militares y la familia tienen demasiado que perder. No existe una figura opositora unificada de la talla de la venezolana María Corina Machado; la disidencia está exiliada, encarcelada o silenciada, según los informes anuales de Amnistía Internacional y la Comisión Interamericana de Derechos Humanos (CIDH). Un levantamiento popular espontáneo probablemente sería recibido con una fuerza brutal, y con bajas posibilidades de una transición democrática.</p>
+
+      <p>Para la administración Trump, la fantasía de una victoria rápida es solo eso: una fantasía. Una intervención militar estadounidense ("botas en el suelo") sería políticamente tóxica y militarmente complicada contra un aparato de seguridad atrincherado y endurecido por la batalla. Una estrategia más plausible sería buscar una transición negociada con una generación más joven de la nomenklatura — una nueva Delcy Rodríguez, quizás un vástago de los Castro, como se exploró tentativamente con Alejandro durante el deshielo de Obama. Pero esto sería anatema para el lobby exiliado de línea dura que no exige nada menos que la erradicación total de la dinastía, y hasta complejo de tolerar para el mismísimo Secretario de Estado.</p>
+
+      <p>La cruda realidad es que Cuba probablemente está entrando en una crisis prolongada y degenerativa. El régimen se aferrará al poder por cualquier medio necesario, presidiendo la ruina constante de la nación. Al mundo le quedará presenciar un colapso a cámara lenta, donde el fin de los Castros podría llegar no con un estallido, sino con la última brasa moribunda de una revolución que consumió a sus propios hijos y dejó a su pueblo en la oscuridad. La retórica de Washington puede acelerar la miseria, pero es poco probable que escriba el final. El gran escritor Reinaldo Arenas, desde el exilio y la muerte, ya había escrito: <em>Todo cubano lleva dentro un sobreviviente que a la vez es un agonizante.</em></p>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">© 2026 Eddie Would Go. Todos los derechos reservados.</span>
+    <div class="footer-social">
+      <a href="#">Twitter</a>
+      <a href="#">Substack</a>
+      <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank">Instagram</a>
+      <a href="#">RSS</a>
+    </div>
+  </footer>
+
+</body>
+</html>

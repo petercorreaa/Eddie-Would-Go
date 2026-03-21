@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>La Apuesta Estratégica de Takaichi: El pleno en la Ruleta de la Política Japonesa — Eddie Would Go</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e0e0e0;
+      --gray-400: #999;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: var(--white);
+      border-bottom: 1px solid var(--black);
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-menu span {
+      display: block;
+      width: 22px; height: 1px;
+      background: var(--black);
+      transition: transform var(--transition);
+    }
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--black);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ─── ARTICLE PAGE ─── */
+    .article-page {
+      margin-top: 64px;
+    }
+
+    .article-header {
+      padding: 64px 48px 0;
+    }
+
+    .article-category-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 16px;
+    }
+
+    .article-page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    .article-hero {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      padding: 0 48px 48px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .article-cover {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--gray-200);
+      overflow: hidden;
+    }
+    .article-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .article-cover-placeholder {
+      width: 100%;
+      height: 100%;
+      background: var(--gray-200);
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent, transparent 6px,
+        rgba(0,0,0,0.03) 6px, rgba(0,0,0,0.03) 7px
+      );
+    }
+
+    .article-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 24px;
+      padding-bottom: 8px;
+    }
+
+    .article-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: var(--black);
+    }
+
+    .article-author-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .article-meta-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-top: 4px;
+    }
+
+    /* ─── ARTICLE BODY ─── */
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 32px 96px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #1a1a1a;
+    }
+    .article-body p {
+      margin-bottom: 1.6em;
+    }
+    .article-blockquote {
+      border-left: 3px solid var(--black);
+      margin: 0 0 2em 0;
+      padding: 16px 0 16px 32px;
+    }
+    .article-blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      margin-bottom: 0.75em;
+      color: #1a1a1a;
+    }
+    .article-blockquote cite {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      font-style: normal;
+    }
+    .article-section-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1.2rem;
+      letter-spacing: 0.01em;
+      margin: 2.5em 0 0.8em;
+      color: var(--black);
+    }
+    .article-numbered-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin: 0 0 1.6em 0;
+      padding-left: 24px;
+      border-left: 2px solid var(--gray-200);
+    }
+    .article-numbered-item p {
+      margin-bottom: 0;
+    }
+    .numbered-item-label {
+      display: block;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      color: var(--black);
+      margin-bottom: 6px;
+    }
+
+    .article-numbered-item {
+      margin: 0 0 2em 0;
+      padding-left: 24px;
+      border-left: 2px solid var(--gray-200);
+    }
+    .article-numbered-label {
+      display: block;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+    .article-numbered-item p {
+      margin-bottom: 0;
+    }
+
+    /* ─── BACK LINK ─── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding: 48px 48px 0;
+      margin-top: 64px;
+      display: block;
+      transition: opacity var(--transition);
+    }
+    .back-link:hover { opacity: 0.5; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--black);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0;
+    }
+    .footer-copy {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+    }
+    .footer-social {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-social a {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      text-decoration: none;
+    }
+    .footer-social a:hover { color: var(--black); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <div class="nav-menu" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+      <a href="/" class="nav-logo">
+        <img src="/EWG_Logo.jpg" alt="EWG Logo">
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Política</a></li>
+      <li><a href="/">Cultura</a></li>
+      <li><a href="/">Sobre Nosotros</a></li>
+    </ul>
+    <div style="width:80px"></div>
+  </nav>
+
+  <div class="article-page">
+
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <div class="article-header">
+      <div class="article-category-tag">Política · 14 min de lectura</div>
+      <h1 class="article-page-title">La Apuesta Estratégica de Takaichi: El pleno en la Ruleta de la Política Japonesa</h1>
+    </div>
+
+    <div class="article-hero">
+      <div class="article-cover">
+        <div class="article-cover-placeholder"></div>
+      </div>
+      <div class="article-sidebar">
+        <p class="article-subtitle">El ascenso de Sanae Takaichi y lo que significa para el futuro de Japón, su alianza con Estados Unidos y el equilibrio de poder en Asia-Pacífico.</p>
+        <div>
+          <div class="article-author-name">Eddie M.</div>
+          <div class="article-meta-line">17 de marzo de 2026 · Política</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <blockquote class="article-blockquote">
+        <p>«No era el dinero. ¡Era la sensación! ¡Era la emoción de la ruleta.»</p>
+        <cite>— Fiódor Dostoievski, El Jugador</cite>
+      </blockquote>
+
+      <p>La primera ministra japonesa, Sanae Takaichi, ha lanzado una apuesta política de alto riesgo al convocar elecciones anticipadas para el 8 de febrero de 2026. Este movimiento, inédito para un mes invernal desde 1990, busca capitalizar su elevada aprobación personal —que ronda el 70-78% en encuestas de Kyodo News (enero 2026)— para superar la profunda crisis de credibilidad de su partido y navegar por una tormenta económica perfecta cuyas variables se retroalimentan en un círculo vicioso. El resultado no solo definirá el futuro de su gobierno, sino que también pondrá a prueba la resiliencia del modelo político y económico que el Partido Liberal Democrático (PLD) ha construido durante décadas.</p>
+
+      <h2 class="article-section-heading">La Paradoja del Poder: Popularidad Personal vs. Desprestigio de la Maquinaria del PLD</h2>
+
+      <p>El PLD ha sido la fuerza hegemónica de la política japonesa desde 1955, construyendo un modelo de poder basado en una densa red de relaciones con la burocracia estatal, los conglomerados empresariales y las asociaciones agrícolas.</p>
+
+      <p>Sin embargo, Takaichi heredó el liderazgo en octubre, cuando el partido estaba en su momento más débil. Rápidamente, estableció una brecha récord entre su imagen y la de su organización. Mientras ella goza de una luna de miel con el electorado, el PLD lucha con un apoyo que no supera el 30% (Asahi Shimbun), síntoma de un malestar crónico por años de escándalos de financiamiento y vínculos con la controvertida Iglesia de la Unificación.</p>
+
+      <p>Su cálculo es estratégico: convocar comicios antes de que los problemas del aumento del costo de vida y de la tasa de interés afecten su imagen positiva. Hoy la primera ministra gobierna con la mayoría más estrecha imaginable — un solo escaño y en alianza incómoda con el Partido de la Innovación. En un escenario de victoria, fortalecida por su popularidad personal, obtendría la legitimidad para intentar redefinir la agenda del PLD, trascendiendo su desprestigio institucional e imponiendo su agenda personal en un panorama económico e internacional cada vez más complejo.</p>
+
+      <h2 class="article-section-heading">La Trampa Económica Perfecta: La Cuadratura del Círculo Fiscal</h2>
+
+      <p>El contexto en el que se desarrolla esta apuesta es complejo; Japón enfrenta una ecuación económica enmarcada en:</p>
+
+      <div class="article-numbered-list">
+        <div class="article-numbered-item">
+          <span class="numbered-item-label">1. Tasas de Interés en Aumento vs. Costos del Servicio de la Deuda Insostenible</span>
+          <p>El Banco de Japón (BoJ) ha iniciado un histórico ciclo de ajuste, elevando su tasa clave al 0.75% en diciembre de 2025, el nivel más alto desde 1995. Sin embargo, esto incrementa el costo de financiar la deuda pública más abultada del mundo desarrollado, que supera el 250% del PIB (FMI, 2025). Cada aumento de 0,5 puntos porcentuales en los rendimientos de los bonos añade billones de yenes anuales al servicio de la deuda, comprometiendo el presupuesto nacional.</p>
+        </div>
+        <div class="article-numbered-item">
+          <span class="numbered-item-label">2. Fuerza Laboral en Contracción vs. Ingresos Fiscales a la Baja</span>
+          <p>La población en edad de trabajar de Japón se ha reducido en más de 13 millones en la última década (Statistics Japan), una tendencia que erosiona de forma estructural la base de contribuyentes. La tasa de dependencia (población mayor de 65 años respecto a la de 20-64) supera ya el 50%, lo que significa menos manos para sostener, a través de impuestos, un estado de bienestar cada vez más costoso. El gasto en pensiones y sanidad, que ya consume más del 33% del presupuesto general del Estado (Ministerio de Finanzas de Japón), es rígido y creciente, dejando menos margen para inversión productiva o estímulos coyunturales.</p>
+        </div>
+        <div class="article-numbered-item">
+          <span class="numbered-item-label">3. Debilidad del yen pese a endurecimiento monetario</span>
+          <p>El Banco de Japón mantuvo su tasa de referencia en 0,75% en enero de 2026, el nivel más alto desde septiembre de 1995, tras haberla elevado en diciembre. Sin embargo, el yen continúa cotizando en niveles cercanos a mínimos de dos décadas, en el rango de 153-159 por dólar. Las tasas reales en Japón permanecen profundamente negativas incluso con la tasa nominal en 0,75%, mientras que el BoJ mantiene una postura acomodaticia. El rendimiento de los bonos japoneses a 10 años subió a 2,29% a finales de enero, mientras que los bonos del Tesoro estadounidense ofrecen rendimientos superiores al 4%, lo que mantiene un diferencial que favorece los activos en dólares y mantiene activo el carry trade.</p>
+        </div>
+      </div>
+
+      <p>Adicionalmente, la expansión fiscal de la primera ministra Takaichi ha intensificado las preocupaciones sobre la sostenibilidad de la deuda, con un endeudamiento público superior al 240% del PIB. Los mercados interpretan esta combinación como una señal de que Japón enfrenta limitaciones estructurales para normalizar por completo su política monetaria sin comprometer el crecimiento ni desestabilizar los mercados financieros.</p>
+
+      <h2 class="article-section-heading">El Nuevo Panorama Político: La Defección Clave y la Política de Seguridad</h2>
+
+      <p>En este clima de crisis económica, la oposición ha logrado su mayor reorganización en décadas. Por la centroizquierda, el golpe más simbólico y práctico fue la defección de Komeito, socio de coalición del PLD durante 26 años. Este partido, respaldado por la organización budista Soka Gakkai, posee una maquinaria de movilización de votantes sin parangón, capaz de entregar bloques de votos cohesionados gracias a su red de 8 millones de miembros (Soka Gakkai International). Su salida hacia la nueva Alianza Centrista Reformista priva al PLD de una ventaja electoral decisiva en un momento en que cada escaño cuenta. La pregunta es si el votante acostumbrado a votar por más de 25 años al PLD y Komeito ahora se trasladaría conjuntamente hacia otros candidatos. Komeito abandonó el acuerdo con el PLD por las posturas consideradas extremas o excesivamente conservadoras por parte de la actual primera ministra.</p>
+
+      <p>Por el lado de la extrema derecha, tenemos la consolidación del Fenómeno Sanseito: el partido populista Sanseito amenaza con desestabilizar el escenario político, buscando multiplicar su representación apelando a votantes jóvenes, sobre todo hombres, desencantados con la incapacidad del establishment para resolver la ecuación económica, con un discurso profundamente antimigratorio y de dureza en temas de política exterior.</p>
+
+      <p>El debate se ha centrado en recortar el impuesto al consumo en un 10%, una promesa populista que, de implementarse según proponen varios partidos, podría costar entre 5 y 10 billones de yenes anuales en ingresos perdidos (Instituto de Investigación Daiwa). En el contexto de una deuda que ya requiere de impuestos crecientes solo para pagar sus intereses, esta medida podría acelerar la pérdida de confianza del mercado y presionar aún más al yen y la inflación.</p>
+
+      <h2 class="article-section-heading">Conclusión: Un Mandato Cargado de Contradicciones</h2>
+
+      <p>Los resultados de las elecciones del 8 de febrero presentarán un veredicto sobre una apuesta calculada, cuyas consecuencias se medirán en la capacidad de gobernar bajo restricciones económicas sin precedentes. Un escenario de victoria de Takaichi le otorgaría un mandato inmediato, pero también la abrumadora responsabilidad de gestionar contradicciones estructurales profundas: la necesidad de consolidación fiscal frente a las promesas de alivio tributario, el estímulo económico ante una deuda récord y el fortalecimiento de la defensa en un contexto de vulnerabilidad monetaria.</p>
+
+      <p>Las implicaciones trascienden lo doméstico. Un Japón políticamente estabilizado bajo Takaichi afianzaría su papel como aliado clave de Washington en el Indo-Pacífico. Sin embargo, su fragilidad económica subyacente — con el yen bajo presión extrema y una carga de deuda que limita la política fiscal — representa un riesgo sistémico. Como mayor tenedor extranjero de deuda estadounidense, cualquier turbulencia financiera en Tokio tendría repercusiones inmediatas en los mercados globales de capital.</p>
+
+      <p>Ahora, si la jugada sale mal, puede terminar con el PLD siendo reemplazado por la nueva Alianza Reformista, mucho menos ambiciosa en las reformas estructurales y sobre todo con una política menos agresiva hacia China. La apuesta puede salir muy mal para Japón y el PLD, terminando en un congreso sin una mayoría clara, con la extrema derecha con un rol aumentado y con la incapacidad de formar gobierno en un contexto donde el país necesita tomar decisiones claras.</p>
+
+      <p>La jugada de Takaichi busca convertir el capital político personal en estabilidad gubernamental. El electorado decidirá ahora si confía en que su liderazgo pueda navegar por este complejo panorama o si prefiere otorgar la oportunidad a una oposición reorganizada. El resultado no definirá solo una legislatura, sino la dirección estratégica de Japón en un momento de transformación económica y geopolítica crítica. En el tenso interludio previo a los comicios, parece extraído del Jugador de Dostoievski, donde se muestra que la verdadera apuesta no es la ganancia, sino la disposición a perderlo todo; el juego funciona como una prueba de hasta dónde puede soportar el individuo su propia ruina. El 8 de febrero sabremos la respuesta.</p>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">© 2026 Eddie Would Go. Todos los derechos reservados.</span>
+    <div class="footer-social">
+      <a href="#">Twitter</a>
+      <a href="#">Substack</a>
+      <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank">Instagram</a>
+      <a href="#">RSS</a>
+    </div>
+  </footer>
+
+</body>
+</html>

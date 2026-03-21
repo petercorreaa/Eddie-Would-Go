@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Irán en la encrucijada — Eddie Would Go</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e0e0e0;
+      --gray-400: #999;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: var(--white);
+      border-bottom: 1px solid var(--black);
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-menu span {
+      display: block;
+      width: 22px; height: 1px;
+      background: var(--black);
+      transition: transform var(--transition);
+    }
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--black);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ─── ARTICLE PAGE ─── */
+    .article-page {
+      margin-top: 64px;
+    }
+
+    .article-header {
+      padding: 64px 48px 0;
+    }
+
+    .article-category-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 16px;
+    }
+
+    .article-page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    .article-hero {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      padding: 0 48px 48px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .article-cover {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--gray-200);
+      overflow: hidden;
+    }
+    .article-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .article-cover-placeholder {
+      width: 100%;
+      height: 100%;
+      background: var(--gray-200);
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent, transparent 6px,
+        rgba(0,0,0,0.03) 6px, rgba(0,0,0,0.03) 7px
+      );
+    }
+
+    .article-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 24px;
+      padding-bottom: 8px;
+    }
+
+    .article-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: var(--black);
+    }
+
+    .article-author-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .article-meta-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-top: 4px;
+    }
+
+    /* ─── ARTICLE BODY ─── */
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 32px 96px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #1a1a1a;
+    }
+    .article-body p {
+      margin-bottom: 1.6em;
+    }
+    .article-blockquote {
+      border-left: 3px solid var(--black);
+      margin: 0 0 2em 0;
+      padding: 16px 0 16px 32px;
+    }
+    .article-blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      margin-bottom: 0.75em;
+      color: #1a1a1a;
+    }
+    .article-blockquote cite {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      font-style: normal;
+    }
+    .article-section-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1.2rem;
+      letter-spacing: 0.01em;
+      margin: 2.5em 0 0.8em;
+      color: var(--black);
+    }
+
+    /* ─── BACK LINK ─── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding: 48px 48px 0;
+      margin-top: 64px;
+      display: block;
+      transition: opacity var(--transition);
+    }
+    .back-link:hover { opacity: 0.5; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--black);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0;
+    }
+    .footer-copy {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+    }
+    .footer-social {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-social a {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      text-decoration: none;
+    }
+    .footer-social a:hover { color: var(--black); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <div class="nav-menu" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+      <a href="/" class="nav-logo">
+        <img src="/EWG_Logo.jpg" alt="EWG Logo">
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Política</a></li>
+      <li><a href="/">Cultura</a></li>
+      <li><a href="/">Sobre Nosotros</a></li>
+    </ul>
+    <div style="width:80px"></div>
+  </nav>
+
+  <div class="article-page">
+
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <div class="article-header">
+      <div class="article-category-tag">Política · 12 min de lectura</div>
+      <h1 class="article-page-title">Irán en la encrucijada</h1>
+    </div>
+
+    <div class="article-hero">
+      <div class="article-cover">
+        <div class="article-cover-placeholder"></div>
+      </div>
+      <div class="article-sidebar">
+        <p class="article-subtitle">Teherán navega entre la presión internacional y sus propias contradicciones internas. Con negociaciones nucleares estancadas y una economía al límite, el régimen enfrenta una encrucijada histórica.</p>
+        <div>
+          <div class="article-author-name">Eddie M.</div>
+          <div class="article-meta-line">20 de marzo de 2026 · Política</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <blockquote class="article-blockquote">
+        <p>"El régimen que destruye una revolución es casi siempre mejor que el que la precedió de inmediato, y la experiencia enseña que el momento más peligroso para un mal gobierno suele ser cuando comienzan las reformas."</p>
+        <cite>— "The Old Regime and the Revolution" - Alexis de Tocqueville</cite>
+      </blockquote>
+
+      <p>Las calles de Teherán vuelven a arder, pero el fuego esta vez es distinto. Lo que comenzó como otra protesta por la aceleración inflacionaria se ha transformado rápidamente en un grito colectivo que cuestiona los mismos cimientos de la República Islámica. Jóvenes mujeres queman sus velos frente a cámaras de teléfonos, comerciantes cierran sus puertas en el Gran Bazar, y en las paredes aparecen pintadas que no piden reformas, sino el fin del régimen. Este no es un malestar pasajero; es el síntoma de una enfermedad prolongada: un divorcio total entre un Estado envejecido y una sociedad joven que ya no le cree. Divorcio causado por una economía política militarizada que ha roto el contrato social y las promesas de la revolución de 1979.</p>
+
+      <p>Irán sufre hoy una brecha entre su dinámica social y su estructura estatal e institucional anclada en el pasado. La población iraní es una de las más jóvenes (edad media: 32 años), urbanizadas (más del 75% vive en ciudades) y educadas (tasa de alfabetización superior al 85%, con una matrícula universitaria en la que las mujeres superan el 60%) de Medio Oriente. Esta sociedad está globalmente conectada a través de redes sociales y VPNs, consumiendo cultura y noticias del exterior. Sin embargo, se encuentra gobernada por un sistema político ideológico, gerontocrático y centralizado, en el que las decisiones clave recaen en una figura suprema no electa y en instituciones cerradas, como el Consejo de Guardianes. Esta tensión estructural —una sociedad moderna, diversa y con aspiraciones a libertades individuales, aprisionada por un estado teocrático— es uno de los motores fundamentales de este conflicto permanente. Las protestas no son meros estallidos económicos, sino la expresión recurrente de esta incompatibilidad sistémica.</p>
+
+      <h2 class="article-section-heading">1. La evolución de la protesta: del reformismo a la ruptura</h2>
+
+      <p>¿Qué hace distintas a estas protestas de las anteriores? Ver imágenes de manifestaciones contra el régimen iraní no es novedad. Las críticas al sistema existen desde que éste consolida su giro más extremo a principios de los años ochenta. El primer episodio de protesta más intenso fue el de 2009, tras las elecciones presidenciales —el llamado Movimiento Verde—, cuando la reelección de Mahmoud Ahmadinejad, frente a candidatos más moderados, como el clérigo Karroubi y el candidato Hossein Mousavi, llevó especialmente a las clases medias urbanas a cuestionar la legitimidad del voto. Sin embargo, aquellas protestas eran de carácter reformista. Todos los involucrados políticamente en el Movimiento Verde formaban parte del establishment: pedían reformas y un acercamiento a Occidente, pero no una revolución política.</p>
+
+      <p>El siguiente foco de protesta se dio entre 2017 y 2018, con un claro trasfondo económico, producto de la eliminación de subsidios y del aumento del precio de los alimentos. Fue en ese momento cuando los reportes periodísticos comenzaron a registrar un cambio crucial en las consignas: las demandas de reforma dieron paso a exigencias de cambio radical; las críticas al sistema electoral se transformaron en cuestionamientos directos a la Guardia Revolucionaria. Además, las protestas se extendieron más allá de las grandes ciudades, alcanzando tanto zonas rurales como ciudades medianas.</p>
+
+      <p>El tercer gran ciclo de movilizaciones estalló tras la muerte de Mahsa Amini en septiembre de 2022, marcando una ruptura cualitativa sin precedentes en la historia de la República Islámica. Este episodio transformó el descontento económico previo en una insurgencia cultural y feminista bajo el lema "Mujer, Vida, Libertad" (Zan, Zendegi, Azadi). A diferencia de movimientos anteriores, esta ola fue liderada por la Generación Z y por mujeres jóvenes que desafiaron directamente el pilar ideológico más visible del régimen: el uso obligatorio del velo (hijab). El componente cultural y de identidad movilizó como nunca antes a la juventud, a las mujeres y a diversas minorías étnicas, dado que Mahsa Amini era de origen kurdo.</p>
+
+      <h2 class="article-section-heading">2. El motor del descontento: crisis económica y desgaste social</h2>
+
+      <p>A partir de 2009, las protestas también incorporaron críticas crecientes a la política exterior iraní: la inversión del gobierno y de la Guardia Revolucionaria en actores como Hezbollah, el gobierno sirio de Bashar al-Assad y los hutíes en Yemen, mientras la población sufre privaciones, inflación galopante, un sistema de salud colapsado, caída del ingreso real y escasez de agua en las grandes ciudades. El contraste entre el gasto excesivo en proyectos regionales y la precariedad interna se ha convertido en uno de los principales detonantes del descontento.</p>
+
+      <p>La economía de Irán ha atravesado lo que el Banco Mundial denomina una "década perdida", marcada por un crecimiento volátil y una erosión sistemática del bienestar. Tras la reimposición de sanciones en 2018, el PIB se contrajo cerca de un 12% en dos años, recuperándose después a tasas anuales mediocres del 2–3%, insuficientes para volver a los niveles de 2017. Las exportaciones de petróleo cayeron desde un pico de 2,5 millones de barriles diarios a menos de 400.000, lo que generó un déficit fiscal crónico financiado con emisión monetaria. La pobreza pasó de afectar al 22% de la población en 2017 a superar el 33% en 2023, lo que empujó a casi 10 millones de personas por debajo de la línea de pobreza extrema. La productividad, por su parte, ha caído de manera sostenida debido a la falta de inversión extranjera y al aislamiento tecnológico.</p>
+
+      <p>Para entender el estallido actual es clave analizar la reforma del sistema de subsidios y la unificación de los tipos de cambio. Durante años, Irán operó con múltiples tasas de cambio para proteger su economía. En el intento de corregir estas distorsiones y ordenar las cuentas fiscales, el gobierno anunció un aumento sorpresivo del precio de la gasolina de 10.000 a 30.000 riales por litro (hasta un 300%). Esto disparó la inflación interanual por encima del 41%, con picos del 70% en alimentos en las provincias periféricas. La compensación directa que ofreció el Estado equivalía a unos 4 dólares al tipo de cambio real y fue absorbida por la inflación en menos de un trimestre. Y la unificación del tipo de cambio perjudicó a los dueños de los bazares frente a los conglomerados empresariales vinculados al régimen.</p>
+
+      <h2 class="article-section-heading">3. La arquitectura del poder: un sistema blindado</h2>
+
+      <p>Este colapso económico se desarrolla sobre un sistema político de poder dual, diseñado bajo el concepto de Velayat-e Faqih (Gobierno del Jurista Islámico). En la cúspide se encuentra el Líder Supremo, con mando vitalicio sobre las fuerzas armadas y el poder judicial, y amplias facultades de veto. Tanto el presidente como el parlamento son elegidos por voto popular, pero el verdadero filtro del sistema es el Consejo de Guardianes, un órgano no electo de 12 miembros —la mitad designados directamente por el Líder Supremo y la otra mitad por el jefe del poder judicial, que a su vez es nombrado por el Líder—. Este consejo tiene la potestad de descalificar candidatos antes de cualquier elección, asegurando que solo personas leales a los principios de la revolución puedan competir.</p>
+
+      <p>El brazo ejecutor del sistema es el Cuerpo de la Guardia Revolucionaria Islámica (IRGC), una organización que no solo controla la seguridad, sino que administra un vasto imperio empresarial. A través de sus holding económicos, como el conglomerado Khatam al-Anbiya, controla sectores estratégicos que representan, según estimaciones del Centro de Estudios Estratégicos e Internacionales (CSIS), entre el 20% y el 40% del PIB total de Irán. Su influencia abarca desde la construcción de infraestructuras críticas (puertos, presas, oleoductos) y la extracción de petróleo y gas, hasta las telecomunicaciones, la banca, la fabricación de automóviles y un lucrativo comercio de contrabando en las fronteras.</p>
+
+      <p>Esta "economía paralela" permite al régimen financiar su supervivencia incluso bajo sanciones extremas, aunque el costo de esta resiliencia institucional sea la ruptura definitiva del contrato social con la ciudadanía. La respuesta del régimen a cada ola de protestas ha combinado una represión severa —con arrestos, violencia y hostigamiento— con concesiones mínimas.</p>
+
+      <h2 class="article-section-heading">4. Una coalición amplia y un futuro incierto</h2>
+
+      <p>Esta nueva coyuntura ha logrado superponer a actores tradicionalmente distintos: la clase comerciante de los bazares, las clases medias y bajas urbanas, las mujeres, los jóvenes, las comunidades afectadas por la escasez de agua y las minorías étnicas. Juntos conforman una coalición con una capacidad de movilización que recuerda a la que, en su momento, desestabilizó al gobierno del Sha.</p>
+
+      <p>Al mismo tiempo, este ciclo de protestas clama abiertamente por la caída del régimen y se suma, por primera vez en décadas, a la consolidación de un liderazgo opositor en el exilio encabezado por Reza Pahlavi, hijo del último Sha. Pahlavi ha logrado capitalizar parte del descontento y proyectarse como una voz organizada y reconocible entre la diáspora y la población dentro de Irán. Según encuestas de opinión realizadas por el Grupo para el Análisis y la Medición de Actitudes en Irán (GAMAAN) en colaboración con el Instituto de Investigación Iraní-Americano (IRI), su favorabilidad ha llegado a rondar el 30%. Es crucial interpretar estos números con extrema cautela, dado el dificilísimo entorno para realizar sondeos fiables en un país bajo un régimen autoritario.</p>
+
+      <p>Sin embargo, estas cifras funcionan más que como una medición precisa, como un termómetro político significativo: indican que, por primera vez en décadas, una alternativa monárquica al sistema de la República Islámica está logrando un grado de resonancia tangible y se ha convertido en un actor que el régimen no puede ignorar por completo. Su relativa popularidad no predice un retorno al trono, pero sí marca un cambio en el imaginario político de una parte de la oposición, que comienza a articular demandas no solo de reforma, sino también de un cambio de régimen, con una figura simbólica a la cabeza.</p>
+
+      <p>Todos estos factores convierten a este proceso de protestas en uno de los mayores desafíos que ha enfrentado el régimen en los últimos años. Sin embargo, no está claro que vaya a desembocar en un colapso o en un cambio de gobierno sin una fractura dentro del aparato represivo o del ejército. Lo más probable, por ahora, es una repetición cíclica de protestas y una deriva hacia la anomia, que —como sostiene el historiador Robert Kaplan— suele ser peor para la población que cualquier régimen autoritario. Un escenario así, además, implicaría una enorme inestabilidad para toda la región de Medio Oriente, Pakistán y Afganistán.</p>
+
+      <p>En este momento resulta imposible vaticinar el futuro de Irán. Sin embargo, es preciso recordar la advertencia de Alexis de Tocqueville: el momento más peligroso para un régimen opresivo es cuando intenta reformarse, pues cada concesión no hace más que iluminar la injusticia de aquello que aún permanece.</p>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">© 2026 Eddie Would Go. Todos los derechos reservados.</span>
+    <div class="footer-social">
+      <a href="#">Twitter</a>
+      <a href="#">Substack</a>
+      <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank">Instagram</a>
+      <a href="#">RSS</a>
+    </div>
+  </footer>
+
+</body>
+</html>

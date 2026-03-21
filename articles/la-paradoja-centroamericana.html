@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>La Paradoja Centroamericana — Eddie Would Go</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e0e0e0;
+      --gray-400: #999;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: var(--white);
+      border-bottom: 1px solid var(--black);
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-menu span {
+      display: block;
+      width: 22px; height: 1px;
+      background: var(--black);
+      transition: transform var(--transition);
+    }
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--black);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ─── ARTICLE PAGE ─── */
+    .article-page {
+      margin-top: 64px;
+    }
+
+    .article-header {
+      padding: 64px 48px 0;
+    }
+
+    .article-category-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 16px;
+    }
+
+    .article-page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    .article-hero {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      padding: 0 48px 48px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .article-cover {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--gray-200);
+      overflow: hidden;
+    }
+    .article-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .article-cover-placeholder {
+      width: 100%;
+      height: 100%;
+      background: var(--gray-200);
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent, transparent 6px,
+        rgba(0,0,0,0.03) 6px, rgba(0,0,0,0.03) 7px
+      );
+    }
+
+    .article-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 24px;
+      padding-bottom: 8px;
+    }
+
+    .article-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: var(--black);
+    }
+
+    .article-author-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .article-meta-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-top: 4px;
+    }
+
+    /* ─── ARTICLE BODY ─── */
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 32px 96px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #1a1a1a;
+    }
+    .article-body p {
+      margin-bottom: 1.6em;
+    }
+    .article-subtitle {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 1.5em;
+    }
+    .article-blockquote {
+      border-left: 3px solid var(--black);
+      margin: 0 0 2em 0;
+      padding: 16px 0 16px 32px;
+    }
+    .article-blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      margin-bottom: 0.75em;
+      color: #1a1a1a;
+    }
+    .article-blockquote cite {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      font-style: normal;
+    }
+    .article-section-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1.2rem;
+      letter-spacing: 0.01em;
+      margin: 2.5em 0 0.8em;
+      color: var(--black);
+    }
+    .country-label {
+      font-weight: 600;
+    }
+
+    /* ─── BACK LINK ─── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding: 48px 48px 0;
+      margin-top: 64px;
+      display: block;
+      transition: opacity var(--transition);
+    }
+    .back-link:hover { opacity: 0.5; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--black);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0;
+    }
+    .footer-copy {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+    }
+    .footer-social {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-social a {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      text-decoration: none;
+    }
+    .footer-social a:hover { color: var(--black); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <div class="nav-menu" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+      <a href="/" class="nav-logo">
+        <img src="/EWG_Logo.jpg" alt="EWG Logo">
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Política</a></li>
+      <li><a href="/">Cultura</a></li>
+      <li><a href="/">Sobre Nosotros</a></li>
+    </ul>
+    <div style="width:80px"></div>
+  </nav>
+
+  <div class="article-page">
+
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <div class="article-header">
+      <div class="article-category-tag">Política · 13 min de lectura</div>
+      <h1 class="article-page-title">La Paradoja Centroamericana</h1>
+    </div>
+
+    <div class="article-hero">
+      <div class="article-cover">
+        <div class="article-cover-placeholder"></div>
+      </div>
+      <div class="article-sidebar">
+        <p class="article-subtitle">El istmo vive entre modelos autoritarios exitosos en seguridad y democracias frágiles que no logran contener la violencia.</p>
+        <div>
+          <div class="article-author-name">Eddie M.</div>
+          <div class="article-meta-line">7 de marzo de 2026 · Política</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <p class="article-subtitle">Cuando el miedo vence a la libertad: cuatro elecciones que definen el futuro de Centroamérica</p>
+
+      <blockquote class="article-blockquote">
+        <p>«El miedo gobierna mejor que las armas.»</p>
+        <cite>— Ernesto Cardenal, Hora 0</cite>
+      </blockquote>
+
+      <p>El 1 de febrero de 2026, Costa Rica eligió a Laura Fernández como presidenta con 49,2% de los votos. Prometió "mano dura" contra el crimen organizado. Semanas antes, Bukele visitó el país y Chaves, el actual presidente, anunció planes para una "megaprisión". La pregunta ahora es si Costa Rica seguirá el modelo salvadoreño — lo que Levitsky y Ziblatt llaman "erosión democrática", el debilitamiento gradual de instituciones por líderes electos — o si sus instituciones podrán contenerla.</p>
+
+      <p>Esta historia comienza en El Salvador, donde Nayib Bukele construyó el modelo de "populismo punitivo" (Pratt): seguridad a cambio de democracia. En 2023, Guatemala lo rechazó al elegir a Bernardo Arévalo. En 2025, Honduras, bajo Xiomara Castro, volvió al populismo de izquierda, que intentó reformas pero fracasó. En 2026, Costa Rica eligió a una candidata que promete replicar elementos de ese modelo. Cuatro elecciones, una pregunta: ¿puede Centroamérica ser segura sin dejar de ser libre?</p>
+
+      <h2 class="article-section-heading">Las Raíces de la Crisis</h2>
+
+      <p>El giro autoritario tiene causas estructurales. Centroamérica heredó Estados débiles: las guerras civiles (1960-1996) destruyeron las instituciones; la Guerra Fría financió a los militares en lugar de a las policías. La fragmentación de los cárteles mexicanos (2006-2015) desplazó la violencia al sur. MS-13 y Barrio 18, deportados de EE.UU., llenaron el vacío. Hoy, 60% de la economía es informal, 43% de los jóvenes ni estudian ni trabajan (CEPAL), y las remesas (21% del PIB en El Salvador) financian consumo, no inversión. El narcotráfico mueve US$150 mil millones anuales en la región — más que todos los presupuestos públicos combinados. Estos Estados nunca tuvieron una capacidad estatal efectiva y eficiente. Bukele no destruyó algo que funcionaba; ofreció orden donde solo había vacío.</p>
+
+      <h2 class="article-section-heading">El Salvador: El Modelo que Seduce</h2>
+
+      <p>Para entender Centroamérica hoy, hay que entender a Bukele. Entre 2015 y 2022, los homicidios cayeron de 103 a 7,8 por cada 100.000 habitantes (PNC). Su popularidad alcanza el 91% (CID-Gallup, 2024). Ganó la reelección en 2024 con el 84,6% de los votos, pese a que la Constitución lo prohibía.</p>
+
+      <p>Pero el precio: El Salvador tiene la tasa de encarcelamiento más alta del mundo (1.600 por cada 100.000 habitantes, según World Prison Brief). El 2% de la población está presa. El estado de excepción lleva más de 30 renovaciones consecutivas desde marzo de 2022. Human Rights Watch documenta juicios a 900 personas simultáneamente, sin debido proceso, miles de arrestos arbitrarios y opacidad total sobre más de 235 muertes bajo custodia.</p>
+
+      <p>El "Caso Catedral" (El Faro, 2020) reveló que la caída inicial de homicidios se debió a pactos: el gobierno negoció con MS-13 y Barrio 18 para reducir los asesinatos a cambio de beneficios carcelarios y el control territorial. En 2021, el Departamento del Tesoro de EE.UU. incluyó a dos funcionarios cercanos a Bukele en la Lista Engel debido a estas negociaciones. Bukele primero pactó con las pandillas y luego las usó como pretexto para destruir los controles democráticos.</p>
+
+      <p>La ONU — a través de la Oficina de la Alta Comisionada (entonces dirigida por Michelle Bachelet) — expresó alarma constante ante la erosión del Estado de derecho. Bachelet denunció específicamente que las medidas del estado de excepción han derivado en detenciones arbitrarias masivas, torturas y muertes bajo custodia, advirtiendo que la seguridad pública no puede pisotear el derecho a un juicio justo. La ONU señala que la suspensión de garantías constitucionales y la falta de independencia judicial están creando un modelo de "castigo masivo" que ignora los estándares internacionales de derechos humanos.</p>
+
+      <p>Para enero de 2026, cuando Rodrigo Chaves invitó a Bukele a visitar el sitio de la futura "mega-prisión" de Costa Rica, el mensaje era claro: el modelo salvadoreño ya no es un experimento aislado. Es un manual de exportación.</p>
+
+      <h2 class="article-section-heading">Guatemala: La Resistencia Improbable</h2>
+
+      <p>Guatemala presenta un contraste instructivo. El 20 de agosto de 2023, Bernardo Arévalo ganó con un 58% en la segunda vuelta. Ninguna encuesta lo predijo. El establishment intentó impedirle asumir. Solo la presión de EE.UU. (Biden amenazó con sanciones) y la movilización ciudadana lo permitieron. Hoy gobierna con un Congreso en el que su partido tiene 23 de 160 escaños y una fiscal general (Consuelo Porras, señalada por EE.UU. por corrupción) que persigue a su gobierno.</p>
+
+      <p>Guatemala tenía ingredientes para el autoritarismo: 10,3 millones en pobreza, corrupción endémica (solo el 7% confía en la Presidencia, Latinobarómetro). Arévalo prometió Estado de Derecho, no mano dura. Pero un año después, los resultados son ambiguos: no ha logrado aprobar reformas anticorrupción mayores, y la violencia permanece (tasa de homicidios en 17,3 por 100.000 en 2024). Su aprobación cayó de 73% (enero de 2024) a 54% (diciembre de 2024, Prensa Libre). El "modelo institucional" aún no demuestra que funcione contra el crimen organizado.</p>
+
+      <p>Guatemala representa una apuesta: que se puede combatir el crimen sin destruir la democracia. Arévalo prometió atacar la corrupción que facilita al crimen organizado, fortaleciendo las instituciones en lugar de concentrar el poder. Pero es temprano para celebrar. Su gobierno enfrenta un bloqueo sistemático: sin mayoría legislativa, con un fiscal corrupto, sin control sobre la policía o los militares. Si Guatemala logra reducir la violencia bajo estas condiciones, demostrará que la vía institucional es viable. Si fracasa, reforzará el argumento de Bukele.</p>
+
+      <h2 class="article-section-heading">Honduras: La Restauración</h2>
+
+      <p>En noviembre de 2025, Nasry Asfura del Partido Nacional derrotó a Salvador Nasralla por 515 votos. Días antes, Trump (recién reelecto en EE.UU.) había indultado a Juan Orlando Hernández, expresidente hondureño extraditado por narcotráfico en 2022. El indulto fue un mensaje: el establishment nacional está protegido.</p>
+
+      <p>El caso hondureño expone una verdad incómoda: rechazar el autoritarismo por la democracia populista no garantiza la democracia ni la república. Castro llegó al poder en 2022 prometiendo refundar Honduras. Logró reducir los homicidios a 19,5 por cada 100.000 habitantes (el nivel más bajo en treinta años). Pero gobernar contra las estructuras de poder es distinto de ganar elecciones contra ellas.</p>
+
+      <p>El Congreso bloqueó las reformas de Castro. Las acusaciones de nepotismo erosionaron su credibilidad. Cuando Asfura ganó por 515 votos, Castro alegó fraude. La OEA certificó los resultados, pero analistas locales señalan irregularidades (Equipo de Reflexión, Investigación y Comunicación). Bajo la presión de Trump (quien respaldó públicamente a Asfura), Castro entregó el poder el 27 de enero.</p>
+
+      <p>Lo que revela Honduras es la trampa del reformismo sin poder real. Castro ganó la presidencia, pero nunca controló el Estado. El aparato judicial, el Congreso, las élites económicas, los militares — todos permanecieron intactos y hostiles, recordando los intentos de perpetuarse en el poder de su esposo, el expresidente Zelaya. El resultado fue el regreso del Partido Nacional: el mismo partido de Juan Orlando Hernández, extraditado por narcotráfico e indultado por Trump unas semanas antes de las elecciones. El indulto fue un mensaje: la impunidad está de vuelta.</p>
+
+      <h2 class="article-section-heading">El Dilema Democrático</h2>
+
+      <p>Estas cuatro elecciones plantean la pregunta central: ¿puede haber seguridad sin democracia? El Salvador dice que sí; Costa Rica intentará tener ambas; Guatemala apuesta a que, sin democracia, solo hay tiranía. La historia favorece a Guatemala: los regímenes autoritarios que prometen seguridad terminan fallando en ambos frentes. Pero Bukele seduce porque funciona hoy: calles seguras, niños en escuelas, comercio sin extorsión. El costo — la destrucción de la república — se verá cuando sea tarde.</p>
+
+      <p>Bukele expone la contradicción de la derecha latinoamericana. Ha criticado a Venezuela, Nicaragua y Cuba por su autoritarismo, pero celebra a Bukele. La diferencia: Bukele entrega lo que la derecha valora (orden, castigo, mercados) mientras suprime lo que dice defender (checks and balances, prensa libre).</p>
+
+      <p>El dilema real es más profundo: ¿cómo defender instituciones liberales cuando no proveen seguridad básica? Las madres salvadoreñas que envían a sus hijos a la escuela sin miedo no piensan en el largo plazo, mientras recuperan la paz y tranquilidad, el valor de su vida y la posibilidad de desarrollo sin emigrar. Están agradecidas de estar vivas. Es comprensible que la defensa del régimen que les falló les sea ajena. Guatemala ofrece una alternativa institucional, pero aún no demuestra que pueda reducir la violencia. Hasta que lo haga, el modelo Bukele seguirá seduciendo.</p>
+
+      <p>Ningún país ilustra mejor esta encrucijada que Costa Rica.</p>
+
+      <h2 class="article-section-heading">Costa Rica en la Encrucijada</h2>
+
+      <p>Costa Rica siempre fue diferente: sin ejército desde 1948 y con instituciones democráticas respetadas, exenta del proceso de guerras civiles y de los conflictos internos que asolaron al resto de la región en los 70 y 80.</p>
+
+      <p>Pero en 2025 registró 873 homicidios (tasa de 16,7 por 100.000 habitantes), el tercer año más violento en décadas. Los apagones y la infraestructura deteriorada crearon el caldo de cultivo para Rodrigo Chaves.</p>
+
+      <p>Chaves llegó al poder en 2022 con un 43% de abstencionismo. Laura Fernández, su exministra, ganó con el 49,2%. La visita de Bukele semanas antes fue una propaganda calculada. CID-Gallup reportó que el 34% llegó a las urnas indeciso.</p>
+
+      <p>La victoria de Laura Fernández en Costa Rica es particularmente preocupante porque el país es (o era) diferente. Si Costa Rica cae en el autoritarismo, ya no habrá excepciones en Centroamérica. Ya no hay prueba de que "otro camino es posible".</p>
+
+      <p>Pero Costa Rica aún no ha caído. El Tribunal Supremo de Elecciones mantiene su independencia. La prensa es libre. La sociedad civil está organizada. La pregunta no es si Costa Rica tiene herramientas para resistir — las tiene. La pregunta es si tendrá voluntad política y social para usarlas.</p>
+
+      <p>Hay señales preocupantes. Chaves prometió nombrar a Fernández como ministra cuando ganara; ella promete nombrarlo a él en su gabinete. Este arreglo sugiere que Fernández podría no ser la líder del proyecto sino su rostro presentable — y que Chaves seguirá siendo el poder real. Y Chaves no oculta su desprecio por los contrapesos institucionales, su beligerancia con medios críticos, su admiración explícita por Bukele. La pregunta no es si el binomio Fernández/Chaves intentará replicar el modelo salvadoreño. La pregunta es si las instituciones costarricenses podrán detenerlo.</p>
+
+      <h2 class="article-section-heading">Tres Escenarios para 2026-2028</h2>
+
+      <p>Escenario 1: Costa Rica resiste. Fernández implementa reformas policiales profesionales. El TSE bloquea intentos de concentrar el poder. La violencia baja moderadamente. Costa Rica demuestra que democracia y seguridad son compatibles, debilitando el modelo de Bukele regionalmente.</p>
+
+      <p>Escenario 2: Costa Rica cae gradualmente. Con apoyo popular, Fernández obtiene poderes excepcionales. Para 2028, Costa Rica replica El Salvador: mega-prisión, juicios masivos, prensa silenciada. Panamá y República Dominicana observan y consideran el mismo camino.</p>
+
+      <p>La historia de Centroamérica en 2023-2026 es la historia de cuatro elecciones y cuatro caminos:</p>
+
+      <p><span class="country-label">El Salvador</span> eligió la seguridad sin democracia. Resultados impresionantes hoy, catastróficos mañana. Cuando Bukele caiga o termine, dejará un país sin instituciones.</p>
+
+      <p><span class="country-label">Guatemala</span> eligió la democracia con incertidumbre. Arévalo promete construcción institucional lenta. Si funciona, probará que se puede combatir el crimen sin destruir repúblicas.</p>
+
+      <p><span class="country-label">Honduras</span> eligió el regreso. Asfura restaura el sistema que Castro intentó desmantelar. Lección: rechazar el autoritarismo con el populismo de izquierda no garantiza la democracia.</p>
+
+      <p><span class="country-label">Costa Rica</span> intentará tener ambas. Es el camino más seductor y peligroso. No se puede servir a dos amos: o defiendes las instituciones o las capturas.</p>
+
+      <p>Por primera vez en su historia moderna, Costa Rica enfrenta la tentación que consumió a El Salvador: la promesa de que un líder fuerte puede resolver lo que las instituciones no pudieron. Laura Fernández asumirá el poder con el mandato de "mano dura". Lo que haga en los primeros cien días definirá el futuro de la democracia costarricense. Si construye megaprisiones y declara estados de excepción, habrá elegido el camino de Bukele. Si fortalece la policía profesional y respeta los contrapesos institucionales, habrá demostrado que otro camino es posible. La región observa. Porque si Costa Rica cae, ya no habrá excepciones. Veremos si, como advirtió el cardenal, el miedo gobierna mejor que las armas legítimas del Estado.</p>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">© 2026 Eddie Would Go. Todos los derechos reservados.</span>
+    <div class="footer-social">
+      <a href="#">Twitter</a>
+      <a href="#">Substack</a>
+      <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank">Instagram</a>
+      <a href="#">RSS</a>
+    </div>
+  </footer>
+
+</body>
+</html>

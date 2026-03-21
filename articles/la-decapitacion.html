@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>La Decapitación — Eddie Would Go</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e0e0e0;
+      --gray-400: #999;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: var(--white);
+      border-bottom: 1px solid var(--black);
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-menu span {
+      display: block;
+      width: 22px; height: 1px;
+      background: var(--black);
+      transition: transform var(--transition);
+    }
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--black);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ─── ARTICLE PAGE ─── */
+    .article-page {
+      margin-top: 64px;
+    }
+
+    .article-header {
+      padding: 64px 48px 0;
+    }
+
+    .article-category-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 16px;
+    }
+
+    .article-page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    .article-hero {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      padding: 0 48px 48px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .article-cover {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--gray-200);
+      overflow: hidden;
+    }
+    .article-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .article-cover-placeholder {
+      width: 100%;
+      height: 100%;
+      background: var(--gray-200);
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent, transparent 6px,
+        rgba(0,0,0,0.03) 6px, rgba(0,0,0,0.03) 7px
+      );
+    }
+
+    .article-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 24px;
+      padding-bottom: 8px;
+    }
+
+    .article-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: var(--black);
+    }
+
+    .article-author-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .article-meta-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-top: 4px;
+    }
+
+    /* ─── ARTICLE BODY ─── */
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 32px 96px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #1a1a1a;
+    }
+    .article-body p {
+      margin-bottom: 1.6em;
+    }
+    .article-subtitle {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 1.5em;
+    }
+    .article-blockquote {
+      border-left: 3px solid var(--black);
+      margin: 0 0 2em 0;
+      padding: 16px 0 16px 32px;
+    }
+    .article-blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      margin-bottom: 0.75em;
+      color: #1a1a1a;
+    }
+    .article-blockquote cite {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      font-style: normal;
+    }
+    .article-section-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1.2rem;
+      letter-spacing: 0.01em;
+      margin: 2.5em 0 0.8em;
+      color: var(--black);
+    }
+
+    /* ─── BACK LINK ─── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding: 48px 48px 0;
+      margin-top: 64px;
+      display: block;
+      transition: opacity var(--transition);
+    }
+    .back-link:hover { opacity: 0.5; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--black);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0;
+    }
+    .footer-copy {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+    }
+    .footer-social {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-social a {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      text-decoration: none;
+    }
+    .footer-social a:hover { color: var(--black); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <div class="nav-menu" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+      <a href="/" class="nav-logo">
+        <img src="/EWG_Logo.jpg" alt="EWG Logo">
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Política</a></li>
+      <li><a href="/">Cultura</a></li>
+      <li><a href="/">Sobre Nosotros</a></li>
+    </ul>
+    <div style="width:80px"></div>
+  </nav>
+
+  <div class="article-page">
+
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <div class="article-header">
+      <div class="article-category-tag">Cultura · 9 min de lectura</div>
+      <h1 class="article-page-title">La Decapitación</h1>
+    </div>
+
+    <div class="article-hero">
+      <div class="article-cover">
+        <div class="article-cover-placeholder"></div>
+      </div>
+      <div class="article-sidebar">
+        <p class="article-subtitle">Un ensayo sobre el poder, la caída de líderes y el vacío que dejan las instituciones cuando pierden su cabeza visible.</p>
+        <div>
+          <div class="article-author-name">Eddie M.</div>
+          <div class="article-meta-line">10 de marzo de 2026 · Cultura</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <p class="article-subtitle">Cómo Xi Jinping desmanteló el comando militar de China y qué significa para Taiwán</p>
+
+      <blockquote class="article-blockquote">
+        <p>«El error del hombre superior es como un eclipse: todos lo ven; cuando se corrige, todos lo admiran»</p>
+        <cite>— Confucio, Analectas, XIX.19</cite>
+      </blockquote>
+
+      <p>A finales de enero de 2026, el Ministerio de Defensa de China publicó un video de treinta segundos, cuya brevedad contradice su efecto sísmico. El General Zhang Youxia, vicepresidente de la Comisión Militar Central y la segunda figura militar más poderosa de China después del mismo Xi Jinping, estaba bajo investigación por "violaciones graves de la disciplina y la ley". Lo mismo ocurría con el General Liu Zhenli, jefe del Estado Mayor del Ejército Popular Chino. En cuestión de horas, sus biografías desaparecieron de los sitios web oficiales del EPL. Los dos generales permanecían nominalmente en la comisión, pero su purga era un hecho.</p>
+
+      <p>Para quienes han seguido la consolidación sistemática del poder de Xi Jinping durante los últimos catorce años, el anuncio fue sorprendente no por su sustancia (las investigaciones por corrupción se han vuelto rutinarias en China) sino por su objetivo. Zhang Youxia no era un general cualquiera. Era un príncipe rojo, hijo de un comandante revolucionario que había luchado junto al padre de Xi durante la guerra civil china. Era un veterano de combate, uno de los pocos oficiales superiores del EPL que realmente había visto batalla, habiendo combatido en los sangrientos enfrentamientos fronterizos con Vietnam a finales de los años setenta y ochenta. Lo más importante, se le consideraba el hombre de Xi, un confidente cuyos lazos con el líder chino se remontaban décadas, cuya lealtad se presumía absoluta.</p>
+
+      <p>Fue el mismo Xi quien le permitió a Zhang permanecer en su cargo a pesar de su edad. Cuando sucedieron las últimas purgas de agosto, el hecho de que el resto de los miembros de la CMC (Comisión Militar Central) fueran purgados y no Zhang o Liu había logrado generar la idea de una protección para estos dos generales por parte de Xi. Esto se comprobó incorrecto. Si Zhang no está a salvo, entonces verdaderamente nadie lo está. Y eso, quizás, era precisamente el punto y el mensaje que se quiso transmitir con estas acciones.</p>
+
+      <p>Detengámonos un segundo en un detalle de enorme importancia: el EPL no es el ejército nacional chino de la misma forma que el ejército argentino representa al estado argentino o el ejército de Estados Unidos a ese país. El EPL es el brazo armado del Partido Comunista Chino, y responde por ende a los organismos del partido, no del estado. Esto es así desde su concepción en la década del veinte. La CMC es un órgano del partido y sus miembros deben ser ratificados y nombrados en plenarios del Partido Comunista. Y la CMC es el organismo que controla al EPL.</p>
+
+      <h2 class="article-section-heading">El Método Xi</h2>
+
+      <p>Para entender la importancia de la caída de Zhang, primero hay que comprender la escala de la purga militar de Xi Jinping. Desde que asumió el poder en 2012, Xi ha realizado diferentes purgas sistemáticas tanto en el ámbito del Partido como del estado y de las fuerzas armadas. Xi ha purgado la cúpula del EPL con una minuciosidad sin precedentes en la historia de la República Popular, desde las purgas de Mao.</p>
+
+      <p>De los seis generales que Xi nombró a la Comisión Militar Central en 2022, solo queda uno: el General Zhang Shengmin, el zar anticorrupción del ejército, cuya carrera ha sido como comisario político más que como comandante de campo. Solo desde 2023, más de veinte oficiales militares de alto rango han sido puestos bajo investigación o destituidos. La última investigación deja a la comisión — el órgano supremo de toma de decisiones militares de China — con solo dos miembros activos: el propio Xi y el hombre que dirige la purga.</p>
+
+      <p>La interpretación convencional de estas purgas, popular entre algunos analistas occidentales, es que revelan la debilidad de Xi: que se siente amenazado por sus generales, que el ejército es conflictivo y poco confiable, que las purgas son evidencia de facciones rivales batallando tras bambalinas. Pero en realidad las purgas no son señal de la inseguridad de Xi sino de su dominio absoluto. Si el EPL no toma las decisiones en los tiempos y formas que determinó el presidente, y si sus líderes demuestran una independencia que contradice las ideas y estrategias del partido (es decir, de Xi), nadie está exento de ser removido. Aun si compartiste la vida con Xi, o si eres uno de los últimos veteranos de guerra dentro del ejército.</p>
+
+      <p>La estrategia de Xi es una estrategia de decapitación diseñada para mantener al EPL a raya a través del miedo. Los generales son desechables. Xi puede crearlos y puede destruirlos. Su capacidad para hacerlo — para destituir incluso a sus aliados más cercanos, incluso a príncipes rojos con pedigrí revolucionario — solo aumenta su autoridad. Esto no es una novedad: Mao, Stalin, los Kim, el régimen de los Castro, todos han recurrido a esta estrategia.</p>
+
+      <h2 class="article-section-heading">El Pretexto de la Corrupción</h2>
+
+      <p>Los cargos oficiales contra Zhang y Liu fueron predecibles: "violaciones graves de la disciplina y la ley", el eufemismo estándar para la corrupción. Un editorial en el PLA Daily elaboró, acusando a los dos generales de "pisotear gravemente y socavar" el Sistema de Responsabilidad del Presidente (es decir, la autoridad personal de Xi) y de "fomentar gravemente problemas políticos y de corrupción que debilitaron el liderazgo absoluto del Partido sobre el ejército".</p>
+
+      <p>Según un informe de The Wall Street Journal, Zhang fue acusado de recibir enormes sobornos a cambio de facilitar ascensos dentro del ejército. El Journal informó que Zhang supuestamente filtró información a Estados Unidos sobre el programa de armas nucleares de China — una acusación tan grave que, si fuera cierta, constituiría traición. Si alguno de estos cargos tiene mérito es, en el sistema chino, casi irrelevante. Gran parte de los especialistas en China estipulan que, aunque las preocupaciones por la corrupción son reales, típicamente son más un pretexto para justificar una purga.</p>
+
+      <p>La verdad más profunda es que la corrupción ha sido endémica en el EPL desde hace mucho tiempo, alimentada por lo que el analista Evan Sankey llama "un tsunami de dinero" vertido en la expansión militar de China durante las últimas dos décadas. Cuando Xi regresó por primera vez a Beijing en 2012, estaba, según múltiples informes, consternado por el grado de corrupción que encontró. El EPL se había convertido menos en un ejército revolucionario y más en una burocracia con intereses propios, más enfocada en construir su armada y adquirir hardware llamativo que en el adoctrinamiento ideológico.</p>
+
+      <p>La solución de Xi ha sido metódica, pero claramente orientada. Introdujo el Sistema de Responsabilidad del Presidente para formalizar su control sobre el ejército. En 2016, se convirtió en el comandante en jefe del EPL, reclamando el comando operacional directo en lugar de solo el control administrativo. En el 19.º Congreso del Partido en 2017, redujo la Comisión Militar Central de once miembros a siete, concentrando su autoridad. En el plenario del partido de octubre pasado, nombró al máximo disciplinador del EPL (el general Zhang Shengmin) como vicepresidente de la CMC, colocando efectivamente a un comisario político, con poca experiencia, por encima de los comandantes de campo.</p>
+
+      <h2 class="article-section-heading">La Cuestión de Taiwán</h2>
+
+      <p>Las purgas inevitablemente plantean preguntas sobre las intenciones de Xi hacia Taiwán. Algunos analistas han sugerido que destrozar el liderazgo militar hace menos probable una invasión de Taiwán en el corto plazo: que Xi está demasiado ocupado ordenando el frente interno como para contemplar una acción militar importante, que la disrupción de las estructuras de comando hace que las operaciones complejas sean riesgosas. Otros temen que lo contrario sea cierto: que al remover veteranos de combate experimentados como Zhang, Xi está eliminando las voces mismas que podrían aconsejar cautela, dado que estos dos generales eran los últimos miembros de la cúpula militar china con experiencia efectiva en combate.</p>
+
+      <p>Pero otros analistas no creen que Xi esté contemplando una acción militar importante contra Taiwán en el corto plazo inmediato. En cambio, Xi está mirando a una administración estadounidense bajo Donald Trump que "no parece particularmente interesada" en Taiwán, al potencial de un cambio en el liderazgo de Taiwán en las elecciones de 2028, y calculando que ahora es un "momento seguro para ordenar la casa". La purga se trata de posicionamiento a largo plazo, no de guerra inminente.</p>
+
+      <p>Además, está la cuestión de la propia línea de tiempo de Xi. Cumplirá setenta y tres años en junio de 2026. En octubre de 2027, se convocará el 21.º Congreso del Partido, donde se espera que Xi busque un cuarto mandato de cinco años. Pero como señala el substack especializado China Talk, la regla del "siete arriba, ocho abajo" — el límite de edad informal para la membresía del Politburó — significa que muchos de los aliados más cercanos de Xi en el Comité Permanente se estarán retirando. La composición de su círculo interno cambiará dramáticamente. En este contexto, las purgas adquieren un significado diferente: no se tratan de prepararse para la guerra en 2026 o 2027, sino de asegurar que los generales que asciendan para reemplazar a Zhang y los demás sean leales más allá de toda duda.</p>
+
+      <p>Sin embargo, es imposible ignorar que hay un costo operacional significativo en el enfoque de Xi. La Comisión Militar Central ahora consiste esencialmente en Xi y un solo comisario político sin experiencia de comando. La cadena de mando es, por decir lo menos, poco clara.</p>
+
+      <p>Las purgas han expuesto problemas más profundos dentro del EPL. Los escándalos de corrupción anteriores se centraron en la Fuerza de Cohetes y la adquisición de equipos, destacando problemas con la preparación y capacidad, revelando al ejército chino como lo que algunos analistas llaman un potencial "tigre de papel" sin la capacidad de proyectar poder efectivamente. La remoción de Zhang y Liu continúa este patrón. Liu, como jefe del Departamento del Estado Mayor Conjunto, coordinaba la principal institución de comando de combate del EPL. Su partida en medio de reformas en curso plantea preguntas obvias sobre la continuidad operacional.</p>
+
+      <p>Esto llega al corazón del dilema que Xi ha creado. Al priorizar la lealtad política sobre la competencia militar, puede estar construyendo un EPL más obediente pero no necesariamente más efectivo. La lección de la purga de Zhang es clara: la lealtad política está muy por delante de la preparación para el combate. Pero ¿qué sucede cuando la lealtad y la preparación entran en tensión? ¿Qué sucede cuando un general políticamente confiable, ansioso por complacer a Xi, evalúa al EPL como listo para operaciones que no puede ejecutar con éxito?</p>
+
+      <p>El riesgo de error de cálculo aumenta. No porque sea más probable que Xi invada Taiwán mañana, sino porque los mecanismos de retroalimentación que podrían prevenir errores desastrosos han sido sistemáticamente desmantelados. El caso de la invasión rusa a Ucrania viene automáticamente a la mente.</p>
+
+      <h2 class="article-section-heading">El Paralelo Histórico</h2>
+
+      <p>China, por supuesto, ha estado aquí antes. El país tiene una larga tradición de purgar funcionarios de alto nivel, ya sea para erradicar la corrupción, simplificar las estructuras de gobierno o consolidar el poder en la cima. El precedente más famoso es la Revolución Cultural, cuando Mao destruyó sistemáticamente gran parte de la élite del Partido, incluidos muchos que habían sido sus camaradas más cercanos. Un caso particularmente relevante es Lin Biao, el sucesor designado de Mao y ministro de defensa, quien murió misteriosamente en un accidente aéreo en 1971 mientras supuestamente huía a la Unión Soviética después de un intento de golpe fallido. Las circunstancias de la muerte de Lin siguen siendo confusas hasta el día de hoy, pero la lección era clara: la proximidad a Mao no ofrecía protección.</p>
+
+      <p>Las purgas de Xi difieren de maneras importantes. Son más sistemáticas, más institucionalizadas a través de mecanismos anticorrupción, visiblemente menos caóticas que la Revolución Cultural. Pero la lógica subyacente es similar: la eliminación de centros potenciales de poder, la demostración de que nadie es indispensable, el cultivo de un miedo generalizado que mantiene a todos en línea. Al igual que con Mao, las purgas cumplen funciones tanto prácticas como simbólicas. Prácticamente, eliminan rivales potenciales y cimentan el control de Xi. Simbólicamente, refuerzan la narrativa de que Xi está librando una batalla justa contra la corrupción, que solo él puede limpiar el sistema.</p>
+
+      <p>Pero hay un costo. La Revolución Cultural devastó las instituciones chinas y retrasó el desarrollo del país por años. Las purgas de Xi pueden no ser tan destructivas en alcance, pero están creando su propio daño institucional. Un ejército donde los generales son seleccionados principalmente por lealtad en lugar de competencia, donde decir la verdad al poder es potencialmente fatal para la carrera de uno, donde la cadena de mando es poco clara y la continuidad operacional es constantemente interrumpida: tal ejército puede verse impresionante en el papel pero podría resultar frágil en la práctica.</p>
+
+      <p>Para el mundo exterior, particularmente para Taiwán y Estados Unidos, las purgas envían señales mixtas. Por un lado, un EPL en agitación es posiblemente menos capaz de montar operaciones militares complejas en el corto plazo. Por otro lado, un EPL comandado por aduladores que no se atreven a cuestionar el juicio de Xi puede ser más peligroso a largo plazo. La remoción de veteranos de combate experimentados como Zhang Youxia significa que hay menos voces que puedan explicarle a Xi lo que realmente cuesta la guerra, menos personas que puedan evaluar las capacidades estadounidenses y taiwanesas objetivamente.</p>
+
+      <p>En cuanto al propio Zhang Youxia, su destino sigue un patrón familiar en la política china. Una vez que una figura de alto nivel pierde estatus (por cualquier razón), su caída resulta en acusaciones de una letanía de crímenes. Si Zhang realmente filtró secretos nucleares a Estados Unidos, si realmente tomó sobornos masivos, si formó "camarillas políticas" como se alega: estas preguntas nunca serán respondidas transparentemente. Lo que importa es que Xi decidió que Zhang tenía que irse, y en la China de Xi, esa decisión sola es suficiente.</p>
+
+      <p>El video de treinta segundos fue simplemente el anuncio de un veredicto ya dictado. La biografía de Zhang desapareció del sitio web del EPL no porque estuviera bajo investigación, sino porque, a los ojos del sistema, ya había dejado de existir. Veremos el impacto final de estas purgas, y como escribió Confucio hace más de dos mil años: "El hombre superior no eleva a alguien por sus palabras, ni descarta las palabras por quien las dice". En la China de Xi, sin embargo, tanto las palabras como quien las dice pueden desaparecer con igual facilidad.</p>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">© 2026 Eddie Would Go. Todos los derechos reservados.</span>
+    <div class="footer-social">
+      <a href="#">Twitter</a>
+      <a href="#">Substack</a>
+      <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank">Instagram</a>
+      <a href="#">RSS</a>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Viejas obsesiones con nuevas razones — Eddie Would Go</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e0e0e0;
+      --gray-400: #999;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: var(--white);
+      border-bottom: 1px solid var(--black);
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-menu span {
+      display: block;
+      width: 22px; height: 1px;
+      background: var(--black);
+      transition: transform var(--transition);
+    }
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--black);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ─── ARTICLE PAGE ─── */
+    .article-page {
+      margin-top: 64px;
+    }
+
+    .article-header {
+      padding: 64px 48px 0;
+    }
+
+    .article-category-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 16px;
+    }
+
+    .article-page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    .article-hero {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      padding: 0 48px 48px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .article-cover {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--gray-200);
+      overflow: hidden;
+    }
+    .article-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .article-cover-placeholder {
+      width: 100%;
+      height: 100%;
+      background: var(--gray-200);
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent, transparent 6px,
+        rgba(0,0,0,0.03) 6px, rgba(0,0,0,0.03) 7px
+      );
+    }
+
+    .article-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 24px;
+      padding-bottom: 8px;
+    }
+
+    .article-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: var(--black);
+    }
+
+    .article-author-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .article-meta-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-top: 4px;
+    }
+
+    /* ─── ARTICLE BODY ─── */
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 32px 96px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #1a1a1a;
+    }
+    .article-body p {
+      margin-bottom: 1.6em;
+    }
+    .article-blockquote {
+      border-left: 3px solid var(--black);
+      margin: 0 0 2em 0;
+      padding: 16px 0 16px 32px;
+    }
+    .article-blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      margin-bottom: 0.75em;
+      color: #1a1a1a;
+    }
+    .article-blockquote cite {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      font-style: normal;
+    }
+    .article-section-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1.2rem;
+      letter-spacing: 0.01em;
+      margin: 2.5em 0 0.8em;
+      color: var(--black);
+    }
+    .article-sub-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1.05rem;
+      letter-spacing: 0.01em;
+      margin: 2em 0 0.6em;
+      color: var(--black);
+    }
+    .article-bullet-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.6em 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .article-bullet-list li {
+      padding-left: 24px;
+      border-left: 2px solid var(--gray-200);
+    }
+    .article-bullet-list li strong {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    /* ─── BACK LINK ─── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding: 48px 48px 0;
+      margin-top: 64px;
+      display: block;
+      transition: opacity var(--transition);
+    }
+    .back-link:hover { opacity: 0.5; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--black);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0;
+    }
+    .footer-copy {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+    }
+    .footer-social {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-social a {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      text-decoration: none;
+    }
+    .footer-social a:hover { color: var(--black); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <div class="nav-menu" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+      <a href="/" class="nav-logo">
+        <img src="/EWG_Logo.jpg" alt="EWG Logo">
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Política</a></li>
+      <li><a href="/">Cultura</a></li>
+      <li><a href="/">Sobre Nosotros</a></li>
+    </ul>
+    <div style="width:80px"></div>
+  </nav>
+
+  <div class="article-page">
+
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <div class="article-header">
+      <div class="article-category-tag">Opinión · 8 min de lectura</div>
+      <h1 class="article-page-title">Viejas obsesiones con nuevas razones</h1>
+    </div>
+
+    <div class="article-hero">
+      <div class="article-cover">
+        <div class="article-cover-placeholder"></div>
+      </div>
+      <div class="article-sidebar">
+        <p class="article-subtitle">Los fantasmas de la geopolítica del siglo XX reaparecen con fuerza en el debate contemporáneo, esta vez con argumentos renovados.</p>
+        <div>
+          <div class="article-author-name">Eddie M.</div>
+          <div class="article-meta-line">12 de marzo de 2026 · Opinión</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <blockquote class="article-blockquote">
+        <p>«Los fuertes hacen lo que pueden y los débiles sufren lo que deben»</p>
+        <cite>— Tucídides, Las guerras del Peloponeso</cite>
+      </blockquote>
+
+      <p>Cuando un presidente electo en los Estados Unidos asume el cargo, el diseño del Salón Oval y la disposición de los retratos presidenciales, bustos y esculturas envían un mensaje político deliberado. Joe Biden colocó un retrato de Franklin D. Roosevelt en preparación para su nueva política industrial; Donald Trump, en su primer mandato, optó por Andrew Jackson, quien fue denominado y se autorreconoció como el primer presidente popular o populista. En su segundo mandato, una figura que recupera protagonismo es William McKinley.</p>
+
+      <p>McKinley no es uno de los presidentes más reconocidos, en parte por haber sido asesinado en su primer mandato y sucedido por la figura arrolladora de Teddy Roosevelt (hasta el punto de que la escuela en la serie Glee lleva su nombre como un guiño a este olvido histórico). ¿Por qué Trump pone el foco en él? McKinley fue el arquitecto de una política de fuertes aranceles proteccionistas y el presidente que expandió territorialmente a EE. UU. tras la guerra con España. En este contexto, la mirada hacia Groenlandia cobra un nuevo sentido. No es un capricho reciente: la relación de Washington con la isla ha oscilado durante siglo y medio entre la fascinación geopolítica y el cálculo estratégico: quien controle esta pieza, dominará el Ártico.</p>
+
+      <p>La obsesión no es nueva. Se remonta a 1867, cuando el secretario de Estado William H. Seward, tras la compra de Alaska, fijó su mirada en la posesión danesa. Para él, Groenlandia era la pieza lógica siguiente: una futura fuente de carbón para la flota, un bastión ballenero y un contrapeso a la influencia británica desde Canadá. Sus gestiones con Dinamarca (1867-68) fracasaron por un Congreso escéptico, pero la idea quedó instalada.</p>
+
+      <p>La chispa se reavivó con urgencia en 1941. Tras la ocupación nazi de Dinamarca, EE.UU. invocó una Doctrina Monroe para el Ártico, asumiendo unilateralmente la "protección" de Groenlandia. Esto estableció una presencia militar permanente, formalizada en el Tratado de Defensa de 1951. Washington obtuvo derechos para establecer bases.</p>
+
+      <p>Durante el clímax de la Guerra Fría, Groenlandia se convirtió en una región estratégica para el despliegue militar americano. La piedra angular fue la Base Aérea de Thule, establecida en 1951. No fue la única. El Sistema de Alerta de Misiles Balísticos (BMEWS) se desplegó allí a principios de los 60, con radares masivos para detectar un ataque soviético contra el Polo Norte. Además, una red de estaciones de alerta temprana (Dew Line y proyectos posteriores) y de sitios de monitoreo sísmico y submarino salpicó la costa. En su punto álgido, Thule albergaba a más de 10.000 militares y personal civil estadounidense, siendo una de las bases más grandes y estratégicas fuera del territorio continental. La presencia fue tan masiva que Dinamarca, aunque aliada, mantuvo tensiones diplomáticas frecuentes por la soberanía sobre el territorio donde operaban las bases.</p>
+
+      <p>Fue en este contexto que la administración de Truman hizo en 1946 una oferta formal a Dinamarca: 100 millones de dólares a cambio de la soberanía total de Groenlandia. El rechazo fue categórico y desde el fin de la Guerra Fría hasta hoy el interés por Groenlandia fue decreciendo, al igual que el número de tropas desplegadas en la misma.</p>
+
+      <h2 class="article-section-heading">El Renacer del Interés: Minerales, China y Deshielo</h2>
+
+      <p>El interés mutó, pero no decayó. En 2019, la confirmación de Donald Trump de su deseo de comprar la isla provocó una crisis diplomática. Lejos de ser un mero capricho, era la expresión de una ansiedad estratégica renovada. El nuevo objetivo era contener a China, que bajo la etiqueta de "Estado cercano al Ártico", había identificado el doble valor del deshielo: recursos y rutas.</p>
+
+      <p>Groenlandia es un almacén de minerales críticos. Sus yacimientos contienen algunas de las mayores reservas de tierras raras (REE) fuera de China, elementos esenciales para imanes permanentes en turbinas eólicas, vehículos eléctricos y sistemas de armamento de precisión.</p>
+
+      <ul class="article-bullet-list">
+        <li>
+          <strong>Proyecto Kvanefjeld (Kuannersuit)</strong>
+          Este yacimiento en el sur, uno de los más polémicos, alberga recursos estimados en más de 1.000 millones de toneladas de mineral, conteniendo Tierras Raras (óxidos de REE) y uranio. Un informe del Servicio Geológico de Dinamarca y Groenlandia (GEUS) indica que contiene una de las mayores reservas de REE del mundo.
+        </li>
+        <li>
+          <strong>Proyecto Kringlerne</strong>
+          Otro depósito significativo de tierras raras, con estimaciones que superan los 600 millones de toneladas de recurso mineral.
+        </li>
+        <li>
+          <strong>Otros Elementos Críticos</strong>
+          Además de REE, Groenlandia tiene importantes prospectos de grafito, cobalto, níquel, circonio y tierras raras pesadas, todos vitales para la transición energética y la alta tecnología.
+        </li>
+      </ul>
+
+      <p>La participación china en Kvanefjeld a través de Shenghe Resources encendió las alarmas en Washington. La posterior decisión del gobierno autónomo groenlandés (2021) de prohibir la minería de uranio — y congelar de facto el proyecto — fue un alivio estratégico para Occidente, pero evidenció la batalla por los recursos.</p>
+
+      <h2 class="article-section-heading">Las rutas marítimas en el Ártico y Groenlandia</h2>
+
+      <p>El calentamiento global está actuando como un catalizador geoeconómico en el extremo norte, transformando el Ártico de una barrera de hielo infranqueable en una arteria vital para el comercio mundial. El retroceso de los hielos abriría principalmente tres corredores: la Ruta del Mar del Norte (NSR) a lo largo de la costa rusa, el Paso del Noroeste (NWP), que atraviesa el archipiélago canadiense y bordea Groenlandia, y la futura Ruta Transpolar (TSR), que cruzaría el centro del océano. Estas vías no son solo alternativas geográficas; representan una reducción de hasta el 40% en el tiempo de navegación entre los puertos del noreste de Asia y el norte de Europa. En términos prácticos, esto significa recortar aproximadamente 15 días de tránsito en comparación con la ruta tradicional por el Canal de Suez, lo que se traduce en un ahorro masivo de combustible, menores costos operativos y una drástica reducción en la huella de carbono de la logística global.</p>
+
+      <p>Para Groenlandia, este deshielo redefine su valor soberano, posicionándola como el "Gibraltar del Norte". Al situarse en la confluencia de estas rutas, la isla deja de ser un territorio remoto para convertirse en el centinela que custodia el acceso al Atlántico Norte. Esta nueva centralidad ha desatado una competencia entre las grandes potencias: mientras Rusia reclama soberanía sobre gran parte de la Ruta del Mar del Norte y China promueve su concepto de la "Ruta de la Seda Polar", Estados Unidos busca consolidar a Groenlandia como un socio estratégico capaz de ofrecer puertos de aguas profundas y servicios logísticos que aseguren la libertad de navegación. El control de estas aguas jurisdiccionales ya no es solo una cuestión de defensa territorial, sino el dominio sobre el futuro nodo del comercio entre continentes.</p>
+
+      <p>Sin embargo, esta apertura plantea una paradoja de seguridad y medio ambiente. El aumento del tráfico marítimo en aguas anteriormente prístinas exige una infraestructura de búsqueda, rescate y respuesta ante desastres ambientales que actualmente es limitada. Para Washington, asegurar que Nuuk (la capital groenlandesa) cuente con la tecnología y la inversión occidentales para gestionar estas rutas es una prioridad. Como advirtieron analistas del Belfer Center de Harvard, el dominio de la logística ártica será tan determinante para la hegemonía del siglo XXI como lo fue el control de los mares para las potencias del siglo XIX, convirtiendo el deshielo en una carrera contra el tiempo por la influencia sobre el nuevo mapa del poder mundial.</p>
+
+      <h2 class="article-section-heading">La Voluntad Groenlandesa: Encuestas y Autodeterminación</h2>
+
+      <p>La política interna groenlandesa es un factor decisivo. Encuestas recientes, como las realizadas por el Instituto de Estudios Sociales de la Universidad de Groenlandia (Ilisimatusarfik), muestran una población profundamente dividida entre el desarrollo económico basado en la minería a gran escala y la protección del medio ambiente y la cultura tradicional. Un referéndum en 2008 aprobó con un 75% un estatuto de autogobierno ampliado, un paso clave hacia la independencia. Sin embargo, un referéndum en 2021 en la municipalidad de Sermersooq (que incluye Nuuk) sobre la minería de uranio y tierras raras reflejó la división local, precediendo la decisión nacional de prohibición. La narrativa de independencia es poderosa, pero choca con la dependencia económica del subsidio anual danés (aproximadamente 600 millones de dólares), que representa más de un tercio del presupuesto groenlandés. Los habitantes de esta clave oscilan entre la independencia y el continuar con autonomía dentro del Reino de Dinamarca. Hace tres días, todos los partidos políticos rechazaron la intención de formar parte de los Estados Unidos.</p>
+
+      <h2 class="article-section-heading">Conclusión</h2>
+
+      <p>El problema central ya no radica en demostrar la importancia estratégica de Groenlandia, sino en comprender la efectividad real de la estrategia articulada desde Washington. La propuesta de compra bajo la administración Trump, aunque sintomática de una ansiedad geopolítica histórica, puede interpretarse como un anacronismo estratégico que desvió la atención de herramientas más sólidas y disponibles.</p>
+
+      <h3 class="article-sub-heading">Una Crítica a la Visión Transaccional</h3>
+
+      <p>El Tratado de Defensa de 1951 sigue vigente y, en el marco de la OTAN — reforzado ahora con la incorporación de Suecia y su capacidad ártica —, el despliegue de tropas y sistemas de vigilancia para contrarrestar la actividad rusa y china en la zona está legitimado y es operativamente superior a cualquier aventura de anexión. La sugerencia de compra expuso una contradicción: mientras se debilitaban los lazos transatlánticos con aliados clave como Dinamarca a través de la retórica, se buscaba adquirir un territorio cuya defensa ya estaba garantizada por esa misma alianza. La estrategia más eficaz para reducir la influencia rusa en el Ártico no pasa por gestos unilaterales, sino por fortalecer la cohesión de la OTAN y resolver sus conflictos internos, presentando un frente unificado.</p>
+
+      <p>En cuanto al acceso a minerales críticos, el obstáculo principal no es la soberanía danesa ni una hipotética exclusión estadounidense. Las concesiones están disponibles, pero están atravesadas por la determinación de la población local de proteger su medio ambiente y su modo de vida. La decisión de 2021 de prohibir la minería de uranio y de congelar el proyecto Kvanefjeld es un claro mensaje de que Nuuk no será un simple proveedor de recursos. Aquí, la competencia con China no se gana con dinero ni presión diplomática bruta, sino con la capacidad de ofrecer tecnología minera sostenible, formación local y acuerdos que prioricen el desarrollo a largo plazo de Groenlandia, algo que el modelo extractivo chino no necesariamente promete.</p>
+
+      <p>La reactivación de la diplomacia ártica estadounidense — modernizando la Base de Thule y desplegando créditos del EXIM — es un paso en la dirección correcta, pero insuficiente si se mantiene una lógica de "contención" puramente militar y económica. La persistente obsesión por Groenlandia, desde Seward hasta Trump, revela una constante: la búsqueda de seguridad a través del control. Sin embargo, el desafío actual es invertir esa ecuación.</p>
+
+      <p>El verdadero poder en el Ártico del siglo XXI no se medirá únicamente por quien controle bases, sino por quien gane legitimidad, confianza y alianzas duraderas. La próxima fase no se escribirá con ofertas de compra, sino con la capacidad de Washington y de sus aliados de ofrecer a Groenlandia una asociación atractiva y respetuosa para su desarrollo soberano. La hegemonía en el Ártico ya no se compra; se negocia y se gana con una propuesta de valor que Groenlandia, por fin, pueda elegir para sí misma. De lo contrario, la obsesión por controlar la isla podría terminar por aislar a Estados Unidos en la región que más ansía dominar y de una de sus alianzas más importantes. Veremos si las peores escenas de la guerra del Peloponeso vuelven a nuestra era.</p>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">© 2026 Eddie Would Go. Todos los derechos reservados.</span>
+    <div class="footer-social">
+      <a href="#">Twitter</a>
+      <a href="#">Substack</a>
+      <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank">Instagram</a>
+      <a href="#">RSS</a>
+    </div>
+  </footer>
+
+</body>
+</html>
