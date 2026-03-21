@@ -1,5 +1,8 @@
 {
   "buildCommand": "",
   "outputDirectory": ".",
-  "framework": null
+  "framework": null,
+  "rewrites": [
+    { "source": "/EWG_Logo.jpg", "destination": "/public/EWG_Logo.jpg" }
+  ]
 }
