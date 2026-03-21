@@ -726,22 +726,6 @@
       50% { transform: scaleY(0.5); }
     }
 
-    .nav-menu {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      cursor: none;
-      padding: 4px;
-    }
-    .nav-menu span {
-      display: block;
-      width: 22px; height: 1px;
-      background: var(--black);
-      transition: transform var(--transition), opacity var(--transition);
-    }
-    .nav-menu:hover span:nth-child(1) { transform: translateY(3px); }
-    .nav-menu:hover span:nth-child(3) { transform: translateY(-3px); }
-
     /* ─── MOBILE RESPONSIVE ─── */
     @media (max-width: 768px) {
 
@@ -780,15 +764,18 @@
         border-right: none;
         border-bottom: 1px solid var(--black);
         padding: 24px 16px;
+        order: 2;
       }
       .sidebar-right {
         border-left: none;
         border-top: 1px solid var(--black);
         padding: 24px 16px;
+        order: 3;
       }
       .featured-col {
         padding: 24px 16px;
         border-bottom: 1px solid var(--black);
+        order: 1;
       }
 
       /* Article cards */
@@ -849,14 +836,9 @@
 
   <!-- NAVBAR -->
   <nav>
-    <div style="display:flex;align-items:center;gap:12px;">
-      <div class="nav-menu" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </div>
-      <a href="/" class="nav-logo">
-        <img src="/EWG_Logo.jpg" alt="EWG Logo" style="height:40px;width:auto;display:block;">
-      </a>
-    </div>
+    <a href="/" class="nav-logo">
+      <img src="/EWG_Logo.jpg" alt="EWG Logo" style="height:40px;width:auto;display:block;">
+    </a>
     <ul class="nav-links">
       <li><a href="#">Política</a></li>
       <li><a href="#">Cultura</a></li>
