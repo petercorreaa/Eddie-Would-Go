@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>El Mineral que Mueve el Tablero — Eddie Would Go</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; }
+    img { max-width: 100%; height: auto; }
+
+    :root {
+      --blue: #C4622D;
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e0e0e0;
+      --gray-400: #999;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: var(--white);
+      border-bottom: 1px solid var(--black);
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--black);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ─── ARTICLE PAGE ─── */
+    .article-page {
+      margin-top: 64px;
+    }
+
+    .article-header {
+      padding: 64px 48px 0;
+    }
+
+    .article-category-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 16px;
+    }
+
+    .article-page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    .article-hero {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      padding: 0 48px 48px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .article-cover {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--gray-200);
+      overflow: hidden;
+    }
+    .article-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .article-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 24px;
+      padding-bottom: 8px;
+    }
+
+    .article-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: var(--black);
+    }
+
+    .article-author-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .article-meta-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-top: 4px;
+    }
+
+    /* ─── ARTICLE BODY ─── */
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 32px 96px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #1a1a1a;
+    }
+    .article-body p {
+      margin-bottom: 1.6em;
+    }
+    .article-blockquote {
+      border-left: 3px solid var(--blue);
+      margin: 0 0 2em 0;
+      padding: 16px 0 16px 32px;
+    }
+    .article-blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      margin-bottom: 0.75em;
+      color: #1a1a1a;
+    }
+    .article-blockquote cite {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      font-style: normal;
+    }
+    .article-section-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 2.5em 0 0.8em;
+      color: var(--blue);
+    }
+    .article-callout {
+      border-left: 3px solid var(--blue);
+      padding: 12px 0 12px 28px;
+      margin: 0.4em 0 1.8em;
+      font-weight: 500;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--black);
+    }
+    .section-divider {
+      text-align: center;
+      color: var(--gray-400);
+      letter-spacing: 0.3em;
+      font-size: 0.8rem;
+      margin: 2.4em 0;
+      user-select: none;
+    }
+    .article-sources {
+      margin-top: 3em;
+      padding-top: 2em;
+      border-top: 1px solid var(--gray-200);
+      font-size: 0.78rem;
+      line-height: 1.7;
+      color: var(--gray-400);
+      letter-spacing: 0.02em;
+    }
+    .article-sources strong {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+
+    /* ─── BACK LINK ─── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding: 48px 48px 0;
+      margin-top: 64px;
+      display: block;
+      transition: opacity var(--transition);
+    }
+    .back-link:hover { opacity: 0.5; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--black);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-copy {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+    }
+    .footer-social {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-social a {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      text-decoration: none;
+    }
+    .footer-social a:hover { color: var(--black); }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .nav-links { display: none; }
+      .article-header { padding: 32px 16px 0; }
+      .article-page-title { font-size: clamp(2rem, 9vw, 3.5rem); margin-bottom: 32px; }
+      .article-hero { grid-template-columns: 1fr; gap: 24px; padding: 0 16px 32px; }
+      .article-sidebar { padding: 0; }
+      .article-body { padding: 48px 16px 64px; }
+      .article-blockquote { padding: 12px 0 12px 20px; }
+      .article-callout { padding: 10px 0 10px 20px; }
+      .back-link { padding: 32px 16px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <a href="/" class="nav-logo">
+        <img src="/EWG_Logo.jpg" alt="EWG Logo">
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Política</a></li>
+      <li><a href="/">Sobre Nosotros</a></li>
+    </ul>
+    <div style="width:80px"></div>
+  </nav>
+
+  <div class="article-page">
+
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <div class="article-header">
+      <div class="article-category-tag">Energía &nbsp;·&nbsp; Geopolítica &nbsp;·&nbsp; Mercados &nbsp;·&nbsp; 18 min de lectura</div>
+      <h1 class="article-page-title">El Mineral que Mueve el Tablero</h1>
+    </div>
+
+    <div class="article-hero">
+      <div class="article-cover">
+        <img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'"
+          src="https://images.unsplash.com/photo-1680463990599-9d318aaecf71?q=80&w=2340&auto=format&fit=crop"
+          alt="El Mineral que Mueve el Tablero"
+          style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="article-sidebar">
+        <p class="article-subtitle">El uranio dejó de comportarse como una commodity administrada por ingenieros y contratos de largo plazo. Es hoy un activo estratégico en disputa: los estados que lo tienen quieren controlarlo antes de que lo controlen otros, los inversores que podrían desarrollarlo exigen certeza jurídica que escasea, y los operadores de reactores en Europa, Asia y Norteamérica no encuentran suficiente mineral para comprar. Este artículo trata de cómo se rompió ese supuesto, quiénes pagaron el costo, y por qué una mina en la meseta patagónica aparece ahora en las conversaciones de inversores en Toronto, Islamabad y Sydney.</p>
+        <div>
+          <div class="article-author-name">The Eddie</div>
+          <div class="article-meta-line">Mayo 2026 &nbsp;·&nbsp; Energía &nbsp;·&nbsp; Geopolítica &nbsp;·&nbsp; Mercados</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <blockquote class="article-blockquote">
+        <p>«El equilibrio es la excepción, no la regla.»</p>
+        <cite>— Ilya Prigogine, Nobel de Química 1977</cite>
+      </blockquote>
+
+      <p>En noviembre de 2025, un convoy con aproximadamente 1.000 toneladas de concentrado de uranio salió de Arlit, en el norte de Níger, cruzó hacia Burkina Faso y avanzó hasta las afueras del puerto de Lomé en Togo. Un carguero ruso esperaba anclado frente a la costa. El uranio nunca llegó. Togo cerró el paso. El barco esperó semanas y se fue vacío. El material fue devuelto a una base militar cerca de Niamey. La empresa francesa que había minado ese uranio durante décadas se enteró por los medios.</p>
+
+      <p>Esa imagen —un carguero varado frente a un puerto africano, esperando un cargamento que el orden internacional consiguió detener pero no recuperar— resume con precisión el estado del mercado global de uranio en 2026. El supuesto sobre el que se construyó el mercado —que Kazajistán seguiría creciendo de forma lineal para cubrir la demanda— está roto. Nadie lo declaró oficialmente. Simplemente dejó de ser cierto.</p>
+
+      <div class="section-divider">— — —</div>
+
+      <h2 class="article-section-heading">I. El árbitro que no puede arbitrar: Kazajistán</h2>
+
+      <p>Kazajistán controla alrededor del 40% del mercado global de uranio primario. Eso no es diversificación de oferta. Es concentración de riesgo. Durante la última década, el mercado apostó a que Kazatomprom seguiría creciendo de forma lineal —acumulando cuota, abriendo yacimientos, ampliando capacidad— para satisfacer una demanda que, al mismo tiempo, nadie había previsto que iba a crecer tan rápido. Esa apuesta está perdida en tres frentes simultáneos, y ninguno tiene solución rápida.</p>
+
+      <p>El primero es físico. La minería kazaja se hace casi exclusivamente mediante lixiviación in situ: se inyectan soluciones ácidas en el subsuelo para disolver el uranio y bombearlo a la superficie. El proceso es intensivo en ácido sulfúrico, y Kazajistán no produce suficiente. Una nueva planta con capacidad de 800.000 toneladas anuales lleva años en construcción en Taikonur; el financiamiento fue asegurado recién en 2025 y los plazos siguen corriendo sin fecha firme de entrega.</p>
+
+      <p>El segundo es el proyecto estrella que no entregó. Los bloques 6 y 7 del yacimiento Budenovskoye eran el motor del crecimiento prometido: ~5.900 toneladas métricas en 2025, escalando a capacidad plena de 6.000 toneladas en 2026. Los bloques siguen lejos de esos números. Los depósitos son casi el doble de profundos que los otros proyectos de lixiviación kazajos —lo que complica el proceso— y contienen más carbonatos de lo esperado, lo que eleva todavía más el consumo de ácido. Según la guía oficial publicada en el reporte anual 2025, Kazatomprom proyecta producir entre 32.200 y 34.000 toneladas métricas en 2026, frente a las ~38.600 que figuraban en sus acuerdos de subsuelo hace dos años: una diferencia de entre 4.500 y 6.350 toneladas métricas que el mercado ya descontó como perdida.</p>
+
+      <p>El tercero es geopolítico, y es el que más incomoda a los compradores occidentales. A fines de 2022, Rosatom adquirió el 49% de Budenovskoye a través de sus subsidiarias. El CEO, el CFO, el COO y el CCO de Kazatomprom renunciaron en menos de 18 meses, con el argumento de que la falta de transparencia violaba sus obligaciones fiduciarias. A fines de 2024, Uranium One —otra subsidiaria de Rosatom— vendió además su participación en el yacimiento Zarechnoye a una empresa vinculada a la corporación nuclear estatal china. Toda la producción de Budenovskoye está contratada con Rosatom hasta 2026.</p>
+
+      <p class="article-callout">Lo que queda para el mercado occidental no es el grueso de la producción kazaja. Es lo que sobra después de que China y Rusia tienen sus contratos asegurados.</p>
+
+      <p>Para colmo, Kazajistán decidió construir sus propias plantas nucleares, eligiendo a Rosatom para la primera y a China para la segunda. El país que debería ser el árbitro del mercado global de uranio está, en los hechos, comprometido con los dos actores que Occidente está intentando excluir del ciclo de combustible nuclear.</p>
+
+      <div class="section-divider">— — —</div>
+
+      <h2 class="article-section-heading">II. El modelo que colapsó: Níger</h2>
+
+      <p>En julio de 2023, el general Abdourahamane Tiani derrocó al presidente Mohamed Bazoum en Níger. En términos de mercado, las consecuencias tardaron en entenderse. Níger representa menos del 5% de la producción mundial primaria —no es un número que asuste a los analistas. Pero en 2022 abastecía el 25% del uranio que alimentaba las plantas nucleares europeas, con una particularidad difícil de reemplazar: Francia, que genera alrededor del 70% de su electricidad con energía nuclear, dependía de Níger de manera estructural. La empresa que operaba las minas era Orano, de mayoría estatal francesa, presente en el país desde hacía medio siglo.</p>
+
+      <p>Lo que siguió al golpe fue un desmantelamiento metódico del modelo de concesión colonial. El régimen bloqueó exportaciones, cerró fronteras, rechazó la oferta de Orano de evacuar el uranio en avión. En junio de 2023 revocó la licencia de desarrollo de Imouraren —uno de los mayores depósitos del mundo—. En diciembre de 2024, fuerzas militares nigerinas tomaron control operativo del sitio de Arlit, dejando a Orano sin acceso a sus propias instalaciones pese a retener oficialmente el 63,4% del capital. Un tribunal del ICSID ordenó el 23 de septiembre de 2025 que Níger no vendiera ni transfiriera el uranio acumulado. El régimen ignoró el fallo.</p>
+
+      <p>El intento de mover el material, que es la escena con la que abre este artículo, terminó con el carguero ruso MV Matros Shevchenko esperando semanas frente a Lomé y regresando vacío. Orano, que había explotado esas minas durante décadas, se enteró de toda la operación por los medios. En el momento de publicación de este artículo, el material sigue en tierra nigerina, bloqueado por el fallo del ICSID que Niamey no puede ignorar del todo sin cerrar el acceso a cualquier sistema financiero internacional que quiera usar.</p>
+
+      <p class="article-callout">El contrato que Orano firmó, operó durante décadas y perdió en doce meses no era una anomalía de diseño. Era el modelo estándar de la industria. Si puede colapsar así, el riesgo de invertir en producción nueva en jurisdicciones políticamente complejas se reprecia hacia arriba — para siempre.</p>
+
+      <p>Lo que hace al caso nigerino más perturbador que un conflicto de inversión ordinario es lo que revela sobre el riesgo sistémico. Rosatom ya firmó un memorándum de cooperación con Níger. Entre los compradores especulados para el uranio de SOMAÏR aparecen Turquía, China e Irán. Y el patrón se replica: Mali y Burkina Faso, también bajo juntas militares que expulsaron fuerzas de seguridad francesas, revisan acuerdos mineros en oro, manganeso y tierras raras. El resultado paradójico es que la crisis que saca uranio del mercado en el corto plazo también encarece y retrasa la solución al déficit en el largo plazo.</p>
+
+      <div class="section-divider">— — —</div>
+
+      <h2 class="article-section-heading">III. La oportunidad sin permiso: Argentina</h2>
+
+      <p>Hay 4.420 toneladas de uranio con recursos razonablemente asegurados debajo de Cerro Solo, a unos 200 kilómetros de Gastre, en la meseta central de Chubut. La CNEA lleva tres décadas sabiendo que están ahí. La producción argentina de uranio cesó en 1995 con el cierre de Sierra Pintada, en Mendoza, y desde entonces el país importa alrededor de 220 toneladas anuales para operar Atucha I, Atucha II y Embalse. Argentina tiene el mayor depósito de uranio de su historia a 200 kilómetros de una ruta provincial y lo importa de Kazajistán y Canadá. Hasta hace tres años, esa paradoja no le importaba a nadie fuera de la CNEA. Ahora le importa a YPF, a Milei y a 50 inversores internacionales que escucharon el pitch en Nueva York.</p>
+
+      <p>El argumento que YPF Nuclear lleva a los mercados tiene tres capas. La primera es la geología: Cerro Solo permite una producción estimada de entre 500 y 550 toneladas anuales, el doble de la demanda doméstica, con margen real para exportar el excedente. La segunda es el modelo: vender reactores modulares con un compromiso de compra de uranio argentino incluido —lo que Horacio Marín llama el «modelo Gillette», donde el margen no está en la máquina sino en los repuestos. La tercera, y la más diferenciadora, es la capacidad tecnológica: INVAP —la empresa pública radicada en Bariloche— diseñó el ACR-300, un reactor modular de 300 megavatios pensado para abastecer centros de datos y proyectos industriales. Argentina es uno de los pocos países del mundo que diseña y exporta reactores nucleares.</p>
+
+      <p>Pero entre el argumento y la producción hay cuatro problemas sin resolver. El primero es de gobernanza: la CNEA tiene las concesiones sobre Cerro Solo y otros 18 proyectos en Chubut. El gobernador Ignacio Torres intimó formalmente a la CNEA en 2025 para que transfiera esas concesiones a la provincia. YPF Nuclear quiere operar. Tres actores con mandatos distintos, calendarios distintos y ningún acuerdo firmado.</p>
+
+      <p>El segundo es legal. La Ley XVII Nº68 prohíbe en Chubut la minería metalífera a cielo abierto. El gobierno provincial argumenta que el uranio no es un mineral metalífero. Pero la trampa está en la geología: la CNEA determinó que Cerro Solo no es apto para lixiviación in situ por condiciones hidrogeológicas. El método óptimo según los propios técnicos es una cantera a cielo abierto de unos 60 metros seguida de explotación subterránea. Ese método choca con el espíritu de la ley. La Legislatura provincial —que en 2021 derogó en 72 horas una reforma minera ante la presión de la calle— es el árbitro. Ese debate no empezó.</p>
+
+      <p>El tercero es el antecedente vivo. En 2021, el gobierno de Mariano Arcioni aprobó legislativamente una zonificación minera para Chubut. Las protestas en Esquel, Trelew, Comodoro Rivadavia y Puerto Madryn la derogaron en menos de una semana. Torres tiene mejor relación con el electorado y el contexto global es incomparablemente más favorable al argumento nuclear. Pero la memoria institucional de ese episodio existe.</p>
+
+      <p>El cuarto es el tiempo. YPF apunta a comenzar operaciones en 2030. Los plazos estándar de una mina de uranio son de entre cinco y ocho años en jurisdicciones sin conflicto. En una jurisdicción con marco legal disputado, sin licencia social construida y con tres actores sin acuerdo de gobernanza, el rango realista se extiende. El déficit global de uranio es un problema que el mercado necesita resolver en la segunda mitad de esta década. Argentina podría ser parte de la solución en la primera mitad de la siguiente.</p>
+
+      <p class="article-callout">Lo que le falta a Argentina no es geología ni capacidad tecnológica. Es el acuerdo entre Gastre, Rawson y Buenos Aires sobre quién manda en el subsuelo de la meseta.</p>
+
+      <div class="section-divider">— — —</div>
+
+      <h2 class="article-section-heading">IV. La aritmética que no cierra</h2>
+
+      <p>La demanda mundial de uranio ronda las 79.400 a 81.600 toneladas métricas anuales. La producción primaria global en 2025 fue de alrededor de 73.500 toneladas métricas —el 90% de los requerimientos. La brecha la cubre, por ahora, el inventario acumulado durante los años que siguieron a Fukushima. Ese inventario está en niveles críticamente bajos. No es que se acabó. Es que ya no alcanza para absorber otro shock.</p>
+
+      <p>El Sprott Physical Uranium Trust acumula alrededor de 35.800 toneladas métricas de uranio físico —casi dos años de demanda de todos los reactores estadounidenses. Ese número parece tranquilizador hasta que se examina quién lo controla. No es inventario operativo distribuido entre utilities y operadores. Es material concentrado en manos de un vehículo financiero diseñado precisamente para sacarlo del mercado y apreciarlo. El problema del uranio en 2026 no es de cantidad total existente. Es de quién controla qué, en qué jurisdicción, y bajo qué condiciones está dispuesto a venderlo.</p>
+
+      <p>Goldman Sachs proyecta déficits estructurales acumulados de casi 907.000 toneladas métricas entre 2025 y 2045. Los contratos de largo plazo en 2025 ya se negociaban entre 86 y 90 dólares por libra. El precio de incentivo para nueva capacidad greenfield se estima consistentemente por encima de los 100 dólares. La brecha sigue abierta.</p>
+
+      <p>Lo que la inteligencia artificial agregó a esa ecuación no fue una demanda futura vaga. Fue una demanda presente, urgente y con cheque en mano. Cada centro de datos grande consume entre 20 y 100 megavatios de potencia continua. Los operadores no quieren energía intermitente. La nuclear es la única respuesta técnicamente viable a esa escala en esos plazos. Cada reactor que se anuncia para alimentar un campus de IA es una demanda futura que el mercado tiene que cubrir. El mercado no sabe cómo.</p>
+
+      <p class="article-callout">El uranio llegó a la mesa de negociaciones entre potencias como moneda de cambio. No como commodity. Como palanca.</p>
+
+      <p>Mientras tanto, en Islamabad, los mediadores paquistaníes siguen en el cuarto. Lo que Estados Unidos negocia con Irán —20.000 millones de dólares a cambio de 440 kilogramos de uranio enriquecido al 60%— no es en sentido estricto una operación de mercado. Pero la imagen dice algo que los modelos de oferta y demanda no saben representar. El uranio llegó a la mesa de negociaciones entre potencias como moneda de cambio entre un estado bajo sanciones y la única superpotencia que puede levantarlas. No como commodity. Como palanca.</p>
+
+      <p>Ese desplazamiento —del mercado a la geopolítica, del contrato al decreto, de la commodity al activo de soberanía— es el cambio estructural que subyace a todas las historias de este artículo. El convoy detenido en las afueras de Niamey, el carguero que se fue vacío de Lomé, los cuatro directivos que renunciaron en Kazajistán, el mediador en Islamabad con material fisionable como moneda de cambio: son imágenes distintas del mismo desplazamiento.</p>
+
+      <p>Argentina está en ese mapa por una razón que no eligió: tiene el mineral, tiene la tecnología y tiene instituciones que, con todas sus fracturas, siguen siendo reconocibles para un inversor que viene de negociar con Niamey. Eso no es poco. Pero la ventaja comparativa de tener reglas solo se sostiene si las reglas funcionan. El triángulo entre Gastre, Rawson y Buenos Aires no es un problema técnico de coordinación entre agencias. Es la primera prueba de si Argentina puede convertir una paradoja geológica en una decisión política. El subsuelo de la meseta lleva tres décadas esperando esa respuesta. El mundo lleva tres años necesitándola.</p>
+
+      <div class="article-sources">
+        <strong>Fuentes</strong>
+        Kazatomprom 1H2025 Financial Results y Full Year 2025 Results · World Nuclear News · Gorozen Capital Management (2026) · Sprott Uranium Watch (2025) · FIIA Finnish Institute for International Affairs (2024) · CSIS "Kazakhstan's Emerging Civilian Nuclear Energy Industry" (2025) · Carnegie Endowment for International Peace (2025) · USGS Uranium Fact Sheet (2026) · World Nuclear Association Nuclear Fuel Report (2025) · Goldman Sachs proyecciones de déficit estructural 2025–2045 · African Security Analysis · Uranium Unleashed (2026) · FPRI (2026) · Orano comunicados oficiales (2025) · Axios · CNN · Times of Israel · House of Commons Library (negociaciones Irán-EE.UU., 2026) · IAEA Verification and Monitoring Reports (2025) · Center for Arms Control and Non-Proliferation (2026) · Secretaría de Minería Argentina · Econojournal · El Economista · Infobae · Reporte Minero · ADN Sur · No a la Mina Esquel.
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">© 2026 Eddie Would Go. Todos los derechos reservados.</span>
+    <div class="footer-social">
+      <a href="https://x.com/eddiewgpolicy" target="_blank">Twitter</a>
+      <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank">Instagram</a>
+    </div>
+  </footer>
+
+</body>
+</html>

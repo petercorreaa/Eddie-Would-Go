@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>El País que Vota sin Creer — Eddie Would Go</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; }
+    img { max-width: 100%; height: auto; }
+
+    :root {
+      --blue: #C4622D;
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e0e0e0;
+      --gray-400: #999;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: var(--white);
+      border-bottom: 1px solid var(--black);
+    }
+    .nav-left { display: flex; align-items: center; gap: 12px; }
+    .nav-logo img { height: 40px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--black);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    .article-page { margin-top: 64px; }
+    .article-header { padding: 64px 48px 0; }
+
+    .article-category-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 16px;
+    }
+
+    .article-header-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      line-height: 1.5;
+      color: #444;
+      margin-bottom: 24px;
+      max-width: 820px;
+    }
+
+    .article-page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    .article-hero {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      padding: 0 48px 48px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .article-cover {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--gray-200);
+      overflow: hidden;
+    }
+    .article-cover img { width: 100%; height: 100%; object-fit: cover; }
+
+    .article-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 24px;
+      padding-bottom: 8px;
+    }
+
+    .article-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--black);
+    }
+
+    .article-author-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .article-meta-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-top: 4px;
+    }
+
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 32px 96px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #1a1a1a;
+    }
+    .article-body p { margin-bottom: 1.6em; }
+
+    .article-blockquote {
+      border-left: 3px solid var(--blue);
+      margin: 0 0 2em 0;
+      padding: 16px 0 16px 32px;
+    }
+    .article-blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      margin-bottom: 0.75em;
+      color: #1a1a1a;
+    }
+    .article-blockquote cite {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      font-style: normal;
+    }
+
+    .article-section-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 2.5em 0 0.8em;
+      color: var(--blue);
+    }
+
+    .back-link {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding: 48px 48px 0;
+      margin-top: 64px;
+      transition: opacity var(--transition);
+    }
+    .back-link:hover { opacity: 0.5; }
+
+    footer {
+      border-top: 1px solid var(--black);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-copy { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-400); }
+    .footer-social { display: flex; gap: 20px; }
+    .footer-social a { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-400); text-decoration: none; }
+    .footer-social a:hover { color: var(--black); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .nav-links { display: none; }
+      .article-header { padding: 32px 16px 0; }
+      .article-header-subtitle { font-size: 1.05rem; }
+      .article-page-title { font-size: clamp(2rem, 9vw, 3.5rem); margin-bottom: 32px; }
+      .article-hero { grid-template-columns: 1fr; gap: 24px; padding: 0 16px 32px; }
+      .article-sidebar { padding: 0; }
+      .article-body { padding: 48px 16px 64px; }
+      .article-blockquote { padding: 12px 0 12px 20px; }
+      .back-link { padding: 32px 16px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-left">
+      <a href="/" class="nav-logo"><img src="/EWG_Logo.jpg" alt="EWG Logo"></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Política</a></li>
+      <li><a href="/">Sobre Nosotros</a></li>
+    </ul>
+    <div style="width:80px"></div>
+  </nav>
+
+  <div class="article-page">
+
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <div class="article-header">
+      <div class="article-category-tag">Política &nbsp;·&nbsp; América Latina &nbsp;·&nbsp; 20 min de lectura</div>
+      <p class="article-header-subtitle">Nueve presidentes en diez años. Treinta y seis partidos en la boleta. El candidato líder al 17%. La pregunta sobre Perú ya no es quién ganará el 12 de abril — es si el sistema puede producir, esta vez, un gobierno capaz de durar.</p>
+      <h1 class="article-page-title">El País que Vota sin Creer</h1>
+    </div>
+
+    <div class="article-hero">
+      <div class="article-cover">
+        <img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'"
+          src="https://images.unsplash.com/photo-1531968455001-5c5272a41129?q=80&w=2340&auto=format&fit=crop"
+          alt="El País que Vota sin Creer — Perú"
+          style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="article-sidebar">
+        <p class="article-subtitle">Perú ha mantenido una de las economías más resilientes de América Latina durante dos décadas de crecimiento. Al mismo tiempo ha normalizado la inestabilidad presidencial como mecanismo ordinario de resolución de conflictos políticos. La pregunta que flota sobre Lima no es quién ganará. Es si el sistema puede producir, esta vez, un gobierno capaz de durar.</p>
+        <div>
+          <div class="article-author-name">The Eddie</div>
+          <div class="article-meta-line">28 de marzo de 2026 &nbsp;·&nbsp; Política &nbsp;·&nbsp; América Latina</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <blockquote class="article-blockquote">
+        <p>«¿En qué momento se había jodido el Perú?»</p>
+        <cite>— Santiago Zavala (Zavalita), en Conversación en La Catedral (1969), de Mario Vargas Llosa</cite>
+      </blockquote>
+
+      <p>El 18 de febrero de 2026, el Congreso peruano eligió a José María Balcázar como presidente de la República. Era el noveno mandatario en diez años. Balcázar tenía 83 años, era miembro de Perú Libre —el partido de izquierda marxista que llevó a Pedro Castillo al poder—, y había llegado a la presidencia no mediante votos ciudadanos sino mediante la aritmética parlamentaria que un día antes había removido a José Jerí, su predecesor inmediato, acusado de reuniones no registradas con empresarios chinos. Faltaban ocho semanas para las elecciones generales. El candidato que lideraba las encuestas tenía el 12% de intención de voto. Un 29% del electorado seguía sin definir a quién votar. Y el 64% de los jóvenes entre 18 y 29 años —la Generación Z que debería ser el futuro del sistema— declaraba que no votaría por ningún candidato.</p>
+
+      <p>Esa secuencia —remoción presidencial, sucesor octogenario de partido marxista, elecciones en ocho semanas, electorado indiferente— condensa con precisión cruel la paradoja peruana: un país que ha mantenido una de las economías más resilientes de América Latina durante dos décadas de crecimiento, y que al mismo tiempo ha normalizado la inestabilidad presidencial como mecanismo ordinario de resolución de conflictos políticos. La pregunta que flota sobre Lima mientras los candidatos se preparan para el 12 de abril no es quién ganará. Es si el sistema puede producir, esta vez, un gobierno capaz de durar.</p>
+
+      <h2 class="article-section-heading">El tablero más fragmentado de la historia</h2>
+
+      <p>Las elecciones generales del 12 de abril serán, según la propia Oficina Nacional de Procesos Electorales, las más complejas en la historia del país. No solo porque la boleta mostrará más de cuarenta partidos políticos. Sino porque el resultado de la primera vuelta —en la que casi con certeza ningún candidato superará el 25% de los votos válidos— será menos una fotografía de las preferencias ciudadanas que un mapa de su fragmentación. Según el simulacro de votación de Ipsos para Perú 21, realizado el 5 y 6 de marzo, Rafael López Aliaga lidera con 17,2% de votos válidos, seguido de Keiko Fujimori con 14,2%, Carlos Álvarez con 8,9% y César Acuña con 8,1%. Estas cuatro candidaturas suman menos del 50% entre sí. El 20% restante del electorado aún opta por el voto en blanco o nulo, cifra que es históricamente alta.</p>
+
+      <p>La comparación con 2021 es reveladora y no tranquiliza. En esa elección, Pedro Castillo pasó a segunda vuelta con el 19% de los votos en primera ronda. El sistema no ha cambiado lo suficiente para impedir que un candidato con apoyo minoritario acceda al ballotage. La barrera electoral fijada en 5% para partidos y 6% para alianzas no ha contenido la proliferación: en 2001 compitieron 8 partidos, en 2021 llegaron a 18, en 2026 son 36. La lógica es perversa pero coherente: en un sistema tan fragmentado, un partido pequeño puede ingresar al Congreso con apenas el 5% de los votos, lo que incentiva la atomización en lugar de la coalición. El resultado previsible, según el análisis del Real Instituto Elcano, es que quien gane en abril lo hará con una base tan estrecha que su legitimidad de ejercicio quedará comprometida desde el primer día.</p>
+
+      <p>El antivoto complica aún más el panorama. Keiko Fujimori figura como posible candidata a entrar al ballotage por cuarta vez consecutiva, pero también lidera el antivoto con 54%, según IEP. López Aliaga concentra su apoyo en Lima —23,1% en la capital, 6,8% en el Perú rural— lo que lo convierte en un candidato estructuralmente débil en segunda vuelta frente a cualquier rival con implantación territorial. El fenómeno más llamativo de las últimas semanas es Wolfgang Grozo, candidato que en febrero tenía 0,6% y en los primeros días de marzo superó el 4%, con un 12,4% entre jóvenes de 18 a 24 años —la misma generación que en su mayoría declara no querer votar por nadie.</p>
+
+      <p>El dato más revelador del estado de la democracia peruana no está en los primeros puestos de las encuestas sino en el bloque que no elige a nadie. El 27% que en marzo prefiere el voto blanco o ningún candidato —más alto en jóvenes, más alto en el sur, más alto entre quienes tienen educación superior— no es indiferencia. Es un juicio político. El 40% dice que solo irá a votar por cumplir. El 65% declara preferir un outsider, pero los outsiders del ciclo —López Aliaga, Fujimori, Acuña— llevan décadas en el sistema que dicen rechazar.</p>
+
+      <h2 class="article-section-heading">La vacancia como rutina</h2>
+
+      <p>Para entender por qué el electorado peruano llega a estas elecciones con una mezcla de hartazgo y resignación, hay que entender lo que ha pasado en el Palacio de Gobierno en los últimos diez años. Desde 2016, Perú ha tenido a Pedro Pablo Kuczynski, Martín Vizcarra, Manuel Merino, Francisco Sagasti, Pedro Castillo, Dina Boluarte, José Jerí y José María Balcázar. Ocho presidentes. Ninguno completó un mandato de cinco años. La herramienta principal ha sido la vacancia por 'incapacidad moral permanente', una figura que la Constitución de 1993 dejó deliberadamente ambigua y que el Congreso ha interpretado con una flexibilidad que en la práctica equivale a una moción de no confianza sin los requisitos formales de un sistema parlamentario.</p>
+
+      <p>La consecuencia más visible es que Perú tiene un sistema presidencialista que funciona como parlamentarismo de facto, pero sin sus salvaguardas. En un sistema parlamentario auténtico, el líder del partido con mayoría en la cámara forma gobierno; si pierde la confianza, cae el gobierno, no el Estado. En el sistema peruano, el presidente puede ser removido por simple mayoría del Congreso bajo una causal de contornos indefinidos, pero no existe el mecanismo de 'muerte cruzada' que permitiría al Ejecutivo convocar elecciones anticipadas en respuesta. Como señaló el analista Carlos Cabanillas tras la remoción de Jerí: no hay forma constitucional de resolver la crisis convocando elecciones. La única salida es esperar a las que ya estaban programadas.</p>
+
+      <p>Lo que hace este ciclo especialmente preocupante no es la inestabilidad en sí misma —Perú lleva años funcionando en modo crisis— sino la normalización. Cada nueva remoción eleva el umbral de lo que el sistema considera tolerable y reduce el costo político de la siguiente. Los mecanismos de censura y vacancia, formalmente distintos, han sido utilizados de forma superpuesta en la misma crisis —como ocurrió con Jerí—, exponiendo vacíos en el diseño institucional que ninguna reforma electoral ha abordado. El Congreso que viene, con 60 senadores y 130 diputados elegidos bajo voto preferencial entre 36 partidos, será más fragmentado que el actual. La arquitectura de la inestabilidad no desaparece el 12 de abril.</p>
+
+      <h2 class="article-section-heading">El bicameralismo contra la voluntad del pueblo</h2>
+
+      <p>Una de las pocas novedades institucionales de estas elecciones es también la más paradójica. El 6 de marzo de 2024, el Congreso reinstauró el bicameralismo —60 senadores en distrito único nacional, 130 diputados con las reglas proporcionales actuales— en flagrante contradicción con el referéndum de 2018, donde el 90% de los votantes había rechazado exactamente esa reforma. Los argumentos técnicos son razonables: un Senado en distrito único introduce un freno legislativo y reconstruye el vínculo de rendición de cuentas que la prohibición de reelección de 2018 destruyó. Pero una buena reforma en el momento equivocado puede producir el efecto contrario. Con 36 partidos y 10.000 candidatos parlamentarios, el nuevo Senado podría convertirse en otra arena de fragmentación, no en el cuerpo moderador que sus defensores imaginan. La primera elección bicameral desde 1990 ocurrirá en el peor momento posible para probar esa hipótesis.</p>
+
+      <h2 class="article-section-heading">La economía que resiste y los problemas que no</h2>
+
+      <p>En ningún otro país de América Latina se ha producido una inestabilidad presidencial comparable sin que el sistema económico colapsara. Nueve presidentes en diez años, sin crisis financiera. No es accidente: un banco central independiente bajo Julio Velarde, reservas sólidas, deuda moderada, y el cobre —del que Perú es segundo productor mundial— como ancla externa en cada tormenta. Goldman Sachs sitúa a Perú entre las economías latinoamericanas con mejores perspectivas de crecimiento para 2026. Coface señala que el dinamismo minero y el consumo privado —66% del PIB— han permitido navegar tormentas políticas que en otras latitudes habrían provocado crisis severas. La economía, paradójicamente, funciona bien a pesar de la política. Pero el déficit real se acerca al 4,1% del PIB —el doble de la cifra oficial—, y quien asuma en julio heredará ese descuadre más las presiones de gasto electoral acumuladas.</p>
+
+      <p>Los costos más profundos de la inestabilidad no aparecen en el tipo de cambio ni en las reservas del BCRP. Aparecen donde el Estado necesita continuidad para funcionar, y Perú lleva una década sin tenerla. El primero es la desigualdad. El coeficiente de Gini se ha mantenido entre 0,40 y 0,43 sin mejora significativa pese al crecimiento: el 20% más pobre recibe el 4% del ingreso nacional, el gasto social per cápita sigue siendo uno de los más bajos de la región, y ningún gobierno desde 2016 completó un ciclo de presupuesto completo con la misma coalición que lo inició. Las reformas redistributivas estructurales requieren horizonte de cuatro años. Ningún presidente llegó a tenerlo. La informalidad laboral —70,9% nacional, 94,6% en el campo— es el resultado más visible de esa discontinuidad: cada gobierno anuncia un plan de formalización, cada remoción presidencial lo archiva.</p>
+
+      <p>El segundo costo es la inseguridad. Los homicidios crecieron 35,9% en 2024 —la mayor alza proporcional de América Latina ese año—, con 2.509 casos y una tasa que pasó de 8,6 a 10,1 por 100.000 habitantes. Lima registró 1.012 homicidios, un aumento del 28% respecto a 2023. El 81,5% de las víctimas de delitos no denuncia. Ninguno de los nueve presidentes pudo sostener una política de seguridad durante más de dos años: los planes se diseñan, se anuncian y se archivan con el siguiente cambio de gabinete. El tercero, y el más difícil de revertir, es el narcotráfico. Perú es el segundo productor mundial de cocaína, con 89.755 hectáreas de coca en 2024 y récord de incautaciones de 165 toneladas ese año. El VRAEM y los valles cocaleros son territorios donde el Estado llega tarde y mal, y el crimen organizado —vinculado a redes mexicanas, brasileras y albanesas— tiene presencia permanente. La estrategia antinarcóticos exige coordinación interinstitucional sostenida entre las fuerzas de seguridad, el Ministerio Público y los gobiernos regionales. En Perú, esa coordinación se reinicia con cada cambio presidencial. Y los cambios no dejan de multiplicarse.</p>
+
+      <h2 class="article-section-heading">El presidente número diez y lo que no cambia</h2>
+
+      <p>Quien gane el 12 de abril asumirá el 28 de julio ante un Congreso bicameral donde ningún partido tendrá mayoría, con un déficit fiscal real que dobla la cifra oficial, con homicidios que crecen a tasas que duplican el promedio regional, con el narco consolidado en territorios donde el Estado llega tarde y mal, con el 70% de la fuerza laboral en la informalidad, y con los mecanismos de remoción presidencial intactos —disponibles, como siempre, para el siguiente ciclo. Daniel Zovatto, politólogo y director regional del IDEA Internacional para América Latina y el Caribe, actualiza la pregunta de Vargas Llosa con precisión: ya no es cuándo se jodió el Perú, sino cuánto tiempo puede seguir jodiéndose sin que su economía deje de ser suficiente para sostener una democracia cada vez más frágil. La diferencia entre ambas formulaciones no es retórica. La primera busca el origen del colapso. La segunda asume que el colapso es un proceso en curso y pregunta cuándo llegará al punto de no retorno.</p>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <span class="footer-copy">© 2026 Eddie Would Go. Todos los derechos reservados.</span>
+    <div class="footer-social">
+      <a href="https://x.com/eddiewgpolicy" target="_blank">Twitter</a>
+      <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank">Instagram</a>
+    </div>
+  </footer>
+
+</body>
+</html>

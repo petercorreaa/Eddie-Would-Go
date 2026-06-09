@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>La revolución se come a su hijo predilecto — Eddie Would Go</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; }
+    img { max-width: 100%; height: auto; }
+
+    :root {
+      --blue: #C4622D;
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e0e0e0;
+      --gray-400: #999;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: var(--white);
+      border-bottom: 1px solid var(--black);
+    }
+    .nav-left { display: flex; align-items: center; gap: 12px; }
+    .nav-logo img { height: 40px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--black);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    .article-page { margin-top: 64px; }
+    .article-header { padding: 64px 48px 0; }
+
+    .article-category-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 16px;
+    }
+
+    .article-header-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      line-height: 1.5;
+      color: #444;
+      margin-bottom: 24px;
+      max-width: 820px;
+    }
+
+    .article-page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    .article-hero {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      padding: 0 48px 48px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .article-cover {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--gray-200);
+      overflow: hidden;
+    }
+    .article-cover img { width: 100%; height: 100%; object-fit: cover; }
+
+    .article-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 24px;
+      padding-bottom: 8px;
+    }
+
+    .article-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--black);
+    }
+
+    .article-author-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .article-meta-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-top: 4px;
+    }
+
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 32px 96px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #1a1a1a;
+    }
+    .article-body p { margin-bottom: 1.6em; }
+
+    .article-blockquote {
+      border-left: 3px solid var(--blue);
+      margin: 0 0 2em 0;
+      padding: 16px 0 16px 32px;
+    }
+    .article-blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      margin-bottom: 0.75em;
+      color: #1a1a1a;
+    }
+    .article-blockquote cite {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      font-style: normal;
+    }
+
+    .article-section-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 2.5em 0 0.8em;
+      color: var(--blue);
+    }
+
+    .back-link {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding: 48px 48px 0;
+      margin-top: 64px;
+      transition: opacity var(--transition);
+    }
+    .back-link:hover { opacity: 0.5; }
+
+    footer {
+      border-top: 1px solid var(--black);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-copy { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-400); }
+    .footer-social { display: flex; gap: 20px; }
+    .footer-social a { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-400); text-decoration: none; }
+    .footer-social a:hover { color: var(--black); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .nav-links { display: none; }
+      .article-header { padding: 32px 16px 0; }
+      .article-header-subtitle { font-size: 1.05rem; }
+      .article-page-title { font-size: clamp(2rem, 9vw, 3.5rem); margin-bottom: 32px; }
+      .article-hero { grid-template-columns: 1fr; gap: 24px; padding: 0 16px 32px; }
+      .article-sidebar { padding: 0; }
+      .article-body { padding: 48px 16px 64px; }
+      .article-blockquote { padding: 12px 0 12px 20px; }
+      .back-link { padding: 32px 16px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-left">
+      <a href="/" class="nav-logo"><img src="/EWG_Logo.jpg" alt="EWG Logo"></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Política</a></li>
+      <li><a href="/">Sobre Nosotros</a></li>
+    </ul>
+    <div style="width:80px"></div>
+  </nav>
+
+  <div class="article-page">
+
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <div class="article-header">
+      <div class="article-category-tag">Política &nbsp;·&nbsp; Derecho &nbsp;·&nbsp; Comercio &nbsp;·&nbsp; 12 min de lectura</div>
+      <h1 class="article-page-title">La revolución se come a su hijo predilecto</h1>
+    </div>
+
+    <div class="article-hero">
+      <div class="article-cover">
+        <img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'"
+          src="https://images.unsplash.com/photo-1605732562084-f528a2154616?q=80&w=2340&auto=format&fit=crop"
+          alt="La revolución se come a su hijo predilecto"
+          style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="article-sidebar">
+        <p class="article-subtitle">La revolución conservadora que transformó la Corte Suprema para desmantelar el Estado administrativo es ahora el principal obstáculo para la política comercial de Trump. La ironía es estructural, y sus consecuencias van mucho más allá de los aranceles.</p>
+        <div>
+          <div class="article-author-name">The Eddie</div>
+          <div class="article-meta-line">20 de mayo de 2026 &nbsp;·&nbsp; Política &nbsp;·&nbsp; Derecho &nbsp;·&nbsp; Comercio</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <blockquote class="article-blockquote">
+        <p>«Las revoluciones que triunfan crean las cadenas que sus sucesores no pueden romper.»</p>
+        <cite>— Alexis de Tocqueville, La democracia en América (1835)</cite>
+      </blockquote>
+
+      <p>El regreso de Donald Trump al epicentro del debate comercial estadounidense no es una repetición de su primer mandato. Es una secuela en un escenario donde las reglas del teatro judicial han cambiado profundamente. El autodenominado "Tariff Man" proyecta una agenda de aranceles universales y agresivos, pero se topa con una paradoja que en 2018 no existía: la misma revolución conservadora que transformó la Corte Suprema para desmantelar el "Estado administrativo" es ahora el principal obstáculo para la discrecionalidad comercial del Ejecutivo. Si en el primer mandato la voluntad presidencial navegaba en aguas judiciales movidas pero algo más calmas, hoy la administración se asemeja a un capitán que pretende imponer un bloqueo con una flota cuya cadena de mando ha sido fragmentada por sus propios tribunales.</p>
+
+      <p>La tensión ya no es solo política o macroeconómica, sino constitucional: el choque entre una visión imperial de la presidencia en el comercio exterior y un poder judicial que ha decidido reclamar su papel como intérprete final de la ley, y en consecuencia empoderar al poder legislativo en el proceso. Para entender por qué la política arancelaria de Trump es más frágil de lo que parece, hay que entender qué ocurrió con la llamada deferencia Chevron, y por qué su desaparición lo cambia todo.</p>
+
+      <h2 class="article-section-heading">El fin de Chevron y lo que dejó en su lugar</h2>
+
+      <p>Durante cuatro décadas, la "deferencia Chevron" fue el lubricante que permitió a las agencias técnicas —entre ellas la Oficina del Representante Comercial, el USTR— maniobrar en las zonas grises de los estatutos comerciales. El principio era simple: cuando la ley era ambigua, los jueces debían deferir a la interpretación de la agencia experta, no sustituirla con la propia. Ese principio murió en 2024 con la sentencia en <em>Loper Bright Enterprises v. Raimondo</em>. La Corte Suprema eliminó la obligación de los jueces de aceptar interpretaciones razonables de leyes ambiguas e instauró un estándar de revisión independiente de las cuestiones legales.</p>
+
+      <p>Para el USTR, el impacto es sísmico. Las leyes comerciales estadounidenses fueron redactadas, deliberadamente, con una ambigüedad que permitiera flexibilidad diplomática. Esa ambigüedad era el margen de maniobra. Ahora ese margen ha desaparecido: es un juez —y no un especialista en política comercial— quien decide si un vacío legal permite o no la imposición de una tasa. Cada propuesta de arancel se convierte en un proceso vulnerable al escrutinio judicial estricto. Lo que antes tomaba semanas de tramitación administrativa puede quedar suspendido por una medida cautelar federal en cuestión de días.</p>
+
+      <h2 class="article-section-heading">La Sección 301 y sus costuras expuestas</h2>
+
+      <p>La Corte de Comercio Internacional ha dejado de ser un espectador pasivo para convertirse en el árbitro de la validez procedimental de los instrumentos arancelarios más usados por la administración. El litigio sobre las denominadas Listas 3 y 4A —que afectaron a productos chinos por valor de cientos de miles de millones de dólares bajo la Sección 301 de la Ley de Comercio de 1974— expuso las costuras del poder ejecutivo de manera que en el primer mandato habrían sido impensables.</p>
+
+      <p>Los tribunales identificaron tres vulnerabilidades específicas. La primera es procedimental: bajo la Ley de Procedimiento Administrativo, la Corte determinó que el USTR no respondió adecuadamente a los más de 28.000 comentarios públicos recibidos durante la tramitación de los aranceles, lo que invalida la presunción de legalidad de la medida. La segunda es sustantiva: se ha cuestionado la capacidad del Ejecutivo para añadir productos de forma discrecional sin investigaciones que justifiquen el vínculo causal con las prácticas desleales originales. La tercera es la más relevante políticamente: los tribunales ya no aceptan que la mera mención a la política exterior o la seguridad nacional blinde automáticamente una decisión arancelaria. El fondo de la política sigue siendo prerrogativa presidencial. El procedimiento es ahora plenamente justiciable.</p>
+
+      <h2 class="article-section-heading">La IEEPA: el último recurso y sus límites</h2>
+
+      <p>Ante el asedio judicial a las herramientas ordinarias, el Ejecutivo se ve tentado a recurrir a la Ley de Poderes Económicos por Emergencia Internacional, la IEEPA. Diseñada para situaciones de crisis extrema, otorga poderes de alcance casi total sobre el comercio exterior una vez declarada una emergencia nacional. Es, en la práctica, el último refugio del activismo presidencial en materia comercial.</p>
+
+      <p>Pero la IEEPA tampoco es inmune al nuevo clima legal. La llamada Doctrina de las Cuestiones Mayores —desarrollada por la misma Corte Suprema conservadora— establece que cuando una decisión de emergencia tiene un impacto económico vasto y carece de una delegación legislativa suficientemente clara del Congreso, los tribunales pueden intervenir. En otras palabras: usar la IEEPA de manera sistemática para eludir los controles comerciales ordinarios invita a una colisión constitucional sin precedentes. La opción nuclear tiene su propio código de activación, y los tribunales ahora controlan parte de ese código.</p>
+
+      <p>El resultado práctico es una jerarquía de vulnerabilidad que cualquier estratega comercial debe tener en cuenta. La Sección 301 es la herramienta más expuesta: enfrenta revisión judicial exhaustiva y exigencia de justificación razonada bajo la Ley de Procedimiento Administrativo. La Sección 232 —que permite aranceles por razones de seguridad nacional— es algo más robusta, pero los tribunales han empezado a cuestionar las definiciones expansivas de seguridad que van más allá de lo estrictamente militar. La IEEPA es la más protegida, pero precisamente por eso, su uso sistemático para eludir las otras vías acumula el mayor riesgo político y constitucional de largo plazo.</p>
+
+      <h2 class="article-section-heading">Lo que esto significa más allá de las fronteras</h2>
+
+      <p>La fricción entre el despacho oval y los tribunales de Washington no es un asunto doméstico. En el gran tablero de la competencia con China, la fragmentación del poder interno erosiona la capacidad de disuasión de Estados Unidos de una manera que ningún arancel puede compensar. Si Pekín o Bruselas calculan que un arancel anunciado por el presidente puede ser suspendido por una medida cautelar en una corte federal, la eficacia del arancel como moneda de cambio en una negociación se reduce drásticamente. La amenaza pierde credibilidad en el momento en que el adversario aprende a esperar el litigio.</p>
+
+      <p>Las consecuencias sistémicas van más lejos. La incertidumbre judicial hace que el desacoplamiento económico con rivales estratégicos —objetivo declarado de la política comercial— resulte caótico: las reglas cambian no por estrategia deliberada, sino por fallos imprevistos. El uso reiterado de leyes de emergencia para eludir el bloqueo judicial acelera, en el margen, la búsqueda de alternativas globales al sistema financiero estadounidense —exactamente el efecto contrario al que persigue la política de fortaleza del dólar. Y mientras Estados Unidos ignora el sistema de resolución de disputas de la OMC y su propio sistema doméstico se vuelve hiper-litigioso, el comercio global opera en un limbo normativo que beneficia, sobre todo, a quien menos necesita certeza jurídica.</p>
+
+      <h2 class="article-section-heading">La ironía final</h2>
+
+      <p>El futuro de la política comercial estadounidense ya no se decidirá exclusivamente por el instinto proteccionista del Ejecutivo. Se decidirá, en parte creciente, por la pericia técnica de sus letrados para navegar una judicatura que reclama su propio protagonismo. El fin de la deferencia Chevron es el acta de defunción de la era del cheque en blanco para las agencias comerciales.</p>
+
+      <p>El mejor caso para ver el impacto que esta decisión ha tenido es la relación con España, en medio del conflicto con Irán. La respuesta de Trump, frente a la negativa del gobierno español, antes de este fallo, uno podría suponer al presidente emitiendo tweets con aranceles a productos exportados por Madrid. Pero no fue así: amenaza con un extraño bloqueo comercial a España, que siendo parte de la UE tendría poca importancia. Pero esto demuestra el impacto del fallo y las restricciones que el fallo sobre Trump y política exterior.</p>
+
+      <p>La ironía es estructural y merece ser dicha con precisión: el movimiento conservador que durante décadas trabajó para recortar el poder de las agencias reguladoras federales logró su objetivo. Pero en el proceso, privó a su propio líder del margen de maniobra que esas agencias le proporcionaban. La misma revolución judicial que debía liberar al Ejecutivo conservador del Estado administrativo lo ató a un estándar de escrutinio que sus predecesores nunca enfrentaron. En la policrisis actual, el derecho ya no es un simple trámite burocrático. Es la frontera donde la ambición geopolítica encuentra sus límites. Y esa frontera la están fijando, con creciente precisión, los mismos jueces que el movimiento conservador instaló para hacer otra cosa.</p>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <span class="footer-copy">© 2026 Eddie Would Go. Todos los derechos reservados.</span>
+    <div class="footer-social">
+      <a href="https://x.com/eddiewgpolicy" target="_blank">Twitter</a>
+      <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank">Instagram</a>
+    </div>
+  </footer>
+
+</body>
+</html>

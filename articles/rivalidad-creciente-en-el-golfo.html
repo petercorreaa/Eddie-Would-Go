@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rivalidad creciente en el Golfo — Eddie Would Go</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; }
+    img { max-width: 100%; height: auto; }
+
+    :root {
+      --blue: #C4622D;
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e0e0e0;
+      --gray-400: #999;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: var(--white);
+      border-bottom: 1px solid var(--black);
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--black);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ─── ARTICLE PAGE ─── */
+    .article-page {
+      margin-top: 64px;
+    }
+
+    .article-header {
+      padding: 64px 48px 0;
+    }
+
+    .article-category-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 16px;
+    }
+
+    .article-page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    .article-hero {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      padding: 0 48px 48px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .article-cover {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--gray-200);
+      overflow: hidden;
+    }
+    .article-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .article-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 24px;
+      padding-bottom: 8px;
+    }
+
+    .article-author-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .article-meta-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-top: 4px;
+    }
+
+    /* ─── ARTICLE BODY ─── */
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 32px 96px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #1a1a1a;
+    }
+    .article-body p {
+      margin-bottom: 1.6em;
+    }
+    .article-blockquote {
+      border-left: 3px solid var(--blue);
+      margin: 0 0 2em 0;
+      padding: 16px 0 16px 32px;
+    }
+    .article-blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      margin-bottom: 0.75em;
+      color: #1a1a1a;
+    }
+    .article-blockquote cite {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      font-style: normal;
+    }
+    .article-section-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 2.5em 0 0.8em;
+      color: var(--blue);
+    }
+    .article-sources {
+      margin-top: 3em;
+      padding-top: 2em;
+      border-top: 1px solid var(--gray-200);
+      font-size: 0.78rem;
+      line-height: 1.7;
+      color: var(--gray-400);
+      letter-spacing: 0.02em;
+    }
+    .article-sources strong {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+    .article-sources + .article-sources {
+      margin-top: 1.5em;
+      padding-top: 1.5em;
+    }
+
+    /* ─── BACK LINK ─── */
+    .back-link {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding: 48px 48px 0;
+      margin-top: 64px;
+      transition: opacity var(--transition);
+    }
+    .back-link:hover { opacity: 0.5; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--black);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-copy {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+    }
+    .footer-social {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-social a {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      text-decoration: none;
+    }
+    .footer-social a:hover { color: var(--black); }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .nav-links { display: none; }
+      .article-header { padding: 32px 16px 0; }
+      .article-page-title { font-size: clamp(2rem, 9vw, 3.5rem); margin-bottom: 32px; }
+      .article-hero { grid-template-columns: 1fr; gap: 24px; padding: 0 16px 32px; }
+      .article-sidebar { padding: 0; }
+      .article-body { padding: 48px 16px 64px; }
+      .article-blockquote { padding: 12px 0 12px 20px; }
+      .back-link { padding: 32px 16px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <a href="/" class="nav-logo">
+        <img src="/EWG_Logo.jpg" alt="EWG Logo">
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Política</a></li>
+      <li><a href="/">Sobre Nosotros</a></li>
+    </ul>
+    <div style="width:80px"></div>
+  </nav>
+
+  <div class="article-page">
+
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <div class="article-header">
+      <div class="article-category-tag">G E O P O L Í T I C A &nbsp;·&nbsp; E N E R G Í A &nbsp;·&nbsp; G O L F O &nbsp;P É R S I C O &nbsp;·&nbsp; 20 min de lectura</div>
+      <h1 class="article-page-title">Rivalidad creciente en el Golfo.</h1>
+    </div>
+
+    <div class="article-hero">
+      <div class="article-cover">
+        <img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'"
+          src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2340&auto=format&fit=crop"
+          alt="Rivalidad creciente en el Golfo"
+          style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="article-sidebar">
+        <div>
+          <div class="article-author-name">The Eddie</div>
+          <div class="article-meta-line">Abu Dhabi &nbsp;·&nbsp; Mayo 2026 &nbsp;·&nbsp; Geopolítica &nbsp;·&nbsp; Energía &nbsp;·&nbsp; Golfo Pérsico</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <blockquote class="article-blockquote">
+        <p>«A fin de que no se desvanezca nuestro libre albedrío, acepto por cierto que la fortuna sea juez de la mitad de nuestras acciones, pero que nos deja gobernar la otra mitad, o poco menos.»</p>
+        <cite>— Nicolás Maquiavelo, El Príncipe, Capítulo XXV</cite>
+      </blockquote>
+
+      <p>En la noche del 28 de febrero de 2026, cuando los primeros misiles de la Operación Epic Fury cruzaban el cielo de Teherán, una luz distinta encendió las pantallas de las salas de crisis de Abu Dhabi. No era la luz del incendio, aunque Irán ardía. Era la luz fría de los modelos de producción petrolera, actualizados en tiempo real por los ingenieros de ADNOC. Mohamed bin Zayed, el hombre que durante una década había construido el estado más sofisticado del mundo árabe, miraba dos números con concentración: 4,8 millones de barriles de capacidad diaria. 3,2 millones de cuota OPEP. La diferencia entre ambos —1,6 millones de barriles, equivalente al PIB energético de Ecuador— era su prisionero. Y ahora, mientras el mundo ardía, la celda tenía la puerta abierta.</p>
+
+      <p>El 28 de abril, los EAU anunciaron su salida de la OPEP y de la OPEP+ con efecto inmediato. El ministro de energía, Suhail Al Mazrouei, lo comunicó sin consultar a Riad. "Es una decisión soberana nacional", dijo. Traducido del lenguaje diplomático del Golfo: Mohammed bin Salman se enteró a través de los diarios.</p>
+
+      <p>Pero este movimiento no surgió de la noche a la mañana. Fue el último acto visible de una fractura que se cocinó durante años en cuatro campos de batalla árabes: Yemen, Sudán, Libia y el Cuerno de África. En cada uno de esos conflictos, los EAU y Arabia Saudita terminaron apoyando a partes distintas. El choque geopolítico acumulado ha horado la relación estratégica hasta volverla irreconocible. La salida de la OPEP no fue una ruptura; fue el certificado de defunción de una alineación que llevaba tiempo muerta.</p>
+
+      <h2 class="article-section-heading">El timing perfecto</h2>
+
+      <p>Hay una crueldad elegante en el momento elegido. El Estrecho de Ormuz, por donde transita un quinto del petróleo mundial, lleva semanas cerrado. Las exportaciones del Golfo están estranguladas. La producción de la OPEP se desplomó un 27 por ciento en marzo —7,88 millones de barriles por día menos, una contracción que supera el embargo de 1973 y la guerra del Golfo de 1991. En ese contexto, la salida emiratí tiene un impacto de mercado nulo hoy. Los analistas de Rystad lo dijeron sin ambigüedades: con el estrecho clausurado, todos están igualmente prisioneros. Irse ahora cuesta cero.</p>
+
+      <p>Pero cuando Ormuz reabra, los EAU estarán del otro lado de la línea de llegada. Libres. Con una meta de 5 millones de barriles diarios para 2027, sin cuota, sin veto, sin la interminable diplomacia de comité que ha definido sus últimas dos décadas en el cartel. Al Mazrouei se lo dijo a CNN: "Cuando el conflicto termine, esperamos producir todo lo que podamos."</p>
+
+      <blockquote class="article-blockquote">
+        <p>"Waiting your turn inside a quota system starts to look like leaving money on the table."</p>
+        <cite>— Jorge León, Rystad Energy</cite>
+      </blockquote>
+
+      <h2 class="article-section-heading">La fractura que se venía cocinando</h2>
+
+      <p>Para entender lo que pasó, hay que retroceder más allá de diciembre. La fractura entre MBZ y MBS no nació del petróleo. Nació de una diferencia ideológica sobre qué tipo de orden regional querían construir, y esa diferencia se manifestó primero en las guerras que otros peleaban por su cuenta.</p>
+
+      <p>El politólogo Guido Steinberg, del Instituto Alemán para Asuntos Internacionales y de Seguridad, lo formuló con precisión: la Primavera Árabe de 2011 fue el año en que Abu Dhabi decidió que no podía depender de Washington —ni de Riad— para proteger su orden regional. Los ganadores electorales del caos eran, en todos los casos, los movimientos de islam político. En Egipto, la Hermandad Musulmana. En Túnez, Ennahda. En Libia, fracciones ligadas a la misma red. En Yemen, el partido Islah. Para Abu Dhabi, el islam político organizado era la principal amenaza existencial. No por razones teológicas, sino por razones de poder: los movimientos de la Hermandad ofrecen un modelo alternativo de legitimidad que no depende de la riqueza petrolera ni de las casas reales.</p>
+
+      <p>Arabia Saudita tiene su propia versión del Islam político —el wahabismo de Estado— y oscila entre la represión y la cooptación de la Hermandad según las circunstancias. Qatar, en el extremo opuesto, la financia activamente y la utiliza como instrumento de influencia. Los Emiratos la persiguen sin contemplaciones, en cualquier país, bajo cualquier bandera. Esta obsesión es el motor que explica por qué Abu Dhabi termina apoyando a los mismos perfiles de actores —militares laicos, señores de la guerra secesionistas, fuerzas paramilitares— en conflictos tan distintos como Libia, Yemen, Sudán y el Cuerno de África y muchas veces en conjunto con Israel.</p>
+
+      <p>El Dr. Andreas Krieg, de King's College London, lo conceptualiza como el "eje de secesionistas" emiratí: una red de actores no estatales —milicias, paramilitares, fuerzas secesionistas— que operan como avanzadas de Abu Dhabi en países de valor estratégico. El espejo del "eje de resistencia" iraní, pero sin retórica religiosa y con un objetivo más mercantilista: controlar los puntos de paso del comercio global. El objetivo no es exportar una ideología. Es exportar una geografía favorable.</p>
+
+      <p>Hay también otro alineamiento que subyace a toda esta arquitectura, y que Arabia Saudita no comparte de la misma manera: la relación con Israel. Ningún país del Golfo tiene vínculos tan profundos con Tel Aviv como los de los EAU. No solo fueron algunos de los principales impulsores de los Acuerdos de Abraham; también intercambian inteligencia, equipamiento militar y tecnología de vigilancia de forma rutinaria. Ese eje Abu Dhabi-Tel Aviv define una visión del orden regional —secular, antiislamista, prooccidental en lo transaccional— que Riad nunca abrazó del todo, y que después del 7 de octubre de 2023 y la guerra en Gaza se volvió aún más difícil de sostener públicamente.</p>
+
+      <p>Hay que ser cuidadosos en el análisis. La fractura entre Arabia Saudita y los EAU no es una ruptura. Es el fin del alineamiento directo y el comienzo de una competencia abierta por la primacía en la Península Arábiga. Históricamente, Arabia Saudita ha tenido una posición dominante en el Consejo de Cooperación del Golfo por su población, su tamaño económico y su dominio en la producción petrolera. Ese es el estatus que Abu Dhabi intenta erosionar. Pero el cisma total es imposible: las relaciones tribales, religiosas, de infraestructura y geográficas entre los países del Golfo son demasiado densas para romperse. El intento fallido de bloquear a Qatar en 2017 —impulsado por el propio MBZ y MBS— es el mejor ejemplo de los límites de estas estrategias.</p>
+
+      <p>Lo que hay, entonces, no es una guerra entre Abu Dhabi y Riad. Es una carrera. Y esa carrera puede verse en cuatro conflictos que funcionan como espejos de la divergencia.</p>
+
+      <h2 class="article-section-heading">Yemen: el puerto es el premio</h2>
+
+      <p>La historia del conflicto en Yemen es larga y enormemente compleja, y no es la primera vez que países de Medio Oriente intervienen allí con resultados mixtos —el caso más conocido es el del Egipto de Nasser en los años sesenta. En síntesis: en el territorio de Yemen existían dos países que se unificaron en 1990 y que, tras la Primavera Árabe, desembocaron en una rebelión de los huzíes —clanes de mayoría chií que respondían al asesinado líder Hussein Badreddin al-Houthi—. El movimiento derrocó al gobierno en Saná, buscó apoyo en Irán y comenzó a amenazar con drones a Arabia Saudita y al resto del Golfo. En consecuencia, Arabia Saudita y los EAU lanzaron en 2015 una operación conjunta en apoyo al gobierno reconocido por las Naciones Unidas. La operación no alcanzó sus objetivos y terminó en un acuerdo de convivencia entre todos los combatientes.</p>
+
+      <p>Pero aquí empieza la divergencia.</p>
+
+      <p>Arabia Saudita quería restaurar al gobierno de Abd Rabbuh Mansur Hadi y, con ello, un Yemen unificado y manejable en su frontera sur. Los Emiratos querían otra cosa: los puertos. Específicamente, el control de la costa sur —Adén, Mukalla, Balhaf— y la posición estratégica en el Estrecho de Bab el-Mandeb, por donde transita alrededor del 10% del comercio marítimo global.</p>
+
+      <p>Para lograrlo, financiaron y armaron al Consejo de Transición del Sur (CTS), una fuerza secesionista que no reconoce al gobierno de Hadi y que funciona como la versión yemení de la estrategia emiratí en otros conflictos: un actor no estatal que convierte los intereses de Abu Dhabi en una causa local plausible. El CTS no solo controla Adén; también permite a Abu Dhabi Ports y DP World gestionar o aspirar a gestionar las instalaciones portuarias del sur. Según investigaciones de Middle East Eye y del panel de expertos de la ONU, la compañía emiratí también accede a la infraestructura energética en Balhaf y a los campos petrolíferos de Masila, cuyo crudo llega al mercado global a través de redes de traders con base en Dubái.</p>
+
+      <p>La fractura con Riad llegó en 2019, cuando el CTS tomó Adén por las armas, desafiando al gobierno que Arabia Saudita protegía. Los saudíes acusaron a los emiratíes de socavar la coalición. En diciembre de 2025, Arabia Saudita bombardeó lo que describió como un cargamento de armas destinado a los separatistas yemeníes apoyados por Abu Dhabi. No fue un accidente. Fue un mensaje.</p>
+
+      <p>La lógica emiratí es contundente: no necesitan ganar la guerra en Yemen. Necesitan que el CTS controle la costa. Eso es suficiente. La ironía del desenlace es que la prolongación del conflicto fortaleció a los hutíes lo suficiente como para que, desde 2023, sus ataques con drones y misiles convirtieran el Mar Rojo en una zona de riesgo para el comercio global. El hombre que quería controlar las rutas marítimas contribuyó, en parte, a que alguien más las cerrara antes.</p>
+
+      <h2 class="article-section-heading">Sudán: el oro y la sangre</h2>
+
+      <p>El caso sudanés es más claro en su anatomía. Tras el golpe que derrocó la breve experiencia democrática post-Bashir, una alianza entre el Ejército sudanés convencional y las Fuerzas de Apoyo Rápido (RSF) tomó el poder. Las RSF son la formalización y profesionalización de las milicias janjaweed —desarrolladas por el dictador Omar al-Bashir para reprimir y llevar a cabo limpiezas étnicas en Darfur y en el conflicto con Sudán del Sur. Los choques por el control del poder derivaron en la guerra civil de 2023.</p>
+
+      <p>La conexión entre Abu Dhabi y las RSF de Mohamed Hamdan Dagalo, apodado "Hemeti", precede al conflicto. Durante la campaña en Yemen, las RSF enviaron miles de combatientes a luchar bajo mando emiratí —mercenarios que se convirtieron en una fuente de ingresos clave para Hemeti y le permitieron construir un aparato militar autónomo dentro de Sudán. El trato era sencillo: los Emiratos pagaban en efectivo y entrenaban; Hemeti ganaba proyección regional.</p>
+
+      <p>Lo que añade un segundo nivel es el oro. Sudán es el tercer productor de oro de África. Las RSF controlan gran parte de las minas de Darfur y del Cordofán del Sur. Según investigaciones de Global Witness y el propio panel de la ONU, ese oro llega a los Emiratos —específicamente a Dubai— refinado y reexportado al mercado global. Las estimaciones superan las 90 toneladas anuales en el período 2017-2023, en gran parte de manera ilegal. Dubai, que no pregunta mucho, es el hub ideal.</p>
+
+      <p>Los EAU también tienen otros intereses en el país: la compra de tierras para explotaciones agrícolas, con el objetivo de dotar a la población emiratí de seguridad alimentaria, y posiciones en la cadena de exportación del petróleo sudanés.</p>
+
+      <p>Cuando estalló la guerra civil en abril de 2023, Arabia Saudita y Egipto apoyaron al gobierno reconocido internacionalmente y al ejército convencional. Turquía hizo lo propio. Los EAU siguieron con Hemeti —negándolo oficialmente, pero con documentación periodística sólida de envíos de armas a través de Chad y la República Centroafricana, aprovechando las mismas redes logísticas que operaron en Libia. El resultado humano es devastador: más de ocho millones de desplazados internos en 2024, la mayor crisis de desplazamiento del mundo, y escenas en Darfur que múltiples organismos han calificado de genocidio.</p>
+
+      <p>La divergencia árabe en Sudán es la más reveladora de todas: Arabia Saudita quiere un vecino funcional en el Mar Rojo. Los EAU quieren acceso a los recursos y a las costas, y ese acceso no requiere que el Estado sudanés funcione.</p>
+
+      <h2 class="article-section-heading">Libia: el laboratorio del modelo</h2>
+
+      <p>Libia fue el primer gran experimento y donde el guión emiratí quedó codificado. Cuando Gadafi cayó en 2011, los EAU apoyaron la intervención de la OTAN junto a Qatar. Mientras Doha apostaba por las milicias islamistas y el brazo libio de la Hermandad Musulmana, Abu Dhabi empezó a buscar su propia contrafigura.</p>
+
+      <p>La encontraron en Khalifa Haftar: un general retirado, exiliado en Virginia durante décadas, con credenciales anticomunistas y una animosidad feroz hacia el Islam político. Los Emiratos lo financiaron y lo armaron —en violación del embargo de armas de la ONU— y le proporcionaron drones de fabricación propia que se convirtieron en el arma decisiva de su Ejército Nacional Libio (LNA). Krieg documenta cómo Libia estableció el modelo que se replicará en Yemen y Sudán: seleccionar a un hombre fuerte y carismático, construir en torno a él un aparato militar y una cobertura política plausible, y vincular su existencia a la red financiera y logística emiratí.</p>
+
+      <p>Lo que el caso libio también reveló fue la grieta árabe en toda su dimensión. Qatar y Turquía financiaban al Gobierno de Acuerdo Nacional reconocido por la ONU, con sede en Trípoli. Arabia Saudita apoyaba a Haftar pero de forma más ambigua. Egipto, cuya relación con Abu Dhabi es casi de dependencia financiera desde el golpe de Estado de Sisi en 2013 —respaldado activamente por los Emiratos—, enviaba material y, según algunos reportes, fuerzas especiales. El resultado fue una guerra de proxies árabes contra árabes, financiada por petrodólares de ambos lados, que dejó a Libia partida en dos y sin un Estado funcional.</p>
+
+      <p>El dato que más incomoda a los análisis occidentales: según el informe de 2021 del panel de expertos de la ONU sobre Libia, las redes de mercenarios emiratíes en el país estaban conectadas a combatientes del Chad formados por el Grupo Wagner ruso, que también operaba en convergencia con Abu Dhabi. La muerte del presidente chadiano Idriss Déby fue perpetrada por rebeldes entrenados en Libia con nóminas emitidas por Emiratos Árabes Unidos. La geografía del caos que Abu Dhabi propaga no respeta fronteras.</p>
+
+      <h2 class="article-section-heading">Somalilandia: el puerto que reconoce sin reconocer</h2>
+
+      <p>Si los tres casos anteriores son guerras, Somalilandia es la versión más elegante de la estrategia emiratí: la conquista sin disparar.</p>
+
+      <p>Somalilandia es un Estado de facto en el noroeste de Somalia. Declaró su independencia en 1991, tiene elecciones regulares, una moneda propia y fuerzas armadas organizadas. Ningún Estado del mundo la reconoce formalmente. A Abu Dhabi no le importa.</p>
+
+      <p>En 2016, DP World —la empresa portuaria del gobierno emiratí— firmó un acuerdo de concesión de 30 años con Somalilandia para desarrollar el Puerto de Berbera por 442 millones de dólares. Berbera tiene una posición geográfica extraordinaria: frente al Golfo de Adén, a distancia estratégica del Estrecho de Bab el-Mandeb, y posicionada para convertirse en la alternativa al Puerto de Yibuti para Etiopía —125 millones de habitantes que dependen de ese único acceso al mar para más del 90% de su comercio exterior. En 2018, Etiopía se unió al acuerdo al adquirir el 19% de la participación.</p>
+
+      <p>Los académicos Brendon Cannon y Ash Rossiter documentaron cómo Etiopía maniobró activamente para desviar la atención de los EAU desde Eritrea —donde los EAU tenían una base militar en Assab desde 2015— hacia Berbera. Yibuti respondió nacionalizando el terminal que DP World operaba allí y entregándoselo a un operador chino. El movimiento reveló con claridad lo que estaba en juego: el control de la puerta de entrada al Cuerno de África, una de las regiones más transitadas del planeta en términos de tráfico marítimo.</p>
+
+      <p>Los EAU también tienen una presencia militar en el territorio —una base de entrenamiento para las fuerzas de Somalilandia— sin haber firmado ningún tratado de defensa con ningún Estado reconocido. No lo necesitan. Lo que Somalilandia les da es exactamente lo que buscan en cada uno de sus teatros: acceso a costas estratégicas sin la carga de gestionar la política interna del país que las alberga. El reconocimiento informal es suficiente. El control real, más que suficiente.</p>
+
+      <p>Aquí también hay una diferencia filosófica con Arabia Saudita, que habla de los dos modelos de potencia regional. Riad necesita estructuras estatales que respalden los contratos diplomáticos, las inversiones a largo plazo y las relaciones convencionales. Abu Dhabi opera con comodidad en el espacio gris entre la existencia y la inexistencia. Los Estados fallidos, los territorios no reconocidos, las zonas de guerra congelada: ese es su hábitat natural.</p>
+
+      <h2 class="article-section-heading">El hermano mayor ya no manda</h2>
+
+      <p>En las semanas finales de 2025, Arabia Saudita bombardeó lo que describió como un cargamento de armas con destino a los separatistas yemeníes apoyados por Abu Dhabi. No fue un accidente. Fue un mensaje. La alianza que ambos países habían forjado en torno a la guerra contra los hutíes —una guerra que, irónicamente, también los unió contra Irán— se quebró. Riad intentaba consolidar dos estados en Yemen; los EAU parecían buscar una situación de poder más difusa y el control de los puertos del país a través de sus aliados.</p>
+
+      <p>La fractura presenta una geometría precisa. Ante la Operación Epic Fury y la muerte del Ayatolá Alí Jamenei en los primeros bombardeos, Riad optó por una pausa estratégica. MBS observa hoy paralizado: el cierre de Ormuz amenaza el corazón de su Visión 2030, que depende de exportaciones estables y de presentar al reino como un hub logístico y financiero de clase mundial. Una interrupción prolongada del Estrecho no es un contratiempo; es una crisis existencial para el modelo saudita.</p>
+
+      <p>Abu Dhabi tomó la dirección opuesta. Los Emiratos recibieron impactos de misiles iraníes. El aeropuerto internacional de Dubái fue alcanzado por un dron el 16 de marzo, lo que provocó un incendio en un tanque de combustible y causó una interrupción global del tráfico aéreo. MBZ exige reparaciones, la reapertura incondicional de Ormuz y lo que los documentos internos describen como "una reversión integral del poder iraní." No es la retórica de quien busca el acuerdo. Es la posición de quien quiere rediseñar la arquitectura regional desde cero.</p>
+
+      <blockquote class="article-blockquote">
+        <p>"Abu Dhabi ha concluido que sus intereses se sirven mejor actuando como actor soberano que como miembro de un cartel."</p>
+        <cite>— Amir Handjani, Quincy Institute / Foreign Policy</cite>
+      </blockquote>
+
+      <p>La salida de la OPEP no se improvisó en dos semanas. Se construyó durante dos décadas. La tubería Abu Dhabi Crude Oil Pipeline, que conecta los campos orientales con el puerto de Fujairah en el Golfo de Omán, es la columna vertebral de la estrategia emiratí de independencia marítima. En condiciones normales, permite exportar 1,7 millones de barriles diarios eludiendo el Estrecho de Ormuz. Es, en términos estratégicos, el único bypass real para los productores del Golfo. Arabia Saudita tiene Yanbu en el Mar Rojo, pero su capacidad es inferior y depende de que los huzíes no lleguen más lejos. Los EAU tienen Fujairah.</p>
+
+      <p>El problema es de escala: 1,7 millones de barriles no alcanzan. La capacidad instalada de los EAU es de 4,8 millones. La brecha —más de 3 millones de barriles atrapados al este del Estrecho— explica tanto la urgencia de la salida como la apuesta a largo plazo. MBZ no está jugando este trimestre. Está apostando que, cuando Ormuz reabra y los EAU puedan liberar su capacidad plena, su posición como exportador independiente —sin la camisa de fuerza de las cuotas— los convierte en el árbitro marginal del mercado global de crudo.</p>
+
+      <p>Hay un contexto que complica este cálculo: los EAU tenían un historial de incumplimiento de sus propias cuotas de la OPEP, y el cartel, incluso en su versión OPEP+, se volvía cada vez menos relevante como árbitro único del mercado global. La revolución del shale oil norteamericano, y el surgimiento de nuevos productores —Guyana, Brasil, Argentina, Canadá— dejaron al cartel sin capacidad de determinar precios por sí solo. Irse de una institución que ya no manda tiene un costo político, pero no uno de mercado.</p>
+
+      <h2 class="article-section-heading">La ola más grande</h2>
+
+      <p>Hay una tentación de leer la salida de Emiratos de la OPEP como el gesto definitivo de un Estado que ha alcanzado su plenitud estratégica. El pequeño emirato que en 1971 apenas existía como unidad política coherente hoy tiene el corredor marítimo más estratégico del Golfo, la alianza tecnológica más sofisticada del mundo árabe con Israel, el sistema financiero más internacionalizado de la región y, ahora, la capacidad de producir petróleo sin pedir permiso a nadie.</p>
+
+      <p>Pero la arquitectura tiene grietas propias. En Sudán, el apoyo a las RSF lo dejó del lado equivocado de lo que múltiples organismos de la ONU califican de genocidio —sin posibilidad de una distancia plausible—. En Libia, la proliferación de armas emiratíes alimentó al Sahel y contribuyó, en una cadena documentada, a la muerte del presidente chadiano Idriss Déby. En Yemen, el fortalecimiento indirecto de los hutíes, como consecuencia de un conflicto sin solución política, terminó por cerrar, al menos parcialmente, las mismas rutas marítimas sobre las que Abu Dhabi construyó su estrategia para controlarlas.</p>
+
+      <p>Los analistas más lúcidos advierten que la misma arquitectura que hace a los EAU invulnerables en apariencia —redes de milicias, dependencias financieras, presencia en cinco teatros simultáneos, la lógica del Estado que puede coordinar operaciones en Sudán desde una oficina climatizada en Dubái— es, por naturaleza, difícil de sostener a lo largo del tiempo. Cuando caen las instituciones colectivas, el vacío no lo llena el actor más hábil: lo llena la entropía.</p>
+
+      <p>MBZ ha decidido, una vez más, que el riesgo de no ir es mayor que el de caer. Ha paddleado hacia afuera mientras todos miraban la tormenta desde la orilla. El Estrecho de Ormuz sigue cerrado. Irán negocia su colapso. Arabia Saudita recalcula su geografía económica. Y los Emiratos, con su cuota devuelta al cajón de la historia y sus ingenieros mirando los modelos de producción, esperan el momento en que el agua vuelva a calmarse para sacar lo más que puedan de su producción de crudo.</p>
+
+      <p>La pregunta no es si la ola existe. La pregunta es si alguien puede surfear una ola de esas dimensiones sin llevarse todo el sistema con élsigo.</p>
+
+      <div class="article-sources">
+        <strong>Fuentes académicas</strong>
+        Andreas Krieg (King's College London), "Surrogate Warfare" (2019) y "The UAE's Axis of Secessionists" (Middle East Eye, 2025); Guido Steinberg (SWP Berlin), "Regional Power United Arab Emirates" (2020); Giorgio Cafiero (Gulf State Analytics); Brendon J. Cannon &amp; Ash Rossiter, "Ethiopia, Berbera Port and the Shifting Balance of Power in the Horn of Africa" (2018); informes del panel de expertos de la ONU sobre Libia (2021-2024) y Sudán (2023-2025); Global Witness, "Gold and Guns" (2024); Jorge León, Rystad Energy; Amir Handjani, Quincy Institute.
+      </div>
+
+      <div class="article-sources">
+        <strong>Fuentes</strong>
+        Al Jazeera, Foreign Policy, Chatham House, CNBC, CNN, The Washington Post, Wikipedia / 2026 Strait of Hormuz crisis. Análisis basado en reportes publicados entre el 28 de abril y el 3 de mayo de 2026.
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">© 2026 Eddie Would Go. Todos los derechos reservados.</span>
+    <div class="footer-social">
+      <a href="https://x.com/eddiewgpolicy" target="_blank">Twitter</a>
+      <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank">Instagram</a>
+    </div>
+  </footer>
+
+</body>
+</html>

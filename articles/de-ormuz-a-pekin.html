@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>De Ormuz a Pekín — Eddie Would Go</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; }
+    img { max-width: 100%; height: auto; }
+
+    :root {
+      --blue: #C4622D;
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e0e0e0;
+      --gray-400: #999;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: var(--white);
+      border-bottom: 1px solid var(--black);
+    }
+    .nav-left { display: flex; align-items: center; gap: 12px; }
+    .nav-logo img { height: 40px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--black);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    .article-page { margin-top: 64px; }
+    .article-header { padding: 64px 48px 0; }
+
+    .article-category-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 12px;
+    }
+
+    .article-header-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      line-height: 1.45;
+      color: #444;
+      margin-bottom: 24px;
+      max-width: 860px;
+    }
+
+    .article-page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    .article-hero {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      padding: 0 48px 48px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .article-cover {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--gray-200);
+      overflow: hidden;
+    }
+    .article-cover img { width: 100%; height: 100%; object-fit: cover; }
+
+    .article-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 24px;
+      padding-bottom: 8px;
+    }
+
+    .article-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--black);
+    }
+
+    .article-author-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .article-meta-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-top: 4px;
+    }
+
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 32px 96px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #1a1a1a;
+    }
+    .article-body p { margin-bottom: 1.6em; }
+
+    .article-blockquote {
+      border-left: 3px solid var(--blue);
+      margin: 0 0 2em 0;
+      padding: 16px 0 16px 32px;
+    }
+    .article-blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      margin-bottom: 0.75em;
+      color: #1a1a1a;
+    }
+    .article-blockquote cite {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      font-style: normal;
+    }
+
+    .article-section-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 2.5em 0 0.8em;
+      color: var(--blue);
+    }
+
+    .inline-cite {
+      font-size: 0.72rem;
+      color: var(--gray-400);
+      letter-spacing: 0.01em;
+    }
+
+    .article-sources {
+      margin-top: 3em;
+      padding-top: 2em;
+      border-top: 1px solid var(--gray-200);
+      font-size: 0.78rem;
+      line-height: 1.9;
+      color: var(--gray-400);
+      letter-spacing: 0.02em;
+    }
+    .article-sources strong {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+
+    .back-link {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding: 48px 48px 0;
+      margin-top: 64px;
+      transition: opacity var(--transition);
+    }
+    .back-link:hover { opacity: 0.5; }
+
+    footer {
+      border-top: 1px solid var(--black);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-copy { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-400); }
+    .footer-social { display: flex; gap: 20px; }
+    .footer-social a { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-400); text-decoration: none; }
+    .footer-social a:hover { color: var(--black); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .nav-links { display: none; }
+      .article-header { padding: 32px 16px 0; }
+      .article-header-subtitle { font-size: 1.05rem; }
+      .article-page-title { font-size: clamp(2rem, 9vw, 3.5rem); margin-bottom: 32px; }
+      .article-hero { grid-template-columns: 1fr; gap: 24px; padding: 0 16px 32px; }
+      .article-sidebar { padding: 0; }
+      .article-body { padding: 48px 16px 64px; }
+      .article-blockquote { padding: 12px 0 12px 20px; }
+      .back-link { padding: 32px 16px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-left">
+      <a href="/" class="nav-logo"><img src="/EWG_Logo.jpg" alt="EWG Logo"></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Política</a></li>
+      <li><a href="/">Sobre Nosotros</a></li>
+    </ul>
+    <div style="width:80px"></div>
+  </nav>
+
+  <div class="article-page">
+
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <div class="article-header">
+      <div class="article-category-tag">Política &nbsp;·&nbsp; Energía &nbsp;·&nbsp; 35 min de lectura</div>
+      <p class="article-header-subtitle">Cómo la guerra de Irán está reordenando las dependencias energéticas del mundo</p>
+      <h1 class="article-page-title">De Ormuz a Pekín</h1>
+    </div>
+
+    <div class="article-hero">
+      <div class="article-cover">
+        <img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'"
+          src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2340&auto=format&fit=crop"
+          alt="De Ormuz a Pekín"
+          style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="article-sidebar">
+        <p class="article-subtitle">El cierre del Estrecho de Ormuz se presenta, en algunos círculos estratégicos, como un movimiento calculado para frenar el ascenso de China. Los datos de las primeras semanas sugieren exactamente lo contrario: la mayor disrupción energética de la historia moderna es el mejor argumento posible para la industria china de la tecnología limpia. Escapar del petróleo árabe tiene un precio. Y por ahora, ese precio se llama Pekín. Pero la historia rara vez se deja reducir a una sola ironía. Detrás de esa primera capa de análisis hay minerales, hay actores del Golfo que no figuran en el relato, y hay contradictorios que merecen más espacio del que normalmente reciben.</p>
+        <div>
+          <div class="article-author-name">The Eddie</div>
+          <div class="article-meta-line">27 de abril de 2026 &nbsp;·&nbsp; Política &nbsp;·&nbsp; Energía</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <blockquote class="article-blockquote">
+        <p>«La invencibilidad depende de uno mismo; la vulnerabilidad del enemigo depende de él.»</p>
+        <cite>— Sun Tzu, El arte de la guerra, Capítulo IV (Disposiciones tácticas)</cite>
+      </blockquote>
+
+      <p>El 28 de febrero de 2026, cuando los primeros misiles estadounidenses e israelíes golpearon instalaciones en territorio iraní, el barril de Brent cotizaba en torno a los 63 dólares. En menos de una semana había superado los 92. El cierre efectivo del Estrecho de Ormuz —por donde transita aproximadamente el 20% del petróleo y el gas natural licuado mundial— desencadenó lo que la Agencia Internacional de la Energía describió como «el mayor desafío de seguridad energética global de la historia».<span class="inline-cite">[7]</span> Las colas en las estaciones de servicio regresaron a Europa, más por miedo que por falta de suministro. En India, el gas licuado comenzó a escasear. Singapur y Corea del Sur lanzaron campañas de ahorro energético de emergencia. El mundo recordó, una vez más, hasta qué punto sigue atado a los combustibles fósiles.</p>
+
+      <p>En algunos despachos de Washington, el inicio del conflicto no solo generó urgencia. También generó cierta satisfacción estratégica. El argumento, circulado discretamente entre analistas afines a la administración Trump, era el siguiente: una disrupción severa del suministro de petróleo y gas natural licuado golpea de forma desproporcionada a China, el mayor importador mundial de ambos. Privar a Pekín de energía barata equivale a frenar sus fábricas y su crecimiento. Es, en suma, competencia geopolítica por otros medios. Mientras tanto los Estados Unidos, se ha convertido en una potencia de exportación de recursos fósiles.</p>
+
+      <p>Ocho semanas después del inicio del conflicto, los datos indican que ese cálculo estaba equivocado. No parcialmente: radicalmente. La guerra que algunos en Washington concibieron como un golpe al ascenso chino puede terminar siendo un gran catalizador del poder económico de Pekín. Pero este análisis no puede detenerse ahí. Porque la tesis del «electroestado chino como ganador neto» es tan seductora que corre el riesgo de replicar el mismo vicio que denuncia: sustituir un relato simple por otro relato simple. La realidad que emerge es más rica, más contradictoria y más incómoda que cualquiera de las dos narrativas en competencia.</p>
+
+      <p>La formulación más clara de la tesis dominante proviene del economista Paul Krugman, quien publicó a principios de abril un artículo titulado "Chinese Electrotech is the Big Winner in the Iran War".<span class="inline-cite">[1]</span> El argumento es, en apariencia, contraintuitivo: China es el mayor importador de petróleo del mundo. Un shock de oferta en los mercados del crudo debería golpear de lleno. Y sin embargo, Krugman sostiene que saldrá reforzada, porque la guerra de Irán funciona como un gigantesco anuncio publicitario para los productos que China fabrica mejor que nadie: paneles solares, baterías de iones de litio, vehículos eléctricos, turbinas eólicas.</p>
+
+      <p>La lógica es simple. Cuando el precio de los combustibles fósiles se dispara, la alternativa eléctrica se vuelve aún más atractiva. Los países más dependientes del petróleo y el gas importados tienen el incentivo más urgente para acelerar su transición. Sam Butler-Sloss, director de investigación de Ember, lo sintetiza con precisión: «Los altos precios fósiles impulsan el cambio, haciendo que el electrotech ya barato sea aún más competitivo». Con la electrificación, las naciones tienen por primera vez las herramientas para eliminar los combustibles importados por completo». Fatih Birol, director ejecutivo de la AIE, fue igual de directo ante The Guardian: el daño a la confianza en los combustibles fósiles «es permanente», con «consecuencias permanentes para los mercados energéticos globales».<span class="inline-cite">[3]</span></p>
+
+      <p>China a esto sumó una comprensión muy clara de sus limitaciones, debilidades y fortalezas, en los años de calma, Beijing se dotó de reservas de petróleo suficientemente robustas como para poder transitar esta crisis.</p>
+
+      <p>Los datos de las primeras semanas del conflicto corroboran las líneas principales de la tesis. Según Ember, las exportaciones chinas de tecnología solar alcanzaron un récord en el primer mes de la crisis.<span class="inline-cite">[11]</span> Las ventas al exterior de vehículos eléctricos e híbridos chinos crecieron un 140% respecto al año anterior, según la Asociación China de Vehículos de Pasajeros.<span class="inline-cite">[9]</span> Las exportaciones de baterías de iones de litio aumentaron un 50,4% en el primer trimestre de 2026.<span class="inline-cite">[12]</span> El ETF WilderHill Clean Energy subió un 118% en un solo mes.<span class="inline-cite">[14]</span> Los números, tomados en conjunto, dibujan una imagen coherente. El problema, como veremos, es que la imagen está incompleta.</p>
+
+      <h2 class="article-section-heading">El experimento español</h2>
+
+      <p>Para entender por qué la tesis tiene peso, conviene detenerse en el caso español como ejemplo. España no es solo un modelo de política energética renovable: es, en este momento, el experimento natural más claro de lo que significa haber apostado por la electrificación antes de que llegara el shock.</p>
+
+      <p>En 2019, el gas fijaba el precio de la electricidad española en el 75% de las horas del día. En 2026, esa cifra habrá caído al 15% —la reducción más pronunciada entre los grandes mercados europeos dependientes del gas—.<span class="inline-cite">[5]</span> El resultado es observable en los precios al contado: mientras Alemania e Italia pagan más de cien euros por megavatio-hora, España se mueve entre los 37 y los 57.<span class="inline-cite">[8]</span> Hay episodios en los que el precio cae a cero —o a valores negativos— durante las horas de mayor producción solar. Es la consecuencia directa de haber construido, con años de antelación, la infraestructura que hoy actúa como escudo, y de haber diversificado el suministro desde el Golfo Pérsico hacia el norte de África, en particular Argelia. España importa el 38% de su gas de Argelia, lo que la aisló parcialmente del shock más severo asociado al cierre del Estrecho.</p>
+
+      <p>El ministro de Economía, Carlos Cuerpo, lo resumió ante CNBC: España estaba «mejor preparada para esta crisis» gracias a la transición hacia las energías renovables, que había reducido su exposición al los shocks y aumentado su «soberanía energética».<span class="inline-cite">[6]</span> La frase merece citarse en su integridad porque captura algo importante: la transición energética no es solo una política climática. Es, en este contexto, una política de seguridad nacional. Cada megavatio de capacidad solar o eólica instalado antes del conflicto es, hoy, un escudo ante la volatilidad del Golfo Pérsico.</p>
+
+      <p>El patrón se repite más allá de España. Portugal y los países nórdicos registran los precios eléctricos más bajos de la Unión Europea desde el inicio del conflicto. Etiopía, que genera el 95% de su electricidad mediante la hidroeléctrica, está acelerando la transición a la movilidad eléctrica para reducir su dependencia del petróleo importado. Pakistán, que comenzó a importar masivamente paneles solares chinos hace tres años, ha absorbido el shock considerablemente mejor que sus vecinos.<span class="inline-cite">[9]</span> El mensaje es consistente: a mayor electrificación previa, menor es la vulnerabilidad al shock de los combustibles fósiles.</p>
+
+      <p>Y sin embargo, hay que resistir la tentación de universalizar el caso español. España reúne una combinación de condiciones que la hacen excepcionalmente resistente a este tipo de shock particular: geografía peninsular que limita la interconexión eléctrica con el resto de Europa —lo que, paradójicamente, la obligó a desarrollar autosuficiencia—, un mix energético con una penetración renovable sin parangón entre las grandes economías europeas, y una dependencia gasística que siempre se ha cubierto en mayor proporción con GNL argelino que con suministros del Golfo. La diferencia de setenta y cinco puntos porcentuales en la exposición al gas entre España e Italia no se observa en una semana: es el resultado de inversiones sostenidas durante más de una década. Presentar el caso español como la norma alcanzable es, cuando menos, apresurado.</p>
+
+      <h2 class="article-section-heading">El electroestado</h2>
+
+      <p>Si la tesis es correcta —si la guerra de Irán está acelerando estructuralmente la transición energética global— la pregunta geopolítica más relevante no es cuánto sube el barril de crudo. Es quien fabrica los sustitutos. Y la respuesta es, por incómoda que resulte: China.</p>
+
+      <p>No en parte. De forma aplastante. Según datos de Foreign Policy y la AIE, China controla más del 80% de la capacidad mundial de fabricación de paneles solares, turbinas eólicas y baterías.<span class="inline-cite">[11]</span> Procesa la gran mayoría de los minerales críticos necesarios para esas tecnologías. Más de la mitad de los automóviles vendidos en China en 2026 serán eléctricos —resultado de décadas de política industrial deliberada, orientada tanto a la seguridad energética como a la reducción de las emisiones de carbono—.<span class="inline-cite">[13]</span> Al igual que políticas de dumping de precios y estrategias de eliminación de competidores extranjeros que no poseen la espalda del gobierno de Beijing.</p>
+
+      <p>Ember, en un informe de diciembre de 2025, acuñó el término «electroestado» para describir a China como la primera gran economía en la que las tecnologías eléctricas se convirtieron en el motor dominante del crecimiento energético, y fue tajante en su diagnóstico: «China no está meramente fabricando hardware de electrotech. Está fabricando un futuro energético en el que ocupa una posición dominante».<span class="inline-cite">[11]</span></p>
+
+      <p>La analista Alicia García Herrero, de Bruegel, lo formuló con igual precisión: «China tiene mucho poder porque está protegida del shock mientras que el resto del mundo no lo está».<span class="inline-cite">[12]</span> La industria china de energías limpias —solar, baterías, vehículos eléctricos— representó más del 11% del PIB chino en 2025 y más de un tercio de su crecimiento. Según datos de Ember, en 2024 la inversión y la producción en energía limpia contribuyeron con el equivalente al 10% del PIB chino, y el sector creció tres veces más rápido que la economía en su conjunto. Las empresas chinas representan ya el 75% de las solicitudes mundiales de patentes en tecnología de energías limpias, frente al 5% en el año 2000. Para sostener esa expansión, China necesita demanda exterior. El shock de Irán se está produciendo de forma masiva e imprevista.</p>
+
+      <p>Al mismo tiempo que los Estados Unidos, y el gobierno de Trump, abandonan cualquier intento de mantenerse vigente o relevante en este proceso.</p>
+
+      <p>La reconfiguración geopolítica ya está en marcha. Canadá levantó parcialmente sus restricciones a los vehículos eléctricos chinos. Varios líderes europeos viajaron a Pekín para suscribir acuerdos de cooperación en materia de energía limpia. «China ha pasado de ser percibida como un proveedor barato a ser tratada como un socio estratégico a largo plazo en la transición energética», escribió Jeong Won Kim, del Instituto de Estudios Energéticos de la Universidad Nacional de Singapur.<span class="inline-cite">[9]</span></p>
+
+      <p>El analista Zhao Xiuye, de China-US Focus, lo formula así: «Para los países dependientes del petróleo importado, las disrupciones en el suministro global de energía han hecho que la estrategia de energías renovables de China resulte más atractiva».<span class="inline-cite">[16]</span> Foreign Policy añade un elemento que complica aún más el cuadro: al iniciar la guerra sin consultar a sus aliados, Washington ha reforzado la percepción de que Estados Unidos es hoy la mayor fuente de volatilidad geopolítica, mientras que China se presenta como un socio comercial más estable. La conclusión que se desprende de ese análisis es incómoda: «la guerra que algunos concibieron como un golpe al ascenso chino puede terminar siendo el mayor catalizador del poder económico de Pekín en una generación».<span class="inline-cite">[11]</span></p>
+
+      <h2 class="article-section-heading">La otra dependencia: el problema de los minerales críticos</h2>
+
+      <p>Hasta aquí, el argumento fluye con elegancia. Pero hay una pieza que la tesis dominante tiende a tratar con excesiva sencillez y que, una vez examinada en detalle, complica considerablemente el cuadro: la cadena de suministro de los minerales críticos que hacen posible la tecnología limpia.</p>
+
+      <p>Litio, cobalto, grafito, níquel, manganeso, tierras raras, cobre. Estos son los materiales sin los cuales no existen batería de iones de litio, motor eléctrico, turbina eólica ni panel solar funcional. Y el mapa de su extracción, refinado y procesamiento muestra una concentración geográfica que, en algunos segmentos, supera la del propio petróleo del Golfo Pérsico. Según datos de Goldman Sachs, China refina el 68% del cobalto mundial, el 65% del níquel y el 60% del litio necesario para baterías de vehículos eléctricos. Controla entre el 85 y el 90% del refinado de tierras raras y el 92% de la fabricación de imanes de tierras raras. El 75% de todas las baterías del mundo y la mayoría de los vehículos eléctricos se fabrican en China.</p>
+
+      <p>La proyección a mediano plazo es aún más reveladora. Para 2035, según el Instituto de Desarrollo de Ultramar, China proyecta suministrar más del 60% del litio y el cobalto refinados a escala global, alrededor del 80% del grafito de grado batería y de los elementos de tierras raras, y aproximadamente el 70% del manganeso de grado batería.</p>
+
+      <p>Con lo cual aunque la UE y USA, pueden conseguir suministro de estos metales de otros lugares como Chile, Australia, Indonesia o Brasil, reactivar o desarrollar el proceso industrial para el tratamiento de estos elementos llevará más tiempo que simplemente hacerse con la materia prima, China mantiene su dominio en los segmentos clave de la cadena de valor, en particular en el procesamiento y el refinado. La conclusión que se desprende es estructural: la electrificación resuelve una dependencia geopolítica —la del petróleo del Golfo Pérsico— y, simultáneamente, consolida otra: la del refinado y procesamiento chinos de los materiales que la hacen posible.</p>
+
+      <p>El problema no es solo la concentración actual. Es el tiempo que toma cambiarla. A diferencia del petróleo, en el que un nuevo campo puede entrar en producción en tres a cinco años, los minerales críticos tienen un perfil de inversión radicalmente distinto. El tiempo de desarrollo promedio de una nueva mina de cobre —el metal cuya demanda crecerá un 30% para 2040 según la AIE— es de más de 10 años, desde el descubrimiento hasta la producción comercial. Para el litio, el IEA proyecta un déficit del 40% en el suministro minado respecto a la demanda en 2035 bajo los escenarios de política declarada. Para el cobre, el déficit es del 30%. Incluso suponiendo que los países que hoy dependen del petróleo del Golfo decidan acelerar masivamente su electrificación a partir de este conflicto, la cadena de suministro de los materiales necesarios para esa electrificación no puede escalar en meses ni en pocos años.</p>
+
+      <p>El Outlook de Minerales Críticos 2025 de la AIE introduce además un dato que ilumina la fragilidad estructural del sistema: si se elimina al mayor proveedor de cada mineral de los escenarios de planificación —esto es, si China deja de suministrar grafito, tierras raras, o litio refinado— el suministro restante cubriría apenas el 35% al 40% de la demanda proyectada para grafito y tierras raras en 2035. Para el níquel de grado batería, la cobertura sería inferior al 55%. Es decir: el sistema de transición energética global está construido sobre una cadena de suministro que, en sus eslabones más críticos, no tiene sustituto disponible en el horizonte relevante.</p>
+
+      <p>Aquí hay una ironía adicional que el debate habitual sobre la transición energética tiende a subsumir. Sam Butler-Sloss, de Ember, formuló con precisión el argumento central de la electrificación: «Los precios de los combustibles fósiles son, en esencia, un impuesto geopolítico». La frase es justa. Pero si los minerales críticos para la electrificación están concentrados en una misma geografía con una intensidad incluso mayor que la del petróleo, entonces la pregunta relevante no es si existe un impuesto geopolítico, sino a quién se le paga. Y la respuesta, en el escenario de transición acelerada que la guerra de Irán está dibujando, es que el impuesto se traslada del Golfo Pérsico a las cadenas de refinado y procesamiento chinas. El panel solar ya instalado no puede ser «apagado» por Pekín, como señalan los defensores de la electrificación. Pero el litio, que aún no ha llegado a la fábrica alemana, sí puede ser objeto de la política de exportación china, como ya se ha visto con el germanio y el galio en conflictos comerciales anteriores.</p>
+
+      <p>Existe, en este punto, una paradoja adicional que la dinámica del mercado ha introducido involuntariamente. El propio dominio chino en la producción de minerales de batería ha generado, en los últimos dos años, una caída de precios extraordinaria: el litio bajó más de un 80% desde sus máximos de 2022, y el grafito y el cobalto también descendieron entre un 10% y un 20% en 2024. Esa deflación, resultado directo de la escala china, está desincentivando la inversión en la diversificación. El IEA registra que el crecimiento de la inversión en minerales críticos cayó al 2% en términos reales en 2024, frente al 14% de 2023. Los nuevos proyectos en países que no son China encuentran cada vez más difícil el financiamiento cuando el precio de referencia es determinado por un productor que opera con subsidios, economías de escala y objetivos estratégicos de largo plazo que no están sujetos a la lógica del retorno a corto plazo. China, en otras palabras, no solo domina la oferta actual de minerales críticos: sus propias condiciones de producción están inhibiendo la inversión que reduciría esa dependencia futura.</p>
+
+      <h2 class="article-section-heading">El cálculo equivocado</h2>
+
+      <p>Aquí hay una ironía estratégica de primer orden. Una de las hipótesis que circuló en ciertos círculos de política exterior durante la preparación del ataque a Irán era que una disrupción severa del mercado energético global afectaría de manera desproporcionada a China. La lógica: China importa más de diez millones de barriles de petróleo al día y depende del Estrecho de Ormuz para una fracción significativa de ese volumen. Un shock en los precios del crudo elevaría sus costes industriales, frenaría su crecimiento y la debilitaría en el pulso tecnológico y económico con Occidente. La guerra de Irán, en esa lectura, no era solo una operación contra Teherán.</p>
+
+      <p>Los datos de las ocho primeras semanas sugieren que ese cálculo subestimó dos factores. El primero es el grado de aislamiento relativo que China ha construido frente al shock fósil. Más del 30% de su consumo energético final ya proviene de electricidad —el porcentaje más alto entre las grandes economías, superando a Estados Unidos por casi diez puntos porcentuales—.<span class="inline-cite">[16]</span> El segundo es que incluso los países que sí sufren el shock —Japón, Corea del Sur, las economías europeas, el Sudeste Asiático— reaccionan acelerando la transición, lo que amplía la demanda de productos chinos. Cada gobierno que anuncia incentivos de urgencia para vehículos eléctricos, cada empresa que instala paneles solares ante la incertidumbre de los precios del gas, es en la práctica, clientes nuevos para la cadena de suministro china.</p>
+
+      <p>Foreign Policy señala un elemento que complica aún más el cuadro estratégico: al iniciar la guerra sin consultar a sus aliados, Washington ha reforzado la percepción de que Estados Unidos es hoy la mayor fuente de volatilidad geopolítica, mientras que China se presenta como un socio comercial más estable.<span class="inline-cite">[11]</span> En ese contexto, depender de Pekín para adquirir tecnología limpia empieza a parecer, comparativamente, el menor de los riesgos disponibles. Es una conclusión que habría parecido extraordinaria hace apenas cinco años. Hoy, en los pasillos de cancillerías que van desde Yakarta a Nairobi, pasando por Ciudad de México y Varsovia, la frase se oye con creciente frecuencia y naturalidad.</p>
+
+      <h2 class="article-section-heading">Los actores invisibles: el Golfo en reconfiguración</h2>
+
+      <p>El relato Washington-Pekín que estructura la mayor parte del análisis disponible sobre las consecuencias energéticas de la guerra tiene un ángulo muerto considerable: los propios países del Golfo. Arabia Saudita, los Emiratos Árabes Unidos, Qatar, Kuwait e Iraq no son actores pasivos en esta historia. Son, simultáneamente, las principales víctimas del shock, los más urgidos a repensar su modelo económico y, con toda probabilidad, los próximos clientes masivos de la tecnología limpia china. Su ausencia del análisis dominante no es un detalle menor: es una omisión que distorsiona el mapa de fuerzas.</p>
+
+      <p>La magnitud del daño al modelo económico del Golfo es difícil de exagerar. El cierre del Estrecho de Ormuz provocó lo que el Atlantic Council describió como «un colapso sistémico del modelo económico del Consejo de Cooperación del Golfo». La producción de crudo de Arabia Saudita, los Emiratos, Kuwait e Irak cayó colectivamente en más de 14 millones de barriles diarios. QatarEnergy declaró la fuerza mayor en todas sus exportaciones de GNL. El Estrecho no es solo la vía de salida del petróleo y el gas del Golfo: también es por donde entran más del 80% de las importaciones de alimentos de la región. Antes de que se empezara siquiera a hablar de transición energética, los gobiernos del Golfo estaban gestionando una emergencia alimentaria. Doha, Dubái, Manama y Kuwait City dependen en su totalidad o casi en su totalidad de la desalinización para el agua potable, y esas instalaciones consumen enormes cantidades de energía. La disrupción fue total, en un sentido que va mucho más allá de los mercados de hidrocarburos.</p>
+
+      <p>Y sin embargo, lo que hace este escenario analíticamente interesante no es solo el daño presente. Es la reorientación que ese daño precipita. Arabia Saudita tenía el Vision 2030 antes de esta guerra. Los Emiratos habían construido Barakah —la primera central nuclear árabe en operación—, habían organizado la COP28 en Dubái y ya exploraban la posibilidad de una segunda planta nuclear. Masdar, la compañía de energías renovables de Abu Dabi, es una de las mayores inversoras en renovables fuera de China. En enero de 2025, Masdar y la empresa de servicios públicos EWEC anunciaron la construcción de una planta solar de 5,2 gigavatios con 19 gigavatios-hora de almacenamiento en baterías, capaz de suministrar un gigavatio de capacidad continua. Arabia Saudita desarrolla en Neom el mayor proyecto de hidrógeno verde del mundo, con inicio de producción previsto para finales de 2026.</p>
+
+      <p>La guerra no destruye esos planes. Los acelera, con una urgencia que antes era estratégica y ahora es existencial. Y para ejecutarlos, los países del Golfo necesitan tecnología. La tecnología más barata, más disponible y más madura para paneles solares, almacenamiento en baterías y vehículos eléctricos es, de forma aplastante, la tecnología china. La misma lógica que se aplica a Alemania, Japón o Corea del Sur también se aplica a Arabia Saudita y los Emiratos: el shock que destruye su modelo rentista es también el incentivo más poderoso para acelerar una transición que los convertirá en compradores masivos de electrotech chino. Hay algo profundamente irónico en este resultado: los países cuyo colapso exportador es la causa del shock global pueden terminar siendo, vía su propia reorientación energética, un vector más de consolidación del dominio industrial chino.</p>
+
+      <p>Hay un dato geográfico que ilustra los límites de la resiliencia del Golfo frente a su propia vulnerabilidad. Arabia Saudita tiene el oleoducto Este-Oeste, que puede transportar hasta 5 millones de barriles diarios desde sus campos del Este hasta el puerto de Yanbú en el Mar Rojo, sorteando Ormuz. Los Emiratos cuentan con el gasoducto Habshan-Fujairah, con una capacidad de 1,5 millones de barriles diarios. En conjunto, no superan los 6,5 millones de barriles diarios, muy por debajo de los más de 20 millones de barriles que transitaban el Estrecho antes del conflicto. La geografía del Golfo no tiene solución de ingeniería a corto plazo. Y esa limitación estructural es, también, un argumento potente para que los propios productores de petróleo aceleren su diversificación hacia fuentes de energía que no dependan de estrechos navegables.</p>
+
+      <h2 class="article-section-heading">Las fisuras de la tesis</h2>
+
+      <p>No sería riguroso presentar el conjunto de este análisis como si las conclusiones ya estuvieran fijadas. No lo están. La tesis del electroestado chino como ganador neto de la guerra de Irán es, en el mejor de los casos, una hipótesis robusta respaldada por datos. Tiene fisuras, y algunas son importantes.</p>
+
+      <p>El Atlantic Council señala que, en teoría, los altos precios de los combustibles fósiles deberían acelerar la electrificación; en la práctica, la presión inmediata sobre hogares e industria tiende a desplazar la atención política hacia medidas de emergencia —subsidios al combustible, reducciones de impuestos, controles de precios— que no transforman la estructura energética y, a veces, la refuerzan.<span class="inline-cite">[17]</span> La propia España, presentada como modelo de resiliencia renovable, aprobó un paquete de 5.000 millones de euros en rebajas fiscales que incluyó la reducción del IVA sobre los combustibles fósiles.<span class="inline-cite">[14]</span> La urgencia del corto plazo coexiste mal con la inversión de largo plazo. Este patrón tiene precedentes históricos nítidos: tras el shock del petróleo de 1973, los gobiernos occidentales anunciaron programas de eficiencia energética y sustitución. Muchos de esos programas se cancelaron o diluyeron cuando el precio del crudo volvió a caer. La pregunta de si esta vez es diferente no puede responderse desde el interior del shock.</p>
+
+      <p>Gonzalo Escribano, del Instituto Elcano, añade otro matiz que el optimismo transicionista tiende a pasar por alto: existe un riesgo real de que el carbón experimente un retorno temporal como respuesta de emergencia en algunos países, lo que frenaría transitoriamente la transición.<span class="inline-cite">[15]</span> Alemania ya recorrió ese camino tras la invasión rusa de Ucrania: reactivó temporalmente centrales de carbón que estaban en proceso de cierre. La lógica política de la emergencia energética es, con frecuencia, la del camino de menor resistencia, y el carbón —abundante, barato, de infraestructura ya instalada— es exactamente eso. En Estados Unidos, la administración Trump no ha utilizado la crisis para acelerar la electrificación sino exactamente para lo contrario: como palanca para desmontar regulaciones climáticas y justificar la expansión doméstica de combustibles fósiles.<span class="inline-cite">[21]</span> La excepción estadounidense no es un detalle marginal: Washington es la segunda mayor economía del mundo y su modelo de respuesta al shock tiene implicaciones para el precio global del carbono, la competitividad relativa de las renovables y la disposición de otros países a asumir costos de transición.</p>
+
+      <p>Pero la fisura más profunda de la tesis —y la menos frecuentemente articulada— tiene que ver con la naturaleza del propio electroestado chino. Investigadores de la Universidad de Harvard formularon recientemente una distinción que merece atención: China ha adoptado las renovables, pero eso no equivale a una «transición» en el sentido que los analistas occidentales suelen darle a ese término. La diferencia importa. China está construyendo capacidad renovable a una velocidad sin precedentes históricos; simultáneamente, sigue construyendo centrales de carbón. El carbón representa más del 55% de la generación eléctrica china, y en 2025 la capacidad instalada de carbón en China seguirá creciendo. La estrategia no es sustituir el carbón por renovables: es añadir renovables sobre una base fósil que no se reduce, al menos no a corto plazo.</p>
+
+      <p>El Centre for Research on Energy and Clean Air publicó en febrero de 2026 un análisis que desafía directamente la narrativa del electroestado como actor climáticamente coherente: China no alcanzará sus propias metas del 14° Plan Quinquenal. Específicamente, no logrará la meta de reducir las emisiones de carbono por unidad de PIB, ni los compromisos de «controlar estrictamente» el crecimiento del consumo de carbón y la construcción de nuevas centrales de carbón. Y lo más significativo: en su nueva Contribución Nacionalmente Determinada, China omitió el compromiso de reducir gradualmente el consumo de carbón durante el período 2026-2030. Los analistas de CREA señalan que esto eleva el riesgo de un rebote en las emisiones tras el período de relativa estabilidad de los dos últimos años. El «electroestado» es, por lo tanto, también, simultáneamente, el mayor consumidor y el mayor productor de carbón del planeta. Ambas cosas son ciertas al mismo tiempo, y cualquier análisis que elija una de las dos para construir su narrativa está haciendo una selección editorial, no una descripción completa.</p>
+
+      <p>El otro talón de Aquiles de esta tesis es que la construcción de chips esenciales en proceso de electrificación depende, entre otras cosas, de la exportación de helio por medio del estrecho de Ormuz, con lo cual los impactos del conflicto también tendrán impacto sobre la capacidad de producción aun de las potencias eléctricas.</p>
+
+      <h2 class="article-section-heading">El espejo de los años setenta</h2>
+
+      <p>La historia ofrece aquí un paralelo que merece examinarse con detenimiento, porque ilumina tanto las posibilidades como los límites del momento actual. Los shocks del petróleo de los años setenta —el embargo de la OPEP en 1973 y la revolución iraní de 1979— generaron exactamente el mismo impulso de sustitución que vemos hoy, pero con la única tecnología de escala disponible entonces: la energía nuclear. La respuesta fue masiva y sostenida. Francia anunció en marzo de 1974 el Plan Messmer: 51 reactores en una década, con el objetivo explícito de generar la mayor parte de su electricidad sin depender del petróleo importado.<span class="inline-cite">[23]</span> Japón, que en 1973 generaba el 66% de su electricidad con petróleo del Golfo Pérsico, convirtió la expansión nuclear en prioridad estratégica nacional y pasó de cinco reactores en operación en 1973 a 54 en 2010, que proporcionaban cerca del 30% de su electricidad.<span class="inline-cite">[24]</span> En Estados Unidos, 31 de los 47 reactores inaugurados en los años ochenta tenían su obra iniciada tras el primer shock de 1973.<span class="inline-cite">[23]</span> La lógica era la misma que la de hoy: sustituir una dependencia energética peligrosa por una tecnología que ofreciera autonomía frente a la volatilidad del Golfo Pérsico.</p>
+
+      <p>Durante casi una década, el plan pareció funcionar. Luego llegaron las facturas. El 28 de marzo de 1979 —menos de dos meses después del triunfo de Jomeini en Teherán— un fallo de válvula en Three Mile Island, en Pennsylvania, provocó la fusión parcial del núcleo del reactor. No hubo víctimas directas, pero el pánico fue total y la reacción política, inmediata. Entre 1980 y 1984 se cancelaron 52 reactores nucleares en Estados Unidos.<span class="inline-cite">[25]</span> En 1986, la explosión del reactor número cuatro de Chernóbil marcó el fin de la expansión nuclear como respuesta sistemática a los shocks fósiles. Fukushima, en 2011, fue el tercer acto: Japón, el país que más había apostado por la fisión nuclear para escapar del petróleo árabe, cerró de golpe casi toda su flota nuclear y volvió a importar gas natural licuado a precios de emergencia. La alternativa que los mercados y los gobiernos habían elegido para liberarse del petróleo traía consigo riesgos catastróficos que, en el momento de la apuesta, nadie había sabido —o querido— calcular en su verdadera magnitud.</p>
+
+      <p>El paralelo con el momento actual no es exacto, pero sí es profundamente instructivo. La energía solar y eólica no tiene el perfil de riesgo catastrófico de la fisión nuclear: un panel solar no puede fundirse ni contaminar una región durante décadas. Pero la historia de los años setenta enseña dos cosas que este análisis haría bien en retener. La primera: que los shocks fósiles sí producen reorientaciones energéticas estructurales y duraderas, no solo retórica de emergencia. El boom nuclear fue real, masivo y sostenido durante años; las inversiones en eficiencia energética de los años setenta y ochenta cambiaron de forma permanente la intensidad energética de las economías occidentales. Hay razones para creer que el impulso actual es igualmente real. La segunda: que cada alternativa energética trae sus propios riesgos, algunos invisibles en el momento de la apuesta. En los años setenta, nadie imaginaba Chernóbil al firmar los contratos del Plan Messmer. Hoy, la dependencia tecnológica de China para toda la cadena de suministro —desde el refinado del litio hasta la fabricación de inversores solares— es ese riesgo que la urgencia del momento tiende a minimizar o a aceptar con demasiada rapidez.</p>
+
+      <p>Los analistas más optimistas argumentan que, esta vez, la estructura de costes ya ha cambiado de forma suficientemente profunda como para que el efecto sea permanente: las renovables son más baratas que los fósiles en la gran mayoría de los nuevos proyectos, con o sin crisis.<span class="inline-cite">[4]</span> El argumento es válido, pero la historia de los años setenta sugiere que los costes no son el único determinante de las trayectorias energéticas. La política, la seguridad nacional, los intereses industriales, las inercias de infraestructura y los accidentes impredecibles —Three Mile Island fue un fallo de válvula, no una falla sistémica— también moldean el camino. La baratura de las renovables es una condición necesaria para la transición, pero no es suficiente para garantizarla.</p>
+
+      <h2 class="article-section-heading">El ganador provisional, y las preguntas que quedan</h2>
+
+      <p>Lo que sí parece claro, con independencia de cuánto dure el conflicto, es la geografía provisional del beneficiario. El mundo ha recibido en pocas semanas un recordatorio sobre la fragilidad de la cadena de suministro de recursos fósiles. La percepción del riesgo —que los economistas saben que mueve el capital tanto como los precios— ha cambiado de forma duradera. Y en ese nuevo mapa de riesgos, China ocupa simultáneamente dos posiciones: es el proveedor de la alternativa más visible, y es el cuello de botella de la cadena de minerales que hace posible esa alternativa. Ambas cosas son ventajas estratégicas. Su coexistencia es lo que hace la posición china tan difícil de contrarrestar en el horizonte relevante.</p>
+
+      <p>La ironía es considerable, y llega en capas. La guerra iniciada por Washington y Tel Aviv ha terminado reforzando la posición estratégica de Pekín en el plano energético. Los países del Golfo Pérsico, cuyo modelo rentista se desmorona, están siendo empujados hacia una transición que los convierte en potenciales compradores masivos de tecnología china. Los países europeos que sufrían el shock buscaban ya un sustituto al gas ruso dos años antes de esta guerra; ahora tienen un segundo argumento de urgencia. Las economías del Sudeste Asiático, altamente dependientes del petróleo importado, tienen hoy el incentivo estructural más claro de su historia para electrificarse. Y cada uno de esos movimientos conduce, en el estado actual de la cadena de valor global, hacia la misma dirección.</p>
+
+      <p>Y sin embargo, tres preguntas fundamentales permanecen abiertas, y ningún análisis honesto puede esquivarlas. La primera: ¿cuánto de lo que estamos observando es una reorientación estructural y permanente, y cuánto es el ruido de un mercado en shock que se corregirá cuando los precios se normalicen? Los shocks del petróleo de los años setenta produjeron impulsos de sustitución reales; también produjeron reversiones cuando el crudo bajó. Si el Estrecho de Ormuz se reabre, si el precio del barril vuelve a 70 dólares, la urgencia política que hoy empuja a los gobiernos hacia la electrificación puede atenuarse con igual rapidez. No hay garantía de que no ocurra.</p>
+
+      <p>La segunda pregunta: ¿es la dependencia de la tecnología china realmente más manejable que la dependencia del petróleo del Golfo? El argumento más sólido en favor de la electrificación es que un panel solar ya instalado en un tejado alemán no puede ser «apagado» por Xi Jinping de la misma manera que un barco tanquero puede ser bloqueado en el Estrecho de Ormuz. Eso es cierto. Pero el litio que aún no ha salido de la mina congoleña, el grafito que no ha pasado por las instalaciones de procesamiento chinas, la turbina eólica que no ha llegado al puerto de Hamburgo —todo eso sí puede ser sujeto de restricciones de exportación, aranceles, o condicionamientos políticos. China ya lo ha hecho antes con el germanio y el galio. La pregunta no es si esa segunda dependencia existe, sino si es más manejable que la primera en el largo plazo. La respuesta honesta es que no lo sabemos todavía.</p>
+
+      <p>La tercera pregunta es quizás la más incómoda: ¿puede el mundo electrificarse suficientemente rápido como para que la transición supere a la escasez de minerales? Los déficits proyectados por la AIE para el litio y el cobre en 2035 no son cuellos de botella marginales: son limitaciones físicas en la cadena de suministro de la electrificación global. Si la demanda de minerales críticos crece al ritmo que requieren los escenarios de transición acelerada, y si la inversión en nuevas capacidades mineras y de refinado no escala con igual velocidad —algo que el contexto actual de precios bajos hace menos, no más probable—, el resultado no será solo un retraso en la transición. Será una nueva forma de dependencia energética, esta vez expresada en toneladas de cobalto y kilogramos de grafito, en lugar de barriles de petróleo.</p>
+
+      <p>El electroestado chino no es una promesa ideológica. Es, por el momento, la única realidad industrial disponible para abastecer la escala de transición que la crisis está demandando. Y la guerra de Irán, con toda su tragedia, puede haber sido el catalizador que convierta esa realidad en irreversible. Pero irreversible no significa sin consecuencias, ni sin riesgos, ni sin contradictorios. Si algo enseña la historia de los shocks energéticos —desde el embargo de 1973 hasta Fukushima— es que las grandes apuestas de sustitución energética siempre llegan con riesgos que solo se vuelven visibles cuando ya es demasiado tarde para no haberlos pagado. Esta vez, los que fabrican los sustitutos son los mismos que procesan los minerales sin los cuales estos sustitutos no existen. Eso no invalida la transición. Pero sí obliga a entrar con los ojos abiertos.</p>
+
+      <p>Si eso es lo que Washington buscaba al concebir la guerra como un golpe al ascenso chino, el cálculo no solo salió mal: salió exactamente al revés.</p>
+
+      <div class="article-sources">
+        <strong>Fuentes citadas</strong>
+        [1] &nbsp;Paul Krugman — "Chinese Electrotech is the Big Winner in the Iran War" &nbsp;Substack, abril 2026.<br>
+        [2] &nbsp;John Shanahan — "Chinese Electrotech... Comments by JS" &nbsp;Substack, abril 2026.<br>
+        [3] &nbsp;OilPrice.com / The Guardian — "IEA's Birol Says Iran War Will Permanently Cut Into Future Oil Demand" &nbsp;Abril 2026.<br>
+        [4] &nbsp;Fortune / IRENA — "Renewable energy transition could accelerate as Iran war shocks oil and gas supply" &nbsp;Fortune, abril 2026.<br>
+        [5] &nbsp;Bruegel — "How Europe should respond to the Iran gas shock — and how it shouldn't" &nbsp;Keliauskaitė et al., 2026.<br>
+        [6] &nbsp;CNBC — "Spain touts energy resilience to Iran war" &nbsp;Abril 2026.<br>
+        [7] &nbsp;Wikipedia — "Economic impact of the 2026 Iran war" &nbsp;Actualizado abril 2026.<br>
+        [8] &nbsp;Global Portal News — "Spain Electricity Prices vs Germany and Italy (2026)" &nbsp;2026.<br>
+        [9] &nbsp;CNN Business — "The Iran war has the world buying more clean energy. China stands to benefit the most" &nbsp;26 abril 2026.<br>
+        [10] Washington Post — "War-driven energy crisis gives China a boost for its renewable exports" &nbsp;Abril 2026.<br>
+        [11] Foreign Policy — "How the Iran War Could Consolidate China's Energy Dominance" &nbsp;Marzo 2026.<br>
+        [12] Christian Science Monitor — "China, a leader in renewable energy, was prepared for a global fuel crisis" &nbsp;Abril 2026.<br>
+        [13] ChinaStrategy — "The great energy pivot: US oil and Chinese solar are the winners in Trump's war on Iran" &nbsp;26 abril 2026.<br>
+        [14] Euronews — "EU measures against soaring energy and fuel prices amid Iran war" &nbsp;Marzo 2026.<br>
+        [15] CNBC / Elcano — "Iran war: A global energy shock could accelerate a shift to renewables" &nbsp;Marzo 2026.<br>
+        [16] China-US Focus — "America's War with Iran Boosts China's Renewable Energy Strategy" &nbsp;Zhao Xiuye, abril 2026.<br>
+        [17] Atlantic Council — "How the Iran War could shift energy policies around the world" &nbsp;Abril 2026.<br>
+        [18] CSIS — "What Does the Iran War Mean for Global Energy Markets?" &nbsp;Marzo 2026.<br>
+        [19] Rolling Stone — "The Iran War Is Accelerating the Renewable Energy Transition — Just Not in the U.S." &nbsp;Abril 2026.<br>
+        [20] Greenpeace International — "How the war on Iran is testing China's clean energy shield..." &nbsp;Abril 2026.<br>
+        [21] FCNL — "Climate Backsliding in 2026: The Early Impacts of the War on Iran" &nbsp;Abril 2026.<br>
+        [22] Fortune / Tenzin Seldon — "The Iran War just made the clean energy transition non-negotiable" &nbsp;Abril 2026.<br>
+        [23] World Economic Forum — "Can economies be supply shocked in positive directions?" &nbsp;Marzo 2026.<br>
+        [24] Wikipedia / ScienceDirect — "Nuclear power in Japan" &nbsp;Varias fechas.<br>
+        [25] Wikipedia / Nuclear Regulatory Commission — "Three Mile Island accident" &nbsp;Actualizado 2026.<br>
+        [26] Goldman Sachs — "Resource realism: The geopolitics of critical mineral supply chains" &nbsp;2023.<br>
+        [27] IEA — "Global Critical Minerals Outlook 2025" &nbsp;París, 2025.<br>
+        [28] ODI — "Critical minerals geopolitics in 2026: risks, supply chains and global power shifts" &nbsp;2026.<br>
+        [29] Ember — "China Energy Transition Review 2025" &nbsp;Septiembre 2025.<br>
+        [30] CREA — "China's Climate Transition: Outlook 2025" &nbsp;Febrero 2026.<br>
+        [31] BloombergNEF — "Progress Despite Fragmentation: The Energy Transition to 2030" &nbsp;Enero 2026.<br>
+        [32] Atlantic Council — "They have been exposed: The Iran war upends Gulf states' security and business model" &nbsp;Abril 2026.<br>
+        [33] The Middle East Insider — "Iran War Economic Impact on Gulf Economies 2026" &nbsp;Marzo 2026.<br>
+        [34] ORF Middle East — "Energy Transitions in the Gulf: Realities, Risks, and the Road Ahead" &nbsp;Agosto 2025.<br>
+        [35] Harvard Gazette — "Yes, China has embraced renewables — but don't call it a transition" &nbsp;Febrero 2026.<br>
+        [36] Ember — "Global Electricity Review 2026" &nbsp;Abril 2026.<br>
+        [37] IEA — "The Middle East and Global Energy Markets" &nbsp;Abril 2026.
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <span class="footer-copy">© 2026 Eddie Would Go. Todos los derechos reservados.</span>
+    <div class="footer-social">
+      <a href="https://x.com/eddiewgpolicy" target="_blank">Twitter</a>
+      <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank">Instagram</a>
+    </div>
+  </footer>
+
+</body>
+</html>

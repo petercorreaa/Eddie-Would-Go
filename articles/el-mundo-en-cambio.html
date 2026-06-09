@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>El mundo en cambio — Eddie Would Go</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; }
+    img { max-width: 100%; height: auto; }
+
+    :root {
+      --blue: #C4622D;
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e0e0e0;
+      --gray-400: #999;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: var(--white);
+      border-bottom: 1px solid var(--black);
+    }
+    .nav-left { display: flex; align-items: center; gap: 12px; }
+    .nav-logo img { height: 40px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--black);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ─── ARTICLE PAGE ─── */
+    .article-page { margin-top: 64px; }
+
+    .article-header { padding: 64px 48px 0; }
+
+    .article-category-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 16px;
+    }
+
+    .article-page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    .article-hero {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      padding: 0 48px 48px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .article-cover {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--gray-200);
+      overflow: hidden;
+    }
+    .article-cover img { width: 100%; height: 100%; object-fit: cover; }
+
+    .article-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 24px;
+      padding-bottom: 8px;
+    }
+
+    .article-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: var(--black);
+    }
+
+    .article-author-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .article-meta-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-top: 4px;
+    }
+
+    /* ─── ARTICLE BODY ─── */
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 32px 96px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #1a1a1a;
+    }
+    .article-body p { margin-bottom: 1.6em; }
+
+    .article-blockquote {
+      border-left: 3px solid var(--blue);
+      margin: 0 0 2em 0;
+      padding: 16px 0 16px 32px;
+    }
+    .article-blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      margin-bottom: 0.75em;
+      color: #1a1a1a;
+    }
+    .article-blockquote cite {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      font-style: normal;
+    }
+
+    .article-section-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 2.5em 0 0.8em;
+      color: var(--blue);
+    }
+
+    .inline-cite {
+      font-size: 0.72rem;
+      color: var(--gray-400);
+      letter-spacing: 0.01em;
+    }
+
+    .article-sources {
+      margin-top: 3em;
+      padding-top: 2em;
+      border-top: 1px solid var(--gray-200);
+      font-size: 0.78rem;
+      line-height: 1.7;
+      color: var(--gray-400);
+      letter-spacing: 0.02em;
+    }
+    .article-sources strong {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+
+    /* ─── BACK LINK ─── */
+    .back-link {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding: 48px 48px 0;
+      margin-top: 64px;
+      transition: opacity var(--transition);
+    }
+    .back-link:hover { opacity: 0.5; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--black);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-copy { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-400); }
+    .footer-social { display: flex; gap: 20px; }
+    .footer-social a { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-400); text-decoration: none; }
+    .footer-social a:hover { color: var(--black); }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .nav-links { display: none; }
+      .article-header { padding: 32px 16px 0; }
+      .article-page-title { font-size: clamp(2rem, 9vw, 3.5rem); margin-bottom: 32px; }
+      .article-hero { grid-template-columns: 1fr; gap: 24px; padding: 0 16px 32px; }
+      .article-sidebar { padding: 0; }
+      .article-body { padding: 48px 16px 64px; }
+      .article-blockquote { padding: 12px 0 12px 20px; }
+      .back-link { padding: 32px 16px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <a href="/" class="nav-logo">
+        <img src="/EWG_Logo.jpg" alt="EWG Logo">
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Política</a></li>
+      <li><a href="/">Sobre Nosotros</a></li>
+    </ul>
+    <div style="width:80px"></div>
+  </nav>
+
+  <div class="article-page">
+
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <div class="article-header">
+      <div class="article-category-tag">Geopolítica &nbsp;·&nbsp; Occidente &nbsp;·&nbsp; Orden Internacional &nbsp;·&nbsp; 18 min de lectura</div>
+      <h1 class="article-page-title">El mundo en cambio</h1>
+    </div>
+
+    <div class="article-hero">
+      <div class="article-cover">
+        <img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'"
+          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2340&auto=format&fit=crop"
+          alt="El mundo en cambio"
+          style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="article-sidebar">
+        <p class="article-subtitle">Occidente no espera que Trump sea una anomalía. Está construyendo la arquitectura para un mundo en el que no lo es.</p>
+        <div>
+          <div class="article-author-name">The Eddie</div>
+          <div class="article-meta-line">Marzo de 2026 &nbsp;·&nbsp; Geopolítica &nbsp;·&nbsp; Occidente &nbsp;·&nbsp; Orden Internacional</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <blockquote class="article-blockquote">
+        <p>"No hay nada peor que combatir con aliados, salvo combatir sin ellos."</p>
+        <cite>— Winston Churchill</cite>
+      </blockquote>
+
+      <p>Hay una imagen que define la semana en la que se escribió este artículo. En Canberra, la presidenta de la Comisión Europea, Ursula von der Leyen, estrecha la mano del primer ministro australiano, Anthony Albanese, ante las cámaras de todo el mundo. Detrás de ellos, el edificio del Parlamento australiano. Ocho años de negociaciones concluidos el 24 de marzo de 2026. <span class="inline-cite">[Gobierno de Australia / Comisión Europea, 24 mar. 2026]</span> El acuerdo elimina aranceles sobre el 98% del valor de las exportaciones australianas a la UE. El titular obvio es comercial. El titular real es otro.</p>
+
+      <p>La Unión Europea y Australia no firmaron un acuerdo comercial. Firmaron un diagnóstico compartido sobre el estado del orden internacional. Y ese diagnóstico, expresado en el lenguaje neutro de los aranceles y las cuotas, es más revelador que cualquier declaración de principios: los aliados históricos de Estados Unidos han llegado a la conclusión, con datos en la mano, de que la política americana es un riesgo a gestionar, no un paraguas bajo el cual cobijarse.</p>
+
+      <p>Llamarlo antiamericanismo sería inexacto. Llamarlo de-risking sería técnico pero insuficiente. Es, en el sentido más preciso del término, la gestión de cartera. Y la cartera que se está rebalanceando no es financiera: es geopolítica.</p>
+
+      <h2 class="article-section-heading">I. El momento Macron</h2>
+
+      <p>Tres semanas antes del apretón de manos en Canberra, Emmanuel Macron se paró frente al submarino nuclear Le Téméraire en una base de Bretaña y pronunció el discurso de defensa más importante de un líder europeo desde el fin de la Guerra Fría.</p>
+
+      <p>Los anuncios eran concretos y sin precedentes: Francia aumentará su arsenal nuclear por primera vez desde 1992. Desplegará aviones nucleares en suelo aliado —algo que nunca antes había hecho. Integrará a Alemania, Polonia, Países Bajos, Bélgica, Grecia, Suecia y Dinamarca en ejercicios nucleares conjuntos. Y, detalle que los analistas tardaron en procesar, dejará de publicar el tamaño de su arsenal. La transparencia que París había mantenido durante décadas como señal de responsabilidad nuclear se convierte ahora en una ambigüedad estratégica deliberada.</p>
+
+      <p>La frase que eligió Macron para titular el discurso fue deliberadamente arcaica, casi napoleónica: "Para ser libres, hay que ser temidos. Para ser temidos, hay que ser poderosos." No es la retórica de un presidente que confía en que su principal aliado lo protege. Es la retórica de alguien que ha llegado a la conclusión de que debe protegerse por sí mismo.</p>
+
+      <p>El canciller alemán Friedrich Merz anunció de inmediato la creación de un grupo de coordinación nuclear franco-alemán. Polonia declaró que esto garantiza que "ningún enemigo se atreverá a atacarnos". El bloque de defensa europeo que durante décadas fue un proyecto teórico empezó a tomar forma en tiempo real. El CSIS calificó el discurso de "el cambio doctrinal más significativo en la historia de la Quinta República". Lo que Macron anunció no fue solo una expansión del arsenal: fue la formalización de una ruptura en la lógica de seguridad que había gobernado Europa desde 1949, la asunción de que la garantía nuclear de Washington era incondicional, permanente e independiente de quién habitara la Casa Blanca.</p>
+
+      <p>Esa asunción ya no opera. Y los aliados europeos han decidido, a diferentes velocidades y sin coordinación formal, que conviene tenerlo presupuestado.</p>
+
+      <h2 class="article-section-heading">II. El sprint</h2>
+
+      <p>Lo que siguió al discurso de Macron no fue una reacción aislada, sino la expresión de un proceso que llevaba meses acelerándose. En el lapso de noventa días, la Unión Europea concluyó o avanzó decisivamente en cinco acuerdos comerciales estratégicos. La velocidad no tiene precedentes en la historia de la diplomacia comercial europea. Pero la velocidad es el dato menos interesante. El patrón es más revelador.</p>
+
+      <p>El caso de Indonesia merece más atención de la que ha recibido. El acuerdo CEPA concluido en Bali el 23 de septiembre de 2025, tras nueve años de negociaciones y una disputa en la OMC sobre restricciones al níquel que llegó a niveles de alta tensión diplomática, es el tratado comercial más ambicioso que la UE haya concluido con una economía del sudeste asiático. Indonesia es el mayor productor de níquel del mundo: controla más de un cuarto de la oferta global de un mineral indispensable para las baterías de vehículos eléctricos. Hasta la firma del CEPA, el 80% de la capacidad de procesamiento de ese níquel estaba en manos de productores mayoritariamente chinos. El acuerdo abre por primera vez un canal de abastecimiento directo y con marco legal estable para los compradores europeos, fuera del circuito de Pekín. No fue presentado como una movida geopolítica. Era, formalmente, un acuerdo de libre comercio. La distinción importa menos de lo que parece.</p>
+
+      <p>En enero, la UE y la India firmaron lo que Von der Leyen denominó, sin falsa modestia, "la madre de todos los acuerdos": el mayor tratado comercial que la UE haya concluido jamás, creando una zona de libre comercio para dos mil millones de personas. <span class="inline-cite">[Comisión Europea, 27 ene. 2026; CNBC, 27 ene. 2026]</span> India reduce los aranceles a los automóviles europeos del 110% al 10%. La UE gana acceso preferencial a textiles, cuero y joyería. El comercio bilateral de 136.000 millones de dólares anuales se expande con un horizonte de crecimiento que ningún analista cuantificó de manera conservadora.</p>
+
+      <p>Y en marzo, Australia. Ocho años de negociaciones que se habían trabado repetidamente —en la carne bovina, en el vino, en el azúcar— se desbloquearon en el momento en que ambas partes calcularon que el costo de no firmar superaba al de comprometerse. Australia gana acceso garantizado a minerales críticos para Europa. La UE gana litio, manganeso y aluminio fuera del circuito chino. Von der Leyen lo dijo sin eufemismos ante el Parlamento en Canberra: "Para Europa y Australia, gestionar bien la relación con China es un imperativo estratégico." <span class="inline-cite">[Comisión Europea / Gobierno de Australia, 24 mar. 2026]</span> El eufemismo "gestionar bien" carga más peso del que sugiere su cortesía diplomática.</p>
+
+      <p>El patrón es evidente: Indonesia, India, Australia, Mercosur firmado y en ratificación, México, Canadá profundizando el CETA. Ninguno de estos acuerdos es con China. Todos comparten alguna combinación de estabilidad institucional, valores de gobernanza y minerales críticos que Europa necesita para su transición energética y digital. No es una coincidencia de agenda. Es una doctrina sin nombre oficial.</p>
+
+      <p>El acuerdo UE-India incluye además, en su capítulo de comercio digital y servicios financieros, provisiones orientadas a sentar las bases de interoperabilidad entre sistemas de pagos digitales de banco central —el euro digital y la rupia digital—, así como la vinculación del sistema de pagos instantáneos indio (UPI) con el europeo (TIPS). Es una de las primeras veces en la historia de los tratados comerciales en la que se incluye una cláusula de arquitectura financiera de este alcance, diseñada para facilitar transacciones directas entre las dos economías, con menor dependencia del dólar como moneda intermediaria. <span class="inline-cite">[Comisión Europea, capítulo de servicios financieros del FTA India-UE; análisis fintech: eij.news, feb. 2026]</span> La frase de Connally en 1971 —"el dólar es nuestra moneda, pero su problema"— está encontrando, cincuenta y cinco años después, su respuesta en forma de plomería financiera. No es retórica. Es infraestructura en construcción.</p>
+
+      <h2 class="article-section-heading">III. La geometría del de-risking</h2>
+
+      <p>Vale detenerse aquí para ser precisos sobre lo que está ocurriendo, porque la imprecisión conceptual ha generado más confusión que claridad en el debate público.</p>
+
+      <p>El de-risking no es decoupling. No es la separación total que Occidente intentó, sin éxito, con China en los últimos años. Tampoco es antiamericanismo. Estados Unidos sigue siendo el principal comprador de exportaciones europeas y canadienses, y el paraguas militar que ningún acuerdo comercial puede reemplazar. La OTAN no está en cuestión. Los vínculos de inteligencia no están en cuestión. El acceso a la tecnología militar estadounidense no está en cuestión.</p>
+
+      <p>Lo que sí está en cuestión —y lo que los datos de los últimos dieciocho meses sugieren con nitidez creciente— es si la dependencia económica de un solo socio, que se ha vuelto menos predecible, es un riesgo que conviene gestionar o uno que conviene seguir ignorando. La respuesta que la UE y Canadá están dando, mediante acuerdos y no mediante declaraciones, es la primera opción.</p>
+
+      <p>La ironía es que la frase que el secretario del Tesoro de Nixon, John Connally, le lanzó a los aliados europeos en 1971 —"El dólar es nuestra moneda, pero su problema"— ha encontrado su eco cincuenta y cinco años después, pero con los papeles parcialmente invertidos. Ahora son los aliados quienes, sin decirlo con esa brutalidad, están comenzando a tomar sus propias decisiones sobre cuánta exposición a la volatilidad estadounidense están dispuestos a absorber.</p>
+
+      <p>Los números sostienen esa lectura. El índice del dólar cayó aproximadamente un 11% en 2025 —el peor desempeño anual en décadas—, impulsado por la incertidumbre arancelaria y las dudas sobre la independencia de la Fed. <span class="inline-cite">[Al Jazeera / Morgan Stanley, jul. 2025]</span> Moody's rebajó la calificación soberana de EE.UU. de Aaa a Aa1 en mayo de 2025, citando déficits persistentes y carga de intereses creciente —la primera vez que EE.UU. perdía su última calificación triple A. <span class="inline-cite">[Moody's, 16 may. 2025; Fortune, 16 may. 2025]</span> Fondos de pensiones daneses y holandeses redujeron sus posiciones en bonos del Tesoro, un movimiento discreto pero técnicamente significativo. El BCE convirtió sus líneas de repo en euros, hasta entonces instrumentos de emergencia, en facilidades permanentes disponibles para todos los bancos centrales del mundo: una señal de intención estratégica difícil de malinterpretar. Nada de esto implica que el dólar vaya a perder su estatus de reserva global a corto plazo. La profundidad del mercado americano, su liquidez y su infraestructura legal no tienen equivalente. Pero la dirección del movimiento es clara.</p>
+
+      <p>Una pregunta relevante no es si estos movimientos sobrevivirán a Trump sino si sobrevivirían a su ausencia —y la respuesta que sugiere la arquitectura institucional que se está construyendo es que sí, porque los acuerdos firmados crean hechos que los calendarios electorales no borran de manera tan sencilla.</p>
+
+      <h2 class="article-section-heading">IV. Canadá dice adiós en voz muy baja</h2>
+
+      <p>Ningún caso ilustra la magnitud del reordenamiento en curso con más claridad que el de Canadá. No porque sea el más dramático en términos geopolíticos —no lo es. Sino porque es el más improbable.</p>
+
+      <p>Durante décadas, Canadá fue el aliado más fiel, más silencioso y más dependiente del sistema estadounidense. El 78% de sus exportaciones tenían como destino Estados Unidos. Su seguridad dependía casi por completo del acuerdo de la OTAN. Su política exterior seguía, con discretas variaciones, la agenda de Washington. Era el vecino que nunca daba problemas.</p>
+
+      <p>En tres semanas de marzo de 2026, el primer ministro Mark Carney hizo lo siguiente: viajó a Nueva Delhi y firmó el CEPA con la India —uranio, GNL, inteligencia artificial, minerales críticos, y un mecanismo de diálogo de pagos que apunta a la interoperabilidad del sistema UPI indio con el sistema financiero canadiense. Voló a Toronto para firmar con Bruselas la modernización del CETA y lanzar las negociaciones del primer acuerdo de comercio digital de Canadá. Se incorporó formalmente al programa SAFE de la defensa europea. Visitó Australia para hablar de una nueva Liga Hanseática —una alianza de potencias medias, Canadá, Alemania, los principales socios de la UE, el Reino Unido, Japón, Corea del Sur, Australia y Nueva Zelanda, que representaría el 30% del PIB global.</p>
+
+      <p>"Como el país más europeo entre los no europeos, Canadá mira primero a la Unión Europea para construir un mundo mejor", dijo Carney en la cumbre UE-Canadá de junio pasado. Llegó incluso a sugerir la participación de Canadá en el Festival de la Canción de Eurovisión, un detalle que, por sí solo, resume la distancia abierta en la relación con Washington.</p>
+
+      <p>La meta declarada es reducir la dependencia comercial de Estados Unidos del 78% actual al 50% en una década. No es una aspiración retórica. Es un objetivo de política pública con presupuesto, instituciones y acuerdos firmados. En la historia económica de las últimas décadas, pocos países aliados de Estados Unidos han emprendido una reconfiguración tan deliberada y acelerada de su arquitectura comercial. Carney no lo llama ruptura. Lo llama diversificación. La distinción es importante y probablemente sincera: Canadá no puede ni quiere romper con su vecino del sur. Lo que está haciendo es construir alternativas para el caso en que ese vecino continúe siendo impredecible. La diferencia entre ruptura y diversificación es la misma que entre vender todos los activos de riesgo y cubrirse con opciones. El diagnóstico de fondo del activo subyacente es el mismo.</p>
+
+      <h2 class="article-section-heading">V. La UE que crece hacia dentro y hacia fuera</h2>
+
+      <p>Hay un elemento de este reordenamiento que los análisis centrados en el comercio tienden a subvaluar: la expansión simultánea de la Unión Europea en sus dos dimensiones, la externa y la interna.</p>
+
+      <p>Hacia afuera, los cinco acuerdos en noventa días son la expresión más visible. Pero hay una dimensión interna igualmente significativa: la UE está siendo solicitada, activamente y desde múltiples direcciones, por países que hasta hace poco la consideraban una opción menos atractiva que la alianza con Estados Unidos o el alineamiento con Moscú.</p>
+
+      <p>Islandia votará el 29 de agosto en un referéndum sobre si reanudar las negociaciones de adhesión a la UE, suspendidas en 2013. El detonante explícito son los aranceles de Trump y las amenazas sobre Groenlandia —el candidato de Trump como embajador en Reikiavik llegó a bromear con que Islandia debería ser el estado 52 de Estados Unidos. El PIB per cápita de Islandia es el quinto más alto del mundo. Ya se aplica toda la legislación del mercado único a través del EEE. Ya está en Schengen. Ya abrió 27 de los 33 capítulos de negociación entre 2010 y 2013. Su adhesión, si el referéndum la habilita, podría completarse en dos años.</p>
+
+      <p>Armenia inició formalmente su proceso de adhesión en 2025, desafiando directamente a Rusia. Montenegro cierra negociaciones este año con el objetivo de ingreso en 2028. Ucrania y Moldavia avanzan. La UE no solo firma hacia afuera: también es buscada activamente desde el este exsoviético, desde el norte atlántico y desde los Balcanes. Todos, por razones distintas pero con el mismo factor estructural de fondo: el mundo de la dependencia única —de Estados Unidos, de Rusia, de China, según el caso— ya no parece seguro.</p>
+
+      <p>Lo que emerge no es una superpotencia europea en el sentido clásico. Es algo más modesto y más duradero: un bloque lo suficientemente grande y lo suficientemente coherente como para ofrecer una alternativa creíble de ancla institucional, comercial y de seguridad para países que necesitan opciones. La demanda existe. La UE está, con todas sus disfunciones internas, en condiciones de satisfacerla.</p>
+
+      <h2 class="article-section-heading">VI. Lo que no cambia</h2>
+
+      <h2 class="article-section-heading">VI. Lo que no cambia</h2>
+
+      <p>China no emerge de este reordenamiento como un contrapeso. La decisión de la UE, Australia y Canadá de diversificar hacia India, Indonesia y los mercados de la ASEAN es explícitamente no china. Von der Leyen no habló de China como socio alternativo en Canberra: habló de China como riesgo compartido. El acuerdo UE-Australia tiene en su centro el acceso a minerales críticos fuera del circuito de procesamiento chino, que controla el 80% de la capacidad global. La interoperabilidad digital del acuerdo con la India es una arquitectura financiera que, por diseño, busca reducir la fricción del dólar como intermediario —no sustituirlo por la infraestructura china. El de-risking es diversificación, no la sustitución de un hegemón por otro.</p>
+
+      <p>Tampoco es la historia de una ruptura limpia con Washington. Estados Unidos sigue siendo, por un margen considerable, el principal comprador de exportaciones europeas y canadienses. Su mercado de capitales no tiene equivalente en profundidad ni en liquidez. Su tecnología militar —de los sistemas de misiles a la inteligencia satelital— sigue siendo indispensable para las doctrinas de defensa de todos los países que firmaron acuerdos con la UE en los últimos meses. El paraguas nuclear americano, por más que Macron lo complemente con la dissuasion avancée francesa, sigue siendo la columna vertebral de la disuasión europea frente a Rusia. Ninguno de estos movimientos ocurre en el vacío.</p>
+
+      <p>Lo que está cambiando no es el mapa de alianzas. Es el nivel de certeza con que esas alianzas pueden darse por supuestas. Durante setenta y cinco años, el orden internacional de posguerra funcionó sobre un conjunto de supuestos: que Estados Unidos era un actor predecible dentro de las instituciones que había creado, que el dólar era el activo de reserva global por excelencia, que la OTAN era un compromiso permanente y no negociable. Esos supuestos no han desaparecido. Pero su certeza se ha degradado lo suficiente como para que actores racionales —gobiernos, fondos de pensiones, bancos centrales, negociadores comerciales— hayan comenzado a diseñar sus estrategias para un mundo en que ya no son automáticos. Eso es lo que está ocurriendo. Y está ocurriendo más rápido de lo que la mayoría de los análisis centrados en Washington han querido reconocer.</p>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">© 2026 Eddie Would Go. Todos los derechos reservados.</span>
+    <div class="footer-social">
+      <a href="https://x.com/eddiewgpolicy" target="_blank">Twitter</a>
+      <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank">Instagram</a>
+    </div>
+  </footer>
+
+</body>
+</html>

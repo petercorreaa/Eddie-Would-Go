@@ -145,7 +145,7 @@
     }
     .ticker-inner {
       display: inline-flex;
-      animation: ticker 30s linear infinite;
+      animation: ticker 20s linear infinite;
     }
     .ticker-inner span {
       font-size: 0.72rem;
@@ -397,6 +397,38 @@
     }
     .featured-read-more:hover { opacity: 0.7; color: var(--blue); }
 
+    /* ─── BELOW FEATURED 2-COL GRID ─── */
+    .below-featured-section {
+      margin-top: 48px;
+      border-top: 1px solid var(--black);
+      padding-top: 32px;
+    }
+    .below-featured-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--blue);
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--blue);
+      margin-bottom: 0;
+    }
+    .below-featured-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .below-featured-grid .article-card {
+      padding-right: 20px;
+    }
+    .below-featured-grid .article-card:nth-child(even) {
+      border-left: 1px solid var(--gray-200);
+      padding-left: 20px;
+      padding-right: 0;
+    }
+    .below-featured-grid .article-card:nth-last-child(-n+2) {
+      border-bottom: none;
+    }
+
     /* ─── DIVIDER STRIP ─── */
     /* ─── FOOTER ─── */
     footer {
@@ -474,7 +506,7 @@
     /* ─── FOLLOW SECTION ─── */
     .follow-section {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       border-top: 3px solid var(--blue);
     }
 
@@ -515,7 +547,7 @@
 
     .insta-reels-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 6px;
     }
     .insta-reel-thumb {
@@ -524,30 +556,13 @@
       position: relative;
       overflow: hidden;
     }
-    .insta-reel-thumb:nth-child(1) { background: #cacaca; }
-    .insta-reel-thumb:nth-child(2) { background: #d8d8d8; }
-    .insta-reel-thumb:nth-child(3) { background: #c0c0c0; }
-    .insta-reel-thumb:nth-child(4) { background: #e2e2e2; }
-    .insta-reel-thumb::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        -45deg,
-        transparent, transparent 6px,
-        rgba(0,0,0,0.03) 6px, rgba(0,0,0,0.03) 7px
-      );
+    .insta-reel-thumb iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      pointer-events: none;
     }
-    .reel-play {
-      position: absolute;
-      bottom: 8px; left: 8px;
-      width: 20px; height: 20px;
-      background: rgba(0,0,0,0.5);
-      display: grid;
-      place-items: center;
-      z-index: 1;
-    }
-    .reel-play svg { width: 10px; height: 10px; fill: white; }
     .reel-overlay {
       position: absolute;
       inset: 0;
@@ -562,9 +577,10 @@
       opacity: 0;
       transition: background 0.3s ease, opacity 0.3s ease;
       z-index: 2;
+      text-decoration: none;
     }
     .insta-reel-thumb:hover .reel-overlay {
-      background: rgba(0,0,0,0.45);
+      background: rgba(0,0,0,0.5);
       opacity: 1;
     }
     a.insta-reel-thumb { text-decoration: none; display: block; }
@@ -621,6 +637,39 @@
       color: #999;
     }
     .follow-spotify:hover .follow-cta { opacity: 0.5; }
+
+    /* ── X (Twitter) half — dark bg ── */
+    .follow-twitter {
+      background: #0d0d0d;
+      border-left: 1px solid #1a1a1a;
+      padding: 64px 56px;
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      position: relative;
+      overflow: hidden;
+      transition: background var(--transition);
+    }
+    .follow-twitter:hover { background: #111; }
+    .follow-twitter .follow-platform-tag { color: var(--white); }
+    .follow-twitter .follow-platform-tag svg { fill: var(--white); }
+    .follow-twitter .follow-cta {
+      border-bottom-color: #444;
+      color: #888;
+    }
+    .follow-twitter:hover .follow-cta { opacity: 0.5; }
+
+    .twitter-embed-wrap {
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      border: 1px solid #1a1a1a;
+    }
+    .twitter-embed-wrap iframe {
+      display: block;
+      max-height: 380px;
+    }
 
     /* Podcast episode stack */
     .podcast-stack {
@@ -798,7 +847,7 @@
         font-size: clamp(2rem, 8vw, 3rem);
       }
 
-      /* Follow / Instagram + Spotify section */
+      /* Follow / Instagram + X + Spotify section */
       .follow-section {
         grid-template-columns: 1fr;
       }
@@ -809,12 +858,34 @@
         gap: 28px;
       }
       .insta-reels-grid {
-        grid-template-columns: repeat(2, 1fr);
         gap: 8px;
+      }
+      .follow-twitter {
+        border-left: none;
+        border-top: 1px solid #1a1a1a;
+        border-bottom: 1px solid #1a1a1a;
+        padding: 40px 16px;
+        gap: 28px;
       }
       .follow-spotify {
         padding: 40px 16px;
         gap: 28px;
+      }
+
+      /* Below featured 2-col grid */
+      .below-featured-grid {
+        grid-template-columns: 1fr;
+      }
+      .below-featured-grid .article-card:nth-child(even) {
+        border-left: none;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .below-featured-grid .article-card:nth-last-child(-n+2) {
+        border-bottom: 1px solid var(--gray-200);
+      }
+      .below-featured-grid .article-card:last-child {
+        border-bottom: none;
       }
 
       /* Footer */
@@ -835,8 +906,7 @@
       <img src="/EWG_Logo.jpg" alt="EWG Logo" style="height:40px;width:auto;display:block;">
     </a>
     <ul class="nav-links">
-      <li><a href="#">Política</a></li>
-      <li><a href="#">Cultura</a></li>
+      <li><a href="#">Artículos</a></li>
       <li><a href="#">Sobre Nosotros</a></li>
     </ul>
     <div style="width:80px"></div><!-- spacer for symmetry -->
@@ -846,7 +916,7 @@
   <header class="hero-banner reveal">
     <div class="hero-title">Eddie Would Go</div>
     <div class="hero-meta">
-      <p class="hero-tagline">Periodismo independiente. Sin agenda, solo la verdad.</p>
+      <p class="hero-tagline">Análisis independiente. Sin agenda.</p>
     </div>
   </header>
 
@@ -854,14 +924,10 @@
   <div class="ticker-wrap">
     <div class="ticker-inner">
       <span>Último</span>
-      <span>Política y Poder</span>
-      <span>Guerras Culturales</span>
       <span>Lecturas Largas</span>
       <span>Opinión</span>
       <span>Investigaciones</span>
       <span>Último</span>
-      <span>Política y Poder</span>
-      <span>Guerras Culturales</span>
       <span>Lecturas Largas</span>
       <span>Opinión</span>
       <span>Investigaciones</span>
@@ -876,87 +942,154 @@
       <aside class="sidebar reveal">
         <div class="sidebar-label">Reciente</div>
 
-        <a href="/articles/iran-en-la-encrucijada.html" class="article-card">
-          <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1613881348993-bc547b53daba?q=80&w=2340&auto=format&fit=crop" alt="Irán en la encrucijada" style="width:100%;height:100%;object-fit:cover;display:block"></div>
-          <div class="article-category">Política</div>
-          <h3 class="article-title">Irán en la encrucijada</h3>
-          <div class="article-byline"><strong>Eddie M.</strong> — 03.19.26</div>
+        <a href="/articles/la-revolucion-se-come-a-su-hijo.html" class="article-card">
+          <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1605732562084-f528a2154616?q=80&w=2340&auto=format&fit=crop" alt="La revolución se come a su hijo predilecto" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div class="article-category">Política · Derecho · Comercio</div>
+          <h3 class="article-title">La revolución se come a su hijo predilecto</h3>
+          <div class="article-byline"><strong>The Eddie</strong> — 20 de mayo de 2026</div>
         </a>
 
-        <a href="/articles/acuerdo-ue-mercosur.html" class="article-card">
-          <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&auto=format&fit=crop" alt="UE-Mercosur" style="width:100%;height:100%;object-fit:cover;display:block"></div>
-          <div class="article-category">Política</div>
-          <h3 class="article-title">El Gran Pacto Transatlántico: Desentrañando el Acuerdo UE-Mercosur</h3>
-          <div class="article-byline"><strong>Eddie M.</strong> — 03.18.26</div>
+        <a href="/articles/el-mineral-que-mueve-el-tablero.html" class="article-card">
+          <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1680463990599-9d318aaecf71?q=80&w=2340&auto=format&fit=crop" alt="El Mineral que Mueve el Tablero" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div class="article-category">Energía · Geopolítica</div>
+          <h3 class="article-title">El Mineral que Mueve el Tablero</h3>
+          <div class="article-byline"><strong>The Eddie</strong> — Mayo 2026</div>
         </a>
 
-        <a href="/articles/el-realismo-incompleto.html" class="article-card">
-          <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1723391807622-c1fe37f64d1e?q=80&w=927&auto=format&fit=crop" alt="El Realismo Incompleto" style="width:100%;height:100%;object-fit:cover;display:block"></div>
-          <div class="article-category">Ensayo</div>
-          <h3 class="article-title">El Realismo Incompleto</h3>
-          <div class="article-byline"><strong>Eddie M.</strong> — 03.15.26</div>
+        <a href="/articles/el-maestro-y-el-centrao.html" class="article-card">
+          <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?q=80&w=2340&auto=format&fit=crop" alt="El Maestro y el Centrao" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div class="article-category">Brasil · Corrupción · Política</div>
+          <h3 class="article-title">El Maestro y el Centrao</h3>
+          <div class="article-byline"><strong>The Eddie</strong> — 10 de mayo de 2026</div>
         </a>
 
-        <a href="/articles/viejas-obsesiones-nuevas-razones.html" class="article-card">
-          <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&auto=format&fit=crop" alt="Viejas obsesiones" style="width:100%;height:100%;object-fit:cover;display:block"></div>
-          <div class="article-category">Opinión</div>
-          <h3 class="article-title">Viejas obsesiones con nuevas razones</h3>
-          <div class="article-byline"><strong>Eddie M.</strong> — 03.12.26</div>
+        <a href="/articles/de-ormuz-a-pekin.html" class="article-card">
+          <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2340&auto=format&fit=crop" alt="De Ormuz a Pekín" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div class="article-category">Política · Energía</div>
+          <h3 class="article-title">De Ormuz a Pekín</h3>
+          <div class="article-byline"><strong>The Eddie</strong> — 27 de abril de 2026</div>
         </a>
+
       </aside>
 
       <!-- FEATURED CENTER -->
       <section class="featured-col">
-        <a href="/articles/iran-en-la-encrucijada.html" class="featured-article reveal" style="transition-delay: 0.15s; text-decoration: none; color: inherit; display: block; cursor: pointer;">
+        <a href="/articles/rivalidad-creciente-en-el-golfo.html" class="featured-article reveal" style="transition-delay: 0.15s; text-decoration: none; color: inherit; display: block; cursor: pointer;">
           <div class="featured-label">Artículo Destacado — Hoy</div>
-          <div class="featured-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1613881348993-bc547b53daba?q=80&w=2340&auto=format&fit=crop" alt="Irán en la encrucijada" style="width:100%;height:100%;object-fit:cover;display:block"></div>
-          <h2 class="featured-title">Irán en la encrucijada</h2>
+          <div class="featured-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2340&auto=format&fit=crop" alt="Rivalidad creciente en el Golfo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <h2 class="featured-title">Rivalidad creciente en el Golfo</h2>
           <p class="featured-excerpt">
-            Teherán navega entre la presión internacional y sus propias contradicciones internas. Con negociaciones nucleares estancadas y una economía al límite, el régimen enfrenta una encrucijada histórica. Estuve allí. Esto es lo que realmente está pasando.
+            Las tensiones en el Golfo Pérsico nunca fueron solo una cuestión de teología. La guerra de 2026 las convirtió en el eje de una reconfiguración geopolítica sin precedentes. Quién controla el estrecho, quién financia la reconstrucción, y quién lidera el mundo árabe son preguntas que esta crisis está respondiendo en tiempo real.
           </p>
           <div class="featured-meta">
             <div>
-              <div class="featured-author"><strong>Eddie M.</strong></div>
-              <div class="featured-date">20 de marzo de 2026 &nbsp;·&nbsp; 12 min de lectura</div>
+              <div class="featured-author"><strong>The Eddie</strong></div>
+              <div class="featured-date">Mayo 2026 &nbsp;·&nbsp; Geopolítica · Golfo Pérsico</div>
             </div>
             <div class="featured-reads">
-              <a href="/articles/iran-en-la-encrucijada.html" class="featured-read-more" onclick="event.stopPropagation()">Leer la Historia Completa →</a>
+              <a href="/articles/rivalidad-creciente-en-el-golfo.html" class="featured-read-more" onclick="event.stopPropagation()">Leer la Historia Completa →</a>
             </div>
           </div>
         </a>
+
+        <!-- BELOW FEATURED 2-COL GRID -->
+        <div class="below-featured-section">
+          <div class="below-featured-label">Más Artículos</div>
+          <div class="below-featured-grid">
+
+            <a href="/articles/cuando-el-mercado-tiene-mas-principios.html" class="article-card">
+              <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?q=80&w=2340&auto=format&fit=crop" alt="Cuando el mercado tiene más principios que el Estado" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+              <div class="article-category">Política · Tecnología · IA</div>
+              <h3 class="article-title">Cuando el mercado tiene más principios que el Estado</h3>
+              <div class="article-byline"><strong>The Eddie</strong> — 12 de abril de 2026</div>
+            </a>
+
+            <a href="/articles/el-laberinto-de-orban.html" class="article-card">
+              <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1541343672885-9be56236302a?q=80&w=2340&auto=format&fit=crop" alt="El Laberinto de Orbán" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+              <div class="article-category">Política · Europa</div>
+              <h3 class="article-title">El Laberinto de Orbán</h3>
+              <div class="article-byline"><strong>The Eddie</strong> — 8 de abril de 2026</div>
+            </a>
+
+            <a href="/articles/el-pais-que-vota-sin-creer.html" class="article-card">
+              <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1531968455001-5c5272a41129?q=80&w=2340&auto=format&fit=crop" alt="El País que Vota sin Creer" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+              <div class="article-category">Política · América Latina</div>
+              <h3 class="article-title">El País que Vota sin Creer</h3>
+              <div class="article-byline"><strong>The Eddie</strong> — 28 de marzo de 2026</div>
+            </a>
+
+            <a href="/articles/acuerdo-ue-mercosur.html" class="article-card">
+              <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&auto=format&fit=crop" alt="UE-Mercosur" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+              <div class="article-category">Política</div>
+              <h3 class="article-title">El Gran Pacto Transatlántico: Desentrañando el Acuerdo UE-Mercosur</h3>
+              <div class="article-byline"><strong>The Eddie</strong> — 18 de marzo de 2026</div>
+            </a>
+
+            <a href="/articles/el-realismo-incompleto.html" class="article-card">
+              <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1723391807622-c1fe37f64d1e?q=80&w=927&auto=format&fit=crop" alt="El Realismo Incompleto" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+              <div class="article-category">Ensayo</div>
+              <h3 class="article-title">El Realismo Incompleto</h3>
+              <div class="article-byline"><strong>The Eddie</strong> — 15 de marzo de 2026</div>
+            </a>
+
+            <a href="/articles/viejas-obsesiones-nuevas-razones.html" class="article-card">
+              <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&auto=format&fit=crop" alt="Viejas obsesiones" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+              <div class="article-category">Opinión</div>
+              <h3 class="article-title">Viejas obsesiones con nuevas razones</h3>
+              <div class="article-byline"><strong>The Eddie</strong> — 12 de marzo de 2026</div>
+            </a>
+
+          </div>
+        </div>
+
       </section>
 
       <!-- RIGHT SIDEBAR -->
       <aside class="sidebar sidebar-right reveal" style="transition-delay: 0.1s">
         <div class="sidebar-label">También Leyendo</div>
 
+        <a href="/articles/iran-en-la-encrucijada.html" class="article-card">
+          <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1613881348993-bc547b53daba?q=80&w=2340&auto=format&fit=crop" alt="Irán en la encrucijada" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div class="article-category">Política</div>
+          <h3 class="article-title">Irán en la encrucijada</h3>
+          <div class="article-byline"><strong>The Eddie</strong> — 19 de marzo de 2026</div>
+        </a>
+
         <a href="/articles/apuesta-estrategica-takaichi.html" class="article-card">
           <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&auto=format&fit=crop" alt="Takaichi Japón" style="width:100%;height:100%;object-fit:cover;display:block"></div>
-          <div class="article-category">Política</div>
+          <div class="article-category">Política · Japón</div>
           <h3 class="article-title">La Apuesta Estratégica de Takaichi: El pleno en la Ruleta de la Política Japonesa</h3>
-          <div class="article-byline"><strong>Eddie M.</strong> — 03.17.26</div>
+          <div class="article-byline"><strong>The Eddie</strong> — 17 de marzo de 2026</div>
         </a>
 
         <a href="/articles/cuba-al-borde.html" class="article-card">
           <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1500759285222-a95626b934cb?w=800&auto=format&fit=crop" alt="Cuba al borde" style="width:100%;height:100%;object-fit:cover;display:block"></div>
-          <div class="article-category">Política</div>
+          <div class="article-category">Política · Cuba</div>
           <h3 class="article-title">Cuba al borde: ¿Se acerca el desenlace del régimen?</h3>
-          <div class="article-byline"><strong>Eddie M.</strong> — 03.14.26</div>
+          <div class="article-byline"><strong>The Eddie</strong> — 14 de marzo de 2026</div>
         </a>
 
         <a href="/articles/la-decapitacion.html" class="article-card">
           <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&auto=format&fit=crop" alt="La Decapitación" style="width:100%;height:100%;object-fit:cover;display:block"></div>
           <div class="article-category">Cultura</div>
           <h3 class="article-title">La Decapitación</h3>
-          <div class="article-byline"><strong>Eddie M.</strong> — 03.10.26</div>
+          <div class="article-byline"><strong>The Eddie</strong> — 10 de marzo de 2026</div>
         </a>
 
         <a href="/articles/la-paradoja-centroamericana.html" class="article-card">
           <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1518182170546-07661fd94144?w=800&auto=format&fit=crop" alt="La Paradoja Centroamericana" style="width:100%;height:100%;object-fit:cover;display:block"></div>
-          <div class="article-category">Política</div>
+          <div class="article-category">Política · América Latina</div>
           <h3 class="article-title">La Paradoja Centroamericana</h3>
-          <div class="article-byline"><strong>Eddie M.</strong> — 03.07.26</div>
+          <div class="article-byline"><strong>The Eddie</strong> — 7 de marzo de 2026</div>
         </a>
+
+        <a href="/articles/el-mundo-en-cambio.html" class="article-card">
+          <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2340&auto=format&fit=crop" alt="El mundo en cambio" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div class="article-category">Geopolítica · Orden Internacional</div>
+          <h3 class="article-title">El mundo en cambio</h3>
+          <div class="article-byline"><strong>The Eddie</strong> — Marzo 2026</div>
+        </a>
+
       </aside>
 
     </div>
@@ -976,10 +1109,14 @@
       </div>
       <h2 class="follow-heading">Informes de<br>Campo.<br>Reels.</h2>
       <div class="insta-reels-grid">
-        <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank" class="insta-reel-thumb"><div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="reel-overlay">Ver en Instagram</div></a>
-        <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank" class="insta-reel-thumb"><div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="reel-overlay">Ver en Instagram</div></a>
-        <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank" class="insta-reel-thumb"><div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="reel-overlay">Ver en Instagram</div></a>
-        <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank" class="insta-reel-thumb"><div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="reel-overlay">Ver en Instagram</div></a>
+        <div class="insta-reel-thumb">
+          <iframe src="https://www.instagram.com/reel/DY5XyCSzwyu/embed/" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+          <a href="https://www.instagram.com/reel/DY5XyCSzwyu/" target="_blank" class="reel-overlay">Ver en Instagram</a>
+        </div>
+        <div class="insta-reel-thumb">
+          <iframe src="https://www.instagram.com/reel/DYiGSNtzKG-/embed/" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+          <a href="https://www.instagram.com/reel/DYiGSNtzKG-/" target="_blank" class="reel-overlay">Ver en Instagram</a>
+        </div>
       </div>
       <div class="follow-meta">
         <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank" class="follow-handle">@eddiewouldgo</a>
@@ -1008,19 +1145,46 @@
       <a href="https://open.spotify.com/show/1lQ7fDbP6fuOgKqQTOvInI?si=bd40eed63fa84e60" target="_blank" class="follow-cta">Escuchar en Spotify →</a>
     </div>
 
+    <!-- X (Twitter) — dark side -->
+    <div class="follow-twitter reveal" style="transition-delay:0.2s">
+      <div class="follow-platform-tag">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;flex-shrink:0"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.732-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        X / Twitter
+      </div>
+      <h2 class="follow-heading" style="color:var(--white)">El<br>Análisis.<br>En vivo.</h2>
+
+      <div class="twitter-embed-wrap">
+        <a class="twitter-timeline"
+           data-theme="dark"
+           data-height="380"
+           data-chrome="noheader nofooter noborders transparent"
+           href="https://twitter.com/eddiewgpolicy">
+          Tweets by @eddiewgpolicy
+        </a>
+      </div>
+
+      <div class="follow-meta">
+        <a href="https://x.com/eddiewgpolicy" target="_blank" class="follow-handle" style="color:var(--white)">@eddiewgpolicy</a>
+        <div class="follow-desc" style="color:#666">Análisis en tiempo real,<br>hilos de contexto y cobertura en vivo.</div>
+      </div>
+      <a href="https://x.com/eddiewgpolicy" target="_blank" class="follow-cta">Seguir en X →</a>
+    </div>
+
   </section>
+
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-top">
       <div>
         <div class="footer-brand">Eddie<br>Would<br>Go</div>
-        <p class="footer-brand-sub">Periodismo independiente.<br>Sin agenda, solo la verdad.<br>Desde 2021.</p>
+        <p class="footer-brand-sub">Análisis independiente.<br>Sin agenda.<br>Desde 2021.</p>
       </div>
       <div>
         <div class="footer-col-title">Navegar</div>
         <ul class="footer-links">
-          <li><a href="#">Política</a></li>
+          <li><a href="#">Artículos</a></li>
           <li><a href="#">Cultura</a></li>
           <li><a href="#">Investigaciones</a></li>
           <li><a href="#">Archivo</a></li>
@@ -1032,7 +1196,6 @@
       <span class="footer-copy">© 2026 Eddie Would Go. Todos los derechos reservados.</span>
       <div class="footer-social">
         <a href="#">Twitter</a>
-        <a href="#">Substack</a>
         <a href="#">Instagram</a>
         <a href="#">RSS</a>
       </div>

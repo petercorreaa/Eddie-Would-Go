@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cuando el mercado tiene más principios que el Estado — Eddie Would Go</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; }
+    img { max-width: 100%; height: auto; }
+
+    :root {
+      --blue: #C4622D;
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e0e0e0;
+      --gray-400: #999;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: var(--white);
+      border-bottom: 1px solid var(--black);
+    }
+    .nav-left { display: flex; align-items: center; gap: 12px; }
+    .nav-logo img { height: 40px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--black);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    .article-page { margin-top: 64px; }
+    .article-header { padding: 64px 48px 0; }
+
+    .article-category-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 12px;
+    }
+
+    .article-header-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      line-height: 1.45;
+      color: #444;
+      margin-bottom: 24px;
+      max-width: 860px;
+    }
+
+    .article-page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    .article-hero {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      padding: 0 48px 48px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .article-cover {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--gray-200);
+      overflow: hidden;
+    }
+    .article-cover img { width: 100%; height: 100%; object-fit: cover; }
+
+    .article-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 24px;
+      padding-bottom: 8px;
+    }
+
+    .article-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--black);
+    }
+
+    .article-author-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .article-meta-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-top: 4px;
+    }
+
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 32px 96px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #1a1a1a;
+    }
+    .article-body p { margin-bottom: 1.6em; }
+
+    .article-blockquote {
+      border-left: 3px solid var(--blue);
+      margin: 0 0 2em 0;
+      padding: 16px 0 16px 32px;
+    }
+    .article-blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      margin-bottom: 0.75em;
+      color: #1a1a1a;
+    }
+    .article-blockquote cite {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      font-style: normal;
+    }
+
+    .article-section-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 2.5em 0 0.8em;
+      color: var(--blue);
+    }
+
+    .inline-cite {
+      font-size: 0.72rem;
+      color: var(--gray-400);
+      letter-spacing: 0.01em;
+    }
+
+    .back-link {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding: 48px 48px 0;
+      margin-top: 64px;
+      transition: opacity var(--transition);
+    }
+    .back-link:hover { opacity: 0.5; }
+
+    footer {
+      border-top: 1px solid var(--black);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-copy { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-400); }
+    .footer-social { display: flex; gap: 20px; }
+    .footer-social a { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-400); text-decoration: none; }
+    .footer-social a:hover { color: var(--black); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .nav-links { display: none; }
+      .article-header { padding: 32px 16px 0; }
+      .article-header-subtitle { font-size: 1.05rem; }
+      .article-page-title { font-size: clamp(2rem, 9vw, 3.5rem); margin-bottom: 32px; }
+      .article-hero { grid-template-columns: 1fr; gap: 24px; padding: 0 16px 32px; }
+      .article-sidebar { padding: 0; }
+      .article-body { padding: 48px 16px 64px; }
+      .article-blockquote { padding: 12px 0 12px 20px; }
+      .back-link { padding: 32px 16px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-left">
+      <a href="/" class="nav-logo"><img src="/EWG_Logo.jpg" alt="EWG Logo"></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Política</a></li>
+      <li><a href="/">Sobre Nosotros</a></li>
+    </ul>
+    <div style="width:80px"></div>
+  </nav>
+
+  <div class="article-page">
+
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <div class="article-header">
+      <div class="article-category-tag">Política &nbsp;·&nbsp; Tecnología &nbsp;·&nbsp; IA &nbsp;·&nbsp; 12 min de lectura</div>
+      <h1 class="article-page-title">Cuando el mercado tiene más principios que el Estado</h1>
+    </div>
+
+    <div class="article-hero">
+      <div class="article-cover">
+        <img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'"
+          src="https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?q=80&w=2340&auto=format&fit=crop"
+          alt="Cuando el mercado tiene más principios que el Estado"
+          style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="article-sidebar">
+        <p class="article-subtitle">El Pentágono intentó expulsar a la única empresa de IA que se negó a ceder el control de matar a un algoritmo. El caso Anthropic plantea una pregunta que los gobiernos prefieren no responder: ¿quién tiene autoridad para decidir cuándo una máquina puede ejercer violencia sin supervisión humana?</p>
+        <div>
+          <div class="article-author-name">The Eddie</div>
+          <div class="article-meta-line">12 de abril de 2026 &nbsp;·&nbsp; Política &nbsp;·&nbsp; Tecnología &nbsp;·&nbsp; IA</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <blockquote class="article-blockquote">
+        <p>«Ahora me he convertido en la Muerte, el destructor de mundos.»</p>
+        <cite>— Bhagavad Gita, citado por Oppenheimer tras Trinity, 1945</cite>
+      </blockquote>
+
+      <p>El 8 de marzo de 2026, drones iraníes atacaron tres centros de datos de Amazon Web Services en el Golfo. Un dron de veinte mil dólares puede apagar una instalación de mil millones: basta con destruir el sistema de refrigeración. Los servidores se destruyen solos en horas. Esa asimetría —barato atacar, carísimo defender— es también la lógica que subyace al conflicto más insólito de la guerra: la batalla legal entre el Pentágono y Anthropic, la empresa de inteligencia artificial que se negó a entregar el control de sus sistemas sin condiciones. Los centros de datos ardieron porque la infraestructura de IA ya es infraestructura militar. Anthropic fue al tribunal porque se negó a que esa equivalencia fuera completa.</p>
+
+      <h2 class="article-section-heading">Las dos líneas rojas</h2>
+
+      <p>Anthropic llegó al enfrentamiento con el Pentágono con dos condiciones no negociables: que su tecnología no fuera usada para vigilancia masiva de ciudadanos estadounidenses, y que no fuera usada para armas autónomas —sistemas capaces de seleccionar y atacar objetivos sin intervención humana significativa. No eran caprichos. Eran la política pública de la empresa, publicada, defendida en testimonios en el Congreso, incorporada en su estructura de beneficio público.</p>
+
+      <p>El Pentágono quería acceso para "todos los propósitos legales" y argumentó que no podía permitir que un contratista privado se insertara en la cadena de mando. Su director de tecnología describió el problema en términos operativos: si en una misión real un límite automático activaba un rechazo, soldados quedaban sin soporte de inteligencia en el campo. Dario Amodei se reunió con el secretario Hegseth el 24 de febrero. No llegaron a un acuerdo. El 27 de febrero, el Pentágono designó a Anthropic como riesgo para la cadena de suministro nacional —la misma categoría reservada para Huawei, y la primera vez en la historia que esa designación se aplicó a una empresa estadounidense. <span class="inline-cite">[National Catholic Register, 30 mar. 2026; CFR, 5 mar. 2026]</span> Trump en redes: "Los despedí como perros." OpenAI aceptó los mismos términos que Anthropic rechazó, horas después.</p>
+
+      <p>El contrato con el Pentágono representaba menos del uno por ciento de los ingresos de Anthropic. La empresa que más había apostado a integrarse al ecosistema de seguridad nacional terminó siendo designada como riesgo para ese mismo sistema.</p>
+
+      <h2 class="article-section-heading">Lo que el mercado respondió</h2>
+
+      <p>Lo que ningún analista había modelado fue lo que ocurrió a continuación. En los días posteriores al anuncio, Claude superó a ChatGPT en el App Store de iPhone por primera vez —el sábado 28 de febrero, escalando desde el puesto 131 de enero hasta el número 1, según datos de Sensor Tower. <span class="inline-cite">[TechCrunch / Sensor Tower, 1 mar. 2026; Fortune, 2 mar. 2026]</span> La compañía registró el mayor número de nuevos usuarios en un solo día de su historia: los suscriptores de pago más que se duplicaron en lo que va de año y los usuarios activos diarios crecieron un 167% en marzo respecto a febrero. <span class="inline-cite">[Apptopia, abril 2026]</span> Bloomberg reportó el 3 de marzo ingresos anualizados en camino a casi 20.000 millones de dólares —superando los 19.000 millones, más del doble del ritmo de finales de 2025—, con el crecimiento impulsado principalmente por Claude Code. <span class="inline-cite">[Bloomberg, 3 mar. 2026]</span> El público leyó el conflicto con el Pentágono como un certificado de integridad.</p>
+
+      <p>Anthropic demandó al gobierno federal el 9 de marzo en dos jurisdicciones. Sus abogados advirtieron ante la jueza Rita F. Lin que más de cien clientes empresariales habían contactado a la compañía con preocupaciones; un socio en la FDA migró a un competidor, eliminando cien millones en negocios esperados. El daño estimado en 2026: potencialmente miles de millones. Investigadores de OpenAI y Google DeepMind —competidores directos— presentaron en sus capacidades personales un escrito de amicus curiae sosteniéndola. Microsoft y generales retirados también. Su argumento era estratégico: un sistema que nunca fue interrogado sobre sus propios límites es, en el largo plazo, más peligroso que uno que sí lo fue. <span class="inline-cite">[National Catholic Register, 30 mar. 2026; Washington Monthly, 2 abr. 2026]</span></p>
+
+      <h2 class="article-section-heading">El interés en la virtud</h2>
+
+      <p>Nada de lo anterior convierte a Anthropic en un actor desinteresado. Vale decirlo con precisión, porque la imprecisión aquí es costosa: que una empresa tenga principios no significa que esos principios sean independientes de su modelo de negocio. La apuesta de Amodei —construir una empresa de IA reconociblemente ética como ventaja competitiva— es simultáneamente una postura moral y una estrategia de diferenciación. Ambas cosas son verdad al mismo tiempo, y el hecho de que el mercado las haya validado no resuelve la tensión entre ellas.</p>
+
+      <p>El problema estructural es este: las políticas corporativas, por sólidas que sean, no son marcos regulatorios. Se pueden revertir con presión sostenida, cambio de dirección, o simplemente con una oferta suficientemente grande. La misma semana que Anthropic era designada riesgo de cadena de suministro, Claude operaba en el sistema Maven de Palantir para evaluaciones de inteligencia sobre Irán. La política de la empresa y la realidad del campo corrían en paralelo, sobre ciudades reales, en tiempo real. Eso no es hipocresía necesariamente. Es el límite de lo que una empresa puede garantizar cuando sus sistemas ya están integrados en infraestructura que no controla del todo.</p>
+
+      <p>Lo que hace al caso Anthropic incómodo para sus propios defensores es que su virtud depende de su voluntad de mantenerla bajo presión creciente. Un marco regulatorio no depende de la voluntad de nadie. Esa es exactamente la diferencia entre una empresa con principios y una institución con reglas. El mercado premió a la primera. Lo que el caso expone es la ausencia de la segunda.</p>
+
+      <h2 class="article-section-heading">La pregunta que el Estado no quiere responder</h2>
+
+      <p>El caso Anthropic no es sobre una empresa. Es sobre un vacío de gobernanza que los gobiernos democráticos han preferido no llenar. La pregunta de fondo —quién tiene autoridad para determinar el umbral de violencia que una máquina puede ejercer sin supervisión humana— lleva más de una década siendo debatida sin producir ningún instrumento vinculante. El Secretario General de la ONU fijó 2026 como fecha límite para un tratado sobre sistemas de armas autónomas letales. Ese tratado no existe. En noviembre de 2025, 156 estados votaron a favor de una resolución instando a negociaciones. Cinco votaron en contra. El consenso para un texto vinculante no aparece: China, Francia y el Reino Unido definen los sistemas autónomos de forma diferente. En la brecha entre definiciones cabe un arsenal entero.</p>
+
+      <p>En ese vacío, la regulación efectiva queda delegada a las políticas internas de empresas privadas. Eso no es una solución. Es el problema. Las políticas corporativas se pueden revertir con presión de mercado, cambio de dirección, o amenaza gubernamental —exactamente lo que le ocurrió a Anthropic. Y mientras el litigio se resuelve, los sistemas operan: el Wall Street Journal reportó —confirmado por NBC News, CBS News y Bloomberg Opinion— que Claude fue usado por el Comando Central de EE.UU. para evaluaciones de inteligencia, identificación de objetivos y simulación de escenarios bélicos durante los ataques a Irán, operando a través de su integración con el sistema Maven de Palantir, incluso horas después de la designación. <span class="inline-cite">[WSJ, 28 feb. 2026; NBC News, mar. 2026; CBS News, mar. 2026; Bloomberg Opinion, 4 mar. 2026]</span> La política de la empresa y la realidad del campo corrían en paralelo, en tiempo real, sobre ciudades reales.</p>
+
+      <p>Lo que hace al caso políticamente incómodo es que expone una contradicción que los estados prefieren mantener fuera de los tribunales: para usar IA eficazmente en operaciones de alta velocidad, los sistemas necesitan grados crecientes de autonomía. Cuanto más autónomos sean, menos compatible resulta la tecnología de proveedores que se niegan a ceder ese control. La elección real no es entre IA con límites e IA sin límites. Es entre diseñar marcos legales que regulen la autonomía antes de que su proliferación los haga irrelevantes, o seguir improvisando hasta que ocurra el accidente que haga imposible ignorarlo.</p>
+
+      <p>La apuesta de Amodei —que construir una empresa de IA reconociblemente ética generaría una ventaja competitiva— está siendo validada por el mercado en el momento preciso en que el gobierno intenta destruirla. Pero la historia más larga no es la de Anthropic. Es la del vacío que su caso expone: un mundo en que las decisiones sobre qué puede matar sin preguntar dependen de la resistencia de una empresa privada en San Francisco, y de lo que decida una jueza federal. El vacío no es una omisión. Es una decisión. Y mientras se sigue decidiendo no decidir, los sistemas operan, los drones vuelan, y nadie en particular responde por lo que hacen.</p>
+
+      <h2 class="article-section-heading">Una brecha que no cierra sola</h2>
+
+      <p>Hay un patrón que se repite cada vez que una tecnología transformadora supera la velocidad de las instituciones que deberían regularla: la sociedad termina dependiendo, por defecto, de las decisiones éticas de actores privados. Ocurrió con las redes sociales y la desinformación. Ocurre ahora con la IA y la violencia autónoma. El problema no es solo que los marcos normativos van lentos —siempre van lentos—, sino que en el intervalo, mientras los legisladores debaten definiciones y los organismos internacionales negocian consensos que nunca terminan de cerrarse, alguien tiene que decidir. Y ese alguien, por omisión del Estado, resulta ser una empresa.</p>
+
+      <p>Lo que hace al caso Trump-Anthropic cualitativamente distinto de esa historia habitual es la dirección del movimiento. No es el Estado que llega tarde a regular una tecnología que ya escapó. Es el Estado que interviene activamente para destruir los límites que una empresa privada se impuso a sí misma —los únicos límites que en este momento existen. La designación como riesgo de cadena de suministro no es una política de regulación de IA. Es su opuesto: la eliminación de la única fricción institucional disponible, ejercida por una administración que no tiene ninguna intención de reemplazarla con otra cosa. El resultado no es más control estatal sobre la IA militar. Es menos control de cualquier tipo.</p>
+
+      <p>La paradoja es estructural: los gobiernos democráticos no pueden construir marcos normativos para la IA autónoma a la velocidad que el mercado despliega los sistemas, pero tampoco pueden simplemente castigar a las empresas que intentan llenar ese vacío con sus propias políticas. O desarrollan el marco, o aceptan que el marco lo ponen otros. Lo que no pueden hacer —aunque lo estén haciendo— es las dos cosas a la vez: no regular, y al mismo tiempo impedir que quienes sí regulen sigan haciéndolo. La función de la frase que encabeza este artículo viene a recordarnos que no es la primera vez que el mundo se topa con tecnología revolucionaria. La era nuclear es buen ejemplo: diferente por impacto pero similar por riesgo. Recordar cómo fue abordado es esencial para confrontar este nuevo escenario.</p>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <span class="footer-copy">© 2026 Eddie Would Go. Todos los derechos reservados.</span>
+    <div class="footer-social">
+      <a href="https://x.com/eddiewgpolicy" target="_blank">Twitter</a>
+      <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank">Instagram</a>
+    </div>
+  </footer>
+
+</body>
+</html>
