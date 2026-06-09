@@ -835,9 +835,9 @@
         padding: 16px 0;
       }
       .article-img {
-        width: 100%;
-        aspect-ratio: 16/9;
-        height: auto;
+        width: calc(100vw - 32px);
+        height: 200px;
+        aspect-ratio: unset;
         margin-bottom: 12px;
       }
 
@@ -877,6 +877,10 @@
       /* Below featured 2-col grid */
       .below-featured-grid {
         grid-template-columns: 1fr;
+      }
+      .below-featured-grid .article-card {
+        padding-left: 0;
+        padding-right: 0;
       }
       .below-featured-grid .article-card:nth-child(even) {
         border-left: none;
