@@ -811,27 +811,46 @@
         max-width: 100vw;
       }
 
-      /* Article grid — stack columns */
+      /* Article grid — stack columns.
+         Order on phones: featured article, Reciente, Más Artículos, También
+         Leyendo. "Más Artículos" lives inside .featured-col in the markup, so
+         the column is flattened with display:contents to let its children take
+         part in the same flex ordering; its padding moves onto those children. */
       .page-grid {
         display: flex;
         flex-direction: column;
+      }
+      .featured-col {
+        display: contents;
+      }
+      .featured-article {
+        order: 1;
+        min-width: 0;
+        padding: 24px 16px;
+        border-bottom: 1px solid var(--black);
       }
       .sidebar {
         border-right: none;
         border-bottom: 1px solid var(--black);
         padding: 24px 16px;
         order: 2;
+        min-width: 0;
+      }
+      .below-featured-section {
+        order: 3;
+        min-width: 0;
+        margin-top: 0;
+        border-top: none;
+        border-bottom: 1px solid var(--black);
+        padding: 24px 16px;
       }
       .sidebar-right {
         border-left: none;
-        border-top: 1px solid var(--black);
-        padding: 24px 16px;
-        order: 3;
-      }
-      .featured-col {
-        padding: 24px 16px;
+        border-top: none;
         border-bottom: 1px solid var(--black);
-        order: 1;
+        padding: 24px 16px;
+        order: 4;
+        min-width: 0;
       }
 
       /* Article cards */
@@ -846,6 +865,11 @@
       }
 
       /* Featured article */
+      .featured-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
       .featured-img {
         margin-bottom: 20px;
       }
@@ -952,13 +976,6 @@
       <aside class="sidebar reveal">
         <div class="sidebar-label">Reciente</div>
 
-        <a href="/articles/el-acuerdo-sin-acuerdo.html" class="article-card">
-          <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=2340&auto=format&fit=crop" alt="El Acuerdo Sin Acuerdo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
-          <div class="article-category">Geopolítica · Energía · Medio Oriente</div>
-          <h3 class="article-title">El Acuerdo Sin Acuerdo</h3>
-          <div class="article-byline"><strong>The Eddie</strong> — 20 de agosto de 2026</div>
-        </a>
-
         <a href="/articles/la-bandera-bajo-fuego.html" class="article-card">
           <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?q=80&w=2340&auto=format&fit=crop" alt="La Bandera Bajo Fuego" style="width:100%;height:100%;object-fit:cover;display:block"></div>
           <div class="article-category">Geopolítica · Comercio Marítimo · Canal de Panamá</div>
@@ -1012,17 +1029,17 @@
 
       <!-- FEATURED CENTER -->
       <section class="featured-col">
-        <a href="/articles/rivalidad-creciente-en-el-golfo.html" class="featured-article reveal" style="transition-delay: 0.15s; text-decoration: none; color: inherit; display: block; cursor: pointer;">
+        <a href="/articles/el-acuerdo-sin-acuerdo.html" class="featured-article reveal" style="transition-delay: 0.15s; text-decoration: none; color: inherit; display: block; cursor: pointer;">
           <div class="featured-label">Artículo Destacado — Hoy</div>
-          <div class="featured-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2340&auto=format&fit=crop" alt="Rivalidad creciente en el Golfo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
-          <h2 class="featured-title">Rivalidad creciente en el Golfo</h2>
+          <div class="featured-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=2340&auto=format&fit=crop" alt="El Acuerdo Sin Acuerdo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <h2 class="featured-title">El Acuerdo Sin Acuerdo</h2>
           <p class="featured-excerpt">
-            Las tensiones en el Golfo Pérsico nunca fueron solo una cuestión de teología. La guerra de 2026 las convirtió en el eje de una reconfiguración geopolítica sin precedentes. Quién controla el estrecho, quién financia la reconstrucción, y quién lidera el mundo árabe son preguntas que esta crisis está respondiendo en tiempo real.
+            El 17 de junio, Trump firmó en Versalles el final de la guerra de Irán. Cinco meses después, Washington y Teherán negocian en Muscat quién administra el tránsito por el Estrecho que la guerra debía liberar. Entre esas dos fechas hay dos estrechos comprometidos en lugar de uno, una monarquía saudí arrastrada a la primera línea, y un debate abierto sobre quién ganó realmente algo.
           </p>
           <div class="featured-meta">
             <div>
               <div class="featured-author"><strong>The Eddie</strong></div>
-              <div class="featured-date">Mayo 2026 &nbsp;·&nbsp; Geopolítica · Golfo Pérsico</div>
+              <div class="featured-date">20 de agosto de 2026 &nbsp;·&nbsp; Geopolítica · Energía · Medio Oriente</div>
             </div>
             <div class="featured-reads">
               <span class="featured-read-more">Leer la Historia Completa →</span>
@@ -1034,6 +1051,13 @@
         <div class="below-featured-section">
           <div class="below-featured-label">Más Artículos</div>
           <div class="below-featured-grid">
+
+            <a href="/articles/rivalidad-creciente-en-el-golfo.html" class="article-card">
+              <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2340&auto=format&fit=crop" alt="Rivalidad creciente en el Golfo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+              <div class="article-category">Geopolítica · Golfo Pérsico</div>
+              <h3 class="article-title">Rivalidad creciente en el Golfo</h3>
+              <div class="article-byline"><strong>The Eddie</strong> — Mayo 2026</div>
+            </a>
 
             <a href="/articles/cuando-el-mercado-tiene-mas-principios.html" class="article-card">
               <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?q=80&w=2340&auto=format&fit=crop" alt="Cuando el mercado tiene más principios que el Estado" style="width:100%;height:100%;object-fit:cover;display:block"></div>
