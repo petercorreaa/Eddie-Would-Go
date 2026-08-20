@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- i18n:head -->
+  <style>html.i18n-loading body{visibility:hidden}</style>
+  <script>try{var q=new URLSearchParams(location.search).get('lang');var l=(q==='en'||q==='es')?q:localStorage.getItem('ewg-lang');if(l==='en')document.documentElement.className+=' i18n-loading';}catch(e){}</script>
+  <!-- /i18n:head -->
+  <title>El Manual Que Ya Usamos Tres Veces — Eddie Would Go</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; }
+    img { max-width: 100%; height: auto; }
+
+    :root {
+      --blue: #C4622D;
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e0e0e0;
+      --gray-400: #999;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: var(--white);
+      border-bottom: 1px solid var(--black);
+    }
+    .nav-left { display: flex; align-items: center; gap: 12px; }
+    .nav-logo img { height: 40px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--black);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    .article-page { margin-top: 64px; }
+    .article-header { padding: 64px 48px 0; }
+
+    .article-category-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 12px;
+    }
+
+    .article-header-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      line-height: 1.45;
+      color: #444;
+      margin-bottom: 24px;
+      max-width: 860px;
+    }
+
+    .article-page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    .article-hero {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      padding: 0 48px 48px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .article-cover {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--gray-200);
+      overflow: hidden;
+    }
+    .article-cover img { width: 100%; height: 100%; object-fit: cover; }
+
+    .article-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 24px;
+      padding-bottom: 8px;
+    }
+
+    .article-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--black);
+    }
+
+    .article-author-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .article-meta-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-top: 4px;
+    }
+
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 32px 96px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #1a1a1a;
+    }
+    .article-body p { margin-bottom: 1.6em; }
+
+    .article-blockquote {
+      border-left: 3px solid var(--blue);
+      margin: 0 0 2em 0;
+      padding: 16px 0 16px 32px;
+    }
+    .article-blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      margin-bottom: 0.75em;
+      color: #1a1a1a;
+    }
+    .article-blockquote cite {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      font-style: normal;
+    }
+
+    .article-section-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 2.5em 0 0.8em;
+      color: var(--blue);
+    }
+
+    .inline-cite {
+      font-size: 0.72rem;
+      color: var(--gray-400);
+      letter-spacing: 0.01em;
+    }
+
+    .article-sources {
+      margin-top: 3em;
+      padding-top: 2em;
+      border-top: 1px solid var(--gray-200);
+      font-size: 0.78rem;
+      line-height: 1.9;
+      color: var(--gray-400);
+      letter-spacing: 0.02em;
+    }
+    .article-sources strong {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+
+    .back-link {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding: 48px 48px 0;
+      margin-top: 64px;
+      transition: opacity var(--transition);
+    }
+    .back-link:hover { opacity: 0.5; }
+
+    footer {
+      border-top: 1px solid var(--black);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-copy { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-400); }
+    .footer-social { display: flex; gap: 20px; }
+    .footer-social a { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-400); text-decoration: none; }
+    .footer-social a:hover { color: var(--black); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .nav-links { display: none; }
+      .article-header { padding: 32px 16px 0; }
+      .article-header-subtitle { font-size: 1.05rem; }
+      .article-page-title { font-size: clamp(2rem, 9vw, 3.5rem); margin-bottom: 32px; }
+      .article-hero { grid-template-columns: 1fr; gap: 24px; padding: 0 16px 32px; }
+      .article-sidebar { padding: 0; }
+      .article-body { padding: 48px 16px 64px; }
+      .article-blockquote { padding: 12px 0 12px 20px; }
+      .article-databox { padding: 18px 20px; }
+      .back-link { padding: 32px 16px 0; }
+    }
+    .article-databox {
+      margin: 2.6em 0;
+      padding: 26px 30px;
+      background: var(--gray-100);
+      border-left: 3px solid var(--blue);
+    }
+    .databox-label {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+    .article-databox p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .article-databox p.databox-sources {
+      font-size: 0.72rem;
+      line-height: 1.6;
+      color: var(--gray-400);
+      letter-spacing: 0.02em;
+      margin-bottom: 0;
+    }
+
+    .databox-inline-label {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      color: var(--blue);
+      margin-right: 4px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <a href="/" class="nav-logo">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;background:#000;color:#fff;font-family:'Bebas Neue',sans-serif;font-size:2.2rem;line-height:1;letter-spacing:0;flex-shrink:0;">E</span>
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Política</a></li>
+      <li><a href="/">Sobre Nosotros</a></li>
+    </ul>
+    <div style="width:80px"></div>
+  </nav>
+
+  <div class="article-page">
+
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <div class="article-header">
+      <div class="article-category-tag">GEOPOLÍTICA &nbsp;·&nbsp; INTELIGENCIA ARTIFICIAL &nbsp;·&nbsp; ECONOMÍA &nbsp;·&nbsp; 16 min de lectura</div>
+      <h1 class="article-page-title">El Manual Que Ya Usamos Tres Veces</h1>
+    </div>
+
+    <div class="article-hero">
+      <div class="article-cover">
+        <img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'"
+          src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2340&auto=format&fit=crop"
+          alt="El Manual Que Ya Usamos Tres Veces"
+          style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="article-sidebar">
+        <div>
+          <div class="article-author-name">The Eddie</div>
+          <div class="article-meta-line">Julio 2026 &nbsp;·&nbsp; Geopolítica &nbsp;·&nbsp; Tecnología &nbsp;·&nbsp; Estados Unidos &nbsp;·&nbsp; China</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <blockquote class="article-blockquote">
+        <p>"Aquellos que son habilidosos en la guerra llevan al enemigo al campo de batalla y no al revés."</p>
+        <cite>— Sun Tzu, El arte de la guerra, cap. VI</cite>
+      </blockquote>
+
+      <p>Hay un patrón que China ya ejecutó tres veces, con tres resultados casi idénticos. En paneles solares, invirtió más de 50.000 millones de dólares en subsidios estatales, vendió por debajo de costo hasta que los fabricantes no chinos colapsaron, y hoy controla la mayoría de la manufactura mundial. En tierras raras, pasó de controlar el 21% de la oferta global en 1985 al 97% en 2010 —y hoy procesa cerca del 70% de los veinte minerales estratégicos que la Agencia Internacional de Energía considera críticos. En baterías de litio y vehículos eléctricos, el mismo libreto: más de 230.000 millones de dólares en subsidios acumulados desde 2009, precios por debajo del costo real, y una posición dominante que le permite hoy fijar de facto el ritmo de toda la cadena de suministro.</p>
+
+      <p>La pregunta que este texto plantea es simple: ¿está pasando lo mismo, ahora mismo, con la inteligencia artificial?</p>
+
+      <h2 class="article-section-heading">I. El mismo libro, leído distinto</h2>
+
+      <p>La evidencia empírica apunta a que sí. DeepSeek V4 Flash cuesta 0,28 dólares por millón de tokens de salida. GPT-5.5, el modelo insignia de OpenAI, cuesta 30 dólares por la misma unidad —más de cien veces más. Qwen, de Alibaba, GLM, de Zhipu AI, y MiniMax completan un abanico de modelos chinos de código abierto que corren entre 60% y 90% más baratos que sus equivalentes estadounidenses, según Justin Summerville, de OpenRouter.</p>
+
+      <div class="article-databox">
+        <p><span class="databox-inline-label">EL DATO —</span> Costo por millón de tokens de salida: los cinco modelos chinos más usados cuestan entre $0,28 y $4,40. Los cinco modelos estadounidenses de referencia cuestan entre $5 y $180. Ver tabla completa al final del texto.</p>
+      </div>
+
+      <p>El resultado, medido en tráfico real y no en promesas: los modelos de origen chino sostuvieron una participación de al menos 30% del volumen de tokens empresariales cada semana desde el 8 de febrero de 2026, con un pico semanal de 46%. Doce meses antes, ese número promediaba apenas 11%. En el primer semestre de 2025, era 4,5%. La semana del 9 al 15 de febrero de 2026 marcó el cruce: por primera vez, el volumen de tokens procesados por modelos chinos superó al de los estadounidenses en términos absolutos.</p>
+
+      <p>Esto no es una curiosidad técnica. Es la misma curva que dibujaron los paneles solares chinos entre 2008 y 2013, antes de que Washington y Bruselas reaccionaran con aranceles antidumping cuando ya era demasiado tarde para salvar a la mayoría de los fabricantes occidentales.</p>
+
+      <h2 class="article-section-heading">II. Empresas de Estados Unidos, corriendo hacia el descuento</h2>
+
+      <p>La lista de compañías estadounidenses que ya adoptaron modelos chinos en producción ya no es marginal. Airbnb confirmó, por boca de su propio CEO Brian Chesky, que corre Qwen de Alibaba para atención al cliente, describiéndolo como “rápido y barato”. Coinbase, según declaraciones de su CEO Brian Armstrong en X, corre GLM-5.2 y Kimi en producción y cortó casi a la mitad su gasto en IA pese a que su consumo de tokens aumentó. Shopify, Perplexity, Nvidia y Siemens fueron vinculados públicamente al uso de Qwen. Cursor (Anysphere) usa Kimi, de Moonshot AI. Microsoft evalúa una versión afinada de DeepSeek V4 como motor de bajo costo para Copilot Cowork.</p>
+
+      <p>Dos comités de la Cámara de Representantes de Estados Unidos abrieron una investigación formal sobre Airbnb y Anysphere por el uso de estos modelos, citando riesgos de seguridad de datos, censura y una posible campaña sistemática de destilación de modelos occidentales por parte de laboratorios chinos —una acusación que Anthropic y OpenAI ya formalizaron ante el Congreso en febrero de 2026.</p>
+
+      <p>El propio sector técnico aporta una segunda capa de evidencia, menos ideológica y más incómoda: un estudio de Booz Allen Hamilton de mayo de 2026, con más de 2.800 pruebas sobre cinco modelos de generación de código —cuatro chinos y uno estadounidense—, encontró que tres de los cuatro modelos chinos producían significativamente más vulnerabilidades cuando el prompt sugería un usuario del gobierno de Estados Unidos, con Qwen3-Coder generando un 130% más. Los cuatro modelos chinos, además, rechazaban sistemáticamente tareas que Beijing considera sensibles. No es solo una guerra de precios: es una guerra de precios con una capa de riesgo estructural que las empresas que migran están, en la mayoría de los casos, ignorando.</p>
+
+      <h2 class="article-section-heading">III. La otra mitad de la ecuación: una economía apostada a un solo número</h2>
+
+      <p>Acá es donde el argumento se vuelve más incómodo para Washington que para Beijing. Según Torsten Slok, economista jefe de Apollo Global Management, la actividad económica vinculada a la inteligencia artificial explica aproximadamente la mitad de todo el crecimiento del PBI de Estados Unidos en 2026. Otros cálculos, basados en datos de la Oficina de Análisis Económico y en los balances trimestrales de las empresas, son todavía más extremos: el gasto de capital en infraestructura de IA representó cerca del 75% de todo el crecimiento del PBI estadounidense en el primer trimestre de 2026. Sin ese gasto, la economía habría estado, en la práctica, estancada.</p>
+
+      <div class="article-databox">
+        <p><span class="databox-inline-label">EL DATO —</span> Concentración de la economía en IA: Google, Amazon, Microsoft y Meta planean en conjunto unos USD 725.000 millones de gasto de capital en 2026. La mitad de toda la deuda corporativa emitida este año está vinculada a IA —un 15% de todo el mercado de bonos corporativos. Las empresas tecnológicas y adyacentes representan el 50% del valor total del S&amp;P 500.</p>
+      </div>
+
+      <p>El propio ratio de gasto de capital sobre flujo de caja de los grandes hiperescaladores —Microsoft, Google, Amazon, Meta— se acerca al 75%, un nivel que analistas como Ed Yardeni, el economista que acuñó el término “vigilantes de bonos”, comparan directamente con los excesos de 1999. La diferencia, dicen los optimistas, es que las empresas de hoy tienen ganancias reales detrás del gasto. La pregunta que nadie puede responder todavía es si esas ganancias sobreviven a un mercado donde el precio del insumo principal —el token— se está desplomando 90% por la competencia china.</p>
+
+      <h2 class="article-section-heading">IV. Donde las dos tesis se cruzan</h2>
+
+      <p>El 20 de julio de 2026 —hoy—, Nvidia cotiza aproximadamente 14% por debajo de su máximo de 2026, y el índice de semiconductores de Filadelfia entró en mercado bajista técnico. La razón que citan los propios analistas financieros no es una caída en la demanda de cómputo: es la duda sobre si las hiperescaladoras pueden seguir convirtiendo gasto de capital en ingresos, justo cuando modelos chinos de código abierto amenazan con comprimir el mercado de inferencia —el segmento que Jensen Huang, CEO de Nvidia, calificó como la carga de trabajo dominante de la IA en 2026.</p>
+
+      <p>Un inversor tecnológico lo planteó sin matices en X, en un posteo del que se hicieron eco varios medios financieros en junio: si las empresas migran su gasto en IA de millones de dólares a una fracción de eso, las valuaciones de OpenAI y Anthropic —y con ellas, buena parte del andamiaje de deuda y capital que sostiene al sector— podrían colapsar. “La burbuja no es la IA. Es el precio de la IA. Y está por explotar”, escribió. Firmas como Futurum Group salieron a matizar ese pronóstico, pero nadie en el mercado serio niega ya la premisa de base.</p>
+
+      <h2 class="article-section-heading">V. La semana que resume todo el argumento</h2>
+
+      <p>Si hiciera falta una sola semana para ver las dos tesis de este texto chocar en tiempo real, fue esta. El 16 de julio, Moonshot AI —el laboratorio chino detrás del asistente Kimi— lanzó Kimi K3: 2,8 billones de parámetros, el modelo de código abierto más grande jamás publicado, con una ventana de contexto de un millón de tokens. Según evaluaciones independientes de Artificial Analysis y Vals AI, K3 supera a Claude Opus 4.8 y a GPT-5.5 en varios benchmarks de codificación y tareas agénticas de largo horizonte, a una fracción del precio —15 dólares por millón de tokens de salida, contra 25 de Opus y 30 de GPT-5.5. El lanzamiento provocó una caída inmediata de las acciones de semiconductores en Nasdaq y en el Nikkei de Tokio, antes incluso de que la mayoría de los analistas terminara de leer la documentación técnica.</p>
+
+      <p>El momento no fue casual. Al día siguiente, 17 de julio, Xi Jinping dio el discurso inaugural de la Conferencia Mundial de IA (WAIC) en Shanghái y anunció la creación de la Organización Mundial de Cooperación en IA (WAICO), con sede en Shanghái, además de 5.000 nuevas becas de capacitación en IA para países en desarrollo a lo largo de cinco años. Xi llamó a que el desarrollo de la IA “no sea un show en solitario de un único país, sino una sinfonía de cooperación internacional”, y criticó lo que llamó el “sobreestiramiento” de las preocupaciones de seguridad nacional por parte de otros países —una referencia apenas velada a los controles de exportación estadounidenses que ya suspendieron una vez a los modelos más avanzados de Anthropic.</p>
+
+      <blockquote class="article-blockquote">
+        <p>"El desarrollo de la IA no debería ser un show en solitario de un único país, sino una sinfonía de cooperación internacional."</p>
+        <cite>— Xi Jinping, discurso inaugural de la Conferencia Mundial de IA, Shanghái, 17 de julio de 2026</cite>
+      </blockquote>
+
+      <p>El propio South China Morning Post notó el paralelismo: el discurso de Xi llegó apenas horas después de que Trump, en una transmisión nacional en horario central, acusara a China de orquestar “el mayor compromiso de datos electorales de la historia”. Dos discursos el mismo día, en direcciones opuestas: uno ofreciendo cooperación abierta y modelos gratuitos al Sur Global, el otro denunciando una amenaza a la integridad democrática. El contraste no podría ilustrar mejor la tesis central de este texto —mientras Washington debate el marco de la amenaza, Beijing ya está regalando la infraestructura.</p>
+
+      <h2 class="article-section-heading">VI. Lo que todavía no sabemos</h2>
+
+      <p>Ni el paralelo con el dumping solar ni el paralelo con la burbuja de 1999 son, todavía, hechos consumados. La diferencia con el solar es que ahí no hubo, del lado occidental, un actor con el capital y la escala de los hiperescaladores estadounidenses actuales: Google, Microsoft, Amazon y Meta pueden absorber años de gasto que ningún fabricante solar europeo o estadounidense podía. Y la diferencia con 1999 es que, a diferencia de las puntocom, las empresas que hoy lideran el gasto tienen ganancias operativas reales, no solo promesas.</p>
+
+      <p>Pero el patrón de comportamiento chino —subsidio estatal, sobrecapacidad deliberada, precios que ningún competidor de mercado libre puede igualar, seguido de una posición dominante que le permite después fijar condiciones— es, según la evidencia recogida por FDD, la IEA y el propio Congreso de Estados Unidos, un patrón que se repitió con una consistencia que ya no admite la palabra “coincidencia”. La pregunta que queda abierta no es si China está compitiendo. Es si, como en el solar y las tierras raras, para cuando Washington reacciona con seriedad, ya va a ser demasiado tarde para que la reacción cambie el resultado.</p>
+
+      <div class="article-sources">
+        <strong>Fuentes principales</strong>
+        AMAC Newsline · FDD (Unplugging Beijing) · International Energy Agency · CNBC / OpenRouter · Yahoo Finance · NPR · Rest of World · Tech Buzz China Insider · Nextgov/FCW · Tech Startups · Tech Times / Booz Allen Hamilton · The D*AI*LY Brief · Apollo Global Management (Torsten Slok) · TECHi / Bureau of Economic Analysis · Barron's / Bloomberg · Charles Schwab · Fortune · Resonanz Capital · Trefis / Yahoo Finance · FX Leaders · Benzinga · VentureBeat · Technology.org · Eastern Herald · Xinhua / Ministerio de Relaciones Exteriores de China · South China Morning Post · MorphLLM, LayerLabs, AI Pricing Guru. El detalle de cada cita, con fecha y titular, está en las notas al pie de cada afirmación.
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">© 2026 Eddie Would Go. Todos los derechos reservados.</span>
+    <div class="footer-social">
+      <a href="https://x.com/eddiewgpolicy" target="_blank">Twitter</a>
+      <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank">Instagram</a>
+    </div>
+  </footer>
+
+  <!-- i18n:script -->
+  <script src="/i18n/i18n.js" defer></script>
+  <!-- /i18n:script -->
+</body>
+</html>

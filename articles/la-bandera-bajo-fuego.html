@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- i18n:head -->
+  <style>html.i18n-loading body{visibility:hidden}</style>
+  <script>try{var q=new URLSearchParams(location.search).get('lang');var l=(q==='en'||q==='es')?q:localStorage.getItem('ewg-lang');if(l==='en')document.documentElement.className+=' i18n-loading';}catch(e){}</script>
+  <!-- /i18n:head -->
+  <title>La Bandera Bajo Fuego — Eddie Would Go</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; }
+    img { max-width: 100%; height: auto; }
+
+    :root {
+      --blue: #C4622D;
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e0e0e0;
+      --gray-400: #999;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: var(--white);
+      border-bottom: 1px solid var(--black);
+    }
+    .nav-left { display: flex; align-items: center; gap: 12px; }
+    .nav-logo img { height: 40px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--black);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    .article-page { margin-top: 64px; }
+    .article-header { padding: 64px 48px 0; }
+
+    .article-category-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 12px;
+    }
+
+    .article-header-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      line-height: 1.45;
+      color: #444;
+      margin-bottom: 24px;
+      max-width: 860px;
+    }
+
+    .article-page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    .article-hero {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      padding: 0 48px 48px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .article-cover {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--gray-200);
+      overflow: hidden;
+    }
+    .article-cover img { width: 100%; height: 100%; object-fit: cover; }
+
+    .article-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 24px;
+      padding-bottom: 8px;
+    }
+
+    .article-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--black);
+    }
+
+    .article-author-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .article-meta-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-top: 4px;
+    }
+
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 32px 96px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #1a1a1a;
+    }
+    .article-body p { margin-bottom: 1.6em; }
+
+    .article-blockquote {
+      border-left: 3px solid var(--blue);
+      margin: 0 0 2em 0;
+      padding: 16px 0 16px 32px;
+    }
+    .article-blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      margin-bottom: 0.75em;
+      color: #1a1a1a;
+    }
+    .article-blockquote cite {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      font-style: normal;
+    }
+
+    .article-section-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 2.5em 0 0.8em;
+      color: var(--blue);
+    }
+
+    .inline-cite {
+      font-size: 0.72rem;
+      color: var(--gray-400);
+      letter-spacing: 0.01em;
+    }
+
+    .article-sources {
+      margin-top: 3em;
+      padding-top: 2em;
+      border-top: 1px solid var(--gray-200);
+      font-size: 0.78rem;
+      line-height: 1.9;
+      color: var(--gray-400);
+      letter-spacing: 0.02em;
+    }
+    .article-sources strong {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+
+    .back-link {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding: 48px 48px 0;
+      margin-top: 64px;
+      transition: opacity var(--transition);
+    }
+    .back-link:hover { opacity: 0.5; }
+
+    footer {
+      border-top: 1px solid var(--black);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-copy { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-400); }
+    .footer-social { display: flex; gap: 20px; }
+    .footer-social a { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-400); text-decoration: none; }
+    .footer-social a:hover { color: var(--black); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .nav-links { display: none; }
+      .article-header { padding: 32px 16px 0; }
+      .article-header-subtitle { font-size: 1.05rem; }
+      .article-page-title { font-size: clamp(2rem, 9vw, 3.5rem); margin-bottom: 32px; }
+      .article-hero { grid-template-columns: 1fr; gap: 24px; padding: 0 16px 32px; }
+      .article-sidebar { padding: 0; }
+      .article-body { padding: 48px 16px 64px; }
+      .article-blockquote { padding: 12px 0 12px 20px; }
+      .article-callout { padding: 10px 0 10px 20px; }
+      .article-databox { padding: 18px 20px; }
+      .back-link { padding: 32px 16px 0; }
+    }
+    .article-databox {
+      margin: 2.6em 0;
+      padding: 26px 30px;
+      background: var(--gray-100);
+      border-left: 3px solid var(--blue);
+    }
+    .databox-label {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+    .article-databox p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .article-databox p.databox-sources {
+      font-size: 0.72rem;
+      line-height: 1.6;
+      color: var(--gray-400);
+      letter-spacing: 0.02em;
+      margin-bottom: 0;
+    }
+
+    .article-callout {
+      border-left: 3px solid var(--blue);
+      padding: 12px 0 12px 28px;
+      margin: 0.4em 0 1.8em;
+      font-weight: 500;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--black);
+    }
+    .section-divider {
+      text-align: center;
+      color: var(--gray-400);
+      letter-spacing: 0.3em;
+      font-size: 0.8rem;
+      margin: 2.4em 0;
+      user-select: none;
+    }
+    .article-closing {
+      border-top: 1px solid var(--gray-200);
+      margin-top: 2.4em;
+      padding-top: 2em;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: var(--black);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <a href="/" class="nav-logo">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;background:#000;color:#fff;font-family:'Bebas Neue',sans-serif;font-size:2.2rem;line-height:1;letter-spacing:0;flex-shrink:0;">E</span>
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Política</a></li>
+      <li><a href="/">Sobre Nosotros</a></li>
+    </ul>
+    <div style="width:80px"></div>
+  </nav>
+
+  <div class="article-page">
+
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <div class="article-header">
+      <div class="article-category-tag">GEOPOLÍTICA &nbsp;·&nbsp; COMERCIO MARÍTIMO &nbsp;·&nbsp; CANAL DE PANAMÁ</div>
+      <h1 class="article-page-title">La Bandera Bajo Fuego</h1>
+    </div>
+
+    <div class="article-hero">
+      <div class="article-cover">
+        <img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'"
+          src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?q=80&w=2340&auto=format&fit=crop"
+          alt="La Bandera Bajo Fuego"
+          style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="article-sidebar">
+        <p class="article-subtitle">El 30 de enero de 2026, la Corte Suprema de Panamá anuló la concesión de CK Hutchison sobre los puertos de Balboa y Cristóbal. Lo que siguió no fue una disputa legal. Fue una demostración calculada de cómo una potencia puede convertir el mayor registro marítimo del mundo en un instrumento de presión geopolítica. Setenta buques detenidos. Cuarenta por ciento de propiedad japonesa. USD 270.000 millones en carga en juego. Este es el inventario de la represalia.</p>
+        <div>
+          <div class="article-author-name">The Eddie</div>
+          <div class="article-meta-line">Geopolítica &nbsp;·&nbsp; Comercio Marítimo &nbsp;·&nbsp; Canal de Panamá</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <blockquote class="article-blockquote">
+        <p>«El control del mar mediante el comercio marítimo y la supremacía naval significa una influencia predominante en el mundo.»</p>
+        <cite>— Alfred Thayer Mahan, La Influencia del Poder Marítimo sobre la Historia (1890)</cite>
+      </blockquote>
+
+      <p>En algún puerto de China, en algún momento entre el 8 de marzo y fines de abril de 2026, un armador japonés recibió la noticia de que su barco estaba detenido. La razón oficial: inspección de control portuario. El número de inspecciones sobre buques de bandera panameña en puertos chinos había aumentado de manera súbita, sistemática y, según el regulador marítimo de Estados Unidos, en niveles que "exceden ampliamente las normas históricas". El armador japonés no había participado en ninguna decisión sobre el Canal de Panamá. Su empresa no tenía relación con CK Hutchison ni con BlackRock ni con el gobierno de Mulino. Simplemente había elegido registrar su buque en Panamá, como lo hacen el 15% de los barcos del mundo. Esa elección, que es rutinariamente comercial, se había convertido en una variable geopolítica.</p>
+
+      <p>Lo que pasó en el Canal de Panamá entre enero y mayo de 2026 tiene nombre técnico en el derecho internacional: coerción económica de Estado. Tiene también un mecanismo preciso: la weaponización de un registro marítimo. Y tiene una dimensión que el debate habitual sobre el Canal omite sistemáticamente: no es solo una disputa entre Washington y Beijing. Es la historia de cómo Panamá, un país de 4,4 millones de personas, se convirtió en el campo de batalla de la mayor rivalidad estratégica del siglo XXI.</p>
+
+      <h2 class="article-section-heading">I. EL FALLO QUE CAMBIÓ TODO</h2>
+
+      <p>La concesión de CK Hutchison sobre los terminales de Balboa y Cristóbal data de 1997. Casi tres décadas de operación ininterrumpida en los dos extremos del canal —uno sobre el Pacífico, otro sobre el Atlántico— convirtieron a la empresa de Hong Kong en el operador privado más importante de la infraestructura portuaria panameña. La concesión era, para todos los efectos prácticos, parte del paisaje institucional del canal.</p>
+
+      <p>El 30 de enero de 2026, la Corte Suprema de Panamá la declaró inconstitucional. El fallo siguió a una auditoría que detectó irregularidades en el proceso original de concesión y cuestionó su marco legal. El gobierno de Mulino, que había resistido durante todo 2025 la presión estadounidense para revisar la presencia china en el canal, tenía ahora un fallo judicial que lo autorizaba a actuar —y una relación con Washington que se había deteriorado lo suficiente como para que la acción fuera también una señal diplomática.</p>
+
+      <p>La transición fue rápida. El 23 de enero, antes del fallo definitivo, el gobierno asumió el control de ambas instalaciones alegando "urgente interés social" y necesidad de garantizar continuidad operativa. Maersk, a través de su subsidiaria APM Terminals, tomó Balboa. MSC, a través de Terminal Investment Limited, tomó Cristóbal. Contratos de 18 meses. El valor del contrato solo para Balboa: USD 26,1 millones según documentos citados por La Estrella de Panamá. La transición tenía un ganador inmediato: Maersk, que ya manejaba entre el 75 y el 80% del tráfico de contenedores en Balboa, quedaba posicionada como favorita para el proceso de licitación permanente que la Autoridad Marítima panameña anunció para el período de transición.</p>
+
+      <p>Para CK Hutchison, la consecuencia fue inmediata: la empresa lanzó arbitraje internacional contra el gobierno de Panamá. El monto reclamado supera los USD 2.000 millones. El argumento: "toma ilegal" de sus activos portuarios. El proceso de arbitraje puede extenderse por años y el resultado es incierto. Lo que no es incierto es que Panama Ports Company —la subsidiaria que operaba los puertos— perdió acceso a sus instalaciones antes de que ningún tribunal internacional se pronunciara.</p>
+
+      <h2 class="article-section-heading">II. EL CÁLCULO QUE SE ROMPIÓ: PANAMÁ Y EL BRI (2017–2025)</h2>
+
+      <p>Lo que pasó en el Canal de Panamá no empezó en enero de 2026. Empezó en noviembre de 2017, cuando Panamá se convirtió en el primer país de América Latina en adherirse formalmente a la Iniciativa de la Franja y la Ruta china — el BRI. Fue un momento de audacia geopolítica para un país pequeño que creía poder navegar entre las dos potencias sin elegir un bando. Ocho años después, ese cálculo está completamente roto.</p>
+
+      <p>El 3 de febrero de 2025, el día de la visita de Rubio al canal, el gobierno de Mulino anunció que Panamá no renovará su participación en el BRI. El 6 de febrero, formalizó la notificación con 90 días de anticipación. Panamá se convertía así en el primer país latinoamericano tanto en adherirse como en retirarse del BRI — un arco completo de alineamiento, reversión y consecuencias que no tiene precedente en la región. La respuesta de Mulino cuando le preguntaron qué había traído el BRI al país: no supo qué responder.</p>
+
+      <p>Analistas del CSIS bautizaron a esta secuencia —salida del BRI, anulación judicial de la concesión, alineamiento cada vez más explícito con Washington— como la “Doctrina Mulino”: una estrategia de autonomía a través de mecanismos institucionales y legales, no de alineamiento militar ni de retórica ideológica. La pieza que le falta a esa doctrina para completarse ya está en marcha: en paralelo a la salida del BRI, el gobierno de Mulino firmó un memorando de cooperación de seguridad con el Pentágono. En dieciocho meses desde que asumió, en julio de 2024, Panamá pasó de intentar navegar entre las dos potencias sin elegir bando a construir, pieza por pieza, un expediente legal e institucional que documenta exactamente lo contrario.</p>
+
+      <p>Los números revelan la asimetría que subyace a toda la relación. En 2023, la inversión directa china en Panamá representaba el 0,8% del total. La inversión estadounidense: el 19,6%. España aportaba el 3,6%. China nunca fue el socio dominante en términos de capital. Pero sí era el socio visible — el que había firmado los acuerdos de infraestructura, el que operaba los puertos, el que prestaba el marco narrativo de la cooperación Sur-Sur. Cuando Trump necesitó un argumento para presionar a Panamá, esa visibilidad fue suficiente.</p>
+
+      <p>El patrón que Panamá ilustra no es exclusivo. Brasil nunca adhirió formalmente al BRI, a pesar de la presión china. Colombia llegó a considerarlo y se retiró. Italia, el único país del G7 que había entrado, lo abandonó en diciembre de 2023 bajo presión estadounidense, alegando que no había reportado beneficios económicos concretos. Según el análisis de The Conversation, más de 20 países de América Latina y el Caribe mantienen adhesión formal al BRI — pero la región observa lo que le pasó a Panamá. La pregunta que cada uno de esos gobiernos se está haciendo ahora es simple: ¿cuánto cuesta salir, y cuánto cuesta quedarse?</p>
+
+      <p>La respuesta que Panamá está dando en tiempo real es inquietante para ambas preguntas. El costo de salir fue inmediato: setenta buques detenidos, COSCO suspendido, Maersk y MSC convocados a Beijing, y un arbitraje de USD 2.000 millones en curso. El costo de quedarse habría sido diferente — la presión estadounidense sobre un país que depende de Washington para su seguridad, su moneda y la mayor parte de su inversión extranjera no era sostenible indefinidamente. Panamá no eligió su posición en este conflicto. Su posición — canal interoceánico, registro marítimo global, cruce de rutas comerciales — la eligió por él.</p>
+
+      <p>El documento de Estrategia de Defensa Nacional de EE.UU. publicado en enero de 2026 confirma que esto no es un incidente. Es una política. El documento, según el China-Global South Project, confirma que un cambio estratégico está en marcha en el Hemisferio Occidental. La pregunta que ese cambio deja a los 20 países latinoamericanos que todavía tienen acuerdos BRI vigentes es la misma que Mulino no supo responder cuando le preguntaron qué había traído el BRI a Panamá. Algunos tendrán una respuesta diferente. El modelo de costos y beneficios que usarán para calcularla ya tiene un caso de prueba: lo que pasó después de que Panamá rompiera con Beijing, cuando la ruptura diplomática se convirtió en un fallo judicial, y el fallo judicial, en una represalia calculada en tres frentes.</p>
+
+      <h2 class="article-section-heading">III. LA REPRESALIA EN TRES FRENTES</h2>
+
+      <p>La respuesta china fue coordinada, rápida y multidimensional. No llegó de un solo ministerio ni por un solo canal. Llegó simultáneamente desde el sistema de transporte estatal, desde la diplomacia comercial y desde los mecanismos de control portuario —que en China son un instrumento de política exterior cuando el gobierno lo decide así.</p>
+
+      <p>El primer frente fue COSCO. El cuarto mayor transportista de contenedores del mundo, de propiedad estatal china, suspendió sus servicios en el terminal de Balboa quince días después de que Maersk y MSC asumieran el control. La decisión tiene tanto de señal estratégica como de impacto logístico real: según datos de La Prensa, Maersk ya manejaba el grueso del tráfico en Balboa, con lo cual la ausencia de COSCO no paraliza el terminal. Pero la imagen es deliberada. COSCO redirigió parte de su actividad de transbordo hacia el puerto colombiano de Buenaventura, en el Pacífico, introduciendo a Colombia como receptor indirecto del conflicto.</p>
+
+      <p>El segundo frente fue la convocatoria diplomática. El Ministerio de Transporte chino citó a ejecutivos de Maersk y MSC para "discusiones de alto nivel sobre operaciones de transporte marítimo internacional". En el lenguaje regulatorio chino, ese tipo de convocatoria no es una invitación a debatir. Es una señal de que el Estado considera que la conducta comercial de esas empresas está bajo escrutinio en sectores considerados vitales para el comercio nacional. La Comisión Marítima Federal de EE.UU. registró públicamente las convocatorias en su declaración de marzo.</p>
+
+      <p>El tercer frente es el más sofisticado y el de mayor impacto sistémico: la oleada de inspecciones de control portuario sobre buques de bandera panameña. El mecanismo formal existe en el derecho marítimo internacional —los estados tienen derecho a inspeccionar buques extranjeros en sus puertos para verificar el cumplimiento de estándares de seguridad y medioambiente. Lo que no existe en el derecho internacional es el uso de ese mecanismo como represalia política coordinada. Eso es exactamente lo que la FMC documentó: directivas informales, frecuencia de detenciones muy por encima de la norma histórica, y un patrón temporal que coincide con la transferencia de los activos de Hutchison.</p>
+
+      <p>Los números detrás de esa oleada, reconstruidos con datos del Tokyo MOU —la autoridad de control portuario de la región Asia-Pacífico—, muestran una curva que el promedio de “setenta buques” no alcanza a transmitir. En enero de 2026, 23 de los buques detenidos en puertos chinos llevaban bandera panameña; en febrero, 20. En marzo, el mes del quiebre, la cifra saltó a 92: casi tres cuartas partes de todas las detenciones registradas en China ese mes. En abril llegó a 135. En mayo, a 139. El total de esos dos meses —274— superó todas las detenciones de bandera panameña registradas en la totalidad de 2025. Recién en junio, con 64 detenciones, la cifra cayó un 54% respecto de mayo: la primera señal de que algo empezaba a distenderse. Beijing, por su parte, ofrece una explicación distinta: la vocera de la Cancillería china, Guo Jiakun, atribuyó el aumento de inspecciones a una serie de colisiones de buques de bandera panameña en aguas chinas durante 2026, y sostiene que se trata de un asunto de seguridad marítima, no de represalia política. El problema para esa versión es el calendario: las colisiones no explican por qué la curva de detenciones se dispara exactamente el 8 de marzo, catorce días después de que Maersk y MSC tomaran control de Balboa y Cristóbal, ni por qué cae a la mitad apenas se anuncia una misión diplomática panameña a Beijing.</p>
+
+      <p class="article-callout">Setenta buques detenidos desde el 8 de marzo. Directivas informales. Frecuencia muy por encima de la norma histórica. El regulador marítimo de EE.UU. no dejó dudas sobre la naturaleza de la medida.</p>
+
+      <div class="section-divider">— — —</div>
+
+      <h2 class="article-section-heading">IV. LA BANDERA MÁS CASTIGADA DEL MUNDO</h2>
+
+      <p>Para entender el alcance del daño, hay que entender qué es el registro marítimo panameño. Panamá tiene la flota de pabellón más grande del mundo: más de 4.700 buques de carga y contenedores que representan alrededor del 15% del tonelaje global. Pero la mayoría de esos barcos no son panameños en ningún sentido operativo. Son buques de armadores europeos, japoneses, griegos, coreanos, taiwaneses, estadounidenses que eligieron el registro panameño por sus ventajas comerciales: tarifas competitivas, flexibilidad regulatoria, neutralidad política histórica.</p>
+
+      <p>Esa neutralidad histórica es exactamente lo que China eliminó en marzo de 2026. Al aplicar presión sobre la bandera panameña como mecanismo de represalia, Beijing convirtió una decisión de registro marítimo —que es esencialmente administrativa y comercial— en una declaración política. Y los armadores que no tienen nada que ver con la disputa del canal pagaron el costo.</p>
+
+      <p>El dato que captura mejor la magnitud del daño colateral lo produjo Lloyd's List: de los casi 70 buques detenidos en puertos chinos desde el 8 de marzo, el 39% son de propiedad japonesa. Tokio no tomó ninguna decisión sobre el Canal de Panamá. Las empresas navieras japonesas no estaban entre los operadores sustitutos de CK Hutchison. Sin embargo, sus buques pasaron semanas en puertos chinos bajo "inspecciones de control portuario" mientras sus cargamentos esperaban y sus costos operativos acumulaban. La represalia de bandera produce daño colateral sin discriminación.</p>
+
+      <p>El costo no se mide solo en buques detenidos: se mide en buques que se van. Según datos de Lloyd’s List Intelligence, 180 embarcaciones abandonaron la bandera panameña en mayo de 2026; en junio, 264 —un salto del 47%—, con Bahamas y las Islas Marshall recibiendo más de la mitad de esos pases de registro. El dato más incómodo para Beijing está adentro de esa cifra: el grupo de propietarios que más buques retiró de la bandera panameña en junio fue, precisamente, de origen chino —cincuenta vinculados a China continental, veinte a Hong Kong.</p>
+
+      <p>China castiga la bandera panameña con inspecciones y, al mismo tiempo, sus propios armadores la abandonan, lo que sugiere que el cálculo comercial ya empezó a pesar más que la lealtad política. La consecuencia de mediano plazo es regulatoria: si la tasa de detenciones se mantiene, Panamá corre el riesgo de caer de la lista blanca a la lista gris en los rankings de control portuario internacional —una degradación que encarecería el registro para todos los armadores que decidan quedarse, más allá de cómo termine el conflicto político.</p>
+
+      <p>Panamá ya empezó a cortejar activamente un reemplazo: en 2025 y 2026, Mulino recibió en el Palacio de las Garzas a Keidanren, la federación empresaria japonesa, y a la asociación de armadores de Japón, ofreciendo modernizar el registro marítimo y sumando a la mesa un gasoducto interoceánico y un reservorio en Río Indio como incentivos. Japón, la principal víctima colateral de las detenciones chinas, es también el socio que Panamá corteja para reemplazar la centralidad que China tuvo alguna vez.</p>
+
+      <p>Para la industria naviera global, el precedente es perturbador. Si la bandera de un país puede convertirse en objetivo de represalia por decisiones de su gobierno sobre concesiones portuarias, el cálculo del registro marítimo cambia. Los armadores ya no pueden tratar la elección de bandera como una decisión puramente comercial. Tienen que evaluar si el país de registro tiene relaciones diplomáticas estables con los principales puertos de destino de su carga. David Smith, del US Studies Centre de la Universidad de Sydney, lo sintetizó con precisión ante Al Jazeera: "Hemos dado por sentado que el mundo funciona con barcos de contenedores navegando libremente por el mundo". El conflicto de Panamá demostró que ese supuesto no es universal.</p>
+
+      <h2 class="article-section-heading">V. LA ARITMÉTICA QUE NADIE PUEDE IGNORAR</h2>
+
+      <p>El Canal de Panamá no es una disputa entre dos países. Es la disputa sobre infraestructura más importante del hemisferio occidental. Los números explican por qué.</p>
+
+      <p>El 40% de todo el tráfico de contenedores de Estados Unidos transita por el canal anualmente. El canal mueve en total alrededor de USD 270.000 millones en carga por año. La Autoridad del Canal de Panamá transfirió aproximadamente USD 31.200 millones al Tesoro Nacional panameño desde que el país asumió el control en 1999 —lo que convierte al canal en el activo fiscal más importante del Estado panameño. Y el plan estratégico 2025–2035 de la ACP proyecta USD 8.500 millones en inversiones para mantener la competitividad de la vía interoceánica y su infraestructura logística asociada.</p>
+
+      <p>Para China, el canal tiene otra dimensión. Cualquier expansión de la dominancia marítima china en la zona, según la Fundación para la Defensa de las Democracias citada por CNBC, podría poner a EE.UU. y sus aliados en riesgo de la misma dependencia que enfrentan con los minerales críticos y las tierras raras. El razonamiento estadounidense que justificó la presión sobre Panamá no era sólo ideológico —era logístico. Si COSCO u otras empresas estatales chinas controlan los dos terminales de entrada al canal, tienen la capacidad teórica de crear fricciones operativas sobre el 40% del comercio de contenedores de EE.UU. en cualquier momento de tensión.</p>
+
+      <p>La respuesta de Mulino, al presentar el cierre de 2025 como el fin de la crisis con Washington, subestima la complejidad de lo que viene. El canal puede seguir siendo soberanamente panameño —y lo es— y al mismo tiempo ser el escenario de una competencia de poder que Panamá no controla. Los terminales van a licitación permanente. COSCO tiene interés en participar. China ya bloqueó la venta de CK Hutchison al consorcio de BlackRock a menos que incluyera una participación mayoritaria para COSCO. El proceso de licitación será el siguiente capítulo de este conflicto.</p>
+
+      <h2 class="article-section-heading">VI. EL ESCENARIO QUE SE ABRE</h2>
+
+      <p>En abril de 2026, mientras la tensión sobre los buques panameños se mantenía activa, China aprobó una serie de nuevas normas que permiten al Estado tomar represalias contra medidas adoptadas fuera de su territorio que afecten sus intereses. La ley de contramedidas extraterritoriales —que existe desde 2021 pero fue actualizada— provee ahora un marco legal doméstico para acciones como las inspecciones a buques de bandera panameña. Lo que era una presión informal tiene ahora respaldo regulatorio.</p>
+
+      <p>El arbitraje de CK Hutchison, que busca más de USD 2.000 millones, puede tardar entre tres y cinco años. En ese tiempo, los terminales de Balboa y Cristóbal van a pasar por un proceso de licitación internacional. Bolivia, Costa Rica, Guyana, Paraguay, Trinidad y Tobago y EE.UU. emitieron una declaración conjunta en abril de 2026 criticando la "presión económica selectiva" china sobre buques panameños —una coalición inusual que señala el nivel de alerta regional ante el precedente.</p>
+
+      <p>La pregunta que el conflicto del canal deja abierta no es sobre Panamá. Es sobre el sistema. Si China puede responder a un fallo judicial soberano de otro Estado con la detención sistemática de buques registrados en ese Estado —afectando a armadores de terceros países sin ningún rol en el conflicto— el marco de reglas que se suponía ordenaba el comercio marítimo global funciona de manera diferente a lo que se creía. No está roto. Pero tampoco es universal. Es condicional a que ninguna potencia suficientemente grande decida que las condiciones cambiaron.</p>
+
+      <p>La escalada no se detuvo con la temporada de detenciones. La Comisión Marítima Federal de EE.UU. evalúa abrir una investigación formal sobre lo que su titular describe como la “weaponización” china del control portuario —un paso que elevaría el conflicto de monitoreo diplomático a proceso regulatorio formal. Detrás de esa amenaza hay un reloj corriendo: las tarifas portuarias punitivas que Washington y Beijing se impusieron mutuamente sobre buques del otro país están suspendidas, pero vencen en noviembre de 2026, y podrían reactivarse si las negociaciones comerciales más amplias entre las dos potencias se rompen —lo que convertiría la disputa de Panamá en un frente más de una guerra comercial ya en curso, no en un conflicto aislado. Mientras tanto, y probablemente no por casualidad, Panamá envió una delegación oficial a Beijing entre el 16 y el 18 de julio de 2026 para renegociar el Acuerdo de Transporte Marítimo bilateral —vigente desde 2017— y discutir directamente el régimen de inspecciones. La caída del 54% en las detenciones de junio sugiere que ambas partes llegaron a esa mesa buscando bajar la temperatura, no subirla. Pero ni Washington ni Beijing dieron señales de ceder en lo estructural: la pregunta de fondo —quién controla, en los hechos, los dos extremos del canal— sigue sin respuesta.</p>
+
+      <p class="article-closing">Mahan escribió en 1890 que el control del mar significaba influencia predominante en el mundo. Lo que el Canal de Panamá está demostrando en 2026 es que esa proposición sigue siendo cierta —y que los instrumentos para ejercer ese control ya no son solo navales. Son registros marítimos, convocatorias ministeriales, inspecciones portuarias y arbitrajes de USD 2.000 millones. El poder marítimo en el siglo XXI no llega con cañones. Llega con burocracia.</p>
+
+      <div class="article-sources">
+        <strong>FUENTES</strong>
+        BRI / salida de Panamá: Brownstein Client Alert (febrero 2025) · Diálogo Américas (marzo 2025) · The Conversation (marzo 2026) · Al Jazeera (febrero 2025) · Global Security / Global Times (febrero 2025) · Manorama Yearbook (febrero 2025). Porcentaje FDI china vs. EE.UU.: The Conversation (2023 data). Italia y BRI: The Guardian / Reuters (diciembre 2023). Estrategia de Defensa Nacional EE.UU. 2026: China-Global South Project.<br>
+        FMC, Statement of Chairman DiBella on China's Detention of Panama-Flagged Vessels, 26 de marzo de 2026 · fmc.gov — China-Global South Project, "What to Watch After China's Strategic Setback at the Panama Canal", 4 de febrero de 2026 · chinaglobalsouth.com — CNBC, "U.S.-China power struggle thrusts Panama Canal back into the spotlight", 6 de febrero de 2026 — Al Jazeera, "US, Latin America countries criticise China's retaliation over Panama Canal", 29 de abril de 2026 — Al Jazeera, "Hormuz effect? How US, China are ramping up tensions over the Panama Canal", 30 de abril de 2026 — Lloyd's List / Container Magazine, "China detains Panama-flagged vessels: Japanese owners hit hardest", 27 de marzo de 2026 — FreightWaves, "U.S. 'monitoring' China retaliation against Panama ships", 30 de marzo de 2026 — bne IntelliNews, "China's COSCO halts Panama Canal port calls after government seizes terminals", 11 de marzo de 2026 — Newsroom Panama, "Maersk and MSC Must Leave the Balboa and Cristóbal Ports: Demand from China", 15 de abril de 2026 — South China Morning Post, "Papers please: China raises pressure on Panama amid canal row with ship inspection wave", 16 de marzo de 2026 — Seatrade Maritime, "Panama President Mulino says crisis with the US is over", enero de 2026. --- Tokyo MOU / Ambrey, "The Flag in the Crossfire: How Panama-Flagged Ships Became Beijing's Pressure Point", mayo de 2026 --- Lloyd's List, "Panama flag exodus accelerates as Washington threatens probe into Beijing's crackdowns", julio de 2026 --- Newsroom Panama, "To Address the Detention of Panamanian Flagged Ships, a Panamanian Delegation will Travel to China", 3 de julio de 2026 --- Ministerio de Relaciones Exteriores de China, rueda de prensa de Guo Jiakun, 25 de junio de 2026 --- CSIS / Model Diplomat, "Panama's Strategic Shift Amid US-China Ties", junio de 2026 --- Rio Times Online, "Panama and Japan's Shipowners Agree to Deepen Maritime Cooperation", julio de 2026.
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">© 2026 Eddie Would Go. Todos los derechos reservados.</span>
+    <div class="footer-social">
+      <a href="https://x.com/eddiewgpolicy" target="_blank">Twitter</a>
+      <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank">Instagram</a>
+    </div>
+  </footer>
+
+  <!-- i18n:script -->
+  <script src="/i18n/i18n.js" defer></script>
+  <!-- /i18n:script -->
+</body>
+</html>

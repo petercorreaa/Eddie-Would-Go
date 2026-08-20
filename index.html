@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- i18n:head -->
+  <style>html.i18n-loading body{visibility:hidden}</style>
+  <script>try{var q=new URLSearchParams(location.search).get('lang');var l=(q==='en'||q==='es')?q:localStorage.getItem('ewg-lang');if(l==='en')document.documentElement.className+=' i18n-loading';}catch(e){}</script>
+  <!-- /i18n:head -->
   <title>Eddie Would Go</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -948,6 +952,34 @@
       <aside class="sidebar reveal">
         <div class="sidebar-label">Reciente</div>
 
+        <a href="/articles/el-acuerdo-sin-acuerdo.html" class="article-card">
+          <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=2340&auto=format&fit=crop" alt="El Acuerdo Sin Acuerdo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div class="article-category">Geopolítica · Energía · Medio Oriente</div>
+          <h3 class="article-title">El Acuerdo Sin Acuerdo</h3>
+          <div class="article-byline"><strong>The Eddie</strong> — 20 de agosto de 2026</div>
+        </a>
+
+        <a href="/articles/la-bandera-bajo-fuego.html" class="article-card">
+          <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?q=80&w=2340&auto=format&fit=crop" alt="La Bandera Bajo Fuego" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div class="article-category">Geopolítica · Comercio Marítimo · Canal de Panamá</div>
+          <h3 class="article-title">La Bandera Bajo Fuego</h3>
+          <div class="article-byline"><strong>The Eddie</strong></div>
+        </a>
+
+        <a href="/articles/el-manual-que-ya-usamos-tres-veces.html" class="article-card">
+          <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2340&auto=format&fit=crop" alt="El Manual Que Ya Usamos Tres Veces" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div class="article-category">Geopolítica · Inteligencia Artificial · Economía</div>
+          <h3 class="article-title">El Manual Que Ya Usamos Tres Veces</h3>
+          <div class="article-byline"><strong>The Eddie</strong> — Julio 2026</div>
+        </a>
+
+        <a href="/articles/el-estado-que-se-olvido-de-avisar.html" class="article-card">
+          <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=2340&auto=format&fit=crop" alt="El estado que se olvidó de avisar que hacía la transición energética" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div class="article-category">Geopolítica · Energía · Estados Unidos</div>
+          <h3 class="article-title">El estado que se olvidó de avisar que hacía la transición energética.</h3>
+          <div class="article-byline"><strong>The Eddie</strong> — Junio 2026</div>
+        </a>
+
         <a href="/articles/la-revolucion-se-come-a-su-hijo.html" class="article-card">
           <div class="article-img"><img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'" src="https://images.unsplash.com/photo-1605732562084-f528a2154616?q=80&w=2340&auto=format&fit=crop" alt="La revolución se come a su hijo predilecto" style="width:100%;height:100%;object-fit:cover;display:block"></div>
           <div class="article-category">Política · Derecho · Comercio</div>
@@ -993,7 +1025,7 @@
               <div class="featured-date">Mayo 2026 &nbsp;·&nbsp; Geopolítica · Golfo Pérsico</div>
             </div>
             <div class="featured-reads">
-              <a href="/articles/rivalidad-creciente-en-el-golfo.html" class="featured-read-more" onclick="event.stopPropagation()">Leer la Historia Completa →</a>
+              <span class="featured-read-more">Leer la Historia Completa →</span>
             </div>
           </div>
         </a>
@@ -1218,5 +1250,8 @@
     }, { threshold: 0.1 });
     reveals.forEach(el => observer.observe(el));
   </script>
+  <!-- i18n:script -->
+  <script src="/i18n/i18n.js" defer></script>
+  <!-- /i18n:script -->
 </body>
 </html>

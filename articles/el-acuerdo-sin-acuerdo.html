@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- i18n:head -->
+  <style>html.i18n-loading body{visibility:hidden}</style>
+  <script>try{var q=new URLSearchParams(location.search).get('lang');var l=(q==='en'||q==='es')?q:localStorage.getItem('ewg-lang');if(l==='en')document.documentElement.className+=' i18n-loading';}catch(e){}</script>
+  <!-- /i18n:head -->
+  <title>El Acuerdo Sin Acuerdo — Eddie Would Go</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; }
+    img { max-width: 100%; height: auto; }
+
+    :root {
+      --blue: #C4622D;
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e0e0e0;
+      --gray-400: #999;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: var(--white);
+      border-bottom: 1px solid var(--black);
+    }
+    .nav-left { display: flex; align-items: center; gap: 12px; }
+    .nav-logo img { height: 40px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--black);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    .article-page { margin-top: 64px; }
+    .article-header { padding: 64px 48px 0; }
+
+    .article-category-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 12px;
+    }
+
+    .article-header-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      line-height: 1.45;
+      color: #444;
+      margin-bottom: 24px;
+      max-width: 860px;
+    }
+
+    .article-page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    .article-hero {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      padding: 0 48px 48px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .article-cover {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--gray-200);
+      overflow: hidden;
+    }
+    .article-cover img { width: 100%; height: 100%; object-fit: cover; }
+
+    .article-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 24px;
+      padding-bottom: 8px;
+    }
+
+    .article-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--black);
+    }
+
+    .article-author-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .article-meta-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-top: 4px;
+    }
+
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 32px 96px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #1a1a1a;
+    }
+    .article-body p { margin-bottom: 1.6em; }
+
+    .article-blockquote {
+      border-left: 3px solid var(--blue);
+      margin: 0 0 2em 0;
+      padding: 16px 0 16px 32px;
+    }
+    .article-blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      margin-bottom: 0.75em;
+      color: #1a1a1a;
+    }
+    .article-blockquote cite {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      font-style: normal;
+    }
+
+    .article-section-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 2.5em 0 0.8em;
+      color: var(--blue);
+    }
+
+    .inline-cite {
+      font-size: 0.72rem;
+      color: var(--gray-400);
+      letter-spacing: 0.01em;
+    }
+
+    .article-sources {
+      margin-top: 3em;
+      padding-top: 2em;
+      border-top: 1px solid var(--gray-200);
+      font-size: 0.78rem;
+      line-height: 1.9;
+      color: var(--gray-400);
+      letter-spacing: 0.02em;
+    }
+    .article-sources strong {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+
+    .back-link {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding: 48px 48px 0;
+      margin-top: 64px;
+      transition: opacity var(--transition);
+    }
+    .back-link:hover { opacity: 0.5; }
+
+    footer {
+      border-top: 1px solid var(--black);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-copy { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-400); }
+    .footer-social { display: flex; gap: 20px; }
+    .footer-social a { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-400); text-decoration: none; }
+    .footer-social a:hover { color: var(--black); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .nav-links { display: none; }
+      .article-header { padding: 32px 16px 0; }
+      .article-header-subtitle { font-size: 1.05rem; }
+      .article-page-title { font-size: clamp(2rem, 9vw, 3.5rem); margin-bottom: 32px; }
+      .article-hero { grid-template-columns: 1fr; gap: 24px; padding: 0 16px 32px; }
+      .article-sidebar { padding: 0; }
+      .article-body { padding: 48px 16px 64px; }
+      .article-blockquote { padding: 12px 0 12px 20px; }
+      .article-databox { padding: 18px 20px; }
+      .back-link { padding: 32px 16px 0; }
+    }
+    .article-databox {
+      margin: 2.6em 0;
+      padding: 26px 30px;
+      background: var(--gray-100);
+      border-left: 3px solid var(--blue);
+    }
+    .databox-label {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+    .article-databox p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .article-databox p.databox-sources {
+      font-size: 0.72rem;
+      line-height: 1.6;
+      color: var(--gray-400);
+      letter-spacing: 0.02em;
+      margin-bottom: 0;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <a href="/" class="nav-logo">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;background:#000;color:#fff;font-family:'Bebas Neue',sans-serif;font-size:2.2rem;line-height:1;letter-spacing:0;flex-shrink:0;">E</span>
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Política</a></li>
+      <li><a href="/">Sobre Nosotros</a></li>
+    </ul>
+    <div style="width:80px"></div>
+  </nav>
+
+  <div class="article-page">
+
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <div class="article-header">
+      <div class="article-category-tag">Geopolítica &nbsp;·&nbsp; Energía &nbsp;·&nbsp; Medio Oriente &nbsp;·&nbsp; 26 min de lectura</div>
+      <p class="article-header-subtitle">Ormuz, Bab el-Mandeb y la geopolítica de una guerra que nadie sabe cómo terminar</p>
+      <h1 class="article-page-title">El Acuerdo Sin Acuerdo</h1>
+    </div>
+
+    <div class="article-hero">
+      <div class="article-cover">
+        <img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'"
+          src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=2340&auto=format&fit=crop"
+          alt="El Acuerdo Sin Acuerdo"
+          style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="article-sidebar">
+        <p class="article-subtitle">El 17 de junio, Trump firmó en Versalles el final de la guerra de Irán. Cinco meses después, Washington y Teherán negocian en Muscat quién administra el tránsito por el Estrecho que la guerra debía liberar. Entre esas dos fechas hay dos estrechos comprometidos en lugar de uno, una monarquía saudí arrastrada a la primera línea, y un debate abierto sobre quién ganó realmente algo.</p>
+        <div>
+          <div class="article-author-name">The Eddie</div>
+          <div class="article-meta-line">20 de agosto de 2026 &nbsp;·&nbsp; Geopolítica &nbsp;·&nbsp; Energía &nbsp;·&nbsp; Medio Oriente</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <blockquote class="article-blockquote">
+        <p>"Si vencemos en una batalla más contra los romanos, quedaremos completamente arruinados."</p>
+        <cite>Pirro de Epiro, tras Áusculo (279 a.C.) — Plutarco, Vida de Pirro, 21.9</cite>
+      </blockquote>
+
+      <h2 class="article-section-heading">EL ERROR DE ORIGEN</h2>
+
+      <p>Declarar en público el fin del régimen como objetivo de una campaña aérea fue el error del que se derivan casi todos los demás. Creó una expectativa que la herramienta elegida no podía cumplir en el plazo prometido. Convirtió cualquier resultado intermedio en fracaso visible. Y le entregó a Teherán el marco de la supervivencia como victoria, que es donde un régimen revolucionario juega mejor.</p>
+
+      <p>Conviene precisar qué no afirma ese argumento, porque enunciado de manera amplia no significaría nada. No afirma que el cambio de régimen fuera imposible: hay regímenes que cayeron por presión económica sostenida sin una bota extranjera en el terreno. Tampoco que no atacar hubiera sido gratis: el programa nuclear era un problema real y ninguna alternativa disponible era buena. El error no estuvo en decidir el ataque, sino en anunciar un objetivo que la fuerza elegida no podía entregar.</p>
+
+      <p>Hay una lectura que contradice todo esto, y conviene ponerla sobre la mesa antes de seguir. El capitán Lance Gordon (USN, retirado) sostiene en Small Wars Journal que Washington nunca apostó a un colapso inmediato: la campaña se entendería mejor como coerción deliberada al estilo Schelling, calcada del modelo norcoreano —presión sostenida sobre Kharg Island, la infraestructura gasífera y la navegación hasta que el régimen concluya que ceder es menos riesgoso que resistir. El Centro Stimson ofrece el espejo iraní: Teherán no flaquea de forma errática, ejecuta su propia estrategia de riesgo coercitivo para forzar a Washington a frenar. Bajo esa lectura, esto no es un fracaso sino una guerra de desgaste sin resolver, y la retórica del cambio de régimen fue presión psicológica, no promesa incumplida.</p>
+
+      <p>Hay una réplica a eso. Una coerción se mide por lo que la contraparte concede, y a cinco meses Irán no concedió el programa nuclear, ni los misiles, ni las inspecciones, y sí obtuvo un instrumento de renta sobre Ormuz que antes no tenía. Pero es una hipótesis viva, y conviene tenerla presente en lo que sigue.</p>
+
+      <h2 class="article-section-heading">I. LA AUTORIDAD QUE IRÁN INVENTÓ</h2>
+
+      <p>El dato más revelador de la posguerra no está en ninguno de los catorce artículos del memorándum de Islamabad. Está en un organismo que Irán creó por su cuenta antes de firmar y que ningún negociador logró desmantelar: la Autoridad del Estrecho del Golfo Pérsico, PGSA.</p>
+
+      <p>Presentada en mayo como un servicio de «actualizaciones en tiempo real», es una aduana marítima de facto: los buques deben contactarla por correo, declarar propiedad, seguro, tripulación y carga, y en muchos casos pagar. Algunos abonaron hasta dos millones de dólares por cruzar 34 kilómetros de agua que hasta febrero eran gratis. Ebrahim Azizi, presidente del Comité de Seguridad Nacional del Parlamento iraní, lo dijo sin ambigüedad: la PGSA ofrecería «servicios especializados» a cambio de una tarifa. J.P. Morgan estimó una recaudación potencial de 70.000 a 90.000 millones de dólares anuales —proyección de banco de inversión, no ingreso verificado.</p>
+
+      <p>Washington sancionó a la PGSA y amenazó con sanciones secundarias. Pero varios operadores llegaron a acuerdos informales con Teherán para restablecer el flujo, según CNN, y la mayoría de esos pagos se hizo en yuanes. El mercado, entre el riesgo legal de Washington y el riesgo físico de Ormuz, elige pagar.</p>
+
+      <p>Gregory Brew, de Eurasia Group, resumió el cambio: Irán demostró que puede cerrar el Estrecho y mantenerlo cerrado incluso bajo bombardeo intenso, y eso ya nadie se lo quita. Es la distancia exacta entre el JCPOA de 2015 y hoy: pasó de negociar bajo sanciones a cobrar peaje por una geografía que siempre tuvo pero que recién ahora sabe monetizar.</p>
+
+      <p>Y en julio la diplomacia estadounidense dejó de discutir si Irán puede cobrar y empezó a discutir cómo se administra el paso. La mediación pasó a Muscat: según Axios, Omán lidera con Qatar, Pakistán y Egipto involucrados, frente a Steve Witkoff y Jared Kushner. La propuesta omaní, descripta por CNN, contempla dos corredores: el del sur, en aguas omaníes, con navegación libre en condiciones previas a la guerra; el del norte, en aguas iraníes, donde habría que pedir permiso a Teherán. Sin peajes.</p>
+
+      <p>Irán la rechazó y contrapropuso más control propio, invocando el precedente del Estrecho de Malaca, donde Indonesia, Malasia y Singapur piden contribuciones voluntarias para financiar navegación, protección ambiental y búsqueda y rescate.</p>
+
+      <p>Una interpretación posible —y es interpretación, no hecho— es que Teherán no busca dinero, que ya cobra, sino el marco jurídico que convierta la extorsión en tarifa. Pero la analogía tiene un problema que conviene nombrar. El esquema de Malaca nace de la Convención del Mar y de su régimen de paso en tránsito, bajo el cual los Estados ribereños no pueden condicionar ni gravar el paso: las contribuciones funcionan porque son voluntarias y están desacopladas del permiso, y nadie queda impedido de cruzar por no aportar. Irán firmó esa Convención en 1982 y nunca la ratificó, y sostiene desde entonces que el paso en tránsito no lo obliga. La PGSA hace exactamente lo contrario de Malaca: condiciona el paso a la autorización previa.</p>
+
+      <p>Ahí está la incoherencia: Teherán reclama el precedente que emana de un marco jurídico que rechaza, y para un uso que ese marco prohíbe. Lo cual no significa que no le sirva. En la práctica, quien decide si un buque cruza no es un tribunal sino un asegurador.</p>
+
+      <p>La cancillería iraní fijó su posición sin rodeos —la situación «no puede volver a ser lo que era antes de la guerra»— y su objetivo declarado en Muscat es un arreglo temporal de hasta tres meses bajo el cual administre un corredor controlado. No se negocia una arquitectura: se negocia una prórroga.</p>
+
+      <p>Washington fue a la guerra, entre otras razones, para impedir que Irán controlara Ormuz. Cinco meses después discute los términos de ese control.</p>
+
+      <h2 class="article-section-heading">II. ¿QUIÉN MANDA EN TEHERÁN?</h2>
+
+      <p>Hay un vacío en casi toda la cobertura, y es el más importante para saber si algún acuerdo puede sostenerse: no está claro con quién se negocia.</p>
+
+      <p>Ali Khamenei fue asesinado el 28 de febrero junto a buena parte de la cúpula de seguridad. Trump declaró que 48 altos dirigentes murieron en los bombardeos, y admitió algo revelador: su administración tenía candidatos preferidos para la sucesión, pero «el ataque fue tan exitoso que eliminó a la mayoría de los candidatos».</p>
+
+      <p>El 8 de marzo la Asamblea de Expertos designó a Mojtaba Khamenei, de 56 años, hijo del líder eliminado. El IRGC y las fuerzas armadas respaldaron rápido. Pero funcionarios estadounidenses sostuvieron que está herido, y los analistas señalan que nunca ejerció un cargo ejecutivo. Diez días después, Ali Larijani —secretario del Consejo Supremo de Seguridad Nacional y cara visible de la conducción de la guerra— también fue asesinado.</p>
+
+      <p>Tres consecuencias atraviesan todo lo demás. Cualquier compromiso alcanzado en Muscat vale lo que valga la capacidad de la nueva conducción para imponerlo sobre el IRGC, que es quien opera la PGSA y las minas. La eliminación de la generación que negoció el JCPOA deja el terreno a cuadros más jóvenes y duros, sin experiencia negociadora. Y un liderazgo débil hacia adentro tiene menos margen, no más, para conceder: necesita la confrontación externa como fuente de autoridad.</p>
+
+      <p>Quien espere que un acuerdo técnico sobre navegación derive en uno político sobre el programa nuclear está asumiendo que existe en Teherán alguien con poder para firmar el segundo. Esa premisa no está establecida.</p>
+
+      <h2 class="article-section-heading">III. LÍBANO: LA GUERRA QUE NADIE FIRMÓ</h2>
+
+      <p>El memorándum dice que el cese al fuego aplica «a todos los frentes, incluyendo Líbano». Israel no lo firmó, no participó de las negociaciones de Suiza, y Netanyahu dejó dicho que la lucha contra Hezbollah «no ha terminado».</p>
+
+      <p>El patrón se fijó temprano. En abril, horas después de anunciarse una pausa de dos semanas, cincuenta cazas israelíes lanzaron unas 160 bombas sobre cien objetivos en diez minutos. Netanyahu aclaró que la tregua no incluía a Líbano; Pakistán, el propio mediador, sostenía lo contrario; Trump llamó a Líbano una «escaramuza separada». En junio, Hezbollah rechazó además el alto el fuego que Israel y el Estado libanés habían acordado: ni siquiera el actor armado está atado a lo que firma su propio Estado.</p>
+
+      <p>Trump llamó a Netanyahu en junio y la conversación, según Axios, fue descripta por dos funcionarios como cargada de insultos, con una frase inusualmente cruda —«estarías en la cárcel si no fuera por mí». Netanyahu no cedió: mantiene tropas en las «zonas de seguridad» del sur libanés, y su ministro Ben-Gvir le dijo públicamente que era hora de decirle «no» a Trump.</p>
+
+      <p>Daniel Shapiro, ex embajador en Israel, describió el mecanismo: basta un cohete de Hezbollah sobre el norte israelí para que la presión sobre Netanyahu se dispare, lo que le da a Hezbollah —y a Irán— control considerable sobre la dinámica. Se activó el 20 de junio y no dejó de funcionar. Teherán no necesita romper su acuerdo con Washington para presionarlo: solo esperar a que Netanyahu rompa el suyo.</p>
+
+      <h2 class="article-section-heading">IV. KUSHNERISMO: EL MARCO DE FRIEDMAN, AHORA LITERAL</h2>
+
+      <p>Thomas Friedman propuso en The New York Times, el 24 de junio, la distancia entre lo que llama «Kushnerismo» —por Jared Kushner— y «Khomeinismo». El primero trata la geopolítica como transacción inmobiliaria: cada parte cede algo y el acuerdo se mide en ganancia o pérdida financiera. El segundo nunca jugó ese juego: mide en supervivencia del régimen y control territorial. De ahí la frase que hizo circular la columna: el memorándum «se lee como una declaración de bancarrota inmobiliaria». Friedman cita al presidente del Parlamento iraní, Ghalibaf: el acuerdo es un registro del fracaso de Estados Unidos, y la gente lo va a juzgar.</p>
+
+      <p>Su tesis política es que Trump firmó por cálculo electoral: vendió a Israel y a los estados árabes del Golfo a cambio de Pensilvania, Georgia y Michigan, porque la inflación de alimentos y el precio de la nafta eran una receta para perder los midterms. Corresponde señalar que es la lectura de un columnista, no de una fuente con acceso al proceso decisorio, y que atribuir motivo único a una decisión presidencial simplifica.</p>
+
+      <p>Lo verificable es que el marco dejó de ser metáfora: Kushner integra, junto a Witkoff, la delegación en el canal omaní. La misma lógica transaccional opera hoy frente a una contraparte que mide en supervivencia.</p>
+
+      <p>Friedman había anticipado el dilema en una entrevista con CNN: dijo sentirse dividido entre querer ver derrotado militarmente al régimen iraní y no querer que esa derrota fortalezca políticamente a «dos seres humanos terribles», como describió a Trump y Netanyahu. Conecta con la pregunta que el memorándum deja abierta: de qué sirve ganar militarmente si el resultado político es un Trump y un Netanyahu más fuertes y una región más inestable.</p>
+
+      <h2 class="article-section-heading">V. CHINA: EL NEGOCIO DE REEMPLAZAR AL GOLFO</h2>
+
+      <p>China es el actor que salió con más poder relativo de esta guerra. Sobre eso hay consenso. Lo que se discute mal es dónde ganó.</p>
+
+      <p>Lo verificable primero, que es de mercado. Según Morgan Stanley y Bloomberg Intelligence citados por CNBC, Beijing recortó sus compras de crudo de 11,7 millones de barriles diarios en febrero a unos 9 millones hacia fines de mayo —el equivalente al consumo diario completo de Japón. Eso evitó que el Brent perforara los 120 dólares durante la mayor disrupción de oferta de la historia del mercado petrolero. Pudo hacerlo porque entró a la guerra con entre 1,3 y 1,4 mil millones de barriles en reserva, más que los 32 países de la Agencia Internacional de Energía juntos, y porque, según Bruegel, mantiene desde 2021 un acuerdo de 25 años con Irán que le garantiza crudo bajo precio de mercado.</p>
+
+      <p>Pero el recorte de importaciones es defensa. La posición ofensiva estaba en otro lado, y la formuló Paul Krugman en abril con un título que no admite matices: el gran ganador de la guerra de Irán es el electrotech chino. La lógica es simple. Cuando el precio de los combustibles fósiles se dispara, la alternativa eléctrica se vuelve irresistible, y los países más expuestos son los que tienen el incentivo más urgente para acelerar. Sam Butler-Sloss, de Ember, lo sintetizó mejor que nadie: los precios fósiles son, en esencia, un impuesto geopolítico.</p>
+
+      <p>Los datos del primer tramo del conflicto sostienen la tesis. Las exportaciones chinas de tecnología solar alcanzaron un récord en el primer mes de crisis. Las ventas externas de vehículos eléctricos e híbridos crecieron 140% interanual. Las exportaciones de baterías de iones de litio subieron 50,4% en el primer trimestre. Y detrás de esos números hay una estructura: China controla más del 80% de la capacidad mundial de fabricación de paneles solares, turbinas eólicas y baterías.</p>
+
+      <p>Ember acuñó el término en diciembre de 2025. China es un «electroestado»: la primera gran economía donde las tecnologías eléctricas se convirtieron en el motor dominante del crecimiento energético. Su diagnóstico fue tajante —Beijing no está fabricando hardware de tecnología limpia, está fabricando un futuro energético en el que ocupa la posición dominante.</p>
+
+      <p>Y hay un dato que reordena todo lo demás: más del 30% del consumo energético final chino ya proviene de electricidad, el porcentaje más alto entre las grandes economías y casi diez puntos por encima de Estados Unidos.</p>
+
+      <p>Sobre este cuadro, Fareed Zakaria publicó el 17 de julio —simultáneamente en The Washington Post y Foreign Policy— la lectura geopolítica del asunto: el mayor beneficiario de la guerra es China, sin disparar un tiro, sin gastar sumas enormes y sin quemar capital político. La guerra habría acelerado tres objetivos chinos de larga data: un Medio Oriente menos dependiente de América, un mundo más dependiente de tecnología china crítica, y una reputación de Beijing como potencia estable. No busca reemplazar a Washington como garante militar del Golfo, que sale caro, sino que el Golfo se despegue parcialmente de la órbita americana.</p>
+
+      <p>Es correcto en dirección. Pero mide la victoria en influencia diplomática, y la victoria fue industrial.</p>
+
+      <p>Eso no borra la exposición china, que sigue siendo enorme. El Golfo aporta cerca de la mitad del crudo importado por China y un tercio de su gas licuado, y alrededor del 80% de sus importaciones pasa por el Estrecho de Malaca —un dilema que Hu Jintao nombró en 2003 y que sigue sin resolverse: el oleoducto de Kyaukpyu tiene capacidad para unos 440.000 barriles diarios frente a importaciones de once millones.</p>
+
+      <p>Y hay un detalle que desplaza el eje del poder. Lo que efectivamente paralizó el tránsito por Ormuz no fue el poder naval iraní sino el mercado de seguros. Según documentó Foreign Policy en mayo, las primas de riesgo de guerra saltaron de alrededor del 0,25% del valor del casco a entre 3% y 10%: para un petrolero de 250 millones de dólares, de 625.000 a 7,5 millones por viaje, volviendo el tránsito comercialmente inviable. La decisión la tomó el Joint War Committee de la Lloyds Market Association, un panel de aseguradores occidentales cuya guía siguen incluso las aseguradoras chinas, y en el que Beijing no tiene representación.</p>
+
+      <p>China descubrió que su suministro energético puede cortarlo un actor regional con minas navales, o un comité de suscriptores en Londres. No controla a ninguno de los dos. Pero está saliendo del petróleo más rápido que cualquier otra economía grande.</p>
+
+      <p>Ahí está la asimetría que la lectura geopolítica se pierde: la vulnerabilidad china es real y decreciente; la dependencia que China genera en los demás es real y creciente.</p>
+
+      <p>Porque la electrificación no elimina el impuesto geopolítico. Cambia el destinatario. Según datos de Goldman Sachs, China refina el 60% del litio para baterías, el 65% del níquel y el 68% del cobalto, y controla entre el 85% y el 90% del refinado de tierras raras y el 92% de la fabricación de imanes. El impuesto se muda del Golfo Pérsico a las plantas de procesamiento chinas. Un panel solar ya instalado en un techo alemán no lo puede apagar Xi Jinping; el litio que todavía no salió de la mina, sí, como ya ocurrió con el germanio y el galio.</p>
+
+      <p>El giro más incómodo lo aportan los propios países del Golfo. Arabia Saudita fue arrastrada a esta guerra —al 1 de agosto, aviones estadounidenses y saudíes atacaban conjuntamente sitios en Irak— y salió con su modelo exportador en crisis. Pero la salida de esa crisis pasa por acelerar la diversificación energética que ya tenía planeada, y la tecnología más barata, disponible y madura para hacerlo es china. Los países cuyo colapso exportador causó el shock global terminan siendo un vector más de consolidación del dominio industrial de Pekín.</p>
+
+      <p>Dos fisuras impiden comprar la tesis entera. El electroestado es simultáneamente el mayor consumidor y productor de carbón del planeta: el carbón representa más del 55% de su generación eléctrica, y el CREA advirtió en febrero que China no alcanzará las metas de su propio plan quinquenal ni los compromisos de controlar el crecimiento del consumo de carbón. Y hay una ironía de segundo orden: la fabricación de los chips que hacen posible la electrificación depende de helio que sale por Ormuz. Ni siquiera las potencias eléctricas están del todo afuera del estrecho.</p>
+
+      <p>La formulación defendible es esta: China no ganó el Golfo. Ganó el negocio de reemplazarlo.</p>
+
+      <p>Mención aparte para Rusia, que suele quedar en una subordinada y que ganó sin fabricar nada. Es el único gran exportador fuera del alcance de ambos estrechos: cada dólar de prima geopolítica que Ormuz y Bab el-Mandeb suman al Brent se transfiere directo a las arcas de un Estado en guerra, sin negociar y sin exponerse. Si el criterio es valor capturado por unidad de esfuerzo, el ganador de esta guerra no está en Beijing.</p>
+
+      <div class="article-databox">
+        <div class="databox-label">EL DATO — CHINA</div>
+        <p>Recorte de ~3 millones de barriles diarios y reserva combinada mayor que la de los 32 países de la AIE juntos. El Golfo aporta ~50% de su crudo importado y ~80% pasa por Malaca. Pero más del 30% de su consumo energético final ya es electricidad —el más alto entre las grandes economías— y controla más del 80% de la fabricación mundial de paneles, turbinas y baterías, además de refinar entre el 60% y el 92% de los minerales críticos de la cadena. Las cifras de reservas son estimaciones de terceros: China no las publica.</p>
+        <p class="databox-sources">Morgan Stanley · Bloomberg Intelligence · Ember · Bruegel · Goldman Sachs · Foreign Policy · CNBC</p>
+      </div>
+
+      <h2 class="article-section-heading">VI. BAB EL-MANDEB: EL SEGUNDO ESTRECHO</h2>
+
+      <p>El 9 de junio, el comandante de la Fuerza Quds, general Esmail Qaani, advirtió que una escalada activaría una respuesta del Eje de Resistencia para construir un «cinturón de seguridad» desde Ormuz hasta Bab el-Mandeb, según documentó el Security Council Report de la ONU.</p>
+
+      <p>El 20 de julio los hutíes declararon bloqueo naval contra Arabia Saudita, en represalia por un ataque al aeropuerto de Saná que atribuyeron a Riad —aunque el gobierno yemení respaldado por los saudíes se adjudicó la autoría. El 23 atacaron dos petroleros saudíes, el Encelia y el Layla, con misiles balísticos, de crucero y drones. El Brent cruzó los 100 dólares: unos 101 contra 79 un mes antes, cerca de 30% en treinta días.</p>
+
+      <p>La lógica es quirúrgica. Desde el cierre de Ormuz, Riad venía desviando exportaciones por oleoducto hacia el Mar Rojo vía Yanbu. Kpler mide 6,2 millones de barriles diarios por Bab el-Mandeb en el último mes, dos tercios saudíes esquivando el Golfo. Cerrar ese paso no agrega un problema: elimina la solución improvisada para el primero.</p>
+
+      <p>Borra la válvula de escape. Cuando el Mar Rojo se volvió inseguro en 2024, el tráfico se desvió al Cabo de Buena Esperanza, sumando diez a catorce días de navegación. Con Ormuz también comprometido, esa alternativa deja de existir para el crudo del Golfo, y Suez solo admite buques menores.</p>
+
+      <p>Arrastra a Arabia Saudita a la primera línea, lo que Riad pasó cinco meses evitando. Al 1 de agosto, aviones estadounidenses y saudíes atacaron conjuntamente sitios en Irak tras el lanzamiento de drones proiraníes hacia territorio saudí. La monarquía que manejó la guerra con cautela es hoy cobeligerante.</p>
+
+      <p>Confirma que el modelo es exportable. Control físico más infraestructura de cobro se replicó en un segundo nodo. Ningún acuerdo bilateral entre Washington y Teherán desactiva por sí solo ese riesgo: haría falta desactivar al Eje completo, objetivo que ninguna negociación nuclear contempla.</p>
+
+      <p>Y una hipótesis: esa incorporación forzada podría haberle dado a Riad veto sobre los tiempos de Washington. Un análisis de CNN atribuye a la presión saudí parte de la decisión de Trump de postergar nuevos ataques. Es fuente única y explícitamente condicional, insuficiente para afirmar un cambio estructural. Vale como línea de observación.</p>
+
+      <div class="article-databox">
+        <div class="databox-label">EL DATO — BAB EL-MANDEB</div>
+        <p>~6,2 millones de barriles diarios de tránsito, dos tercios saudíes redirigidos tras el cierre de Ormuz. Un cierre efectivo reduciría la oferta global en torno al 6%, sobre una caída de ~10% ya provocada por Ormuz. Brent de ~79 a ~101 dólares en treinta días.</p>
+        <p class="databox-sources">Kpler · EIA · Al Jazeera · The Hill · The Washington Post</p>
+      </div>
+
+      <h2 class="article-section-heading">VII. POR QUÉ EL MERCADO NO ACOMPAÑA</h2>
+
+      <p>Hay una contradicción en todo lo anterior, y conviene resolverla en lugar de esquivarla.</p>
+
+      <p>Si los colchones están agotados y hay dos estrechos comprometidos, el precio debería subir. Hoy ocurre lo contrario: el crudo cede, las bolsas estadounidenses van hacia máximos y las petroleras registran ganancias récord.</p>
+
+      <p>Tres explicaciones, no excluyentes. Destrucción de demanda: cinco meses de precios altos enfrían la actividad, y una demanda menor necesita menos oferta. Adaptación logística: el reruteo funcionó mejor de lo previsto, con rutas, seguros y arreglos —incluidos los pagos a la PGSA— que las estadísticas oficiales capturan mal. Desacuerdo del mercado con esa evaluación del riesgo: la expectativa dominante parece ser que el canal omaní produce alguna apertura, y si el mercado tiene razón, la probabilidad de una escalada sostenida está sobredimensionada.</p>
+
+      <p>Esa tercera hay que dejarla escrita. Los mercados no son infalibles —subestimaron el riesgo geopolítico antes de febrero— pero tampoco son ingenuos, y cuando el análisis y el precio discrepan durante semanas, la carga de la prueba se corre hacia el análisis.</p>
+
+      <p>Hay una cuarta lectura, y es la más inquietante: que la adaptación es real y que ese es el problema. Cuando el costo de una guerra deja de sentirse en la góndola y en el surtidor, desaparece el principal incentivo político para terminarla.</p>
+
+      <h2 class="article-section-heading">VIII. FASE UNO, FASE DOS</h2>
+
+      <p>La comparación obligada es el plan de paz para Gaza —que entró en Fase II en enero con Comité Nacional, Junta de Paz presidida por Trump y resolución del Consejo de Seguridad, y que cinco meses después el Washington Post describía como estancado, con donaciones inexistentes, Hamas sin desarmarse e Israel ampliando ocupación. El propio Netanyahu llamó a esos avances «meramente declarativos».</p>
+
+      <p>El memorándum iraní no corrió esa suerte: no se diluyó, colapsó. Ocho días después de Islamabad un dron iraní impactó un buque comercial en Ormuz. El 8 de julio, en Ankara, Trump declaró terminado el cese al fuego y esa noche Estados Unidos golpeó 90 objetivos, ampliando el mapa hasta la zona de Bushehr —algo que no había ocurrido ni en la fase más dura de la guerra original. El 14 se reimpuso el bloqueo naval. NPR resumió el 18 que ambos países se tambaleaban hacia una guerra total.</p>
+
+      <p>Y a comienzos de agosto la arquitectura de fases reapareció, con esas palabras. Trump acusó a Teherán de duplicidad por negociar mientras negaba negociar, dijo que las conversaciones estaban en marcha y proyectó que Ormuz podría abrirse plenamente como «fase uno», con la desnuclearización como «segunda fase» que llevaría tiempo. Del otro lado, el vocero iraní Baghaei declaró que Irán no negocia con Washington, que sus negociadores tratan con Omán solo el paso de buques, y que lo bilateral queda para etapas siguientes.</p>
+
+      <p>Ambas partes describen la misma mesa de maneras irreconciliables: negociación de paz en dos fases contra conversación técnica con un tercero. Es lo que Ian Bremmer describió antes de junio —cada parte vende el acuerdo como victoria y se contradicen sobre lo acordado, lo que deja abundantes maneras de descarrilar.</p>
+
+      <p>El problema de fondo no es retórico. La Fase I se construye sobre alguna forma de reconocimiento del control iraní, y la Fase II —nuclear, inspecciones, misiles— vuelve a quedar suspendida sobre voluntad política en lugar de mecanismos exigibles. Es el diseño que ya falló este año en Gaza, aplicado a un Estado de 81 millones de habitantes, con ejército propio, control de un paso global y una conducción cuya capacidad de comprometerse nadie puede establecer.</p>
+
+      <h2 class="article-section-heading">IX. LO QUE QUEDA</h2>
+
+      <p>Hay una lectura optimista que no conviene despreciar: existe una mesa activa, mediadores con incentivos genuinos, y un Golfo que necesita estabilizar. Bremmer lo reconoció al decir que reabrir el Estrecho saca la variable más peligrosa de la economía global. Si Gordon tiene razón y esto es coerción en curso, el desenlace todavía puede darle la razón a Washington.</p>
+
+      <p>Pero la lectura completa exige sostener dos ideas juntas: que cualquier acuerdo es mejor que la guerra, y que ninguno de los ensayados resolvió una sola de las preguntas estructurales que la guerra abrió.</p>
+
+      <p>Irán construyó, en plena guerra, la infraestructura para monetizar un paso global, y negocia su reconocimiento invocando un precedente que no le cierra pero que puede no necesitar. Israel demostró que descarrila por sí solo cualquier acuerdo negociado en su nombre. Los hutíes demostraron que el modelo se replica. Arabia Saudita fue arrastrada a una guerra que no quería. China no ganó el Golfo: ganó el negocio de reemplazarlo. Rusia cobra una renta que no negoció. Y en Teherán, nadie de afuera puede decir quién tiene autoridad para firmar.</p>
+
+      <p>Cada actor relevante salió con algo. El que la empezó salió con una mesa en Muscat donde se discute el peaje que fue a impedir.</p>
+
+      <p>Ahí vuelve el argumento del principio: prometer en público un resultado que la herramienta elegida no podía entregar en el plazo prometido no fue un error táctico corregible con más bombardeos. Fue un error sobre qué se puede comprar con qué.</p>
+
+      <p class="article-closing">Un estrecho no se conquista: se administra. Y la administración quedó, por ahora, del lado equivocado de la mesa.</p>
+
+      <div class="article-sources">
+        <strong>Fuentes</strong>
+        Ormuz y PGSA: Infobae (18/5/26) · The Jerusalem Post (19/5/26) · CNN, sobre Ormuz como herramienta clave de Irán (junio 2026) · Britannica, 2026 Iran war (act. 4/8/26).<br>
+        Canal omaní: CNN vía The Jerusalem Post (julio 2026) · Al Jazeera, Iran and Oman swap proposals (29/7/26) · WION (agosto 2026) · GlobalSecurity, Iran War Daily Update, Día 158 · Axios.<br>
+        Sucesión iraní: Al Jazeera (8/3/26 y 19/3/26) · NPR (8/3/26) · TIME (marzo 2026) · RAND / The Conversation (marzo 2026) · CNN (1/3/26).<br>
+        Líbano: Los Angeles Times (8/4/26) · TIME (4/6/26) · PBS / AP (19/6/26) · Axios.<br>
+        Friedman: The New York Times (24/6/26 y julio 2026) · Fox News (abril 2026).<br>
+        Electroestado y energía: Zakaria, The Washington Post y Foreign Policy (17/7/26) · Paul Krugman, Chinese Electrotech is the Big Winner in the Iran War (abril 2026) · Ember, China Energy Transition Review 2025 y Global Electricity Review 2026 · CREA, China Climate Transition Outlook (febrero 2026) · Goldman Sachs, Resource realism · Atlantic Council sobre el Golfo (abril 2026).<br>
+        China y seguros: CNBC (junio 2026) · Bruegel (junio 2026) · Foreign Policy, China's Malacca Dilemma After the Hormuz Blockade (11/5/26) · RealClearDefense (9/5/26) · The Diplomat (mayo 2026, dos piezas) · EIA · CNN (15/7/26, cita del FMI).<br>
+        Bab el-Mandeb: Security Council Report ONU (1/7/26) · CNBC (20/7/26) · The Hill (23/7/26) · Al Jazeera (24/7/26) · The Washington Post (23/7/26) · CNN (1/8/26).<br>
+        Gaza y cronología: The Washington Post (1/6/26) · CFR (junio 2026) · ABC News (9/7/26) · NPR (18/7/26).<br>
+        Lecturas alternativas: Lance B. Gordon, Iran in the Box: Coercive Strategy in the 2026 War, Small Wars Journal (marzo-abril 2026) · Stimson Center (abril 2026) · FDD (17/7/26).
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">© 2026 Eddie Would Go. Todos los derechos reservados.</span>
+    <div class="footer-social">
+      <a href="https://x.com/eddiewgpolicy" target="_blank">Twitter</a>
+      <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank">Instagram</a>
+    </div>
+  </footer>
+
+  <!-- i18n:script -->
+  <script src="/i18n/i18n.js" defer></script>
+  <!-- /i18n:script -->
+</body>
+</html>

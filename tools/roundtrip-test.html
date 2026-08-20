@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>i18n round-trip harness</title></head>
+<body>
+<pre id="out">running…</pre>
+<script>
+const PAGES = [
+  '/',
+  '/articles/el-realismo-incompleto.html',
+  '/articles/el-acuerdo-sin-acuerdo.html',
+  '/articles/el-manual-que-ya-usamos-tres-veces.html',
+  '/articles/la-bandera-bajo-fuego.html',
+  '/articles/el-estado-que-se-olvido-de-avisar.html',
+  '/articles/rivalidad-creciente-en-el-golfo.html',
+  '/articles/de-ormuz-a-pekin.html',
+  '/articles/la-paradoja-centroamericana.html'
+];
+const log = [];
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+async function waitFor(fn, ms = 6000) {
+  const t0 = Date.now();
+  while (Date.now() - t0 < ms) { if (fn()) return true; await sleep(50); }
+  return false;
+}
+
+// the injected toggle is chrome, not content; its attribute order churns as
+// classes are added/removed, so compare the page without it
+function content(d) {
+  const c = d.body.cloneNode(true);
+  c.querySelectorAll('.lang-toggle').forEach(e => e.remove());
+  return c.innerHTML;
+}
+
+async function test(path) {
+  const f = document.createElement('iframe');
+  f.style.cssText = 'width:1200px;height:800px;position:absolute;left:-9999px';
+  f.src = path;
+  document.body.appendChild(f);
+  await new Promise(r => f.addEventListener('load', r, { once: true }));
+  const w = f.contentWindow, d = f.contentDocument;
+
+  if (!await waitFor(() => w.EWGi18n)) { log.push(`FAIL ${path}: no EWGi18n`); return; }
+  await sleep(400);
+
+  const es0 = content(d);
+  const esLang0 = d.documentElement.lang;
+  const title0 = d.title;
+
+  await w.EWGi18n.set('en');
+  await waitFor(() => d.documentElement.lang === 'en');
+  await sleep(200);
+  const en = content(d);
+  const titleEn = d.title;
+
+  await w.EWGi18n.set('es');
+  await waitFor(() => d.documentElement.lang === 'es');
+  await sleep(200);
+  const es1 = content(d);
+  if (d.title !== title0) log.push(`   title not restored: ${title0} -> ${d.title}`);
+  if (titleEn === title0) log.push(`   title never translated: ${title0}`);
+
+  const changed = en !== es0;
+  const restored = es1 === es0;
+  log.push(
+    `${(changed && restored) ? 'PASS' : 'FAIL'} ${path}  ` +
+    `lang0=${esLang0} changed=${changed} restored=${restored} ` +
+    `(es=${es0.length}b en=${en.length}b back=${es1.length}b)`
+  );
+  if (!restored) {
+    for (let i = 0; i < Math.min(es0.length, es1.length); i++) {
+      if (es0[i] !== es1[i]) {
+        log.push('   orig: ' + JSON.stringify(es0.slice(Math.max(0, i - 60), i + 60)));
+        log.push('   back: ' + JSON.stringify(es1.slice(Math.max(0, i - 60), i + 60)));
+        break;
+      }
+    }
+  }
+  f.remove();
+}
+
+(async () => {
+  for (const p of PAGES) { try { await test(p); } catch (e) { log.push('ERROR ' + p + ': ' + e); } }
+  log.push(log.some(l => l.startsWith('FAIL') || l.startsWith('ERROR')) ? 'RESULT: FAILURES' : 'RESULT: ALL PASS');
+  document.getElementById('out').textContent = log.join('\n');
+})();
+</script>
+</body></html>

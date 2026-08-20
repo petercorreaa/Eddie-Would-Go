@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- i18n:head -->
+  <style>html.i18n-loading body{visibility:hidden}</style>
+  <script>try{var q=new URLSearchParams(location.search).get('lang');var l=(q==='en'||q==='es')?q:localStorage.getItem('ewg-lang');if(l==='en')document.documentElement.className+=' i18n-loading';}catch(e){}</script>
+  <!-- /i18n:head -->
   <title>Cuba al borde: ¿Se acerca el desenlace del régimen? — Eddie Would Go</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -415,5 +419,8 @@
     </div>
   </footer>
 
+  <!-- i18n:script -->
+  <script src="/i18n/i18n.js" defer></script>
+  <!-- /i18n:script -->
 </body>
 </html>

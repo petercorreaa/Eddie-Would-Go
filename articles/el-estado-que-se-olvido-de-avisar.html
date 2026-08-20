@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- i18n:head -->
+  <style>html.i18n-loading body{visibility:hidden}</style>
+  <script>try{var q=new URLSearchParams(location.search).get('lang');var l=(q==='en'||q==='es')?q:localStorage.getItem('ewg-lang');if(l==='en')document.documentElement.className+=' i18n-loading';}catch(e){}</script>
+  <!-- /i18n:head -->
+  <title>El estado que se olvidó de avisar que hacía la transición energética — Eddie Would Go</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; }
+    img { max-width: 100%; height: auto; }
+
+    :root {
+      --blue: #C4622D;
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e0e0e0;
+      --gray-400: #999;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: var(--white);
+      border-bottom: 1px solid var(--black);
+    }
+    .nav-left { display: flex; align-items: center; gap: 12px; }
+    .nav-logo img { height: 40px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--black);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    .article-page { margin-top: 64px; }
+    .article-header { padding: 64px 48px 0; }
+
+    .article-category-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 12px;
+    }
+
+    .article-header-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      line-height: 1.45;
+      color: #444;
+      margin-bottom: 24px;
+      max-width: 860px;
+    }
+
+    .article-page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    .article-hero {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      padding: 0 48px 48px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .article-cover {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--gray-200);
+      overflow: hidden;
+    }
+    .article-cover img { width: 100%; height: 100%; object-fit: cover; }
+
+    .article-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 24px;
+      padding-bottom: 8px;
+    }
+
+    .article-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--black);
+    }
+
+    .article-author-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .article-meta-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-top: 4px;
+    }
+
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 32px 96px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #1a1a1a;
+    }
+    .article-body p { margin-bottom: 1.6em; }
+
+    .article-blockquote {
+      border-left: 3px solid var(--blue);
+      margin: 0 0 2em 0;
+      padding: 16px 0 16px 32px;
+    }
+    .article-blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      margin-bottom: 0.75em;
+      color: #1a1a1a;
+    }
+    .article-blockquote cite {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      font-style: normal;
+    }
+
+    .article-section-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 2.5em 0 0.8em;
+      color: var(--blue);
+    }
+
+    .inline-cite {
+      font-size: 0.72rem;
+      color: var(--gray-400);
+      letter-spacing: 0.01em;
+    }
+
+    .article-sources {
+      margin-top: 3em;
+      padding-top: 2em;
+      border-top: 1px solid var(--gray-200);
+      font-size: 0.78rem;
+      line-height: 1.9;
+      color: var(--gray-400);
+      letter-spacing: 0.02em;
+    }
+    .article-sources strong {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+
+    .back-link {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding: 48px 48px 0;
+      margin-top: 64px;
+      transition: opacity var(--transition);
+    }
+    .back-link:hover { opacity: 0.5; }
+
+    footer {
+      border-top: 1px solid var(--black);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-copy { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-400); }
+    .footer-social { display: flex; gap: 20px; }
+    .footer-social a { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-400); text-decoration: none; }
+    .footer-social a:hover { color: var(--black); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .nav-links { display: none; }
+      .article-header { padding: 32px 16px 0; }
+      .article-header-subtitle { font-size: 1.05rem; }
+      .article-page-title { font-size: clamp(2rem, 9vw, 3.5rem); margin-bottom: 32px; }
+      .article-hero { grid-template-columns: 1fr; gap: 24px; padding: 0 16px 32px; }
+      .article-sidebar { padding: 0; }
+      .article-body { padding: 48px 16px 64px; }
+      .article-blockquote { padding: 12px 0 12px 20px; }
+      .article-callout { padding: 10px 0 10px 20px; }
+      .article-databox { padding: 18px 20px; }
+      .back-link { padding: 32px 16px 0; }
+    }
+    .article-databox {
+      margin: 2.6em 0;
+      padding: 26px 30px;
+      background: var(--gray-100);
+      border-left: 3px solid var(--blue);
+    }
+    .databox-label {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+    .article-databox p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .article-databox p.databox-sources {
+      font-size: 0.72rem;
+      line-height: 1.6;
+      color: var(--gray-400);
+      letter-spacing: 0.02em;
+      margin-bottom: 0;
+    }
+
+    .article-callout {
+      border-left: 3px solid var(--blue);
+      padding: 12px 0 12px 28px;
+      margin: 0.4em 0 1.8em;
+      font-weight: 500;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--black);
+    }
+    .section-divider {
+      text-align: center;
+      color: var(--gray-400);
+      letter-spacing: 0.3em;
+      font-size: 0.8rem;
+      margin: 2.4em 0;
+      user-select: none;
+    }
+    .article-closing {
+      border-top: 1px solid var(--gray-200);
+      margin-top: 2.4em;
+      padding-top: 2em;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: var(--black);
+    }
+
+    .article-signature {
+      margin-top: 2em;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <a href="/" class="nav-logo">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;background:#000;color:#fff;font-family:'Bebas Neue',sans-serif;font-size:2.2rem;line-height:1;letter-spacing:0;flex-shrink:0;">E</span>
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Política</a></li>
+      <li><a href="/">Sobre Nosotros</a></li>
+    </ul>
+    <div style="width:80px"></div>
+  </nav>
+
+  <div class="article-page">
+
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <div class="article-header">
+      <div class="article-category-tag">G E O P O L Í T I C A &nbsp;.&nbsp; E N E R G Í A &nbsp;.&nbsp; E S T A D O S &nbsp;U N I D O S &nbsp;.&nbsp; 19 min de lectura</div>
+      <h1 class="article-page-title">El estado que se olvidó de avisar que hacía la transición energética.</h1>
+    </div>
+
+    <div class="article-hero">
+      <div class="article-cover">
+        <img crossorigin="anonymous" loading="lazy" onerror="this.style.display='none'"
+          src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=2340&auto=format&fit=crop"
+          alt="El estado que se olvidó de avisar que hacía la transición energética"
+          style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="article-sidebar">
+        <div>
+          <div class="article-author-name">The Eddie</div>
+          <div class="article-meta-line">Junio 2026 &nbsp;.&nbsp; Energía &nbsp;.&nbsp; Estados Unidos &nbsp;.&nbsp; Paradoja</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <blockquote class="article-blockquote">
+        <p>"¿Odiás tanto las renovables como para llevarte puesta la economía de Texas?"</p>
+        <cite>- Doug Lewin, consultor del grid eléctrico de Texas, 2025</cite>
+      </blockquote>
+
+      <p>Hay una narrativa que domina el debate energético global desde hace quince años. Va más o menos así: la transición hacia las energías renovables es un proyecto de izquierda, impulsado por reguladores europeos, activistas del clima y demócratas de California. Los estados conservadores, los que tienen petróleo bajo sus pies y cowboys en sus mitos fundacionales, están del otro lado. Son los que frenan, los que niegan, los que mantienen encendidas las plantas de carbón mientras el mundo cambia.</p>
+
+      <p>Texas no leyó ese guion.</p>
+
+      <p>El estado más republicano del sur de Estados Unidos, el mayor productor de petróleo y gas del país, el que tiene en su constitución cultural la independencia como valor supremo - ese estado construyó en silencio la mayor infraestructura de energía limpia del hemisferio occidental fuera de China. No lo hizo con mandatos federales. No lo hizo con retórica verde. Lo hizo con mercado libre, con tierra barata, con viento que no para y con sol que aplasta. Y también con un pragmatismo que no permite que los discursos fundamentalistas eviten las estrategias de desarrollo.</p>
+
+      <p>La paradoja texana es la historia energética más importante que nadie está contando. Y cuando se la cuenta bien, destruye simultáneamente dos narrativas que dominan la conversación pública: la de que la transición energética es ideología de izquierda, y la de que los estados fósiles no pueden liderar la energía limpia.</p>
+
+      <h2 class="article-section-heading">Los números que reescriben el mapa</h2>
+
+      <p>Al cierre del primer trimestre de 2026, Texas tiene 96,4 gigavatios de capacidad de energía limpia instalada. Es más de un cuarto de toda la capacidad limpia de Estados Unidos. Es el primer estado en la historia del país en acercarse a los 100 GW - un umbral que ningún otro estado tiene en el horizonte inmediato. California, en segundo lugar, tiene 46,4 GW. Oklahoma, tercero, tiene apenas 15 GW.</p>
+
+      <p>Para que los números cobren dimensión geopolítica, vale la comparación global. Australia - un continente entero, 26 millones de habitantes, décadas de política energética agresiva - tiene 45 GW de solar instalada. Texas la supera. Brasil, la mayor economía latinoamericana con 215 millones de personas y uno de los mejores recursos solares del planeta, tiene 54 GW de solar. Texas lo empareja. Corea del Sur, una de las economías más tecnológicamente avanzadas del mundo, tiene alrededor de 25 GW de solar. Texas duplica ese número.</p>
+
+      <p>Alemania, la referencia europea de la transición energética, tiene 210 GW de capacidad renovable total. Es un país de 84 millones de personas con una política energética de Estado, subsidios masivos y una cultura institucional construida alrededor del Energiewende desde los años noventa. Texas, con 30 millones de habitantes y sin política energética federal que lo obligue a nada, va camino a los 100 GW.</p>
+
+      <p>En viento, Texas es el líder indiscutido de Estados Unidos. Genera el 28% de toda la energía eólica del país - casi el triple del segundo estado. En solar, en 2025 superó a California por primera vez en generación de escala industrial: 58.634 GWh contra 53.713. En almacenamiento de baterías, el número es el más revelador: desde 2019 multiplicó su capacidad por 5.500%. Empieza 2026 con 13,9 GW de almacenamiento en baterías de gran escala - y planea llegar a 37 GW para finales de 2027.</p>
+
+      <p>El dato de las baterías merece detenerse. El almacenamiento es el talón de Aquiles histórico de las renovables - la razón por la que sus críticos siempre dijeron que el sol y el viento no pueden sostener una grid moderna. Texas está resolviendo ese problema más rápido que cualquier otro lugar del mundo fuera de China y California. Y lo está haciendo sin que nadie se lo pida.</p>
+
+      <h2 class="article-section-heading">Cómo llegó Texas hasta acá</h2>
+
+      <p>El punto de partida de la historia texana no es el activismo climático. Es el desregulador más improbable de la historia energética americana: George W. Bush.</p>
+
+      <p>En 1999, cuando era gobernador de Texas, Bush firmó una ley que desreguló el mercado eléctrico del estado y fijó las primeras metas de energía renovable. No lo hizo porque se preocupara por el cambio climático. Lo hizo porque quería mercados competitivos y porque la energía eólica en el viento panhandle texano era ya entonces brutalmente barata. Rick Perry, su sucesor y luego secretario de Energía de Trump - el mismo que dijo querer eliminar el Departamento de Energía antes de quedar a cargo de él - continuó la política y firmó la expansión masiva de la red de transmisión eólica texana en 2005.</p>
+
+      <p>El resultado fue ERCOT: el Electric Reliability Council of Texas, la grid eléctrica independiente que cubre el 90% del estado y que opera desconectada de las redes del resto de EEUU. Esa desconexión - que en el invierno de 2021 demostró ser una vulnerabilidad catastrófica cuando millones de texanos se quedaron sin luz - es al mismo tiempo la razón por la que Texas pudo construir su sistema renovable con una velocidad que ninguna otra jurisdicción igualó.</p>
+
+      <p>Vale la pena detenerse en Uri, porque la memoria pública lo recuerda mal. En febrero de 2021, ERCOT ordenó 20.000 megavatios de cortes rotativos - el mayor apagón controlado manualmente en la historia de Estados Unidos - y más de 4,5 millones de tejanos se quedaron sin luz, algunos durante cuatro días. La Universidad de Texas contabilizó al menos 57 muertes confirmadas; estimaciones periodísticas posteriores hablan de cientos. El gobernador Abbott salió a culpar públicamente a los molinos eólicos congelados. Los datos de ERCOT dijeron después algo distinto: la producción de gas natural texano cayó casi 50% porque pozos, compresores y gasoductos se congelaron sin haber sido climatizados, y el gas representa el 46% del combustible de la red. Ninguna fuente de generación - gas, carbón, nuclear, eólica - quedó exenta de fallas esa semana. La causa real fue la falta de inversión en resiliencia frente al frío extremo, no la tecnología. Cinco años después, en enero de 2026, una tormenta de magnitud comparable encontró una red distinta: aguantó, y Abbott lo atribuyó a las nuevas reglas de climatización exigidas tras la tragedia. La lección que Texas tardó cinco años y decenas de muertes en aprender es la misma que subyace a toda la paradoja: la ideología explica mal lo que pasó en la red texana. Los datos, tarde o temprano, la corrigen.</p>
+
+      <p>La lógica es brutal y simple: solar y eólica de utilidad en Texas alcanza costos nivelados de entre 38 y 78 dólares por megavatio-hora. La generación combinada de ciclo de gas natural está entre 48 y 109 dólares. El viento y el sol son, en Texas, la electricidad más barata disponible. No hay argumento ideológico que le gane a ese spread de costos cuando el objetivo de un desarrollador privado es maximizar retornos.</p>
+
+      <p>Entre 2000 y 2025, ERCOT agregó casi 98 GW de nueva capacidad. El 70% - 69 GW - vino de eólica y solar. No porque el estado lo exigiera. Porque el mercado lo eligió. Seis de los diez estados líderes en renovables de EEUU votaron republicano en 2024. Son el cinturón rojo del país. Son también el corazón de la transición energética americana.</p>
+
+      <h2 class="article-section-heading">El problema que Texas creó siendo tan exitoso</h2>
+
+      <p>En noviembre de 2025, ERCOT publicó un número que sacudió a la industria energética global: 226 gigavatios de solicitudes de conexión de grandes cargas. El récord histórico de demanda pico de Texas fue 85,5 GW en agosto de 2023. Las empresas están pidiendo conectar cargas que equivalen a 2,6 veces ese récord. El 73% de esas solicitudes vienen de data centers.</p>
+
+      <p>Texas se convirtió en el destino de la infraestructura de inteligencia artificial por las mismas razones que se convirtió en líder de renovables: tierra barata, regulación laxa, mercado eléctrico competitivo, y la capacidad de construir rápido. Microsoft, Google, Meta, Amazon - todos tienen o anuncian gigaproyectos en Texas. La EIA proyecta que la demanda eléctrica en ERCOT crecerá un 14% en 2026 - el mayor crecimiento de cualquier grid operadora de EEUU, por lejos.</p>
+
+      <p>Eso crea una tensión estructural que define el futuro energético del estado. Los data centers necesitan electricidad 24/7, confiable, sin interrupciones. Las renovables son intermitentes por naturaleza - el sol no brilla de noche, el viento no siempre sopla. La solución son las baterías y el gas natural como respaldo. Texas está construyendo ambas cosas simultáneamente. En los primeros tres meses de 2026, el gas natural representó el 33% de la generación de ERCOT. La EIA proyecta que la generación de gas en la región crecerá un 7% en 2026 y otro 18% en 2027.</p>
+
+      <p>La paradoja se profundiza: el estado que lidera la construcción de renovables también está construyendo más gas natural para sostenerlas. No es incoherencia - es la lógica de una transición que nadie está coordinando desde arriba y que el mercado resuelve con lo que tiene disponible.</p>
+
+      <h2 class="article-section-heading">La guerra civil republicana sobre el futuro de Texas</h2>
+
+      <p>Y entonces llegó la política a complicar lo que el mercado estaba haciendo bien.</p>
+
+      <p>En 2025, una facción del Partido Republicano de Texas, alimentada por donantes ligados a la industria fósil y por la ideología del Project 2025 - el manual de gobierno de la derecha americana que llamaba a eliminar todo apoyo federal al green energy - intentó desmantelar el ecosistema renovable que los republicanos texanos habían construido durante veinticinco años.</p>
+
+      <p>La ofensiva no se quedó en el Capitolio estatal. El 4 de julio de 2025, Trump firmó la One Big Beautiful Bill Act, que le puso fecha de vencimiento a los créditos fiscales federales que sostienen buena parte de la construcción eólica y solar: todo proyecto que no inicie obra antes del 4 de julio de 2026 - o que no entre en operación antes del 31 de diciembre de 2027 - pierde el Investment Tax Credit y el Production Tax Credit vigentes desde la era Obama. Tres días después, una orden ejecutiva instruyó al Tesoro a "aplicar estrictamente" ese corte e impedir que los desarrolladores maquillen la fecha de inicio de obra para esquivarlo. Es el ataque más serio que sufrió el ecosistema renovable texano desde su nacimiento, y viene, otra vez, de Washington y no del mercado. Pero tiene una grieta que dice mucho sobre las prioridades reales detrás de la ley: el almacenamiento en baterías queda exento. La ITC de storage no vence en 2026 ni en 2027. Mientras la administración le pone un cronómetro a la eólica y la solar, deja intacto el subsidio a la tecnología que Texas necesita para que los data centers no se queden sin luz de noche. No es una contradicción menor: es la prueba de que incluso los que más ruido hacen contra las renovables entienden que sin baterías la red no aguanta la demanda que ellos mismos atrajeron.</p>
+
+      <p>La respuesta vino de donde menos se esperaba: de los propios republicanos rurales. Un ganadero texano que arrienda su tierra a desarrolladores eólicos lo dijo con una claridad que ningún discurso político supera: antes maldecías al viento. Ahora le rezás para que siga soplando. En Texas, las comunidades rurales - las más republicanas del estado - dependen de los ingresos por arrendamiento para renovables para financiar escuelas, hospitales e infraestructura. El viento y el sol son, para esas comunidades, lo que fue el petróleo para la generación anterior: una renta del subsuelo.</p>
+
+      <p>Doug Lewin - presidente de Stoic Energy y autor del newsletter sobre la red de ERCOT más citado en la prensa texana - se lo dijo a The New York Times en mayo de 2025, en medio del debate legislativo para obligar a las renovables a pagar su propio respaldo las 24 horas, con la crueldad de quien conoce los números: "¿Odiás tanto las renovables como para llevarte puesta la economía de Texas?" No es una pregunta retórica. Es la síntesis del dilema que enfrenta el Partido Republicano texano: entre la ideología que importaron de Washington y el pragmatismo económico que construyó el estado que gobiernan.</p>
+
+      <p>Por ahora, el mercado está ganando. En 2026, Texas concentra el 40% de toda la nueva capacidad solar de utilidad de EEUU y el 53% de toda la nueva capacidad de baterías. El Tehuacana Creek 1 - 837 megavatios de solar más 418 MW de almacenamiento - es el mayor proyecto solar que entrará en operación en EEUU este año. Está en Texas.</p>
+
+      <h2 class="article-section-heading">Lo que Texas le dice al mundo</h2>
+
+      <p>Hay una lección geopolítica en la historia texana que va más allá de los GW instalados.</p>
+
+      <p>La narrativa dominante sobre la transición energética la presenta como un proyecto impuesto por arriba: acuerdos internacionales, regulación estatal, subsidios gubernamentales, presión social. Texas desmiente esa narrativa de manera empírica. La transición más rápida y más masiva del hemisferio occidental ocurrió en el estado más antirregulatorio del país más reticente a los compromisos climáticos internacionales. No porque alguien lo ordenara. Porque era negocio.</p>
+
+      <p>Eso tiene implicancias para América Latina. Argentina tiene más sol que Texas. Chile tiene más viento. Brasil tiene ambos y además agua. Los recursos están. Lo que históricamente faltó fueron las condiciones de mercado que hicieran rentable invertir. El caso texano demuestra que cuando esas condiciones existen - tierra barata, permisos ágiles, precio de la energía determinado por el mercado, demanda creciente - el capital privado hace la transición sin que nadie lo obligue.</p>
+
+      <p>La segunda lección es sobre el rol de la demanda. Texas no construyó 96 GW de energía limpia para cumplir metas climáticas. Lo construyó porque necesita electricidad. La inteligencia artificial, los data centers, la criptominería, la electrificación industrial - esa demanda nueva y voraz fue el verdadero motor de la inversión renovable. El cambio climático no convenció a los inversores texanos. La factura de electricidad de los data centers de Microsoft sí.</p>
+
+      <p>La tercera lección es sobre las contradicciones que toda transición real produce. Texas lidera en renovables y lidera en petróleo simultáneamente. Construye baterías y construye plantas de gas al mismo tiempo. Sus líderes políticos atacan públicamente el green energy mientras sus mercados lo expanden a velocidad récord. No hay coherencia narrativa en esa historia. Hay, en cambio, una verdad sobre cómo cambia el mundo: no de manera ordenada ni ideológicamente consistente, sino a través de fuerzas económicas que se imponen sobre los discursos.</p>
+
+      <h2 class="article-section-heading">El estado que no pidió permiso</h2>
+
+      <p>En abril de 2026, ERCOT proyectó que la demanda pico del verano podría llegar a 98.000 MW - casi el doble del récord de hace tres años. Para atender esa demanda, tiene en cola más de 195 GW de nueva capacidad en desarrollo. La mayoría es solar y baterías.</p>
+
+      <p>Ningún acuerdo internacional lo requirió. Ningún mandato federal lo ordenó. Ningún gobernador lo prometió en campaña. El mercado eléctrico de Texas, diseñado por republicanos para ser el más libre del país, produjo la transición energética más acelerada del hemisferio occidental.</p>
+
+      <p>Texas no pidió permiso para hacer la transición. La hizo.</p>
+
+      <p class="article-closing">Eso debería hacernos pensar en qué narrativas sobre la energía damos por ciertas, y cuáles son simplemente cómodos relatos que no sobreviven el contacto con los datos.</p>
+
+      <p class="article-signature">- @eddiewouldgopolicy</p>
+
+      <div class="article-sources">
+        <strong>Fuentes principales</strong>
+        EIA: Solar capacity additions in Texas (2024); ERCOT increasingly meets rising demand (2025); New U.S. electric generating capacity record high 2026 (febrero 2026). ERCOT: Fact Sheet Summer 2026; Annual Buildout Report Modo Energy (febrero 2026). IEA: Electricity 2026 Executive Summary (abril 2026); Global Energy Review 2026 Solar PV and Wind (abril 2026). Ember: Global Electricity Review 2026; Wind and solar more than gas worldwide April 2026 (mayo 2026). Advanced Power Alliance: Texas Tops US States Renewable Energy (enero 2025). IRENA: Renewable Capacity Highlights 2025 (marzo 2025). Global Energy Monitor: Global Wind and Solar 2025 The G7 Gap. Climate Central: U.S. Solar and Wind Growth 2025 (mayo 2026). The New York Times: Renewable Energy Is Booming in Texas. Republicans Want to Change That (mayo 2025). The Hill: Texas becomes front line of GOP civil war over energy (mayo 2025). Dave Friedman / Substack: Inside Texas AI Data Center Queue (enero 2026). Heritage Foundation: Restoring Reliability to the Texas Electric Grid (2025).
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">© 2026 Eddie Would Go. Todos los derechos reservados.</span>
+    <div class="footer-social">
+      <a href="https://x.com/eddiewgpolicy" target="_blank">Twitter</a>
+      <a href="https://www.instagram.com/eddiewouldgopolicy" target="_blank">Instagram</a>
+    </div>
+  </footer>
+
+  <!-- i18n:script -->
+  <script src="/i18n/i18n.js" defer></script>
+  <!-- /i18n:script -->
+</body>
+</html>
