@@ -67,7 +67,7 @@
     for (i = 0; i < kids.length; i++) {
       child = kids[i];
       if (MEDIA_TAGS[child.tagName.toLowerCase()]) continue;
-      if (child.classList && child.classList.contains('lang-toggle')) continue;
+      if (child.classList && (child.classList.contains('lang-toggle') || child.classList.contains('lang-ai-note'))) continue;
       if (isLeaf(child)) {
         var key = norm(child.innerHTML);
         if (key && dict[key] != null) setHTML(child, dict[key]);
@@ -167,6 +167,7 @@
 
   /* ---- toggle UI ---- */
   var toggleEl = null;
+  var aiNoteEl = null;
 
   function paintToggle(lang) {
     if (!toggleEl) return;
@@ -178,6 +179,7 @@
       if (!btns[i].className) btns[i].removeAttribute('class');
       btns[i].setAttribute('aria-pressed', on ? 'true' : 'false');
     }
+    if (aiNoteEl) aiNoteEl.style.display = (lang === 'en') ? 'inline-flex' : 'none';
   }
 
   function buildToggle() {
@@ -193,7 +195,11 @@
       'cursor:pointer;transition:background .25s ease,color .25s ease;line-height:1}' +
       '.lang-toggle button.is-active{background:var(--black,#000);color:var(--white,#fff)}' +
       '.lang-toggle button:not(.is-active):hover{background:var(--gray-200,#e0e0e0)}' +
-      '@media(max-width:768px){.lang-toggle{height:26px}.lang-toggle button{font-size:0.6rem;padding:0 8px}}';
+      '.lang-ai-note{display:none;align-items:center;margin-left:8px;font-size:0.6rem;' +
+      'font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-500,#767676);' +
+      'white-space:nowrap;cursor:help}' +
+      '@media(max-width:768px){.lang-toggle{height:26px}.lang-toggle button{font-size:0.6rem;padding:0 8px}' +
+      '.lang-ai-note{font-size:0.55rem;margin-left:6px}}';
     document.head.appendChild(css);
 
     toggleEl = document.createElement('div');
@@ -209,6 +215,11 @@
       if (b) setLang(b.getAttribute('data-lang'));
     });
 
+    aiNoteEl = document.createElement('span');
+    aiNoteEl.className = 'lang-ai-note';
+    aiNoteEl.title = 'This English version was translated using AI and may contain errors.';
+    aiNoteEl.textContent = 'AI-translated';
+
     // every nav ends with an empty spacer div kept for symmetry — reuse it
     var spacer = null, kids = nav.children;
     for (var i = kids.length - 1; i >= 0; i--) {
@@ -222,8 +233,10 @@
       spacer.style.justifyContent = 'flex-end';
       spacer.style.minWidth = '80px';
       spacer.appendChild(toggleEl);
+      spacer.appendChild(aiNoteEl);
     } else {
       nav.appendChild(toggleEl);
+      nav.appendChild(aiNoteEl);
     }
   }
 
