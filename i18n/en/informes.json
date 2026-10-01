@@ -1,0 +1,39 @@
+{
+ "title": "Reports — Eddie Would Go",
+ "u": {
+  "<a href=\"/\">Artículos</a>": "<a href=\"/\">Articles</a>",
+  "<a href=\"/informes.html\" aria-current=\"page\">Informes</a>": "<a href=\"/informes.html\" aria-current=\"page\">Reports</a>",
+  "Informes": "Reports",
+  "Análisis en profundidad, con datos, escenarios y fuentes.": "In-depth analysis with data, scenarios and sources.",
+  "Informe publicado": "Report published",
+  "<span>Último Informe</span><span>Edición N.º 1</span>": "<span>Latest Report</span><span>Edition No. 1</span>",
+  "Nuevo": "New",
+  "Informe N.º 1 · Elecciones 2026": "Report No. 1 · 2026 Elections",
+  "Estados Unidos, Brasil e Israel: el mapa político de octubre y noviembre, con escenarios, probabilidades e implicancias para la Argentina.": "The United States, Brazil and Israel: the political map for October and November, with scenarios, probabilities and implications for Argentina. Report in Spanish.",
+  "Datos al": "Data as of",
+  "20 sep 2026": "Sep 20, 2026",
+  "Páginas": "Pages",
+  "Las tres elecciones · Lectura de EWG": "Three elections · EWG's read",
+  "<span class=\"race-country\">Estados Unidos</span> <span class=\"race-date\">3 de noviembre</span> <span class=\"race-read\">Cámara casi perdida para los republicanos. Senado demócrata (51+): 55%.</span>": "<span class=\"race-country\">United States</span> <span class=\"race-date\">November 3</span> <span class=\"race-read\">House all but lost for Republicans. Democratic Senate (51+): 55%.</span>",
+  "<span class=\"race-country\">Brasil</span> <span class=\"race-date\">4 y 25 de octubre</span> <span class=\"race-read\">Empate técnico. Balotaje: Lula 52%, Flávio Bolsonaro 48%.</span>": "<span class=\"race-country\">Brazil</span> <span class=\"race-date\">October 4 &amp; 25</span> <span class=\"race-read\">Statistical tie. Runoff: Lula 52%, Flávio Bolsonaro 48%.</span>",
+  "<span class=\"race-country\">Israel</span> <span class=\"race-date\">27 de octubre</span> <span class=\"race-read\">60% parálisis: nadie llega a 61 bancas.</span>": "<span class=\"race-country\">Israel</span> <span class=\"race-date\">October 27</span> <span class=\"race-read\">60% deadlock: no one reaches 61 seats.</span>",
+  "<a href=\"/public/EWG_Policy_Informe_N1_Elecciones_2026.pdf\" target=\"_blank\" rel=\"noopener\" class=\"btn btn-primary\" data-viewer-open=\"\">Leer en línea →</a> <a href=\"/public/EWG_Policy_Informe_N1_Elecciones_2026.pdf\" download=\"EWG_Policy_Informe_N1_Elecciones_2026.pdf\" class=\"btn btn-ghost\">Descargar PDF ↓</a>": "<a href=\"/public/EWG_Policy_Informe_N1_Elecciones_2026.pdf\" target=\"_blank\" rel=\"noopener\" class=\"btn btn-primary\" data-viewer-open=\"\">Read online →</a> <a href=\"/public/EWG_Policy_Informe_N1_Elecciones_2026.pdf\" download=\"EWG_Policy_Informe_N1_Elecciones_2026.pdf\" class=\"btn btn-ghost\">Download PDF ↓</a>",
+  "<strong>Informe N.º 1</strong> · Tres urnas para la primavera": "<strong>Report No. 1</strong> · Tres urnas para la primavera",
+  "<a href=\"/public/EWG_Policy_Informe_N1_Elecciones_2026.pdf\" target=\"_blank\" rel=\"noopener\">Pantalla completa ↗</a> <a href=\"/public/EWG_Policy_Informe_N1_Elecciones_2026.pdf\" download=\"EWG_Policy_Informe_N1_Elecciones_2026.pdf\">Descargar ↓</a> <button type=\"button\" data-viewer-close=\"\">Cerrar ✕</button>": "<a href=\"/public/EWG_Policy_Informe_N1_Elecciones_2026.pdf\" target=\"_blank\" rel=\"noopener\">Full screen ↗</a> <a href=\"/public/EWG_Policy_Informe_N1_Elecciones_2026.pdf\" download=\"EWG_Policy_Informe_N1_Elecciones_2026.pdf\">Download ↓</a> <button type=\"button\" data-viewer-close=\"\">Close ✕</button>",
+  "<span>Todos los Informes</span><span>Archivo</span>": "<span>All Reports</span><span>Archive</span>",
+  "Informe N.º 1": "Report No. 1",
+  "Septiembre 2026 · Elecciones": "September 2026 · Elections",
+  "N.º 2": "No. 2",
+  "En preparación": "In preparation",
+  "Próximo informe": "Next report",
+  "Próximamente": "Coming soon",
+  "Análisis independiente.<br>Sin agenda.<br>Desde 2021.": "Independent analysis.<br>No agenda.<br>Since 2021.",
+  "Navegar": "Navigate",
+  "<a href=\"/informes.html\">Informes</a>": "<a href=\"/informes.html\">Reports</a>",
+  "<span class=\"footer-copy\">© 2026 Eddie Would Go. Todos los derechos reservados.</span>": "<span class=\"footer-copy\">© 2026 Eddie Would Go. All rights reserved.</span>"
+ },
+ "a": {
+  "Portada del Informe N.º 1: Tres urnas para la primavera": "Cover of Report No. 1: Tres urnas para la primavera",
+  "Portada del Informe N.º 1": "Cover of Report No. 1"
+ }
+}

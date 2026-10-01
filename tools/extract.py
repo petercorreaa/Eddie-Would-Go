@@ -117,13 +117,13 @@ def collect(path):
 
 def main():
     os.makedirs(OUT, exist_ok=True)
-    files = ["index.html"] + sorted(
+    files = ["index.html", "informes.html"] + sorted(
         "articles/" + f for f in os.listdir(os.path.join(ROOT, "articles")) if f.endswith(".html")
     )
     total = 0
     for f in files:
         data = collect(os.path.join(ROOT, f))
-        slug = "index" if f == "index.html" else os.path.basename(f)[:-5]
+        slug = os.path.basename(f)[:-5]
         with open(os.path.join(OUT, slug + ".json"), "w", encoding="utf-8") as fh:
             json.dump(data, fh, ensure_ascii=False, indent=1)
         w = sum(len(re.sub(r"<[^>]+>", " ", u).split()) for u in data["units"])
