@@ -67,7 +67,7 @@
     for (i = 0; i < kids.length; i++) {
       child = kids[i];
       if (MEDIA_TAGS[child.tagName.toLowerCase()]) continue;
-      if (child.classList && (child.classList.contains('lang-toggle') || child.classList.contains('lang-ai-note'))) continue;
+      if (child.classList && (child.classList.contains('lang-toggle') || child.classList.contains('lang-ai-note') || child.classList.contains('nav-hamburger'))) continue;
       if (isLeaf(child)) {
         var key = norm(child.innerHTML);
         if (key && dict[key] != null) setHTML(child, dict[key]);
