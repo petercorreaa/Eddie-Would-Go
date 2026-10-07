@@ -5,6 +5,7 @@
   "<a href=\"#\">Articles</a>",
   null,
   null,
+  null,
   "Independent analysis. No agenda.",
   "<span>Latest</span> <span>Long Reads</span> <span>Opinion</span> <span>Investigations</span> <span>Latest</span> <span>Long Reads</span> <span>Opinion</span> <span>Investigations</span>",
   "Recent",
@@ -93,7 +94,7 @@
   "<a href=\"#\">Culture</a>",
   "<a href=\"#\">Investigations</a>",
   "<a href=\"#\">Archive</a>",
-  "<a href=\"#\">About Eddie</a>",
+  "<a href=\"/sobre-nosotros.html\">About Eddie</a>",
   "© 2026 Eddie Would Go. All rights reserved.",
   null
  ],

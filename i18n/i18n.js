@@ -220,12 +220,13 @@
     aiNoteEl.title = 'This English version was translated using AI and may contain errors.';
     aiNoteEl.textContent = 'AI-translated';
 
-    // every nav ends with an empty spacer div kept for symmetry — reuse it
+    // every nav ends with a spacer div kept for symmetry — reuse it. Checked
+    // by tag alone (not emptiness): mobile-nav.js shares this same div for the
+    // hamburger button and may run before or after this script, so the div
+    // may already hold a child by the time either one looks for it.
     var spacer = null, kids = nav.children;
     for (var i = kids.length - 1; i >= 0; i--) {
-      if (kids[i].tagName === 'DIV' && !kids[i].children.length && !norm(kids[i].textContent)) {
-        spacer = kids[i]; break;
-      }
+      if (kids[i].tagName === 'DIV') { spacer = kids[i]; break; }
     }
     if (spacer) {
       spacer.style.width = 'auto';

@@ -13,13 +13,13 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 ALLOWED = re.compile(
     r"^(Eddie Would Go|Eddie<br>Would<br>Go|<strong>The Eddie</strong>|The Eddie|"
     r"@eddiewouldgo|@eddiewgpolicy|Instagram|Podcast|X / Twitter|- @eddiewouldgopolicy|"
-    r"EWG Policy|PDF|Tres urnas para la primavera|"
+    r"EWG Policy|PDF|Tres urnas para la primavera|Las Urnas Contra las Encuestas|"
     r"<span style=\"display:inline-flex.*|<a class=\"twitter-timeline\".*|"
     r"<a href=\"/\" class=\"nav-logo\">.*|"
     r"<a href=\"#\">Twitter</a>.*|<a href=\"https://x\.com.*)$"
 )
 
-pages = [("index", "/"), ("informes", "/informes.html")] + [
+pages = [("index", "/"), ("informes", "/informes.html"), ("sobre-nosotros", "/sobre-nosotros.html")] + [
     (f[:-5], "/articles/" + f)
     for f in sorted(os.listdir(os.path.join(ROOT, "articles"))) if f.endswith(".html")
 ]

@@ -4,6 +4,7 @@
   "<span style=\"display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;background:#000;color:#fff;font-family:'Bebas Neue',sans-serif;font-size:2.2rem;line-height:1;letter-spacing:0;flex-shrink:0;\">E</span>",
   "<a href=\"#\">Artículos</a>",
   "<a href=\"/informes.html\">Informes</a>",
+  "<a href=\"/sobre-nosotros.html\">Sobre Nosotros</a>",
   "Eddie Would Go",
   "Análisis independiente. Sin agenda.",
   "<span>Último</span> <span>Lecturas Largas</span> <span>Opinión</span> <span>Investigaciones</span> <span>Último</span> <span>Lecturas Largas</span> <span>Opinión</span> <span>Investigaciones</span>",
@@ -93,7 +94,7 @@
   "<a href=\"#\">Cultura</a>",
   "<a href=\"#\">Investigaciones</a>",
   "<a href=\"#\">Archivo</a>",
-  "<a href=\"#\">Sobre Eddie</a>",
+  "<a href=\"/sobre-nosotros.html\">Sobre Eddie</a>",
   "© 2026 Eddie Would Go. Todos los derechos reservados.",
   "<a href=\"#\">Twitter</a> <a href=\"#\">Instagram</a> <a href=\"#\">RSS</a>"
  ],

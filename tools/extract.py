@@ -117,7 +117,7 @@ def collect(path):
 
 def main():
     os.makedirs(OUT, exist_ok=True)
-    files = ["index.html", "informes.html"] + sorted(
+    files = ["index.html", "informes.html", "sobre-nosotros.html"] + sorted(
         "articles/" + f for f in os.listdir(os.path.join(ROOT, "articles")) if f.endswith(".html")
     )
     total = 0

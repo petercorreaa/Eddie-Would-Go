@@ -29,7 +29,7 @@ LEGACY = re.compile(
     r"|[ \t]*<script src=\"/i18n/i18n\.js\" defer></script>[ \t]*\n"
 )
 
-files = [os.path.join(ROOT, "index.html"), os.path.join(ROOT, "informes.html")] + [
+files = [os.path.join(ROOT, "index.html"), os.path.join(ROOT, "informes.html"), os.path.join(ROOT, "sobre-nosotros.html")] + [
     os.path.join(ROOT, "articles", f)
     for f in sorted(os.listdir(os.path.join(ROOT, "articles"))) if f.endswith(".html")
 ]
