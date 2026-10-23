@@ -25,11 +25,17 @@
   "<a href=\"#\" id=\"visor-fullscreen\" target=\"_blank\" rel=\"noopener\">Pantalla completa ↗</a> <a href=\"#\" id=\"visor-download\">Descargar ↓</a> <button type=\"button\" data-viewer-close=\"\">Cerrar ✕</button>",
   "<span>Todos los Informes</span><span>Archivo</span>",
   "Informe N.º 2",
-  "Octubre 2026 · Brasil, balotaje",
+  "Octubre 2026 · Brasil, primera vuelta",
   "Informe N.º 1",
   "Tres urnas para la primavera",
   "Septiembre 2026 · Elecciones",
-  "N.º 3",
+  "Informe N.º 4",
+  "Flávio Sigue Adelante, Pero Por Poco",
+  "Octubre 2026 · Brasil, balotaje",
+  "Informe N.º 5",
+  "Nadie Llega a 61. Netanyahu, Menos",
+  "Octubre 2026 · Israel, elecciones",
+  "N.º 6",
   "En preparación",
   "Próximo informe",
   "Próximamente",
@@ -42,6 +48,8 @@
  "attrs": [
   "Portada del Informe N.º 2: Las Urnas Contra las Encuestas",
   "Portada del Informe N.º 2",
-  "Portada del Informe N.º 1"
+  "Portada del Informe N.º 1",
+  "Portada del Informe N.º 4",
+  "Portada del Informe N.º 5"
  ]
 }
