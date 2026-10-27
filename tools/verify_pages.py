@@ -15,6 +15,7 @@ ALLOWED = re.compile(
     r"@eddiewouldgo|@eddiewgpolicy|Instagram|Podcast|X / Twitter|- @eddiewouldgopolicy|"
     r"EWG Policy|PDF|Tres urnas para la primavera|Las Urnas Contra las Encuestas|"
     r"Flávio Sigue Adelante, Pero Por Poco|Nadie Llega a 61\. Netanyahu, Menos|"
+    r"El momentum era de Lula\. Y alcanzó|Nadie llega a 61, y Netanyahu llega menos|"
     r"<span style=\"display:inline-flex.*|<a class=\"twitter-timeline\".*|"
     r"<a href=\"/\" class=\"nav-logo\">.*|"
     r"<a href=\"#\">Twitter</a>.*|<a href=\"https://x\.com.*)$"
